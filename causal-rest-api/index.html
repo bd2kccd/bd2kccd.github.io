@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Causal REST API - ccd-docs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Causal REST API";
+    var mkdocs_page_input_path = "causal-rest-api.md";
+    var mkdocs_page_url = "/causal-rest-api/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> ccd-docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../causal-cmd/">Causal CMD</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../causal-web/">Causal Web</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Causal REST API</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#causal-rest-api-v1">Causal REST API V1</a></li>
+                
+                    <li><a class="toctree-l4" href="#installation">Installation</a></li>
+                
+                    <li><a class="toctree-l4" href="#api-usage-and-examples">API Usage and Examples</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../py-causal/">Py-causal</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../r-causal/">R-causal</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">ccd-docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Causal REST API</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="causal-rest-api-v1">Causal REST API V1</h1>
+<p>This RESTful API is designed for causal web. And it implements the <a href="https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services">JAX-RS</a> specifications using Jersey.</p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#dependencies">Dependencies</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#start-the-api-server">Start the API Server</a></li>
+<li><a href="#api-usage-and-examples">API Usage and Examples</a></li>
+<li><a href="#getting-json-web-tokenjwt">Getting JSON Web Token(JWT)</a></li>
+<li><a href="#1-data-management">1. Data Management</a><ul>
+<li><a href="#upload-small-data-file">Upload small data file</a></li>
+<li><a href="#resumable-data-file-upload">Resumable data file upload</a></li>
+<li><a href="#list-all-dataset-files-of-a-user">List all dataset files of a user</a></li>
+<li><a href="#get-the-deatil-information-of-a-dataset-file-based-on-id">Get the deatil information of a dataset file based on ID</a></li>
+<li><a href="#delete-physical-dataset-file-and-all-records-from-database-for-a-given-file-id">Delete physical dataset file and all records from database for a given file ID</a></li>
+<li><a href="#summarize-dataset-file">Summarize dataset file</a></li>
+<li><a href="#list-all-prior-knowledge-files-of-a-given-user">List all prior knowledge files of a given user</a></li>
+<li><a href="#get-the-deatil-information-of-a-prior-knowledge-file-based-on-id">Get the deatil information of a prior knowledge file based on ID</a></li>
+<li><a href="#delete-physical-prior-knowledge-file-and-all-records-from-database-for-a-given-file-id">Delete physical prior knowledge file and all records from database for a given file ID</a></li>
+</ul>
+</li>
+<li><a href="#2-causal-discovery">2. Causal Discovery</a><ul>
+<li><a href="#list-all-the-available-causal-discovery-algorithms">List all the available causal discovery algorithms</a></li>
+<li><a href="#add-a-new-job-to-run-the-desired-algorithm-on-a-given-data-file">Add a new job to run the desired algorithm on a given data file</a></li>
+<li><a href="#list-all-running-jobs">List all running jobs</a></li>
+<li><a href="#check-the-job-status-for-a-given-job-id">Check the job status for a given job ID</a></li>
+<li><a href="#cancel-a-running-job">Cancel a running job</a></li>
+</ul>
+</li>
+<li><a href="#3-result-management">3. Result Management</a><ul>
+<li><a href="#list-all-result-files-generated-by-the-algorithm">List all result files generated by the algorithm</a></li>
+<li><a href="#download-a-speific-result-file-generated-by-the-algorithm-based-on-file-name">Download a speific result file generated by the algorithm based on file name</a></li>
+<li><a href="#compare-algorithm-result-files">Compare algorithm result files</a></li>
+<li><a href="#list-all-the-comparison-files">List all the comparison files</a></li>
+<li><a href="#download-a-speific-comparison-file-based-on-file-name">Download a speific comparison file based on file name</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>The following installation instructions are supposed to be used by the server admin who deploys this API server. API users can skip this section and just start reading from the <a href="https://github.com/bd2kccd/causal-rest-api#api-usage-and-examples">API Usage and Examples</a> section. </p>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>You must have the following installed to build/install Causal REST API:</p>
+<ul>
+<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Oracle Java SE Development Kit 8</a></li>
+<li><a href="https://maven.apache.org/download.cgi">Maven 3.x</a></li>
+</ul>
+<h3 id="dependencies">Dependencies</h3>
+<p>If you want to run this API server and expose the API to your users, you'll first need to have the <a href="https://github.com/bd2kccd/causal-web">Causal Web Application</a> installed and running. Your API users will use this web app to create their user accounts before they can consume the API. </p>
+<p><strong>Note: currently new users can also be created using Auth0 login option, but the API doesn't work for these users.</strong></p>
+<p>In order to build the API server, you'll need the released version of <a href="https://github.com/bd2kccd/ccd-commons/releases/tag/v0.3.1">ccd-commons-0.3.1</a> by going to the repo and checkout this specific release version:</p>
+<pre><code>git clone https://github.com/bd2kccd/ccd-commons.git
+cd ccd-commons
+git checkout tags/v0.3.1
+mvn clean install
+</code></pre>
+
+<p>You'll also need to download <a href="https://github.com/bd2kccd/ccd-db">ccd-db-0.6.2</a> branch:</p>
+<pre><code>git clone https://github.com/bd2kccd/ccd-db.git
+cd ccd-db
+git checkout v0.6.2
+mvn clean install
+</code></pre>
+
+<p><strong>Note: we'll use the the 0.6.2 tagged release once it's released, only use the branch for now.</strong></p>
+<p>Then you can go get and install <code>causal-rest-api</code>:</p>
+<pre><code>git clone https://github.com/bd2kccd/causal-rest-api.git
+cd causal-rest-api
+mvn clean package
+</code></pre>
+
+<h3 id="configuration">Configuration</h3>
+<p>There are 4 configuration files to configure located at <code>causal-rest-api/src/main/resources</code>:
+- <strong>application-hsqldb.properties</strong>: HSQLDB database configurations (for testing only).
+- <strong>application-mysql.properties</strong>: MySQL database configurations
+- <strong>application.properties</strong>: Spring Boot application settings
+- <strong>causal.properties</strong>: Data file directory path and folder settings</p>
+<p>Befor editing the <code>causal.properties</code> file, you need to create a workspace for the application to work in. Create a directory called workspace, for an example <code>/home/zhy19/ccd/workspace</code>. Inside the workspace directory, create another folder called <code>lib</code>. Then build the jar file of Tetred using the <a href="https://github.com/cmu-phil/tetrad">latest development branch</a>. After that, copy the jar file to the <code>lib</code> folder created earlier.</p>
+<h3 id="start-the-api-server">Start the API Server</h3>
+<p>Once you have all the settings configured, go to <code>causal-rest-api/target</code> and you will find the jar file named <code>causal-rest-api.jar</code>. Then simply run </p>
+<pre><code class="bash">java -jar causal-rest-api.jar
+</code></pre>
+
+<h2 id="api-usage-and-examples">API Usage and Examples</h2>
+<p>In the following sections, we'll demonstrate the API usage with examples using the API server that is running on Amazon Web Services EC2 instance. The API base URI is https://cloud.ccd.pitt.edu/ccd-api.</p>
+<p>This API requires user to be authenticated. Before using this API, the user will need to go to <a href="https://cloud.ccd.pitt.edu/ccd-web/">Causal-Web App</a> and create an account. </p>
+<h3 id="getting-json-web-tokenjwt">Getting JSON Web Token(JWT)</h3>
+<p>After registration in Causal Web App, the email and password can be used to authenticate against the Causal REST API to get the access token (we use JWT) via <strong>HTTP Basic Auth</strong>. </p>
+<p>API Endpoint URI pattern:</p>
+<pre><code>GET https://cloud.ccd.pitt.edu/ccd-api/jwt
+</code></pre>
+
+<p>In basic auth, the user provides the username and password, which the HTTP client concatenates (username + ":" + password), and base64 encodes it. This encoded string is then sent using a <code>Authorization</code> header with the "Basic" schema. For instance user email <code>demo@pitt.edu</code> whose password is <code>123</code>.</p>
+<pre><code>POST /ccd-api/jwt HTTP/1.1
+Host: cloud.ccd.pitt.edu
+Authorization: Basic ZGVtb0BwaXR0LmVkdToxMjM=
+</code></pre>
+
+<p>Once the request is processed successfully, the user ID together with a JWT will be returned in the response for further API queries.</p>
+<pre><code>{
+  &quot;userId&quot;: 22,
+  &quot;jwt&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA0Mjg1OTcsImlhdCI6MTQ3NTg0NjgyODU5N30.FcE7aEpg0u2c-gUVugIjJkzjhlDu5qav_XHtgLu3c6E&quot;,
+  &quot;issuedTime&quot;: 1475846828597,
+  &quot;lifetime&quot;: 3600,
+  &quot;expireTime&quot;: 1475850428597
+}
+</code></pre>
+
+<p>We'll need to use this <code>userId</code> in the URI path of all subsequent requests. And this <code>jwt</code> expires in 3600 seconds(1 hour), so the API consumer will need to request for another JWT otherwise the API query to other API endpoints will be denied. And this JWT will need to be sent via the HTTP <code>Authorization</code> header as well, but using the <code>Bearer</code> schema.</p>
+<p>Note: querying the JWT endpoint again before the current JWT expires will generate a new JWT, which makes the old JWT expired automatically. And this newly generated JWT will be valid in another hour unless there's another new JWT being queried.</p>
+<p>Since this API is developed with Jersey, which supports <a href="https://en.wikipedia.org/wiki/Web_Application_Description_Language">WADL</a>. So you can view the generated WADL by going to <code>https://cloud.ccd.pitt.edu/ccd-api/application.wadl?detail=true</code> and see all resource available in the application. Accessing to this endpoint doesn't require authentication.</p>
+<p>Basically, all the API usage examples are grouped into three categories: </p>
+<ol>
+<li>Data Management</li>
+<li>Causal Discovery</li>
+<li>Result Management</li>
+</ol>
+<p>And all the following examples will be issued by user <code>22</code> whose password is <code>123</code>.</p>
+<h3 id="1-data-management">1. Data Management</h3>
+<h4 id="upload-small-data-file">Upload small data file</h4>
+<p>At this point, you can upload two types of data files: tabular dataset file(either tab delimited or comma delimited) and prior knowledge file.</p>
+<p>API Endpoint URI pattern:</p>
+<pre><code>POST https://cloud.ccd.pitt.edu/ccd-api/{userId}/dataset/upload
+</code></pre>
+
+<p>This is a multipart file upload via an HTML form, and the client is required to use <code>name="file"</code> to name their file upload field in their form.</p>
+<p>Generated HTTP request code example:</p>
+<pre><code>POST /ccd-api/22/dataset/upload HTTP/1.1
+Host: cloud.ccd.pitt.edu
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+----WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name=&quot;file&quot;; filename=&quot;&quot;
+Content-Type: 
+
+
+----WebKitFormBoundary7MA4YWxkTrZu0gW
+</code></pre>
+
+<p>If the Authorization header is not provided, the response will look like this:</p>
+<pre><code class="javascript">{
+  &quot;timestamp&quot;: 1465414501443,
+  &quot;status&quot;: 401,
+  &quot;error&quot;: &quot;Unauthorized&quot;,
+  &quot;message&quot;: &quot;User credentials are required.&quot;,
+  &quot;path&quot;: &quot;/22/dataset/upload&quot;
+}
+</code></pre>
+
+<p>This POST request will upload the dataset file to the target server location and add corresponding records into database. And the response will contain the following pieces:</p>
+<pre><code class="javascript">{
+    &quot;id&quot;: 6,
+    &quot;name&quot;: &quot;Lung-tetrad_hv.txt&quot;,
+    &quot;creationTime&quot;: 1466622267000,
+    &quot;lastModifiedTime&quot;: 1466622267000,
+    &quot;fileSize&quot;: 3309465,
+    &quot;md5checkSum&quot;: &quot;b1db7511ee293d297e3055d9a7b46c5e&quot;,
+    &quot;fileSummary&quot;: {
+      &quot;variableType&quot;: null,
+      &quot;fileDelimiter&quot;: null,
+      &quot;numOfRows&quot;: null,
+      &quot;numOfColumns&quot;: null
+    }
+  }
+</code></pre>
+
+<p>The prior knowledge file upload uses a similar API endpoint:</p>
+<pre><code>POST https://cloud.ccd.pitt.edu/ccd-api/{userId}/priorknowledge/upload
+</code></pre>
+
+<p>Due to there's no need to summarize a prior knowledge file, the response of a successful prior knowledge file upload will look like:</p>
+<pre><code class="javascript">{
+    &quot;id&quot;: 6,
+    &quot;name&quot;: &quot;Lung-tetrad_hv.txt&quot;,
+    &quot;creationTime&quot;: 1466622267000,
+    &quot;lastModifiedTime&quot;: 1466622267000,
+    &quot;fileSize&quot;: 3309465,
+    &quot;md5checkSum&quot;: &quot;ugdb7511rt293d29ke3055d9a7b46c9k&quot;
+  }
+</code></pre>
+
+<h4 id="resumable-data-file-upload">Resumable data file upload</h4>
+<p>In addition to the regular file upload described in Example 6, we also provide the option of stable and resumable large file upload. It requires the client side to have a resumable upload implementation. We currently support client integrated with <a href="http://resumablejs.com/">Resumable.js</a>, whihc provides multiple simultaneous, stable 
+and resumable uploads via the HTML5 File API. You can also create your own client as long as al the following parameters are set correctly.</p>
+<p>API Endpoint URI pattern:</p>
+<pre><code>GET https://cloud.ccd.pitt.edu/ccd-api/{userId}/chunkupload
+
+POST https://cloud.ccd.pitt.edu/ccd-api/{userId}/chunkupload
+</code></pre>
+
+<p>In this example, the data file is splited into 3 chunks. The upload of each chunk consists of a GET request and a POST request. To handle the state of upload chunks, a number of extra parameters are sent along with all requests:</p>
+<ul>
+<li><code>resumableChunkNumber</code>: The index of the chunk in the current upload. First chunk is <code>1</code> (no base-0 counting here).</li>
+<li><code>resumableChunkSize</code>: The general chunk size. Using this value and <code>resumableTotalSize</code> you can calculate the total number of chunks. Please note that the size of the data received in the HTTP might be lower than <code>resumableChunkSize</code> of this for the last chunk for a file.</li>
+<li><code>resumableCurrentChunkSize</code>: The size of the current resumable chuck.</li>
+<li><code>resumableTotalSize</code>: The total file size.</li>
+<li><code>resumableType</code>: The file type of the resumable chuck, e.e., "text/plain".</li>
+<li><code>resumableIdentifier</code>: A unique identifier for the file contained in the request.</li>
+<li><code>resumableFilename</code>: The original file name (since a bug in Firefox results in the file name not being transmitted in chunk multipart posts).</li>
+<li><code>resumableRelativePath</code>: The file's relative path when selecting a directory (defaults to file name in all browsers except Chrome).</li>
+<li><code>resumableTotalChunks</code>: The total number of chunks.  </li>
+</ul>
+<p>Generated HTTP request code example:</p>
+<pre><code>GET /ccd-api/22/chunkupload?resumableChunkNumber=2&amp;resumableChunkSize=1048576&amp;resumableCurrentChunkSize=1048576&amp;resumableTotalSize=3309465&amp;resumableType=text%2Fplain&amp;resumableIdentifier=3309465-large-datatxt&amp;resumableFilename=large-data.txt&amp;resumableRelativePath=large-data.txt&amp;resumableTotalChunks=3 HTTP/1.1
+Host: cloud.ccd.pitt.edu
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
+</code></pre>
+
+<p>This GET request checks if the data chunk is already on the server side. If the target file chunk is not found on the server, the client will issue a POST request to upload the actual data.</p>
+<p>Generated HTTP request code example:</p>
+<pre><code>POST /ccd-api/22/chunkupload HTTP/1.1
+Host: cloud.ccd.pitt.edu
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryMFjgApg56XGyeTnZ
+
+------WebKitFormBoundaryMFjgApg56XGyeTnZ
+Content-Disposition: form-data; name=&quot;resumableChunkNumber&quot;
+
+2
+------WebKitFormBoundaryMFjgApg56XGyeTnZ
+Content-Disposition: form-data; name=&quot;resumableChunkSize&quot;
+
+1048576
+------WebKitFormBoundaryMFjgApg56XGyeTnZ
+Content-Disposition: form-data; name=&quot;resumableCurrentChunkSize&quot;
+
+1048576
+------WebKitFormBoundaryMFjgApg56XGyeTnZ
+Content-Disposition: form-data; name=&quot;resumableTotalSize&quot;
+
+3309465
+------WebKitFormBoundaryMFjgApg56XGyeTnZ
+Content-Disposition: form-data; name=&quot;resumableType&quot;
+
+text/plain
+------WebKitFormBoundaryMFjgApg56XGyeTnZ
+Content-Disposition: form-data; name=&quot;resumableIdentifier&quot;
+
+3309465-large-datatxt
+------WebKitFormBoundaryMFjgApg56XGyeTnZ
+Content-Disposition: form-data; name=&quot;resumableFilename&quot;
+
+large-data.txt
+------WebKitFormBoundaryMFjgApg56XGyeTnZ
+Content-Disposition: form-data; name=&quot;resumableRelativePath&quot;
+
+large-data.txt
+------WebKitFormBoundaryMFjgApg56XGyeTnZ
+Content-Disposition: form-data; name=&quot;resumableTotalChunks&quot;
+
+3
+------WebKitFormBoundaryMFjgApg56XGyeTnZ
+Content-Disposition: form-data; name=&quot;file&quot;; filename=&quot;blob&quot;
+Content-Type: application/octet-stream
+
+
+------WebKitFormBoundaryMFjgApg56XGyeTnZ--
+</code></pre>
+
+<p>Each chunk upload POST will get a 200 status code from response if everything works fine.</p>
+<p>And finally the md5checkSum string of the reassemabled file will be returned once the whole file has been uploaded successfully. In this example, the POST request that uploads the third chunk will response this:</p>
+<pre><code>b1db7511ee293d297e3055d9a7b46c5e
+</code></pre>
+
+<h4 id="list-all-dataset-files-of-a-user">List all dataset files of a user</h4>
+<p>API Endpoint URI pattern:</p>
+<pre><code>GET https://cloud.ccd.pitt.edu/ccd-api/{userId}/dataset
+</code></pre>
+
+<p>Generated HTTP request code example:</p>
+<pre><code>GET /ccd-api/22/dataset HTTP/1.1
+Host: cloud.ccd.pitt.edu
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
+Accept: application/json
+</code></pre>
+
+<p>A <code>JSON</code> formatted list of all the input dataset files that are associated with user <code>22</code> will be returned.</p>
+<pre><code class="javascript">[
+  {
+    &quot;id&quot;: 8,
+    &quot;name&quot;: &quot;data_small.txt&quot;,
+    &quot;creationTime&quot;: 1467132449000,
+    &quot;lastModifiedTime&quot;: 1467132449000,
+    &quot;fileSize&quot;: 278428,
+    &quot;md5checkSum&quot;: &quot;ed5f27a2cf94fe3735a5d9ed9191c382&quot;,
+    &quot;fileSummary&quot;: {
+      &quot;variableType&quot;: &quot;continuous&quot;,
+      &quot;fileDelimiter&quot;: &quot;tab&quot;,
+      &quot;numOfRows&quot;: 302,
+      &quot;numOfColumns&quot;: 123
+    }
+  },
+  {
+    &quot;id&quot;: 10,
+    &quot;name&quot;: &quot;large-data.txt&quot;,
+    &quot;creationTime&quot;: 1467134048000,
+    &quot;lastModifiedTime&quot;: 1467134048000,
+    &quot;fileSize&quot;: 3309465,
+    &quot;md5checkSum&quot;: &quot;b1db7511ee293d297e3055d9a7b46c5e&quot;,
+    &quot;fileSummary&quot;: {
+      &quot;variableType&quot;: null,
+      &quot;fileDelimiter&quot;: null,
+      &quot;numOfRows&quot;: null,
+      &quot;numOfColumns&quot;: null
+    }
+  },
+  {
+    &quot;id&quot;: 11,
+    &quot;name&quot;: &quot;Lung-tetrad_hv (copy).txt&quot;,
+    &quot;creationTime&quot;: 1467140415000,
+    &quot;lastModifiedTime&quot;: 1467140415000,
+    &quot;fileSize&quot;: 3309465,
+    &quot;md5checkSum&quot;: &quot;b1db7511ee293d297e3055d9a7b46c5e&quot;,
+    &quot;fileSummary&quot;: {
+      &quot;variableType&quot;: &quot;continuous&quot;,
+      &quot;fileDelimiter&quot;: &quot;tab&quot;,
+      &quot;numOfRows&quot;: 302,
+      &quot;numOfColumns&quot;: 608
+    }
+  }
+]
+</code></pre>
+
+<p>You can also specify the response format as XML in your request</p>
+<p>Generated HTTP request code example:</p>
+<pre><code>GET /ccd-api/22/dataset HTTP/1.1
+Host: cloud.ccd.pitt.edu
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
+Accept: application/xml
+</code></pre>
+
+<p>And the response will look like this:</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;datasetFileDTOes&gt;
+    &lt;datasetFile&gt;
+        &lt;id&gt;8&lt;/id&gt;
+        &lt;name&gt;data_small.txt&lt;/name&gt;
+        &lt;creationTime&gt;2016-06-28T12:47:29-04:00&lt;/creationTime&gt;
+        &lt;lastModifiedTime&gt;2016-06-28T12:47:29-04:00&lt;/lastModifiedTime&gt;
+        &lt;fileSize&gt;278428&lt;/fileSize&gt;
+        &lt;md5checkSum&gt;ed5f27a2cf94fe3735a5d9ed9191c382&lt;/md5checkSum&gt;
+        &lt;fileSummary&gt;
+            &lt;fileDelimiter&gt;tab&lt;/fileDelimiter&gt;
+            &lt;numOfColumns&gt;123&lt;/numOfColumns&gt;
+            &lt;numOfRows&gt;302&lt;/numOfRows&gt;
+            &lt;variableType&gt;continuous&lt;/variableType&gt;
+        &lt;/fileSummary&gt;
+    &lt;/datasetFile&gt;
+    &lt;datasetFile&gt;
+        &lt;id&gt;10&lt;/id&gt;
+        &lt;name&gt;large-data.txt&lt;/name&gt;
+        &lt;creationTime&gt;2016-06-28T13:14:08-04:00&lt;/creationTime&gt;
+        &lt;lastModifiedTime&gt;2016-06-28T13:14:08-04:00&lt;/lastModifiedTime&gt;
+        &lt;fileSize&gt;3309465&lt;/fileSize&gt;
+        &lt;md5checkSum&gt;b1db7511ee293d297e3055d9a7b46c5e&lt;/md5checkSum&gt;
+        &lt;fileSummary&gt;
+            &lt;variableType xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:nil=&quot;true&quot;/&gt;
+            &lt;fileDelimiter xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:nil=&quot;true&quot;/&gt;
+            &lt;numOfRows xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:nil=&quot;true&quot;/&gt;
+            &lt;numOfColumns xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:nil=&quot;true&quot;/&gt;
+        &lt;/fileSummary&gt;
+    &lt;/datasetFile&gt;
+    &lt;datasetFile&gt;
+        &lt;id&gt;11&lt;/id&gt;
+        &lt;name&gt;Lung-tetrad_hv (copy).txt&lt;/name&gt;
+        &lt;creationTime&gt;2016-06-28T15:00:15-04:00&lt;/creationTime&gt;
+        &lt;lastModifiedTime&gt;2016-06-28T15:00:15-04:00&lt;/lastModifiedTime&gt;
+        &lt;fileSize&gt;3309465&lt;/fileSize&gt;
+        &lt;md5checkSum&gt;b1db7511ee293d297e3055d9a7b46c5e&lt;/md5checkSum&gt;
+        &lt;fileSummary&gt;
+            &lt;fileDelimiter&gt;tab&lt;/fileDelimiter&gt;
+            &lt;numOfColumns&gt;608&lt;/numOfColumns&gt;
+            &lt;numOfRows&gt;302&lt;/numOfRows&gt;
+            &lt;variableType&gt;continuous&lt;/variableType&gt;
+        &lt;/fileSummary&gt;
+    &lt;/datasetFile&gt;
+&lt;/datasetFileDTOes&gt;
+</code></pre>
+
+<p>Form the above output, we can also tell that data file with ID 10 doesn't have all the <code>fileSummary</code> field values set, we'll cover this in the dataset summarization section.</p>
+<h4 id="get-the-deatil-information-of-a-dataset-file-based-on-id">Get the deatil information of a dataset file based on ID</h4>
+<p>API Endpoint URI pattern:</p>
+<pre><code>GET https://cloud.ccd.pitt.edu/ccd-api/{userId}/dataset/{id}
+</code></pre>
+
+<p>Generated HTTP request code example:</p>
+<pre><code>GET /ccd-api/22/dataset/8 HTTP/1.1
+Host: cloud.ccd.pitt.edu
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
+</code></pre>
+
+<p>And the resulting response looks like this:</p>
+<pre><code class="javascript">{
+  &quot;id&quot;: 8,
+  &quot;name&quot;: &quot;data_small.txt&quot;,
+  &quot;creationTime&quot;: 1467132449000,
+  &quot;lastModifiedTime&quot;: 1467132449000,
+  &quot;fileSize&quot;: 278428,
+  &quot;fileSummary&quot;: {
+    &quot;md5checkSum&quot;: &quot;ed5f27a2cf94fe3735a5d9ed9191c382&quot;,
+    &quot;variableType&quot;: &quot;continuous&quot;,
+    &quot;fileDelimiter&quot;: &quot;tab&quot;,
+    &quot;numOfRows&quot;: 302,
+    &quot;numOfColumns&quot;: 123
+  }
+}
+</code></pre>
+
+<h4 id="delete-physical-dataset-file-and-all-records-from-database-for-a-given-file-id">Delete physical dataset file and all records from database for a given file ID</h4>
+<p>API Endpoint URI pattern:</p>
+<pre><code>DELETE https://cloud.ccd.pitt.edu/ccd-api/{userId}/dataset/{id}
+</code></pre>
+
+<p>Generated HTTP request code example:</p>
+<pre><code>DELETE /ccd-api/22/dataset/8 HTTP/1.1
+Host: cloud.ccd.pitt.edu
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
+</code></pre>
+
+<p>And this will result a HTTP 204 No Content status in response on success, which means the server successfully processed the deletion request but there's no content to response.</p>
+<h4 id="summarize-dataset-file">Summarize dataset file</h4>
+<p>So from the first example we can tell that file with ID 10 doesn't have <code>variableType</code>, <code>fileDelimiter</code>, <code>numOfRows</code>, and <code>numOfColumns</code> specified under <code>fileSummary</code>. Among these attributes, variableType<code>and</code>fileDelimiter` are the ones that users will need to provide during this summarization process.</p>
+<p>Before we can go ahead to run the desired algorithm with the newly uploaded data file, we'll need to summarize the data by specifing the variable type and file delimiter.</p>
+<table>
+<thead>
+<tr>
+<th>Required Fields</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>The data file ID</td>
+</tr>
+<tr>
+<td>variableType</td>
+<td>discrete or continuous</td>
+</tr>
+<tr>
+<td>fileDelimiter</td>
+<td>tab or comma</td>
+</tr>
+</tbody>
+</table>
+<p>API Endpoint URI pattern:</p>
+<pre><code>POST https://cloud.ccd.pitt.edu/ccd-api/{userId}/dataset/summarize
+</code></pre>
+
+<p>Generated HTTP request code example:</p>
+<pre><code>POST /ccd-api/22/dataset/summarize HTTP/1.1
+Host: cloud.ccd.pitt.edu
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
+Content-Type: application/json
+
+{
+    &quot;id&quot;: 1,
+    &quot;variableType&quot;: &quot;continuous&quot;,
+    &quot;fileDelimiter&quot;: &quot;comma&quot;
+}
+</code></pre>
+
+<p>This POST request will summarize the dataset file and generate a response (JSON or XML) like below:</p>
+<pre><code class="javascript">{
+  &quot;id&quot;: 10,
+  &quot;name&quot;: &quot;large-data.txt&quot;,
+  &quot;creationTime&quot;: 1467134048000,
+  &quot;lastModifiedTime&quot;: 1467134048000,
+  &quot;fileSize&quot;: 3309465,
+  &quot;md5checkSum&quot;: &quot;b1db7511ee293d297e3055d9a7b46c5e&quot;,
+  &quot;fileSummary&quot;: {
+    &quot;variableType&quot;: &quot;continuous&quot;,
+    &quot;fileDelimiter&quot;: &quot;tab&quot;,
+    &quot;numOfRows&quot;: 302,
+    &quot;numOfColumns&quot;: 608
+  }
+}
+</code></pre>
+
+<h4 id="list-all-prior-knowledge-files-of-a-given-user">List all prior knowledge files of a given user</h4>
+<p>API Endpoint URI pattern:</p>
+<pre><code>GET https://cloud.ccd.pitt.edu/ccd-api/{userId}/priorknowledge
+</code></pre>
+
+<p>Generated HTTP request code example:</p>
+<pre><code>GET /ccd-api/22/priorknowledge HTTP/1.1
+Host: cloud.ccd.pitt.edu
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
+Accept: application/json
+</code></pre>
+
+<p>A <code>JSON</code> formatted list of all the input dataset files that are associated with user <code>22</code> will be returned.</p>
+<pre><code class="javascript">[
+  {
+    &quot;id&quot;: 9,
+    &quot;name&quot;: &quot;data_small.prior&quot;,
+    &quot;creationTime&quot;: 1467132449000,
+    &quot;lastModifiedTime&quot;: 1467132449000,
+    &quot;fileSize&quot;: 278428,
+    &quot;md5checkSum&quot;: &quot;ed5f27a2cf94fe3735a5d9ed9191c382&quot;
+  },
+  {
+    &quot;id&quot;: 12,
+    &quot;name&quot;: &quot;large-data.prior&quot;,
+    &quot;creationTime&quot;: 1467134048000,
+    &quot;lastModifiedTime&quot;: 1467134048000,
+    &quot;fileSize&quot;: 3309465,
+    &quot;md5checkSum&quot;: &quot;b1db7511ee293d297e3055d9a7b46c5e&quot;
+  }
+]
+</code></pre>
+
+<h4 id="get-the-deatil-information-of-a-prior-knowledge-file-based-on-id">Get the deatil information of a prior knowledge file based on ID</h4>
+<p>API Endpoint URI pattern:</p>
+<pre><code>GET https://cloud.ccd.pitt.edu/ccd-api/{userId}/priorknowledge/{id}
+</code></pre>
+
+<p>Generated HTTP request code example:</p>
+<pre><code>GET /ccd-api/22/priorknowledge/9 HTTP/1.1
+Host: cloud.ccd.pitt.edu
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
+</code></pre>
+
+<p>And the resulting response looks like this:</p>
+<pre><code class="javascript">{
+  &quot;id&quot;: 9,
+  &quot;name&quot;: &quot;data_small.prior&quot;,
+  &quot;creationTime&quot;: 1467132449000,
+  &quot;lastModifiedTime&quot;: 1467132449000,
+  &quot;fileSize&quot;: 278428,
+  &quot;md5checkSum&quot;: &quot;ed5f27a2cf94fe3735a5d9ed9191c382&quot;
+}
+</code></pre>
+
+<h4 id="delete-physical-prior-knowledge-file-and-all-records-from-database-for-a-given-file-id">Delete physical prior knowledge file and all records from database for a given file ID</h4>
+<p>API Endpoint URI pattern:</p>
+<pre><code>DELETE https://cloud.ccd.pitt.edu/ccd-api/{userId}/priorknowledge/{id}
+</code></pre>
+
+<p>Generated HTTP request code example:</p>
+<pre><code>DELETE /ccd-api/22/priorknowledge/9 HTTP/1.1
+Host: cloud.ccd.pitt.edu
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
+</code></pre>
+
+<p>And this will result a HTTP 204 No Content status in response on success, which means the server successfully processed the deletion request but there's no content to response.</p>
+<h3 id="2-causal-discovery">2. Causal Discovery</h3>
+<p>Once the data file is uploaded and summaried, you can start running a Causal Discovery Algorithm on the uploaded data file.</p>
+<h4 id="list-all-the-available-causal-discovery-algorithms">List all the available causal discovery algorithms</h4>
+<p>API Endpoint URI pattern:</p>
+<pre><code>GET https://cloud.ccd.pitt.edu/ccd-api/{userId}/algorithms
+</code></pre>
+
+<p>Generated HTTP request code example:</p>
+<pre><code>GET /ccd-api/22/algorithms HTTP/1.1
+Host: cloud.ccd.pitt.edu
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
+</code></pre>
+
+<p>Currently we support "FGS continuous" and "FGS discrete".</p>
+<pre><code class="javascript">[
+  {
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;fgsc&quot;,
+    &quot;description&quot;: &quot;FGS continuous&quot;
+  },
+  {
+    &quot;id&quot;: 2,
+    &quot;name&quot;: &quot;fgsd&quot;,
+    &quot;description&quot;: &quot;FGS discrete&quot;
+  },
+  {
+    &quot;id&quot;: 3,
+    &quot;name&quot;: &quot;gfcic&quot;,
+    &quot;description&quot;: &quot;GFCI continuous&quot;
+  }
+]
+</code></pre>
+
+<p>Currently we support "FGS continuous", "FGS discrete" and "GFCI continuous". They also share a common JSON structure as of their input, for example:</p>
+<table>
+<thead>
+<tr>
+<th>Input JSON Fields</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>datasetFileId</code></td>
+<td>The dataset file ID, integer</td>
+</tr>
+<tr>
+<td><code>priorKnowledgeFileId</code></td>
+<td>The optional prior knowledge file ID, integer</td>
+</tr>
+<tr>
+<td><code>dataValidation</code></td>
+<td>Algorithm specific input data validation flags, JSON object</td>
+</tr>
+<tr>
+<td><code>algorithmParameters</code></td>
+<td>Algorithm specific parameters, JSON object</td>
+</tr>
+<tr>
+<td><code>jvmOptions</code></td>
+<td>Advanced Options For Java Virtual Machine (JVM), JSON object. Currently only support <code>maxHeapSize</code> (Gigabyte, max value is 100)</td>
+</tr>
+</tbody>
+</table>
+<p>Below are the data validation flags and parameters that you can use for each algorithm.</p>
+<p><strong>FGS continuous</strong> </p>
+<p>Data validation:</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>skipNonzeroVariance</code></td>
+<td>Skip check for zero variance variables</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>skipUniqueVarName</code></td>
+<td>Skip check for unique variable names</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<p>Algorithm parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>faithfulnessAssumed</code></td>
+<td>Yes if (one edge) faithfulness should be assumed</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>maxDegree</code></td>
+<td>The maximum degree of the output graph, at least -1</td>
+<td>-1</td>
+</tr>
+<tr>
+<td><code>penaltyDiscount</code></td>
+<td>Penalty discount</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td><code>verbose</code></td>
+<td>Print additional information</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<p><strong>FGS discrete</strong> </p>
+<p>Data validation:</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>skipUniqueVarName</code></td>
+<td>Skip check for unique variable names</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>skipCategoryLimit</code></td>
+<td>Skip 'limit number of categories' check</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<p>Algorithm parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>structurePrior</code></td>
+<td>Structure prior</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td><code>samplePrior</code></td>
+<td>Sample prior</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td><code>faithfulnessAssumed</code></td>
+<td>Yes if (one edge) faithfulness should be assumed</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>maxDegree</code></td>
+<td>The maximum degree of the output graph, at least -1</td>
+<td>-1</td>
+</tr>
+<tr>
+<td><code>verbose</code></td>
+<td>Print additional information</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<p><strong>GFCI continuous</strong> </p>
+<p>Data validation:</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>skipNonzeroVariance</code></td>
+<td>Skip check for zero variance variables</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>skipUniqueVarName</code></td>
+<td>Skip check for unique variable names</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<p>Algorithm parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>alpha</code></td>
+<td>Search depth. Integer value</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td><code>penaltyDiscount</code></td>
+<td>Penalty discount</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td><code>maxDegree</code></td>
+<td>The maximum degree of the output graph, at least -1</td>
+<td>-1</td>
+</tr>
+<tr>
+<td><code>faithfulnessAssumed</code></td>
+<td>Yes if (one edge) faithfulness should be assumed</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>verbose</code></td>
+<td>Print additional information</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<h4 id="add-a-new-job-to-run-the-desired-algorithm-on-a-given-data-file">Add a new job to run the desired algorithm on a given data file</h4>
+<p>This is a POST request and the algorithm details and data file id will need to be specified in the POST body as a JSON when you make the request.</p>
+<p>API Endpoint URI pattern:</p>
+<pre><code>POST https://cloud.ccd.pitt.edu/ccd-api/{userId}/jobs/fgsc
+</code></pre>
+
+<p>Generated HTTP request code example:</p>
+<pre><code>POST /ccd-api/22/jobs/fgsc HTTP/1.1
+Host: cloud.ccd.pitt.edu
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
+Content-Type: application/json
+
+{
+    &quot;datasetFileId&quot;: 8,
+    &quot;priorKnowledgeFileId&quot;: 9,
+    &quot;dataValidation&quot;: {
+      &quot;skipNonzeroVariance&quot;: true,
+      &quot;skipUniqueVarName&quot;: true
+    },
+    &quot;algorithmParameters&quot;: {
+      &quot;penaltyDiscount&quot;: 5.0,
+      &quot;maxDegree&quot;: 100
+    },
+    &quot;jvmOptions&quot;: {
+      &quot;maxHeapSize&quot;: 100
+    }
+}
+</code></pre>
+
+<p>In this example, we are running the "FGS continuous" algorithm on the file with ID 8. And this call will return the job info with a 201 Created response status code.</p>
+<pre><code>{
+  &quot;id&quot;: 5,
+  &quot;algorithmName&quot;: &quot;fgsc&quot;,
+  &quot;addedTime&quot;: 1472742564355,
+  &quot;resultFileName&quot;: &quot;fgs_data_small.txt_1472742564353.txt&quot;,
+  &quot;errorResultFileName&quot;: &quot;error_fgs_data_small.txt_1472742564353.txt&quot;
+}
+</code></pre>
+
+<p>From this response we can tell that the job ID is 5, and the result file name will be <code>fgs_data_small.txt_1472742564353.txt</code> if everything goes well. If something is wrong an error result file with name <code>error_fgs_data_small.txt_1472742564353.txt</code> will be created.</p>
+<p>When you need to run "FGS discrete", just send the request to a different endpont URI:</p>
+<p>API Endpoint URI pattern:</p>
+<pre><code>POST https://cloud.ccd.pitt.edu/ccd-api/{userId}/jobs/fgsd
+</code></pre>
+
+<p>Generated HTTP request code example:</p>
+<pre><code>POST /ccd-api/22/jobs/fgsd HTTP/1.1
+Host: cloud.ccd.pitt.edu
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
+Content-Type: application/json
+
+{
+    &quot;datasetFileId&quot;: 10,
+    &quot;priorKnowledgeFileId&quot;: 12,
+    &quot;dataValidation&quot;: {
+      &quot;skipUniqueVarName&quot;: true,
+      &quot;skipCategoryLimit&quot;: true
+    },
+    &quot;algorithmParameters&quot;: {
+      &quot;structurePrior&quot;: 1.0,
+      &quot;samplePrior&quot;: 1.0,
+      &quot;maxDegree&quot;: 102
+    },
+    &quot;jvmOptions&quot;: {
+      &quot;maxHeapSize&quot;: 100
+    }
+}
+</code></pre>
+
+<h4 id="list-all-running-jobs">List all running jobs</h4>
+<p>API Endpoint URI pattern:</p>
+<pre><code>GET https://cloud.ccd.pitt.edu/ccd-api/{userId}/jobs
+</code></pre>
+
+<p>Generated HTTP request code example:</p>
+<pre><code>GET /ccd-api/22/jobs/ HTTP/1.1
+Host: cloud.ccd.pitt.edu
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
+Content-Type: application/json
+
+</code></pre>
+
+<p>Then you'll see the information of all jobs that are currently running:</p>
+<pre><code class="javascript">[
+  {
+    &quot;id&quot;: 32,
+    &quot;algorithmName&quot;: &quot;fgsc&quot;,
+    &quot;addedTime&quot;: 1468436085000
+  },
+  {
+    &quot;id&quot;: 33,
+    &quot;algorithmName&quot;: &quot;fgsd&quot;,
+    &quot;addedTime&quot;: 1468436087000
+  }
+]
+</code></pre>
+
+<h4 id="check-the-job-status-for-a-given-job-id">Check the job status for a given job ID</h4>
+<p>Once the new job is submitted, it takes time and resources to run the algorithm on the server. During the waiting, you can check the status of a given job ID:</p>
+<p>API Endpoint URI pattern:</p>
+<pre><code>GET https://cloud.ccd.pitt.edu/ccd-api/{userId}/jobs/{id}
+</code></pre>
+
+<p>Generated HTTP request code example:</p>
+<pre><code>GET /ccd-api/22/jobs/32 HTTP/1.1
+Host: cloud.ccd.pitt.edu
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
+</code></pre>
+
+<p>This will either return "Pending" or "Completed".</p>
+<h4 id="cancel-a-running-job">Cancel a running job</h4>
+<p>Sometimes you may want to cancel a submitted job.</p>
+<p>API Endpoint URI pattern:</p>
+<pre><code>DELETE https://cloud.ccd.pitt.edu/ccd-api/{userId}/jobs/{id}
+</code></pre>
+
+<p>Generated HTTP request code example:</p>
+<pre><code>DELETE /ccd-api/22/jobs/8 HTTP/1.1
+Host: cloud.ccd.pitt.edu
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
+</code></pre>
+
+<p>This call will response either "Job 8 has been canceled" or "Unable to cancel job 8". It's not guranteed that the system can always cencal a job successfully.</p>
+<h3 id="3-result-management">3. Result Management</h3>
+<h4 id="list-all-result-files-generated-by-the-algorithm">List all result files generated by the algorithm</h4>
+<p>API Endpoint URI pattern:</p>
+<pre><code>GET https://cloud.ccd.pitt.edu/ccd-api/{userId}/results
+</code></pre>
+
+<p>Generated HTTP request code example:</p>
+<pre><code>GET /ccd-api/22/results HTTP/1.1
+Host: cloud.ccd.pitt.edu
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
+</code></pre>
+
+<p>The response to this request will look like this:</p>
+<pre><code class="javascript">[
+  {
+    &quot;name&quot;: &quot;fgs_sim_data_20vars_100cases.csv_1466171729046.txt&quot;,
+    &quot;creationTime&quot;: 1466171732000,
+    &quot;lastModifiedTime&quot;: 1466171732000,
+    &quot;fileSize&quot;: 1660
+  },
+  {
+    &quot;name&quot;: &quot;fgs_data_small.txt_1466172140585.txt&quot;,
+    &quot;creationTime&quot;: 1466172145000,
+    &quot;lastModifiedTime&quot;: 1466172145000,
+    &quot;fileSize&quot;: 39559
+  }
+]
+</code></pre>
+
+<h4 id="download-a-speific-result-file-generated-by-the-algorithm-based-on-file-name">Download a speific result file generated by the algorithm based on file name</h4>
+<p>API Endpoint URI pattern:</p>
+<pre><code>GET https://cloud.ccd.pitt.edu/ccd-api/{userId}/results/{result_file_name}
+</code></pre>
+
+<p>Generated HTTP request code example:</p>
+<pre><code>GET /ccd-api/22/results/fgs_data_small.txt_1466172140585.txt HTTP/1.1
+Host: cloud.ccd.pitt.edu
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
+</code></pre>
+
+<p>On success, you will get the result file back as text file content. If there's a typo in file name of the that file doesn't exist, you'll get either a JSON or XML message based on the <code>accept</code> header in your request:</p>
+<p>The response to this request will look like this:</p>
+<pre><code class="javascript">{
+  &quot;timestamp&quot;: 1467210996233,
+  &quot;status&quot;: 404,
+  &quot;error&quot;: &quot;Not Found&quot;,
+  &quot;message&quot;: &quot;Resource not found.&quot;,
+  &quot;path&quot;: &quot;/22/results/fgs_data_small.txt_146172140585.txt&quot;
+}
+</code></pre>
+
+<h4 id="compare-algorithm-result-files">Compare algorithm result files</h4>
+<p>Since we can list all the algorithm result files, based on the results, we can also choose multiple files and run a comparison. </p>
+<p>API Endpoint URI pattern:</p>
+<pre><code>POST https://cloud.ccd.pitt.edu/ccd-api/{userId}/results/compare
+</code></pre>
+
+<p>The request body is a JSON that contains an array of result files to be compared.</p>
+<p>Generated HTTP request code example:</p>
+<pre><code>POST /ccd-api/22/results/compare HTTP/1.1
+Host: cloud.ccd.pitt.edu
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
+
+{
+  &quot;resultFiles&quot;: [
+    &quot;gs_sim_data_20vars_100cases.csv_1466171729046.txt&quot;,
+    &quot;fgs_data_small.txt_1467305104859.txt&quot;
+  ]
+}
+</code></pre>
+
+<p>When you specify multiple file names, use the <code>!!</code> as a delimiter. This request will generate a result comparison file with the following content (shortened version):</p>
+<pre><code>fgs_sim_data_20vars_100cases.csv_1466171729046.txt  fgs_data_small.txt_1467305104859.txt
+Edges In All  Same End Point
+NR4A2,FOS 0 0
+X5,X17  0 0
+MMP11,ASB5  0 0
+X12,X8  0 0
+hsa_miR_654_3p,hsa_miR_337_3p 0 0
+RND1,FGA  0 0
+HHLA2,UBXN10  0 0
+HS6ST2,RND1 0 0
+SCRG1,hsa_miR_377 0 0
+CDH3,diag 0 0
+SERPINI2,FGG  0 0
+hsa_miR_451,hsa_miR_136_  0 0
+</code></pre>
+
+<p>From this comparison, you can see if the two algorithm graphs have common edges and endpoints.</p>
+<h4 id="list-all-the-comparison-files">List all the comparison files</h4>
+<p>API Endpoint URI pattern:</p>
+<pre><code>GET https://cloud.ccd.pitt.edu/ccd-api/{userId}/results/comparisons
+</code></pre>
+
+<p>Generated HTTP request code example:</p>
+<pre><code>GET /ccd-api/22/results/comparisons HTTP/1.1
+Host: cloud.ccd.pitt.edu
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
+</code></pre>
+
+<p>The response will show a list of comparison files:</p>
+<pre><code class="javascript">[
+  {
+    &quot;name&quot;: &quot;result_comparison_1467385923407.txt&quot;,
+    &quot;creationTime&quot;: 1467385923000,
+    &quot;lastModifiedTime&quot;: 1467385923000,
+    &quot;fileSize&quot;: 7505
+  },
+  {
+    &quot;name&quot;: &quot;result_comparison_1467387034358.txt&quot;,
+    &quot;creationTime&quot;: 1467387034000,
+    &quot;lastModifiedTime&quot;: 1467387034000,
+    &quot;fileSize&quot;: 7505
+  },
+  {
+    &quot;name&quot;: &quot;result_comparison_1467388042261.txt&quot;,
+    &quot;creationTime&quot;: 1467388042000,
+    &quot;lastModifiedTime&quot;: 1467388042000,
+    &quot;fileSize&quot;: 7533
+  }
+]
+</code></pre>
+
+<h4 id="download-a-speific-comparison-file-based-on-file-name">Download a speific comparison file based on file name</h4>
+<p>API Endpoint URI pattern:</p>
+<pre><code>GET https://cloud.ccd.pitt.edu/ccd-api/{userId}/results/comparisons/{comparison_file_name}
+</code></pre>
+
+<p>Generated HTTP request code example:</p>
+<pre><code>GET /ccd-api/22/results/comparisons/result_comparison_1467388042261.txt HTTP/1.1
+Host: cloud.ccd.pitt.edu
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
+</code></pre>
+
+<p>Then it returns the content of that comparison file (shorted version):</p>
+<pre><code>fgs_sim_data_20vars_100cases.csv_1466171729046.txt  fgs_data_small.txt_1467305104859.txt
+Edges In All  Same End Point
+NR4A2,FOS 0 0
+X5,X17  0 0
+MMP11,ASB5  0 0
+X12,X8  0 0
+hsa_miR_654_3p,hsa_miR_337_3p 0 0
+RND1,FGA  0 0
+HHLA2,UBXN10  0 0
+HS6ST2,RND1 0 0
+SCRG1,hsa_miR_377 0 0
+CDH3,diag 0 0
+SERPINI2,FGG  0 0
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../py-causal/" class="btn btn-neutral float-right" title="Py-causal">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../causal-web/" class="btn btn-neutral" title="Causal Web"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../causal-web/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../py-causal/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>
