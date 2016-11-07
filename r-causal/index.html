@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>R-causal - ccd-docs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "R-causal";
+    var mkdocs_page_input_path = "r-causal.md";
+    var mkdocs_page_url = "/r-causal/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> ccd-docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../causal-cmd/">Causal CMD</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../causal-web/">Causal Web</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../py-causal/">Py-causal</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">R-causal</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#r-causal">r-causal</a></li>
+                
+                    <li><a class="toctree-l4" href="#r-library-requirement">R Library Requirement</a></li>
+                
+                    <li><a class="toctree-l4" href="#installation">Installation</a></li>
+                
+                    <li><a class="toctree-l4" href="#example">Example</a></li>
+                
+                    <li><a class="toctree-l4" href="#useful-rjava-trouble-shooting-installation-in-mac-os-x-links">Useful rJava Trouble-shooting Installation in Mac OS X Links</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">ccd-docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>R-causal</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="r-causal">r-causal</h1>
+<p><a href="https://github.com/bd2kccd/r-causal">R Wrapper</a> for Tetrad Library</p>
+<h2 id="r-library-requirement">R Library Requirement</h2>
+<p>R &gt;= 3.2.0, 
+<a href="https://cran.r-project.org/web/packages/stringr/">stringr</a>,
+<a href="https://cran.r-project.org/web/packages/rJava/index.html">rJava</a>, 
+<a href="http://bioconductor.org/packages/release/bioc/html/graph.html">graph</a>, 
+<a href="http://bioconductor.org/packages/release/bioc/html/RBGL.html">RBGL</a>, 
+<a href="http://bioconductor.org/packages/release/bioc/html/Rgraphviz.html">Rgraphviz</a></p>
+<h2 id="installation">Installation</h2>
+<ul>
+<li>Install the R library requirements:</li>
+</ul>
+<pre><code class="R">install.packages(&quot;stringr&quot;)
+install.packages(&quot;rJava&quot;)
+## try http:// if https:// URLs are not supported
+source(&quot;https://bioconductor.org/biocLite.R&quot;) 
+biocLite(&quot;graph&quot;)
+biocLite(&quot;RBGL&quot;)
+biocLite(&quot;Rgraphviz&quot;) # For plotting graph
+</code></pre>
+
+<ul>
+<li>Install r-causal from github:</li>
+</ul>
+<pre><code class="R">library(devtools)
+install_github(&quot;bd2kccd/r-causal&quot;)
+</code></pre>
+
+<h2 id="example">Example</h2>
+<h3 id="continuous-dataset">Continuous Dataset</h3>
+<pre><code class="R">library(rcausal)
+data(&quot;charity&quot;)   #Load the charity dataset
+
+#Compute FGS search
+fgs &lt;- fgs(df = charity, penaltydiscount = 2, maxDegree = -1,  
+faithfulnessAssumed = TRUE, numOfThreads = 2, verbose = TRUE)    
+
+fgs$parameters #Show the FGS's parameters
+fgs$datasets #Show the dataset
+fgs$nodes #Show the result's nodes
+fgs$edges #Show the result's edges
+
+library(Rgraphviz)
+plot(fgs$graphNEL) #Plot the causal model
+</code></pre>
+
+<h3 id="discrete-dataset">Discrete Dataset</h3>
+<pre><code class="R">library(rcausal)
+data(&quot;audiology&quot;)    #Load the charity dataset
+#Compute FGS search
+fgs.discrete &lt;- fgs.discrete(df=audiology,structurePrior=1.0,samplePrior=1.0, 
+maxDegree = -1, faithfulnessAssumed = TRUE, numOfThreads = 2,verbose = TRUE)
+fgs.discrete$parameters #Show the FGS Discrete's parameters
+fgs.discrete$datasets #Show the dataset
+fgs.discrete$nodes #Show the result's nodes
+fgs.discrete$edges #Show the result's edges
+library(Rgraphviz)
+plot(fgs.discrete$graphNEL) #Plot the causal model
+</code></pre>
+
+<h3 id="prior-knowledge">Prior Knowledge</h3>
+<h4 id="create-priorknowledge-object">Create PriorKnowledge Object</h4>
+<pre><code class="R">forbid &lt;- list(c('TangibilityCondition','Impact')) # List of forbidden directed edges
+require &lt;- list(c('Sympathy','TangibilityCondition')) # List of required directed edges
+forbiddenWithin &lt;- c('TangibilityCondition','Imaginability')
+class(forbiddenWithin) &lt;- 'forbiddenWithin' # Make this tier forbidden within
+temporal &lt;- list(forbiddenWithin, c('Sympathy','AmountDonated'),c('Impact')) # List of temporal node tiers
+prior &lt;- priorKnowledge(forbiddirect = forbid, requiredirect = require, addtemporal = temporal)
+fgs &lt;- fgs(df = charity, penaltydiscount = 2, depth = -1, ignoreLinearDependence = TRUE, 
+heuristicSpeedup = TRUE, numOfThreads = 2, verbose = TRUE, priorKnowledge = prior)
+</code></pre>
+
+<h4 id="load-knowledge-file">Load Knowledge File</h4>
+<pre><code class="R"># knowledge file: audiology.prior
+# /knowledge
+# forbiddirect
+# class tymp
+# class age_gt_60
+# class notch_at_4k
+# 
+# requiredirect
+# history_noise class
+#
+# addtemporal
+# 0* bser late_wave_poor tymp notch_at_4k o_ar_c ar_c airBoneGap air bone o_ar_u airBoneGap
+# 1 history_noise history_dizziness history_buzzing history_roaring history_recruitment history_fluctuating history_heredity history_nausea
+# 2 class
+
+prior &lt;- priorKnowledgeFromFile('audiology.prior')
+fgs.discrete &lt;- fgs.discrete(df=audiology,structurePrior=1.0,samplePrior=1.0, 
+depth = -1, heuristicSpeedup = TRUE, numOfThreads = 2,verbose = TRUE, priorKnowledge = prior)
+</code></pre>
+
+<h3 id="convert-rgraphviz-to-igraph-one">Convert Rgraphviz to igraph one</h3>
+<pre><code class="R">library(igraph)
+igraph &lt;- igraph.from.graphNEL(fgs.discrete$graphNEL)
+plot(igraph)
+</code></pre>
+
+<h2 id="useful-rjava-trouble-shooting-installation-in-mac-os-x-links">Useful <code>rJava</code> Trouble-shooting Installation in Mac OS X Links</h2>
+<ol>
+<li><a href="http://stackoverflow.com/questions/26948777/how-can-i-make-rjava-use-the-newer-version-of-java-on-osx/32544358#32544358">http://stackoverflow.com/questions/26948777/how-can-i-make-rjava-use-the-newer-version-of-java-on-osx/32544358#32544358</a></li>
+<li><a href="http://andrewgoldstone.com/blog/2015/02/03/rjava/">http://andrewgoldstone.com/blog/2015/02/03/rjava/</a></li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../py-causal/" class="btn btn-neutral" title="Py-causal"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../py-causal/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

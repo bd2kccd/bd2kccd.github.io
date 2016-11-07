@@ -11,7 +11,31 @@
 
     
     <url>
+     <loc>/causal-cmd/</loc>
+     <lastmod>2016-11-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
      <loc>/causal-web/</loc>
+     <lastmod>2016-11-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/py-causal/</loc>
+     <lastmod>2016-11-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/r-causal/</loc>
      <lastmod>2016-11-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
