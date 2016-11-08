@@ -1,4 +1,8 @@
-# The Center for Causal Discovery: Tools and Software
+# Welcome to CCD Docs
+
+This site hosts documentation for the [Center for Causal Discovery](http://www.ccd.pitt.edu/).
+
+## Tools and Software
 
 **causal-cmd** *(early release)* - a Java API and command line implementation of algorithms for performing causal discovery on big data. Use this software if you are interested incorporating analysis via a shell script or in a Java-based program. The software currently includes Fast Greedy Search (**FGS**) for continuous or discrete variables – an optimized version of Greedy Equivalence Search (**GES**) tested with datasets that contain as many as 1 million continuous variables, and Greedy Fast Causal Inference (**GFCI**) for continuous variables.
 
