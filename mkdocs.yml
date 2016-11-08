@@ -1,0 +1,11 @@
+site_name: CCD Docs
+docs_dir: 'docs_src'
+site_dir: 'docs'
+pages:
+    - Home: index.md
+    - Causal CMD: causal-cmd.md
+    - Causal Web: causal-web.md
+    - Causal REST API: causal-rest-api.md
+    - Py-causal: py-causal.md
+    - R-causal: r-causal.md
+theme: readthedocs
