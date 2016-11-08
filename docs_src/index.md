@@ -7,7 +7,7 @@
 - [Report bugs or issues with the software](https://tracker.dbmi.pitt.edu/projects/ccd/issues/new)
 - [Causal-cmd Github project](https://github.com/cmu-phil/tetrad)
 
-**tetrad** - a Java API, and desktop environment for learning, performing analyses and experimenting with causal discovery algorithms.
+**Tetrad** - a Java API, and desktop environment for learning, performing analyses and experimenting with causal discovery algorithms.
 
 - [Tetrad Project Website](http://www.phil.cmu.edu/tetrad/)
 - [Download latest release of tetrad i.e., tetrad-gui-X.X.X-launch.jar](https://ccd3.vm.bridges.psc.edu/nexus/content/repositories/releases/edu/cmu/tetrad-gui/)
@@ -15,12 +15,16 @@
 - [Documentation for the big data enabled causal discovery algorithms](http://www.ccd.pitt.edu/wiki/index.php?title=Algorithm_Documentation)
 - [Causal-cmd Github project](https://github.com/cmu-phil/tetrad)
 
-**causal-web** *(early release)* – our user-friendly web-based graphical interface for performing causal discovery analysis on big data using large memory servers at the Pittsburgh Supercomputing Center. Use this software if you want to quickly try out a causal discovery algorithm or if you have big data which cannot be analyzed on your local hardware.
+**Causal Web App** *(early release)* – our user-friendly web-based graphical interface for performing causal discovery analysis on big data using large memory servers at the Pittsburgh Supercomputing Center. Use this software if you want to quickly try out a causal discovery algorithm or if you have big data which cannot be analyzed on your local hardware.
 
 - [CCD Web Application](https://ccd2.vm.bridges.psc.edu/ccd/login)
 - [Report bugs or issues with the software](https://tracker.dbmi.pitt.edu/projects/ccd/issues/new)
 - [Documentation for the big data enabled causal discovery algorithms](http://www.ccd.pitt.edu/wiki/index.php?title=Algorithm_Documentation)
 -[Github project](https://github.com/bd2kccd/ccd-web)
+
+**Causal REST API** – our RESTful API for Causal Web App. Once you create a new user account via Causal Web App, you can use this REST API to upload data files and run Causal Discovery Algorithms.
+
+-[Github project](https://github.com/bd2kccd/causal-rest-api)
 
 **Py-causal** *(early release)* - a python module that wraps algorithms for performing causal discovery on big data. The software currently includes Fast Greedy Search (**FGS**) for both continuous and discrete variables, and Greedy Fast Causal Inference (**GFCI**) for continuous variables.
 
