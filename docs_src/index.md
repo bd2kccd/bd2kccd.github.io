@@ -24,7 +24,7 @@
 
 **Causal REST API** – our RESTful API for Causal Web App. Once you create a new user account via Causal Web App, you can use this REST API to upload data files and run Causal Discovery Algorithms.
 
--[Github project](https://github.com/bd2kccd/causal-rest-api)
+- [Github project](https://github.com/bd2kccd/causal-rest-api)
 
 **Py-causal** *(early release)* - a python module that wraps algorithms for performing causal discovery on big data. The software currently includes Fast Greedy Search (**FGS**) for both continuous and discrete variables, and Greedy Fast Causal Inference (**GFCI**) for continuous variables.
 
@@ -40,7 +40,7 @@
 
 **cytoscape-tetrad** - a native cytoscape plugin that imports tetrad txt output files that contain the structure of a causal graph. It handles causal graphs and partial ancestral graphs.
 
-If you use our software in your research, please acknowledge the Center for Causal Discovery, supported by grant U54HG008540, in any papers, presentations, or other dissemination of your work.
+If you use our software in your research, please acknowledge the Center for Causal Discovery, supported by **grant U54HG008540**, in any papers, presentations, or other dissemination of your work.
 
 All software is open-source and released under a dual licensing model. For non-profit institutions, the software is available under the GNU General Public License (GPL) v2 license. For-profit organizations that wish to commercialize enhanced or customized versions of the software will be able to purchase a commercial license on a case-by-case basis. The GPL license permits individuals to modify the source code and to share modifications with other colleagues/investigators. Specifically, it permits the dissemination and commercialization of enhanced or customized versions as well as incorporation of the software or its pieces into other license-compatible software packages, as long as modifications or enhancements are made open source.
 
