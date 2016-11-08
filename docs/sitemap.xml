@@ -3,7 +3,7 @@
 
     
     <url>
-     <loc>/</loc>
+     <loc>https://bd2kccd.github.io/docs/</loc>
      <lastmod>2016-11-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -11,7 +11,7 @@
 
     
     <url>
-     <loc>/causal-cmd/</loc>
+     <loc>https://bd2kccd.github.io/docs/causal-cmd/</loc>
      <lastmod>2016-11-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -19,7 +19,7 @@
 
     
     <url>
-     <loc>/causal-web/</loc>
+     <loc>https://bd2kccd.github.io/docs/causal-web/</loc>
      <lastmod>2016-11-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -27,7 +27,7 @@
 
     
     <url>
-     <loc>/causal-rest-api/</loc>
+     <loc>https://bd2kccd.github.io/docs/causal-rest-api/</loc>
      <lastmod>2016-11-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -35,7 +35,7 @@
 
     
     <url>
-     <loc>/py-causal/</loc>
+     <loc>https://bd2kccd.github.io/docs/py-causal/</loc>
      <lastmod>2016-11-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -43,7 +43,7 @@
 
     
     <url>
-     <loc>/r-causal/</loc>
+     <loc>https://bd2kccd.github.io/docs/r-causal/</loc>
      <lastmod>2016-11-08</lastmod>
      <changefreq>daily</changefreq>
     </url>

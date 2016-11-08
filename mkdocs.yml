@@ -1,6 +1,8 @@
 site_name: CCD Docs
-docs_dir: 'docs_src'
-site_dir: 'docs'
+site_description: Documentations of CCD tools and software
+docs_dir: docs_src
+site_dir: docs
+site_url: https://bd2kccd.github.io/docs
 pages:
     - Home: index.md
     - Causal CMD: causal-cmd.md
