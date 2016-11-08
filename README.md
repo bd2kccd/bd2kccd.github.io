@@ -1,6 +1,6 @@
 # bd2kccd.github.io
 
-This is the project documentation repo of CCD software and tools. It uses [MkDocs](http://www.mkdocs.org/) to generate the static documentation site pages (https://github.com/bd2kccd/bd2kccd.github.io) that are hosted on Github Pages.
+This is the project documentation repo of CCD software and tools. It uses [MkDocs](http://www.mkdocs.org/) to generate the static documentation site pages that are hosted on Github Pages.
 
 Below are the steps to contrubite to the CCD docs:
 
