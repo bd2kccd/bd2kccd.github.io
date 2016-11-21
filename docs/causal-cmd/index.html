@@ -135,7 +135,7 @@
               
                 <h1 id="documentation-on-using-the-causal-cmd-software">Documentation on using the causal-cmd software</h1>
 <h2 id="what-is-causal-cmd">What is causal-cmd</h2>
-<p>Causal-cmd is a Java application that provides a command-line interface (CLI) and application programming interface (API) for causal discovery algorithms produced by the Center for Causal Discovery. The current version is tetrad-5.3.0-20160318. The application currently includes the algorithm(s):</p>
+<p>Causal-cmd is a Java application that provides a command-line interface (CLI) and application programming interface (API) for causal discovery algorithms produced by the Center for Causal Discovery.  The application currently includes the algorithm(s):</p>
 <ul>
 <li>FGSc (Fast Greedy Search) for continuous data - is an optimization of the Greedy Equivalence Search algorithm (GES,   Meek    1995;   Chickering  2003). The optimizations are described in Scaling up Greedy Causal Search for Continuous Variables</li>
 <li>FGSd (Fast Greedy Search) for discrete data</li>
@@ -144,13 +144,13 @@
 <p>Causal discovery algorithms are a class of search algorithms that explore a space of graphical causal models, i.e., graphical models where directed edges imply causation, for a model (or models) that are a good fit for a dataset. We suggest that newcomers to the field review Causation, Prediction and Search by Spirtes, Glymour and Scheines for a primer on the subject.</p>
 <p>Causal discovery algorithms allow a user to uncover the causal relationships between variables in a dataset. These discovered causal relationships may be used further--understanding the underlying the processes of a system (e.g., the metabolic pathways of an organism), hypothesis generation (e.g., variables that best explain an outcome), guide experimentation (e.g., what gene knockout experiments should be performed) or prediction (e.g. parameterization of the causal graph using data and then using it as a classifier).</p>
 <h2 id="how-can-i-use-it">How can I use it?</h2>
-<p>ava 8 is the only prerequisite to run the software. Note that by default Java will allocate the smaller of 1/4 system memory or 1GB to the Java virtual machine (JVM). If you run out of memory (heap memory space) running your analyses you should increase the memory allocated to the JVM with the following switch '-XmxXXG' where XX is the number of gigabytes of ram you allow the JVM to utilize. For example to allocate 8 gigabytes of ram you would add -Xmx8G immediately after the java command.</p>
+<p>Java 8 is the only prerequisite to run the software. Note that by default Java will allocate the smaller of 1/4 system memory or 1GB to the Java virtual machine (JVM). If you run out of memory (heap memory space) running your analyses you should increase the memory allocated to the JVM with the following switch '-XmxXXG' where XX is the number of gigabytes of ram you allow the JVM to utilize. For example to allocate 8 gigabytes of ram you would add -Xmx8G immediately after the java command.</p>
 <h3 id="run-an-example-output-using-known-data-via-command-line">Run an example output using known data via command line</h3>
 <p>Download the this file, <a href="http://www.ccd.pitt.edu/wp-content/uploads/files/Retention.txt">Retention.txt</a>, which is a dataset containing information on college graduation and used in the publication "What Do College Ranking Data Tell Us About Student Retention?" by Drudzel and Glymour, 1994.</p>
-<pre><code>java -jar causal-cmd-5.3.0-20160330-jar-with-dependencies.jar --algorithm fgs --data Retention.txt  --depth -1 --output output --verbose
+<pre><code>java -jar causal-cmd-6.0.0-jar-with-dependencies.jar --algorithm fgsc --data Retention.txt  --depth -1 --output output —verbose```
 </code></pre>
 
-<p>The program will output the results of the FGS search procedure as a text file (in this example to output). The beginning of the file contains the algorithm parameters used in the search.</p>
+<p>Note that the filename causal-cmd-x.x.x-jar-with-dependencies.jar should match the version you have downloaded. The program will output the results of the FGS search procedure as a text file (in this example to output). The beginning of the file contains the algorithm parameters used in the search.</p>
 <p>Inspect the output which should show a graph with the following edges.</p>
 <pre><code>Graph Edges: 
 1. fac_salary --- spending_per_stdt
@@ -165,11 +165,17 @@
 </code></pre>
 
 <p>In FGS, "Elapsed getEffectEdges = XXms" refers to the amount of time it took to evaluate all pairs of variables for correlation. The file then details each step taken in the greedy search procedure i.e., insertion or deletion of edges based on a scoring function (i.e., BIC score difference for each chosen search operation).</p>
-<p>The end of the file contains the causal graph from the search procedure. Here is a key to the edge types</p>
-<pre><code>A---B There is causal relationship between variable A and B but we cannot determine the direction of the relationship
-A--&gt;B There is a causal relationship from variable A to B
-</code></pre>
-
+<p>The end of the file contains the causal graph from the search procedure. Here is a key to the edge types:</p>
+<ul>
+<li>A --- B - There is causal relationship between variable A and B but we cannot determine the direction of the relationship</li>
+<li>A --&gt; B - There is a causal relationship from variable A to B</li>
+</ul>
+<p>The GFCI algorithm has additional edge types:</p>
+<ul>
+<li>A &lt;-&gt; B - There is an unmeasured confounder of A and B</li>
+<li>A o-&gt; B - Either A is a cause of B or there is an unmeasured confounder of A and B or both</li>
+<li>A o-o B - Either (1) A is a cause of B or B is a cause of A, or (2) there is an unmeasured confounder of A and B, or both 1 and 2 hold.</li>
+</ul>
 <h3 id="use-as-an-api">Use as an API</h3>
 <p>Here is an example of using the Tetrad library which is included in causal-cmd as an API. Javadocs for the API are <a href="http://cmu-phil.github.io/tetrad/tetrad-lib-apidocs/">here</a>.</p>
 <pre><code>package edu.cmu.tetrad.cli.search;
