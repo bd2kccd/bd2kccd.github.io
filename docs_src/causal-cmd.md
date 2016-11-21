@@ -2,7 +2,7 @@
 
 ## What is causal-cmd
 
-Causal-cmd is a Java application that provides a command-line interface (CLI) and application programming interface (API) for causal discovery algorithms produced by the Center for Causal Discovery. The current version is tetrad-5.3.0-20160318. The application currently includes the algorithm(s):
+Causal-cmd is a Java application that provides a command-line interface (CLI) and application programming interface (API) for causal discovery algorithms produced by the Center for Causal Discovery.  The application currently includes the algorithm(s):
 
 - FGSc (Fast Greedy Search) for continuous data - is an optimization of the Greedy Equivalence Search algorithm	(GES,	Meek	1995;	Chickering	2003). The optimizations are described in Scaling up Greedy Causal Search for Continuous Variables
 - FGSd (Fast Greedy Search) for discrete data
@@ -14,17 +14,17 @@ Causal discovery algorithms allow a user to uncover the causal relationships bet
 
 ## How can I use it?
 
-ava 8 is the only prerequisite to run the software. Note that by default Java will allocate the smaller of 1/4 system memory or 1GB to the Java virtual machine (JVM). If you run out of memory (heap memory space) running your analyses you should increase the memory allocated to the JVM with the following switch '-XmxXXG' where XX is the number of gigabytes of ram you allow the JVM to utilize. For example to allocate 8 gigabytes of ram you would add -Xmx8G immediately after the java command.
+Java 8 is the only prerequisite to run the software. Note that by default Java will allocate the smaller of 1/4 system memory or 1GB to the Java virtual machine (JVM). If you run out of memory (heap memory space) running your analyses you should increase the memory allocated to the JVM with the following switch '-XmxXXG' where XX is the number of gigabytes of ram you allow the JVM to utilize. For example to allocate 8 gigabytes of ram you would add -Xmx8G immediately after the java command.
 
 ### Run an example output using known data via command line
 
 Download the this file, [Retention.txt](http://www.ccd.pitt.edu/wp-content/uploads/files/Retention.txt), which is a dataset containing information on college graduation and used in the publication "What Do College Ranking Data Tell Us About Student Retention?" by Drudzel and Glymour, 1994.
 
 ```
-java -jar causal-cmd-5.3.0-20160330-jar-with-dependencies.jar --algorithm fgs --data Retention.txt  --depth -1 --output output --verbose
+java -jar causal-cmd-6.0.0-jar-with-dependencies.jar --algorithm fgsc --data Retention.txt  --depth -1 --output output —verbose```
 ```
 
-The program will output the results of the FGS search procedure as a text file (in this example to output). The beginning of the file contains the algorithm parameters used in the search.
+Note that the filename causal-cmd-x.x.x-jar-with-dependencies.jar should match the version you have downloaded. The program will output the results of the FGS search procedure as a text file (in this example to output). The beginning of the file contains the algorithm parameters used in the search.
 
 Inspect the output which should show a graph with the following edges.
 
@@ -43,12 +43,17 @@ Graph Edges:
 
 In FGS, "Elapsed getEffectEdges = XXms" refers to the amount of time it took to evaluate all pairs of variables for correlation. The file then details each step taken in the greedy search procedure i.e., insertion or deletion of edges based on a scoring function (i.e., BIC score difference for each chosen search operation).
 
-The end of the file contains the causal graph from the search procedure. Here is a key to the edge types
+The end of the file contains the causal graph from the search procedure. Here is a key to the edge types:
 
-```
-A---B There is causal relationship between variable A and B but we cannot determine the direction of the relationship
-A-->B There is a causal relationship from variable A to B
-```
+- A --- B - There is causal relationship between variable A and B but we cannot determine the direction of the relationship
+- A --> B - There is a causal relationship from variable A to B
+
+The GFCI algorithm has additional edge types:
+
+- A <-> B - There is an unmeasured confounder of A and B
+- A o-> B - Either A is a cause of B or there is an unmeasured confounder of A and B or both
+- A o-o B - Either (1) A is a cause of B or B is a cause of A, or (2) there is an unmeasured confounder of A and B, or both 1 and 2 hold.
+
 
 ### Use as an API
 

@@ -19,7 +19,7 @@ This RESTful API is designed for causal web. And it implements the [JAX-RS](http
     - [Delete physical dataset file and all records from database for a given file ID](#delete-physical-dataset-file-and-all-records-from-database-for-a-given-file-id)
     - [Summarize dataset file](#summarize-dataset-file)
     - [List all prior knowledge files of a given user](#list-all-prior-knowledge-files-of-a-given-user)
-    - [Get the deatil information of a prior knowledge file based on ID](#get-the-deatil-information-of-a-prior-knowledge-file-based-on-id)
+    - [Get detailed information of a prior knowledge file based on ID](#get-the-deatil-information-of-a-prior-knowledge-file-based-on-id)
     - [Delete physical prior knowledge file and all records from database for a given file ID](#delete-physical-prior-knowledge-file-and-all-records-from-database-for-a-given-file-id)
   - [2. Causal Discovery](#2-causal-discovery)
     - [List all the available causal discovery algorithms](#list-all-the-available-causal-discovery-algorithms)
@@ -82,6 +82,7 @@ mvn clean package
 ### Configuration
 
 There are 4 configuration files to configure located at `causal-rest-api/src/main/resources`:
+
 - **application-hsqldb.properties**: HSQLDB database configurations (for testing only).
 - **application-mysql.properties**: MySQL database configurations
 - **application.properties**: Spring Boot application settings
@@ -214,7 +215,7 @@ The prior knowledge file upload uses a similar API endpoint:
 POST https://cloud.ccd.pitt.edu/ccd-api/{userId}/priorknowledge/upload
 ````
 
-Due to there's no need to summarize a prior knowledge file, the response of a successful prior knowledge file upload will look like:
+Since there's no need to summarize a prior knowledge file, the response of a successful prior knowledge file upload will look like:
 
 
 ````javascript
@@ -230,7 +231,7 @@ Due to there's no need to summarize a prior knowledge file, the response of a su
 
 #### Resumable data file upload
 
-In addition to the regular file upload described in Example 6, we also provide the option of stable and resumable large file upload. It requires the client side to have a resumable upload implementation. We currently support client integrated with [Resumable.js](http://resumablejs.com/), whihc provides multiple simultaneous, stable 
+In addition to the regular file upload described in Example 6, we also provide the option of stable and resumable large file upload. It requires the client side to have a resumable upload implementation. We currently support client integrated with [Resumable.js](http://resumablejs.com/), which provides multiple simultaneous, stable 
 and resumable uploads via the HTML5 File API. You can also create your own client as long as al the following parameters are set correctly.
 
 API Endpoint URI pattern:
@@ -665,7 +666,8 @@ GET /ccd-api/22/algorithms HTTP/1.1
 Host: cloud.ccd.pitt.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 ````
-Currently we support "FGS continuous" and "FGS discrete".
+
+Algorithms we support example:
 
 ````javascript
 [
