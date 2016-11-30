@@ -144,15 +144,15 @@
 <p>Causal discovery algorithms are a class of search algorithms that explore a space of graphical causal models, i.e., graphical models where directed edges imply causation, for a model (or models) that are a good fit for a dataset. We suggest that newcomers to the field review Causation, Prediction and Search by Spirtes, Glymour and Scheines for a primer on the subject.</p>
 <p>Causal discovery algorithms allow a user to uncover the causal relationships between variables in a dataset. These discovered causal relationships may be used further--understanding the underlying the processes of a system (e.g., the metabolic pathways of an organism), hypothesis generation (e.g., variables that best explain an outcome), guide experimentation (e.g., what gene knockout experiments should be performed) or prediction (e.g. parameterization of the causal graph using data and then using it as a classifier).</p>
 <h2 id="how-can-i-use-it">How can I use it?</h2>
-<p>Java 8 is the only prerequisite to run the software. Note that by default Java will allocate the smaller of 1/4 system memory or 1GB to the Java virtual machine (JVM). If you run out of memory (heap memory space) running your analyses you should increase the memory allocated to the JVM with the following switch '-XmxXXG' where XX is the number of gigabytes of ram you allow the JVM to utilize. For example to allocate 8 gigabytes of ram you would add -Xmx8G immediately after the java command.</p>
+<p>Java 7 or higher is the only prerequisite to run the software. Note that by default Java will allocate the smaller of 1/4 system memory or 1GB to the Java virtual machine (JVM). If you run out of memory (heap memory space) running your analyses you should increase the memory allocated to the JVM with the following switch '-XmxXXG' where XX is the number of gigabytes of ram you allow the JVM to utilize. For example to allocate 8 gigabytes of ram you would add -Xmx8G immediately after the java command.</p>
 <h3 id="run-an-example-output-using-known-data-via-command-line">Run an example output using known data via command line</h3>
 <p>Download the this file, <a href="http://www.ccd.pitt.edu/wp-content/uploads/files/Retention.txt">Retention.txt</a>, which is a dataset containing information on college graduation and used in the publication "What Do College Ranking Data Tell Us About Student Retention?" by Drudzel and Glymour, 1994.</p>
-<pre><code>java -jar causal-cmd-6.0.0-jar-with-dependencies.jar --algorithm fgsc --data Retention.txt  --depth -1 --output output —verbose
+<pre><code>java -jar causal-cmd-6.0.1-jar-with-dependencies.jar --algorithm fgsc --data Retention.txt
 </code></pre>
 
 <p>Note that the filename causal-cmd-x.x.x-jar-with-dependencies.jar should match the version you have downloaded. The program will output the results of the FGS search procedure as a text file (in this example to output). The beginning of the file contains the algorithm parameters used in the search.</p>
 <p>Inspect the output which should show a graph with the following edges.</p>
-<pre><code>Graph Edges: 
+<pre><code>Graph Edges:
 1. fac_salary --- spending_per_stdt
 2. spending_per_stdt --&gt; rjct_rate
 3. spending_per_stdt --- stdt_tchr_ratio
@@ -178,31 +178,35 @@
 </ul>
 <h3 id="use-as-an-api">Use as an API</h3>
 <p>Here is an example of using the Tetrad library which is included in causal-cmd as an API. Javadocs for the API are <a href="http://cmu-phil.github.io/tetrad/tetrad-lib-apidocs/">here</a>.</p>
-<pre><code>package edu.cmu.tetrad.cli.search;
-
-import edu.cmu.tetrad.cli.data.ContinuousDataReader;
-import edu.cmu.tetrad.cli.data.TabularContinuousDataReader;
+<pre><code>import edu.cmu.tetrad.algcomparison.algorithm.Algorithm;
+import edu.cmu.tetrad.algcomparison.algorithm.oracle.pattern.Fgs;
+import edu.cmu.tetrad.algcomparison.score.SemBicScore;
 import edu.cmu.tetrad.cli.validation.DataValidation;
 import edu.cmu.tetrad.cli.validation.TabularContinuousData;
-import edu.cmu.tetrad.data.CovarianceMatrixOnTheFly;
 import edu.cmu.tetrad.data.DataSet;
 import edu.cmu.tetrad.graph.Graph;
-import edu.cmu.tetrad.search.Fgs;
+import edu.cmu.tetrad.io.DataReader;
+import edu.cmu.tetrad.io.TabularContinuousDataReader;
+import edu.cmu.tetrad.util.Parameters;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * Author : Jeremy Espino MD
- * Created  2/12/16 9:44 AM
+ *
+ * Nov 29, 2016 4:42:42 PM
+ *
+ * @author Kevin V. Bui
  */
 public class FgsApiExample {
 
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) throws Exception {
-
         // set path to Retention data
-        Path dataFile = Paths.get(&quot;tetrad-cli/test/data&quot;, &quot;Retention.txt&quot;);
+        Path dataFile = Paths.get(&quot;test&quot;, &quot;data&quot;, &quot;Retention.txt&quot;);
 
-        Character delimiter = '\t';
+        char delimiter = '\t';
 
         // perform data validation
         // note: assuming data has unique variable names and does not contain zero covariance pairs
@@ -211,93 +215,99 @@ public class FgsApiExample {
             System.exit(-128);
         }
 
-        ContinuousDataReader dataReader = new TabularContinuousDataReader(dataFile, delimiter);
+        // create FGS algorithm that uses BIC score
+        Algorithm fgs = new Fgs(new SemBicScore());
+
+        // read in dataset
+        DataReader dataReader = new TabularContinuousDataReader(dataFile, delimiter);
         DataSet dataSet = dataReader.readInData();
 
-        Fgs fgs = new Fgs(new CovarianceMatrixOnTheFly(dataSet));
-        fgs.setOut(System.out);
-        fgs.setDepth(-1);
-        fgs.setIgnoreLinearDependent(false);
-        fgs.setPenaltyDiscount(4.0);
-        fgs.setNumPatternsToStore(0);  // always set to zero
-        fgs.setFaithfulnessAssumed(true);
-        fgs.setVerbose(true);
+        // set parameters for FGS
+        Parameters parameters = new Parameters();
+        parameters.set(&quot;penaltyDiscount&quot;, 0.4);
+        parameters.set(&quot;maxDegree&quot;, -1);
+        parameters.set(&quot;faithfulnessAssumed&quot;, true);
+        parameters.set(&quot;verbose&quot;, true);
+        parameters.set(&quot;printStream&quot;, System.out);
 
-        Graph graph = fgs.search();
+        // run FGS search with given dataset and parameters
+        Graph graph = fgs.search(dataSet, parameters);
         System.out.println();
         System.out.println(graph.toString().trim());
         System.out.flush();
-
     }
+
 }
 </code></pre>
 
 <h2 id="command-line-interface-usage">Command line interface usage</h2>
 <p>Tetrad-cli has different switches for different algorithms.</p>
 <h3 id="causal-cmd-usage-for-fgs-for-continuous-data">causal-cmd usage for FGS for continuous data</h3>
-<pre><code>usage: java -jar causal-cmd-5.3.0-SNAPSHOT.jar --algorithm fgs [-d &lt;arg&gt;] [--depth &lt;arg&gt;] [--disable-heuristic-speedup] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--graphml] [--help] [--ignore-linear-dependence] [--json] [--knowledge &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--penalty-discount &lt;arg&gt;] [--skip-non-zero-variance] [--skip-unique-var-name] [--thread &lt;arg&gt;] [--verbose]
- -d,--delimiter &lt;arg&gt;             Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
-    --depth &lt;arg&gt;                 Search depth. Must be an integer &gt;= -1 (-1 means unlimited). Default is -1.
-    --disable-heuristic-speedup   Disable heuristic speedup. Default is false.
-    --exclude-variables &lt;arg&gt;     A file containing variables to exclude.
- -f,--data &lt;arg&gt;                  Data file.
-    --graphml                     Create graphML output.
-    --help                        Show help.
-    --ignore-linear-dependence    Ignore linear dependence.
-    --json                        Create JSON output.
-    --knowledge &lt;arg&gt;             A file containing prior knowledge.
-    --no-validation-output        No validation output files created.
- -o,--out &lt;arg&gt;                   Output directory.
-    --output-prefix &lt;arg&gt;         Prefix name of output files.
-    --penalty-discount &lt;arg&gt;      Penalty discount. Default is 4.0
-    --skip-non-zero-variance      Skip check for zero variance variables.
-    --skip-unique-var-name        Skip check for unique variable names.
-    --thread &lt;arg&gt;                Number of threads.
-    --verbose                     Print additional information.
+<pre><code>usage: java -jar causal-cmd-6.0.1-jar-with-dependencies.jar --algorithm fgsc [-d &lt;arg&gt;] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--faithfulness-assumed] [--help] [--json] [--knowledge &lt;arg&gt;] [--max-degree &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--penalty-discount &lt;arg&gt;] [--skip-latest] [--skip-nonzero-variance] [--skip-unique-var-name] [--tetrad-graph-json] [--thread &lt;arg&gt;] [--verbose]
+ -d,--delimiter &lt;arg&gt;           Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
+    --exclude-variables &lt;arg&gt;   A file containing variables to exclude.
+ -f,--data &lt;arg&gt;                Data file.
+    --faithfulness-assumed      Yes if (one edge) faithfulness should be assumed. Default is false.
+    --help                      Show help.
+    --json                      Create JSON output.
+    --knowledge &lt;arg&gt;           A file containing prior knowledge.
+    --max-degree &lt;arg&gt;          The maximum degree of the output graph. Use -1 for unbounded.. Default is -1.
+    --no-validation-output      No validation output files created.
+ -o,--out &lt;arg&gt;                 Output directory.
+    --output-prefix &lt;arg&gt;       Prefix name for output files.
+    --penalty-discount &lt;arg&gt;    Penalty discount. Default is 4.0.
+    --skip-latest               Skip checking for latest software version
+    --skip-nonzero-variance     Skip check for zero variance variables.
+    --skip-unique-var-name      Skip check for unique variable names.
+    --tetrad-graph-json         Create Tetrad Graph JSON output.
+    --thread &lt;arg&gt;              Number of threads.
+    --verbose                   Print additional information.
 </code></pre>
 
 <h3 id="causal-cmd-usage-for-fgs-for-discrete-data">causal-cmd usage for FGS for discrete data</h3>
-<pre><code>usage: java -jar causal-cmd-5.3.0-SNAPSHOT.jar --algorithm fgs-discrete [-d &lt;arg&gt;] [--depth &lt;arg&gt;] [--disable-heuristic-speedup] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--graphml] [--help] [--json] [--knowledge &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--sample-prior &lt;arg&gt;] [--skip-category-limit] [--skip-unique-var-name] [--structure-prior &lt;arg&gt;] [--thread &lt;arg&gt;] [--verbose]
- -d,--delimiter &lt;arg&gt;             Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
-    --depth &lt;arg&gt;                 Search depth. Must be an integer &gt;= -1 (-1 means unlimited). Default is -1.
-    --disable-heuristic-speedup   Heuristic speedup. Default is false.
-    --exclude-variables &lt;arg&gt;     A file containing variables to exclude.
- -f,--data &lt;arg&gt;                  Data file.
-    --graphml                     Create graphML output.
-    --help                        Show help.
-    --json                        Create JSON output.
-    --knowledge &lt;arg&gt;             A file containing prior knowledge.
-    --no-validation-output        No validation output files created.
- -o,--out &lt;arg&gt;                   Output directory.
-    --output-prefix &lt;arg&gt;         Prefix name of output files.
-    --sample-prior &lt;arg&gt;          Sample prior.
-    --skip-category-limit         Skip 'limit number of categories' check.
-    --skip-unique-var-name        Skip 'unique variable name' check.
-    --structure-prior &lt;arg&gt;       Structure prior.
-    --thread &lt;arg&gt;                Number of threads.
-    --verbose                     Print additional information.
+<pre><code>usage: java -jar causal-cmd-6.0.1-jar-with-dependencies.jar --algorithm fgsd [-d &lt;arg&gt;] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--faithfulness-assumed] [--help] [--json] [--knowledge &lt;arg&gt;] [--max-degree &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--sample-prior &lt;arg&gt;] [--skip-category-limit] [--skip-latest] [--skip-unique-var-name] [--structure-prior &lt;arg&gt;] [--tetrad-graph-json] [--thread &lt;arg&gt;] [--verbose]
+ -d,--delimiter &lt;arg&gt;           Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
+    --exclude-variables &lt;arg&gt;   A file containing variables to exclude.
+ -f,--data &lt;arg&gt;                Data file.
+    --faithfulness-assumed      Yes if (one edge) faithfulness should be assumed. Default is false.
+    --help                      Show help.
+    --json                      Create JSON output.
+    --knowledge &lt;arg&gt;           A file containing prior knowledge.
+    --max-degree &lt;arg&gt;          The maximum degree of the output graph. Use -1 for unbounded.. Default is -1.
+    --no-validation-output      No validation output files created.
+ -o,--out &lt;arg&gt;                 Output directory.
+    --output-prefix &lt;arg&gt;       Prefix name for output files.
+    --sample-prior &lt;arg&gt;        Sample prior. Default is 1.0.
+    --skip-category-limit       Skip 'limit number of categories' check.
+    --skip-latest               Skip checking for latest software version
+    --skip-unique-var-name      Skip check for unique variable names.
+    --structure-prior &lt;arg&gt;     Structure prior coefficient. Default is 1.0.
+    --tetrad-graph-json         Create Tetrad Graph JSON output.
+    --thread &lt;arg&gt;              Number of threads.
+    --verbose                   Print additional information.
 </code></pre>
 
 <h3 id="causal-cmd-usage-for-gfci-for-continuous-data">causal-cmd usage for GFCI for continuous data</h3>
-<pre><code>usage: java -jar causal-cmd.jar --algorithm gfcic [--alpha &lt;arg&gt;] [-d &lt;arg&gt;] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--faithfulness-assumed &lt;arg&gt;] [--help] [--json] [--knowledge &lt;arg&gt;] [--max-indegree &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--penalty-discount &lt;arg&gt;] [--skip-latest] [--skip-non-zero-variance] [--skip-unique-var-name] [--thread &lt;arg&gt;] [--verbose]
-    --alpha &lt;arg&gt;                  Penalty discount. Default 4.
- -d,--delimiter &lt;arg&gt;              Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
-    --exclude-variables &lt;arg&gt;      A file containing variables to exclude.
- -f,--data &lt;arg&gt;                   Data file.
-    --faithfulness-assumed &lt;arg&gt;   Yes if (one edge) faithfulness should be assumed. Default false.
-    --help                         Show help.
-    --json                         Create JSON output.
-    --knowledge &lt;arg&gt;              A file containing prior knowledge.
-    --max-indegree &lt;arg&gt;           Maximum indegree of graph. Default 100.
-    --no-validation-output         No validation output files created.
- -o,--out &lt;arg&gt;                    Output directory.
-    --output-prefix &lt;arg&gt;          Prefix name for output files.
-    --penalty-discount &lt;arg&gt;       Penalty discount. Default 4.
-    --skip-latest                  Skip checking for latest software version
-    --skip-non-zero-variance       Skip check for zero variance variables.
-    --skip-unique-var-name         Skip check for unique variable names.
-    --thread &lt;arg&gt;                 Number of threads.
-    --verbose                      Print additional information.
+<pre><code>usage: java -jar causal-cmd-6.0.1-jar-with-dependencies.jar --algorithm gfcic [--alpha &lt;arg&gt;] [-d &lt;arg&gt;] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--faithfulness-assumed] [--help] [--json] [--knowledge &lt;arg&gt;] [--max-degree &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--penalty-discount &lt;arg&gt;] [--skip-latest] [--skip-nonzero-variance] [--skip-unique-var-name] [--tetrad-graph-json] [--thread &lt;arg&gt;] [--verbose]
+    --alpha &lt;arg&gt;               Cutoff for p values (alpha). Default is 0.01.
+ -d,--delimiter &lt;arg&gt;           Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
+    --exclude-variables &lt;arg&gt;   A file containing variables to exclude.
+ -f,--data &lt;arg&gt;                Data file.
+    --faithfulness-assumed      Yes if (one edge) faithfulness should be assumed. Default is false.
+    --help                      Show help.
+    --json                      Create JSON output.
+    --knowledge &lt;arg&gt;           A file containing prior knowledge.
+    --max-degree &lt;arg&gt;          The maximum degree of the output graph. Use -1 for unbounded.. Default is -1.
+    --no-validation-output      No validation output files created.
+ -o,--out &lt;arg&gt;                 Output directory.
+    --output-prefix &lt;arg&gt;       Prefix name for output files.
+    --penalty-discount &lt;arg&gt;    Penalty discount. Default is 4.0.
+    --skip-latest               Skip checking for latest software version
+    --skip-nonzero-variance     Skip check for zero variance variables.
+    --skip-unique-var-name      Skip check for unique variable names.
+    --tetrad-graph-json         Create Tetrad Graph JSON output.
+    --thread &lt;arg&gt;              Number of threads.
+    --verbose                   Print additional information.
 </code></pre>
 
 <h3 id="prior-knowledge-file-example">Prior knowledge file example</h3>
