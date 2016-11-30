@@ -4,9 +4,9 @@ This is the project documentation repo of CCD software and tools. It uses [MkDoc
 
 Below are the steps to contrubite to the CCD docs:
 
-## 1. Installing MkDocs
+## 1. Installing MkDocs v0.16.0
 
-http://www.mkdocs.org/#installation
+We suggest all contributors to [install MkDocs using pip](http://www.mkdocs.org/#installing-pip) and verify that the **version 0.16.0** is installed since this version has fixed many bugs.
 
 ## 2. Cloning the bd2kccd.github.io Repository
 
@@ -29,7 +29,7 @@ Then open up http://127.0.0.1:8000/ in your browser, and you'll see the home pag
 
 ## 4. Adding/Editing Pages
 
-All the source markdown files are stored in the `/docs_src` folder. Just follow the instructions at http://www.mkdocs.org/#adding-pages to add new pages or edit existing content.
+All the source markdown files are stored in the `/docs_src` folder. Just follow the [instructions](http://www.mkdocs.org/#adding-pages) to add new pages or edit existing content.
 
 You'll also need to edit settings in the `mkdocs.yml` file to configure site pages and navigation.
 
