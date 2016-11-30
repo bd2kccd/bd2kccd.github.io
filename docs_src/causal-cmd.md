@@ -21,7 +21,7 @@ Java 8 is the only prerequisite to run the software. Note that by default Java w
 Download the this file, [Retention.txt](http://www.ccd.pitt.edu/wp-content/uploads/files/Retention.txt), which is a dataset containing information on college graduation and used in the publication "What Do College Ranking Data Tell Us About Student Retention?" by Drudzel and Glymour, 1994.
 
 ```
-java -jar causal-cmd-6.0.0-jar-with-dependencies.jar --algorithm fgsc --data Retention.txt  --depth -1 --output output —verbose```
+java -jar causal-cmd-6.0.0-jar-with-dependencies.jar --algorithm fgsc --data Retention.txt  --depth -1 --output output —verbose
 ```
 
 Note that the filename causal-cmd-x.x.x-jar-with-dependencies.jar should match the version you have downloaded. The program will output the results of the FGS search procedure as a text file (in this example to output). The beginning of the file contains the algorithm parameters used in the search.
