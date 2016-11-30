@@ -17,7 +17,9 @@ git clone https://github.com/bd2kccd/bd2kccd.github.io.git
 cd bd2kccd.github.io
 ````
 
-## 3. Creating a new branch to exercise your changes
+## 3. Creating a New Branch to Exercise Your Changes
+
+Now you can create a new branch off the master branch to make changes locally.
 
 ````
 git checkout -b your_new_branch
