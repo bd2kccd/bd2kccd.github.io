@@ -17,7 +17,13 @@ git clone https://github.com/bd2kccd/bd2kccd.github.io.git
 cd bd2kccd.github.io
 ````
 
-## 3. Starting the MkDocs Development Server
+## 3. Creating a new branch to exercise your changes
+
+````
+git checkout -b your_new_branch
+````
+
+## 4. Starting the MkDocs Development Server
 
 MkDocs comes with a built-in dev-server that lets you preview your documentation as you work on it. Make sure you're in the same directory as the mkdocs.yml configuration file, and then start the server by running 
 
@@ -27,13 +33,13 @@ mkdocs serve
 
 Then open up http://127.0.0.1:8000/ in your browser, and you'll see the home page being displayed.
 
-## 4. Adding/Editing Pages
+## 5. Adding/Editing Pages
 
 All the source markdown files are stored in the `/docs_src` folder. Just follow the [instructions](http://www.mkdocs.org/#adding-pages) to add new pages or edit existing content.
 
 You'll also need to edit settings in the `mkdocs.yml` file to configure site pages and navigation.
 
-## 5. Building/Generating the Static Site
+## 6. Building/Generating the Static Site
 
 ````
 mkdocs build --clean
@@ -41,9 +47,13 @@ mkdocs build --clean
 
 This command will build and generate the static content site and store all the static files at `/docs` folder. 
 
-## 6. Reviewing Changes 
+## 7. Reviewing Changes Locally
 
-Before pushing all changes back to Github repo, you'll need to review your local changes in the development server. Once everything looks good, push them to Github and then you'll be able to see the updated Github Pages site at https://bd2kccd.github.io.
+Before pushing all changes back to Github repo, you'll need to review your local changes in the development server.
+
+## 8. Sending a Pull Request for Changes Review
+
+Once everything looks good in your local development server, push them to Github and then send a new pull request based on the master so your cahnges will be reviewed before merging into the master branch. And once it's merged successfully, you'll be able to see the updated Github Pages site at https://bd2kccd.github.io.
 
 ## Notes
 
