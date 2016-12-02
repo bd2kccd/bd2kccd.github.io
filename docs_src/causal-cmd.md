@@ -123,7 +123,17 @@ public class FgsApiExample {
 ```
 ## Command line interface usage
 
-Tetrad-cli has different switches for different algorithms.
+Tetrad-cli has different switches for different algorithms. 
+```
+usage: java -jar causal-cmd-6.0.1-SNAPSHOT.jar --algorithm <arg> |
+       --simulate-data <arg>  [--version]
+    --algorithm <arg>       fgsc, fgsd, gfcic
+    --simulate-data <arg>   sem-rand-fwd, bayes-net-rand-fwd
+    --version               Version.
+```
+
+Use the `--algorithm <arg>` parameter to see specific algorithm usage information.
+
 
 ### causal-cmd usage for FGS for continuous data
 
