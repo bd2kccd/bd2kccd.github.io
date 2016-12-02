@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Causal CMD - CCD Docs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Causal CMD";
+    var mkdocs_page_input_path = "causal-cmd.md";
+    var mkdocs_page_url = "/causal-cmd/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> CCD Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Welcome to CCD Docs</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Causal CMD</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#documentation-on-using-the-causal-cmd-software">Documentation on using the causal-cmd software</a></li>
+                
+                    <li><a class="toctree-l4" href="#what-is-causal-cmd">What is causal-cmd</a></li>
+                
+                    <li><a class="toctree-l4" href="#how-can-i-use-it">How can I use it?</a></li>
+                
+                    <li><a class="toctree-l4" href="#command-line-interface-usage">Command line interface usage</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../causal-web/">Causal Web</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../causal-rest-api/">Causal REST API</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../py-causal/">Py-causal</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../r-causal/">R-causal</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">CCD Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Causal CMD</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="documentation-on-using-the-causal-cmd-software">Documentation on using the causal-cmd software</h1>
+<h2 id="what-is-causal-cmd">What is causal-cmd</h2>
+<p>Causal-cmd is a Java application that provides a command-line interface (CLI) and application programming interface (API) for causal discovery algorithms produced by the Center for Causal Discovery.  The application currently includes the algorithm(s):</p>
+<ul>
+<li>FGSc (Fast Greedy Search) for continuous data - is an optimization of the Greedy Equivalence Search algorithm (GES,   Meek    1995;   Chickering  2003). The optimizations are described in Scaling up Greedy Causal Search for Continuous Variables</li>
+<li>FGSd (Fast Greedy Search) for discrete data</li>
+<li>GFCIc (Greedy Fast Causal Inferece) for continuous data</li>
+</ul>
+<p>Causal discovery algorithms are a class of search algorithms that explore a space of graphical causal models, i.e., graphical models where directed edges imply causation, for a model (or models) that are a good fit for a dataset. We suggest that newcomers to the field review Causation, Prediction and Search by Spirtes, Glymour and Scheines for a primer on the subject.</p>
+<p>Causal discovery algorithms allow a user to uncover the causal relationships between variables in a dataset. These discovered causal relationships may be used further--understanding the underlying the processes of a system (e.g., the metabolic pathways of an organism), hypothesis generation (e.g., variables that best explain an outcome), guide experimentation (e.g., what gene knockout experiments should be performed) or prediction (e.g. parameterization of the causal graph using data and then using it as a classifier).</p>
+<h2 id="how-can-i-use-it">How can I use it?</h2>
+<p>Java 7 or higher is the only prerequisite to run the software. Note that by default Java will allocate the smaller of 1/4 system memory or 1GB to the Java virtual machine (JVM). If you run out of memory (heap memory space) running your analyses you should increase the memory allocated to the JVM with the following switch '-XmxXXG' where XX is the number of gigabytes of ram you allow the JVM to utilize. For example to allocate 8 gigabytes of ram you would add -Xmx8G immediately after the java command.</p>
+<h3 id="run-an-example-output-using-known-data-via-command-line">Run an example output using known data via command line</h3>
+<p>Download the this file, <a href="http://www.ccd.pitt.edu/wp-content/uploads/files/Retention.txt">Retention.txt</a>, which is a dataset containing information on college graduation and used in the publication "What Do College Ranking Data Tell Us About Student Retention?" by Drudzel and Glymour, 1994.</p>
+<pre><code>java -jar causal-cmd-6.0.1-jar-with-dependencies.jar --algorithm fgsc --data Retention.txt
+</code></pre>
+
+<p>Note that the filename causal-cmd-x.x.x-jar-with-dependencies.jar should match the version you have downloaded. The program will output the results of the FGS search procedure as a text file (in this example to output). The beginning of the file contains the algorithm parameters used in the search.</p>
+<p>Inspect the output which should show a graph with the following edges.</p>
+<pre><code>Graph Edges:
+1. fac_salary --- spending_per_stdt
+2. spending_per_stdt --&gt; rjct_rate
+3. spending_per_stdt --- stdt_tchr_ratio
+4. stdt_accept_rate --- fac_salary
+5. stdt_clss_stndng --&gt; rjct_rate
+6. tst_scores --- fac_salary
+7. tst_scores --- grad_rate
+8. tst_scores --- spending_per_stdt
+9. tst_scores --- stdt_clss_stndng
+</code></pre>
+
+<p>In FGS, "Elapsed getEffectEdges = XXms" refers to the amount of time it took to evaluate all pairs of variables for correlation. The file then details each step taken in the greedy search procedure i.e., insertion or deletion of edges based on a scoring function (i.e., BIC score difference for each chosen search operation).</p>
+<p>The end of the file contains the causal graph from the search procedure. Here is a key to the edge types:</p>
+<ul>
+<li>A --- B - There is causal relationship between variable A and B but we cannot determine the direction of the relationship</li>
+<li>A --&gt; B - There is a causal relationship from variable A to B</li>
+</ul>
+<p>The GFCI algorithm has additional edge types:</p>
+<ul>
+<li>A &lt;-&gt; B - There is an unmeasured confounder of A and B</li>
+<li>A o-&gt; B - Either A is a cause of B or there is an unmeasured confounder of A and B or both</li>
+<li>A o-o B - Either (1) A is a cause of B or B is a cause of A, or (2) there is an unmeasured confounder of A and B, or both 1 and 2 hold.</li>
+</ul>
+<h3 id="use-as-an-api">Use as an API</h3>
+<p>Here is an example of using the Tetrad library which is included in causal-cmd as an API. Javadocs for the API are <a href="http://cmu-phil.github.io/tetrad/tetrad-lib-apidocs/">here</a>.</p>
+<pre><code>import edu.cmu.tetrad.algcomparison.algorithm.Algorithm;
+import edu.cmu.tetrad.algcomparison.algorithm.oracle.pattern.Fgs;
+import edu.cmu.tetrad.algcomparison.score.SemBicScore;
+import edu.cmu.tetrad.cli.validation.DataValidation;
+import edu.cmu.tetrad.cli.validation.TabularContinuousData;
+import edu.cmu.tetrad.data.DataSet;
+import edu.cmu.tetrad.graph.Graph;
+import edu.cmu.tetrad.io.DataReader;
+import edu.cmu.tetrad.io.TabularContinuousDataReader;
+import edu.cmu.tetrad.util.Parameters;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+/**
+ *
+ * Nov 29, 2016 4:42:42 PM
+ *
+ * @author Kevin V. Bui
+ */
+public class FgsApiExample {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) throws Exception {
+        // set path to Retention data
+        Path dataFile = Paths.get(&quot;test&quot;, &quot;data&quot;, &quot;Retention.txt&quot;);
+
+        char delimiter = '\t';
+
+        // perform data validation
+        // note: assuming data has unique variable names and does not contain zero covariance pairs
+        DataValidation dataValidation = new TabularContinuousData(dataFile, delimiter);
+        if (!dataValidation.validate(System.err, true)) {
+            System.exit(-128);
+        }
+
+        // create FGS algorithm that uses BIC score
+        Algorithm fgs = new Fgs(new SemBicScore());
+
+        // read in dataset
+        DataReader dataReader = new TabularContinuousDataReader(dataFile, delimiter);
+        DataSet dataSet = dataReader.readInData();
+
+        // set parameters for FGS
+        Parameters parameters = new Parameters();
+        parameters.set(&quot;penaltyDiscount&quot;, 0.4);
+        parameters.set(&quot;maxDegree&quot;, -1);
+        parameters.set(&quot;faithfulnessAssumed&quot;, true);
+        parameters.set(&quot;verbose&quot;, true);
+        parameters.set(&quot;printStream&quot;, System.out);
+
+        // run FGS search with given dataset and parameters
+        Graph graph = fgs.search(dataSet, parameters);
+        System.out.println();
+        System.out.println(graph.toString().trim());
+        System.out.flush();
+    }
+
+}
+</code></pre>
+
+<h2 id="command-line-interface-usage">Command line interface usage</h2>
+<p>Tetrad-cli has different switches for different algorithms. </p>
+<pre><code>usage: java -jar causal-cmd-6.0.1-SNAPSHOT.jar --algorithm &lt;arg&gt; |
+       --simulate-data &lt;arg&gt;  [--version]
+    --algorithm &lt;arg&gt;       fgsc, fgsd, gfcic
+    --simulate-data &lt;arg&gt;   sem-rand-fwd, bayes-net-rand-fwd
+    --version               Version.
+</code></pre>
+
+<p>Use the <code>--algorithm &lt;arg&gt;</code> parameter to see specific algorithm usage information.</p>
+<h3 id="causal-cmd-usage-for-fgs-for-continuous-data">causal-cmd usage for FGS for continuous data</h3>
+<pre><code>usage: java -jar causal-cmd-6.0.1-jar-with-dependencies.jar --algorithm fgsc [-d &lt;arg&gt;] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--faithfulness-assumed] [--help] [--json] [--knowledge &lt;arg&gt;] [--max-degree &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--penalty-discount &lt;arg&gt;] [--skip-latest] [--skip-nonzero-variance] [--skip-unique-var-name] [--tetrad-graph-json] [--thread &lt;arg&gt;] [--verbose]
+ -d,--delimiter &lt;arg&gt;           Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
+    --exclude-variables &lt;arg&gt;   A file containing variables to exclude.
+ -f,--data &lt;arg&gt;                Data file.
+    --faithfulness-assumed      Yes if (one edge) faithfulness should be assumed. Default is false.
+    --help                      Show help.
+    --json                      Create JSON output.
+    --knowledge &lt;arg&gt;           A file containing prior knowledge.
+    --max-degree &lt;arg&gt;          The maximum degree of the output graph. Use -1 for unbounded.. Default is -1.
+    --no-validation-output      No validation output files created.
+ -o,--out &lt;arg&gt;                 Output directory.
+    --output-prefix &lt;arg&gt;       Prefix name for output files.
+    --penalty-discount &lt;arg&gt;    Penalty discount. Default is 4.0.
+    --skip-latest               Skip checking for latest software version
+    --skip-nonzero-variance     Skip check for zero variance variables.
+    --skip-unique-var-name      Skip check for unique variable names.
+    --tetrad-graph-json         Create Tetrad Graph JSON output.
+    --thread &lt;arg&gt;              Number of threads.
+    --verbose                   Print additional information.
+</code></pre>
+
+<h3 id="causal-cmd-usage-for-fgs-for-discrete-data">causal-cmd usage for FGS for discrete data</h3>
+<pre><code>usage: java -jar causal-cmd-6.0.1-jar-with-dependencies.jar --algorithm fgsd [-d &lt;arg&gt;] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--faithfulness-assumed] [--help] [--json] [--knowledge &lt;arg&gt;] [--max-degree &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--sample-prior &lt;arg&gt;] [--skip-category-limit] [--skip-latest] [--skip-unique-var-name] [--structure-prior &lt;arg&gt;] [--tetrad-graph-json] [--thread &lt;arg&gt;] [--verbose]
+ -d,--delimiter &lt;arg&gt;           Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
+    --exclude-variables &lt;arg&gt;   A file containing variables to exclude.
+ -f,--data &lt;arg&gt;                Data file.
+    --faithfulness-assumed      Yes if (one edge) faithfulness should be assumed. Default is false.
+    --help                      Show help.
+    --json                      Create JSON output.
+    --knowledge &lt;arg&gt;           A file containing prior knowledge.
+    --max-degree &lt;arg&gt;          The maximum degree of the output graph. Use -1 for unbounded.. Default is -1.
+    --no-validation-output      No validation output files created.
+ -o,--out &lt;arg&gt;                 Output directory.
+    --output-prefix &lt;arg&gt;       Prefix name for output files.
+    --sample-prior &lt;arg&gt;        Sample prior. Default is 1.0.
+    --skip-category-limit       Skip 'limit number of categories' check.
+    --skip-latest               Skip checking for latest software version
+    --skip-unique-var-name      Skip check for unique variable names.
+    --structure-prior &lt;arg&gt;     Structure prior coefficient. Default is 1.0.
+    --tetrad-graph-json         Create Tetrad Graph JSON output.
+    --thread &lt;arg&gt;              Number of threads.
+    --verbose                   Print additional information.
+</code></pre>
+
+<h3 id="causal-cmd-usage-for-gfci-for-continuous-data">causal-cmd usage for GFCI for continuous data</h3>
+<pre><code>usage: java -jar causal-cmd-6.0.1-jar-with-dependencies.jar --algorithm gfcic [--alpha &lt;arg&gt;] [-d &lt;arg&gt;] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--faithfulness-assumed] [--help] [--json] [--knowledge &lt;arg&gt;] [--max-degree &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--penalty-discount &lt;arg&gt;] [--skip-latest] [--skip-nonzero-variance] [--skip-unique-var-name] [--tetrad-graph-json] [--thread &lt;arg&gt;] [--verbose]
+    --alpha &lt;arg&gt;               Cutoff for p values (alpha). Default is 0.01.
+ -d,--delimiter &lt;arg&gt;           Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
+    --exclude-variables &lt;arg&gt;   A file containing variables to exclude.
+ -f,--data &lt;arg&gt;                Data file.
+    --faithfulness-assumed      Yes if (one edge) faithfulness should be assumed. Default is false.
+    --help                      Show help.
+    --json                      Create JSON output.
+    --knowledge &lt;arg&gt;           A file containing prior knowledge.
+    --max-degree &lt;arg&gt;          The maximum degree of the output graph. Use -1 for unbounded.. Default is -1.
+    --no-validation-output      No validation output files created.
+ -o,--out &lt;arg&gt;                 Output directory.
+    --output-prefix &lt;arg&gt;       Prefix name for output files.
+    --penalty-discount &lt;arg&gt;    Penalty discount. Default is 4.0.
+    --skip-latest               Skip checking for latest software version
+    --skip-nonzero-variance     Skip check for zero variance variables.
+    --skip-unique-var-name      Skip check for unique variable names.
+    --tetrad-graph-json         Create Tetrad Graph JSON output.
+    --thread &lt;arg&gt;              Number of threads.
+    --verbose                   Print additional information.
+</code></pre>
+
+<h3 id="prior-knowledge-file-example">Prior knowledge file example</h3>
+<pre><code>/knowledge
+addtemporal
+1 spending_per_stdt fac_salary stdt_tchr_ratio 
+2 rjct_rate stdt_accept_rate 
+3 tst_scores stdt_clss_stndng 
+4* grad_rate 
+
+forbiddirect
+x3 x4
+
+requiredirect
+x1 x2
+</code></pre>
+
+<p>The first line must say /knowledge The three sections of knowledge are</p>
+<ul>
+<li>forbiddirect - forbidden edges indicated by a list of pairs of variables</li>
+<li>requireddirect - required edges indicated by a list of pairs of variables</li>
+<li>addtemporal - tiers of variables where the first tier preceeds the last. Adding a asterisk next to the tier id prohibits edges between tier variables.</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../causal-web/" class="btn btn-neutral float-right" title="Causal Web">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Welcome to CCD Docs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../causal-web/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>
