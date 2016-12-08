@@ -169,11 +169,11 @@ install_github(&quot;bd2kccd/r-causal&quot;)
 <pre><code class="R">library(rcausal)
 data(&quot;charity&quot;)   #Load the charity dataset
 
-#Compute FGS search
+#Compute FGES search
 fgs &lt;- fgs(df = charity, penaltydiscount = 2, maxDegree = -1,  
 faithfulnessAssumed = TRUE, numOfThreads = 2, verbose = TRUE)    
 
-fgs$parameters #Show the FGS's parameters
+fgs$parameters #Show the FGES's parameters
 fgs$datasets #Show the dataset
 fgs$nodes #Show the result's nodes
 fgs$edges #Show the result's edges
@@ -185,10 +185,10 @@ plot(fgs$graphNEL) #Plot the causal model
 <h3 id="discrete-dataset">Discrete Dataset</h3>
 <pre><code class="R">library(rcausal)
 data(&quot;audiology&quot;)    #Load the charity dataset
-#Compute FGS search
+#Compute FGES search
 fgs.discrete &lt;- fgs.discrete(df=audiology,structurePrior=1.0,samplePrior=1.0, 
 maxDegree = -1, faithfulnessAssumed = TRUE, numOfThreads = 2,verbose = TRUE)
-fgs.discrete$parameters #Show the FGS Discrete's parameters
+fgs.discrete$parameters #Show the FGES Discrete's parameters
 fgs.discrete$datasets #Show the dataset
 fgs.discrete$nodes #Show the result's nodes
 fgs.discrete$edges #Show the result's edges

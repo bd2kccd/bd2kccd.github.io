@@ -674,12 +674,12 @@ Algorithms we support example:
   {
     "id": 1,
     "name": "fgsc",
-    "description": "FGS continuous"
+    "description": "FGES continuous"
   },
   {
     "id": 2,
     "name": "fgsd",
-    "description": "FGS discrete"
+    "description": "FGES discrete"
   },
   {
     "id": 3,
@@ -689,7 +689,7 @@ Algorithms we support example:
 ]
 ````
 
-Currently we support "FGS continuous", "FGS discrete" and "GFCI continuous". They also share a common JSON structure as of their input, for example:
+Currently we support "FGES continuous", "FGES discrete" and "GFCI continuous". They also share a common JSON structure as of their input, for example:
 
 | Input JSON Fields | Description |
 | --- | --- |
@@ -701,7 +701,7 @@ Currently we support "FGS continuous", "FGS discrete" and "GFCI continuous". The
 
 Below are the data validation flags and parameters that you can use for each algorithm.
 
-**FGS continuous** 
+**FGES continuous** 
 
 Data validation:
 
@@ -719,7 +719,7 @@ Algorithm parameters:
 | `penaltyDiscount`      | Penalty discount      |   4.0 |
 | `verbose` | Print additional information      |    true |
 
-**FGS discrete** 
+**FGES discrete** 
 
 Data validation:
 
@@ -793,7 +793,7 @@ Content-Type: application/json
 }
 ````
 
-In this example, we are running the "FGS continuous" algorithm on the file with ID 8. And this call will return the job info with a 201 Created response status code.
+In this example, we are running the "FGES continuous" algorithm on the file with ID 8. And this call will return the job info with a 201 Created response status code.
 
 ````
 {
@@ -807,7 +807,7 @@ In this example, we are running the "FGS continuous" algorithm on the file with 
 
 From this response we can tell that the job ID is 5, and the result file name will be `fgs_data_small.txt_1472742564353.txt` if everything goes well. If something is wrong an error result file with name `error_fgs_data_small.txt_1472742564353.txt` will be created.
 
-When you need to run "FGS discrete", just send the request to a different endpont URI:
+When you need to run "FGES discrete", just send the request to a different endpont URI:
 
 API Endpoint URI pattern:
 

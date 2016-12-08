@@ -699,12 +699,12 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
   {
     &quot;id&quot;: 1,
     &quot;name&quot;: &quot;fgsc&quot;,
-    &quot;description&quot;: &quot;FGS continuous&quot;
+    &quot;description&quot;: &quot;FGES continuous&quot;
   },
   {
     &quot;id&quot;: 2,
     &quot;name&quot;: &quot;fgsd&quot;,
-    &quot;description&quot;: &quot;FGS discrete&quot;
+    &quot;description&quot;: &quot;FGES discrete&quot;
   },
   {
     &quot;id&quot;: 3,
@@ -714,7 +714,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
 ]
 </code></pre>
 
-<p>Currently we support "FGS continuous", "FGS discrete" and "GFCI continuous". They also share a common JSON structure as of their input, for example:</p>
+<p>Currently we support "FGES continuous", "FGES discrete" and "GFCI continuous". They also share a common JSON structure as of their input, for example:</p>
 <table>
 <thead>
 <tr>
@@ -746,7 +746,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
 </tbody>
 </table>
 <p>Below are the data validation flags and parameters that you can use for each algorithm.</p>
-<p><strong>FGS continuous</strong> </p>
+<p><strong>FGES continuous</strong> </p>
 <p>Data validation:</p>
 <table>
 <thead>
@@ -801,7 +801,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
 </tr>
 </tbody>
 </table>
-<p><strong>FGS discrete</strong> </p>
+<p><strong>FGES discrete</strong> </p>
 <p>Data validation:</p>
 <table>
 <thead>
@@ -950,7 +950,7 @@ Content-Type: application/json
 }
 </code></pre>
 
-<p>In this example, we are running the "FGS continuous" algorithm on the file with ID 8. And this call will return the job info with a 201 Created response status code.</p>
+<p>In this example, we are running the "FGES continuous" algorithm on the file with ID 8. And this call will return the job info with a 201 Created response status code.</p>
 <pre><code>{
   &quot;id&quot;: 5,
   &quot;algorithmName&quot;: &quot;fgsc&quot;,
@@ -961,7 +961,7 @@ Content-Type: application/json
 </code></pre>
 
 <p>From this response we can tell that the job ID is 5, and the result file name will be <code>fgs_data_small.txt_1472742564353.txt</code> if everything goes well. If something is wrong an error result file with name <code>error_fgs_data_small.txt_1472742564353.txt</code> will be created.</p>
-<p>When you need to run "FGS discrete", just send the request to a different endpont URI:</p>
+<p>When you need to run "FGES discrete", just send the request to a different endpont URI:</p>
 <p>API Endpoint URI pattern:</p>
 <pre><code>POST https://cloud.ccd.pitt.edu/ccd-api/{userId}/jobs/fgsd
 </code></pre>

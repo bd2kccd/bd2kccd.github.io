@@ -4,8 +4,8 @@
 
 Causal-cmd is a Java application that provides a command-line interface (CLI) and application programming interface (API) for causal discovery algorithms produced by the Center for Causal Discovery.  The application currently includes the algorithm(s):
 
-- FGSc (Fast Greedy Search) for continuous data - is an optimization of the Greedy Equivalence Search algorithm	(GES,	Meek	1995;	Chickering	2003). The optimizations are described in Scaling up Greedy Causal Search for Continuous Variables
-- FGSd (Fast Greedy Search) for discrete data
+- FGESc (Fast Greedy Search) for continuous data - is an optimization of the Greedy Equivalence Search algorithm	(GES,	Meek	1995;	Chickering	2003). The optimizations are described in Scaling up Greedy Causal Search for Continuous Variables
+- FGESd (Fast Greedy Search) for discrete data
 - GFCIc (Greedy Fast Causal Inferece) for continuous data
 
 Causal discovery algorithms are a class of search algorithms that explore a space of graphical causal models, i.e., graphical models where directed edges imply causation, for a model (or models) that are a good fit for a dataset. We suggest that newcomers to the field review Causation, Prediction and Search by Spirtes, Glymour and Scheines for a primer on the subject.
@@ -24,7 +24,7 @@ Download the this file, [Retention.txt](http://www.ccd.pitt.edu/wp-content/uploa
 java -jar causal-cmd-6.0.1-jar-with-dependencies.jar --algorithm fgsc --data Retention.txt
 ```
 
-Note that the filename causal-cmd-x.x.x-jar-with-dependencies.jar should match the version you have downloaded. The program will output the results of the FGS search procedure as a text file (in this example to output). The beginning of the file contains the algorithm parameters used in the search.
+Note that the filename causal-cmd-x.x.x-jar-with-dependencies.jar should match the version you have downloaded. The program will output the results of the FGES search procedure as a text file (in this example to output). The beginning of the file contains the algorithm parameters used in the search.
 
 Inspect the output which should show a graph with the following edges.
 
@@ -41,7 +41,7 @@ Graph Edges:
 9. tst_scores --- stdt_clss_stndng
 ```
 
-In FGS, "Elapsed getEffectEdges = XXms" refers to the amount of time it took to evaluate all pairs of variables for correlation. The file then details each step taken in the greedy search procedure i.e., insertion or deletion of edges based on a scoring function (i.e., BIC score difference for each chosen search operation).
+In FGES, "Elapsed getEffectEdges = XXms" refers to the amount of time it took to evaluate all pairs of variables for correlation. The file then details each step taken in the greedy search procedure i.e., insertion or deletion of edges based on a scoring function (i.e., BIC score difference for each chosen search operation).
 
 The end of the file contains the causal graph from the search procedure. Here is a key to the edge types:
 
@@ -97,14 +97,14 @@ public class FgsApiExample {
             System.exit(-128);
         }
 
-        // create FGS algorithm that uses BIC score
+        // create FGES algorithm that uses BIC score
         Algorithm fgs = new Fgs(new SemBicScore());
 
         // read in dataset
         DataReader dataReader = new TabularContinuousDataReader(dataFile, delimiter);
         DataSet dataSet = dataReader.readInData();
 
-        // set parameters for FGS
+        // set parameters for FGES
         Parameters parameters = new Parameters();
         parameters.set("penaltyDiscount", 0.4);
         parameters.set("maxDegree", -1);
@@ -112,7 +112,7 @@ public class FgsApiExample {
         parameters.set("verbose", true);
         parameters.set("printStream", System.out);
 
-        // run FGS search with given dataset and parameters
+        // run FGES search with given dataset and parameters
         Graph graph = fgs.search(dataSet, parameters);
         System.out.println();
         System.out.println(graph.toString().trim());
@@ -135,7 +135,7 @@ usage: java -jar causal-cmd-6.0.1-SNAPSHOT.jar --algorithm <arg> |
 Use the `--algorithm <arg>` parameter to see specific algorithm usage information.
 
 
-### causal-cmd usage for FGS for continuous data
+### causal-cmd usage for FGES for continuous data
 
 ```
 usage: java -jar causal-cmd-6.0.1-jar-with-dependencies.jar --algorithm fgsc [-d <arg>] [--exclude-variables <arg>] -f <arg> [--faithfulness-assumed] [--help] [--json] [--knowledge <arg>] [--max-degree <arg>] [--no-validation-output] [-o <arg>] [--output-prefix <arg>] [--penalty-discount <arg>] [--skip-latest] [--skip-nonzero-variance] [--skip-unique-var-name] [--tetrad-graph-json] [--thread <arg>] [--verbose]
@@ -159,7 +159,7 @@ usage: java -jar causal-cmd-6.0.1-jar-with-dependencies.jar --algorithm fgsc [-d
     --verbose                   Print additional information.
 ```
 
-### causal-cmd usage for FGS for discrete data
+### causal-cmd usage for FGES for discrete data
 
 ```
 usage: java -jar causal-cmd-6.0.1-jar-with-dependencies.jar --algorithm fgsd [-d <arg>] [--exclude-variables <arg>] -f <arg> [--faithfulness-assumed] [--help] [--json] [--knowledge <arg>] [--max-degree <arg>] [--no-validation-output] [-o <arg>] [--output-prefix <arg>] [--sample-prior <arg>] [--skip-category-limit] [--skip-latest] [--skip-unique-var-name] [--structure-prior <arg>] [--tetrad-graph-json] [--thread <arg>] [--verbose]

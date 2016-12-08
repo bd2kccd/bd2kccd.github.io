@@ -4,7 +4,7 @@ This site hosts documentation for the [Center for Causal Discovery](http://www.c
 
 ## Tools and Software
 
-**causal-cmd** - a Java API and command line implementation of algorithms for performing causal discovery on Big Data. Use this software if you are interested incorporating analysis via a shell script or in a Java-based program. The software currently includes Fast Greedy Search (**FGS**) for continuous or discrete variables – an optimized version of Greedy Equivalence Search (**GES**) tested with datasets that contain as many as 1 million continuous variables, and Greedy Fast Causal Inference (**GFCI**) for continuous variables.
+**causal-cmd** - a Java API and command line implementation of algorithms for performing causal discovery on Big Data. Use this software if you are interested incorporating analysis via a shell script or in a Java-based program. The software currently includes Fast Greedy Search (**FGES**) for continuous or discrete variables – an optimized version of Greedy Equivalence Search (**GES**) tested with datasets that contain as many as 1 million continuous variables, and Greedy Fast Causal Inference (**GFCI**) for continuous variables.
 
 - [Download the latest release i.e., causal-cmd-X.X.X-jar-with-dependencies.jar](https://ccd3.vm.bridges.psc.edu/nexus/content/repositories/releases/edu/cmu/causal-cmd/)
 - [Documentation for the big data enabled causal discovery algorithms](http://www.ccd.pitt.edu/wiki/index.php?title=Algorithm_Documentation)
@@ -30,13 +30,13 @@ This site hosts documentation for the [Center for Causal Discovery](http://www.c
 
 - [Github project](https://github.com/bd2kccd/causal-rest-api)
 
-**Py-causal** - a python module that wraps algorithms for performing causal discovery on big data. The software currently includes Fast Greedy Search (**FGS**) for both continuous and discrete variables, and Greedy Fast Causal Inference (**GFCI**) for continuous variables.
+**Py-causal** - a python module that wraps algorithms for performing causal discovery on big data. The software currently includes Fast Greedy Search (**FGES**) for both continuous and discrete variables, and Greedy Fast Causal Inference (**GFCI**) for continuous variables.
 
 - [Github project](https://github.com/bd2kccd/py-causal)
 - [Docker container of Jupyter Notebook with Py-causal configured](https://hub.docker.com/r/chirayukong/py-causal-notebook/)
 - [Documentation for the big data enabled causal discovery algorithms](http://www.ccd.pitt.edu/wiki/index.php?title=Algorithm_Documentation)
 
-**R-causal** - an R module that that wraps algorithms for performing causal discovery on big data. The software currently includes Fast Greedy Search (**FGS**) for both continuous and discrete variables, and Greedy Fast Causal Inference (**GFCI**) for continuous variables.
+**R-causal** - an R module that that wraps algorithms for performing causal discovery on big data. The software currently includes Fast Greedy Search (**FGES**) for both continuous and discrete variables, and Greedy Fast Causal Inference (**GFCI**) for continuous variables.
 
 - [Github project](https://github.com/bd2kccd/r-causal)
 - [Docker container of Jupyter Notebook with R-causal configured](https://hub.docker.com/r/chirayukong/r-causal-rstudio/)

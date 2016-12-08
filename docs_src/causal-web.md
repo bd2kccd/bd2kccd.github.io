@@ -94,17 +94,17 @@ you can click on the Browse button and choose the prior knowledge file(s) you wo
 ## Executing an Analysis on Your Dataset
 
 Click on the Causal Discovery menu on the navigation bar on the left side. The sub menu will slowly appear. 
-Click on the desired algorithms. As of November 2016, **FGS** *(Continuous)*, **FGS Discrete**, and **GFCI** *(Continuous)* are the only supported algorithms.
+Click on the desired algorithms. As of November 2016, **FGES** *(Continuous)*, **FGES Discrete**, and **GFCI** *(Continuous)* are the only supported algorithms.
 
 ![Causal Discovery Algorithms Menu Page](img/causal-web-causal-discovery-menu.png)
 
-The **Dataset** drop-down box contains a list of datasets that the system recognize. If those datasets are already uploaded and they are not displayed in the dataset drop-down box, it means that the [Data Summarization](#summarization) process to be reviewed in the first place prior to execute a causal **FGS** *(Continuous)* analysis. 
+The **Dataset** drop-down box contains a list of datasets that the system recognize. If those datasets are already uploaded and they are not displayed in the dataset drop-down box, it means that the [Data Summarization](#summarization) process to be reviewed in the first place prior to execute a causal **FGES** *(Continuous)* analysis. 
 If a prior knowledge file needs to be computed, Prior Knowledge File drop-down box contains a list of knowledge files. 
 Before clicking the **Next** button, the data validation parameters need to be input.
 
-![FGS Algorithm Step One Menu Page](img/fgs-step-1.png)
+![FGES Algorithm Step One Menu Page](img/fgs-step-1.png)
 
-Here, the **FGS** algorithm page allows user to modify its parameters. 
+Here, the **FGES** algorithm page allows user to modify its parameters. 
 
 - The first one is Penalty Discount and its default value is 4. 
 - The second one is Search Maximum Degree and its default value is 100. 
@@ -113,17 +113,17 @@ Here, the **FGS** algorithm page allows user to modify its parameters.
 
 Click **Next** to proceed or click Advanced Options (JVM) for the JVM customization.
 
-![FGS Algorithm Step Two Menu Page](img/fgs-step-2.png)
+![FGES Algorithm Step Two Menu Page](img/fgs-step-2.png)
 
 **Expert Mode**: the JVM parameters allow users to customize JVM parameters such how much maximum memory (in Gigabyte scale) the process would allocate (e.g. 4).
 
-![FGS Algorithm Step Two on JVM Menu Page](img/fgs-step-2-jvm.png)
+![FGES Algorithm Step Two on JVM Menu Page](img/fgs-step-2-jvm.png)
 
-This is the summary page before the FGS job analysis is put into the queue. 
+This is the summary page before the FGES job analysis is put into the queue. 
 Click on the number 1 (Select Dataset) or number 2 (Set Parameters) to go back to modify the parameters. 
 Once, everything is set. Click the **Run Algorithm!** button.
 
-![FGS Algorithm Step Three Menu Page](img/fgs-step-3.png)
+![FGES Algorithm Step Three Menu Page](img/fgs-step-3.png)
 
 The application will redirect the **Job Queue** page. The analysis job is added to the queue. The **Queued** status means that it waits for the scheduler to run it once the executing slot is available. However, the **Job Queue** page does not currently automatically update the jobs' status (at least in this development stage). Refresh the **Job Queue** page from time to time to see the latest jobs' status.
 
