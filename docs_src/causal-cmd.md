@@ -8,6 +8,8 @@ Causal-cmd is a Java application that provides a command-line interface (CLI) an
 - FGESd (Fast Greedy Search) for discrete data
 - GFCIc (Greedy Fast Causal Inferece) for continuous data
 
+Note that in previous versions released by the Center FGES was called FGS.
+
 Causal discovery algorithms are a class of search algorithms that explore a space of graphical causal models, i.e., graphical models where directed edges imply causation, for a model (or models) that are a good fit for a dataset. We suggest that newcomers to the field review Causation, Prediction and Search by Spirtes, Glymour and Scheines for a primer on the subject.
 
 Causal discovery algorithms allow a user to uncover the causal relationships between variables in a dataset. These discovered causal relationships may be used further--understanding the underlying the processes of a system (e.g., the metabolic pathways of an organism), hypothesis generation (e.g., variables that best explain an outcome), guide experimentation (e.g., what gene knockout experiments should be performed) or prediction (e.g. parameterization of the causal graph using data and then using it as a classifier).
