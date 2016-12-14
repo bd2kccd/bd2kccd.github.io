@@ -1,4 +1,4 @@
-# Causal REST API V1
+# Causal REST API v0.0.7
 
 This RESTful API is designed for causal web. And it implements the [JAX-RS](https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services) specifications using Jersey.
 
@@ -15,11 +15,11 @@ This RESTful API is designed for causal web. And it implements the [JAX-RS](http
     - [Upload small data file](#upload-small-data-file)
     - [Resumable data file upload](#resumable-data-file-upload)
     - [List all dataset files of a user](#list-all-dataset-files-of-a-user)
-    - [Get the deatil information of a dataset file based on ID](#get-the-deatil-information-of-a-dataset-file-based-on-id)
+    - [Get the detail information of a dataset file based on ID](#get-the-detail-information-of-a-dataset-file-based-on-id)
     - [Delete physical dataset file and all records from database for a given file ID](#delete-physical-dataset-file-and-all-records-from-database-for-a-given-file-id)
     - [Summarize dataset file](#summarize-dataset-file)
     - [List all prior knowledge files of a given user](#list-all-prior-knowledge-files-of-a-given-user)
-    - [Get detailed information of a prior knowledge file based on ID](#get-the-deatil-information-of-a-prior-knowledge-file-based-on-id)
+    - [Get the detail information of a prior knowledge file based on ID](#get-the-detail-information-of-a-prior-knowledge-file-based-on-id)
     - [Delete physical prior knowledge file and all records from database for a given file ID](#delete-physical-prior-knowledge-file-and-all-records-from-database-for-a-given-file-id)
   - [2. Causal Discovery](#2-causal-discovery)
     - [List all the available causal discovery algorithms](#list-all-the-available-causal-discovery-algorithms)
@@ -60,16 +60,14 @@ git checkout tags/v0.3.1
 mvn clean install
 ````
 
-You'll also need to download [ccd-db-0.6.2](https://github.com/bd2kccd/ccd-db) branch:
+You'll also need to download released [ccd-db-0.6.2](https://github.com/bd2kccd/ccd-db/releases/tag/v0.6.2):
 
 ````
 git clone https://github.com/bd2kccd/ccd-db.git
 cd ccd-db
-git checkout v0.6.2
+git checkout tags/v0.6.2
 mvn clean install
 ````
-
-**Note: we'll use the the 0.6.2 tagged release once it's released, only use the branch for now.**
 
 Then you can go get and install `causal-rest-api`:
 
@@ -82,9 +80,9 @@ mvn clean package
 ### Configuration
 
 There are 4 configuration files to configure located at `causal-rest-api/src/main/resources`:
-
 - **application-hsqldb.properties**: HSQLDB database configurations (for testing only).
 - **application-mysql.properties**: MySQL database configurations
+- **application-slurm.properties**: Slurm setting for HPC
 - **application.properties**: Spring Boot application settings
 - **causal.properties**: Data file directory path and folder settings
 
@@ -215,7 +213,7 @@ The prior knowledge file upload uses a similar API endpoint:
 POST https://cloud.ccd.pitt.edu/ccd-api/{userId}/priorknowledge/upload
 ````
 
-Since there's no need to summarize a prior knowledge file, the response of a successful prior knowledge file upload will look like:
+Due to there's no need to summarize a prior knowledge file, the response of a successful prior knowledge file upload will look like:
 
 
 ````javascript
@@ -231,7 +229,7 @@ Since there's no need to summarize a prior knowledge file, the response of a suc
 
 #### Resumable data file upload
 
-In addition to the regular file upload described in Example 6, we also provide the option of stable and resumable large file upload. It requires the client side to have a resumable upload implementation. We currently support client integrated with [Resumable.js](http://resumablejs.com/), which provides multiple simultaneous, stable 
+In addition to the regular file upload described in Example 6, we also provide the option of stable and resumable large file upload. It requires the client side to have a resumable upload implementation. We currently support client integrated with [Resumable.js](http://resumablejs.com/), whihc provides multiple simultaneous, stable 
 and resumable uploads via the HTML5 File API. You can also create your own client as long as al the following parameters are set correctly.
 
 API Endpoint URI pattern:
@@ -454,7 +452,7 @@ And the response will look like this:
 
 Form the above output, we can also tell that data file with ID 10 doesn't have all the `fileSummary` field values set, we'll cover this in the dataset summarization section.
 
-#### Get the deatil information of a dataset file based on ID
+#### Get the detail information of a dataset file based on ID
 
 API Endpoint URI pattern:
 
@@ -600,7 +598,7 @@ A `JSON` formatted list of all the input dataset files that are associated with 
 ]
 ````
 
-#### Get the deatil information of a prior knowledge file based on ID
+#### Get the detail information of a prior knowledge file based on ID
 
 API Endpoint URI pattern:
 
@@ -666,24 +664,23 @@ GET /ccd-api/22/algorithms HTTP/1.1
 Host: cloud.ccd.pitt.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 ````
-
-Algorithms we support example:
+Currently we support "FGES continuous" and "FGES discrete".
 
 ````javascript
 [
   {
     "id": 1,
-    "name": "fgsc",
+    "name": "FGESc",
     "description": "FGES continuous"
   },
   {
     "id": 2,
-    "name": "fgsd",
+    "name": "FGESd",
     "description": "FGES discrete"
   },
   {
     "id": 3,
-    "name": "gfcic",
+    "name": "GFCIc",
     "description": "GFCI continuous"
   }
 ]
@@ -765,13 +762,13 @@ This is a POST request and the algorithm details and data file id will need to b
 API Endpoint URI pattern:
 
 ````
-POST https://cloud.ccd.pitt.edu/ccd-api/{userId}/jobs/fgsc
+POST https://cloud.ccd.pitt.edu/ccd-api/{userId}/jobs/FGESc
 ````
 
 Generated HTTP request code example:
 
 ````
-POST /ccd-api/22/jobs/fgsc HTTP/1.1
+POST /ccd-api/22/jobs/FGESc HTTP/1.1
 Host: cloud.ccd.pitt.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 Content-Type: application/json
@@ -798,27 +795,28 @@ In this example, we are running the "FGES continuous" algorithm on the file with
 ````
 {
   "id": 5,
-  "algorithmName": "fgsc",
+  "algorithmName": "FGESc",
+  "status": 0,
   "addedTime": 1472742564355,
-  "resultFileName": "fgs_data_small.txt_1472742564353.txt",
-  "errorResultFileName": "error_fgs_data_small.txt_1472742564353.txt"
+  "resultFileName": "FGESc_data_small.txt_1472742564353.txt",
+  "errorResultFileName": "error_FGESc_data_small.txt_1472742564353.txt"
 }
 ````
 
-From this response we can tell that the job ID is 5, and the result file name will be `fgs_data_small.txt_1472742564353.txt` if everything goes well. If something is wrong an error result file with name `error_fgs_data_small.txt_1472742564353.txt` will be created.
+From this response we can tell that the job ID is 5, and the result file name will be `FGESc_data_small.txt_1472742564353.txt` if everything goes well. If something is wrong an error result file with name `error_FGEsc_data_small.txt_1472742564353.txt` will be created.
 
 When you need to run "FGES discrete", just send the request to a different endpont URI:
 
 API Endpoint URI pattern:
 
 ````
-POST https://cloud.ccd.pitt.edu/ccd-api/{userId}/jobs/fgsd
+POST https://cloud.ccd.pitt.edu/ccd-api/{userId}/jobs/FGESd
 ````
 
 Generated HTTP request code example:
 
 ````
-POST /ccd-api/22/jobs/fgsd HTTP/1.1
+POST /ccd-api/22/jobs/FGESd HTTP/1.1
 Host: cloud.ccd.pitt.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 Content-Type: application/json
@@ -865,12 +863,12 @@ Then you'll see the information of all jobs that are currently running:
 [
   {
     "id": 32,
-    "algorithmName": "fgsc",
+    "algorithmName": "FGESc",
     "addedTime": 1468436085000
   },
   {
     "id": 33,
-    "algorithmName": "fgsd",
+    "algorithmName": "FGESd",
     "addedTime": 1468436087000
   }
 ]
@@ -939,13 +937,13 @@ The response to this request will look like this:
 ````javascript
 [
   {
-    "name": "fgs_sim_data_20vars_100cases.csv_1466171729046.txt",
+    "name": "FGESc_sim_data_20vars_100cases.csv_1466171729046.txt",
     "creationTime": 1466171732000,
     "lastModifiedTime": 1466171732000,
     "fileSize": 1660
   },
   {
-    "name": "fgs_data_small.txt_1466172140585.txt",
+    "name": "FGESc_data_small.txt_1466172140585.txt",
     "creationTime": 1466172145000,
     "lastModifiedTime": 1466172145000,
     "fileSize": 39559
@@ -964,7 +962,7 @@ GET https://cloud.ccd.pitt.edu/ccd-api/{userId}/results/{result_file_name}
 Generated HTTP request code example:
 
 ````
-GET /ccd-api/22/results/fgs_data_small.txt_1466172140585.txt HTTP/1.1
+GET /ccd-api/22/results/FGESc_data_small.txt_1466172140585.txt HTTP/1.1
 Host: cloud.ccd.pitt.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 ````
@@ -978,7 +976,7 @@ The response to this request will look like this:
   "status": 404,
   "error": "Not Found",
   "message": "Resource not found.",
-  "path": "/22/results/fgs_data_small.txt_146172140585.txt"
+  "path": "/22/results/FGESc_data_small.txt_146172140585.txt"
 }
 ````
 
@@ -1004,15 +1002,15 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
 
 {
   "resultFiles": [
-    "gs_sim_data_20vars_100cases.csv_1466171729046.txt",
-    "fgs_data_small.txt_1467305104859.txt"
+    "FGESc_sim_data_20vars_100cases.csv_1466171729046.txt",
+    "FGESc_data_small.txt_1467305104859.txt"
   ]
 }
 ````
 When you specify multiple file names, use the `!!` as a delimiter. This request will generate a result comparison file with the following content (shortened version):
 
 ````
-fgs_sim_data_20vars_100cases.csv_1466171729046.txt  fgs_data_small.txt_1467305104859.txt
+FGESc_sim_data_20vars_100cases.csv_1466171729046.txt  FGESc_data_small.txt_1467305104859.txt
 Edges In All  Same End Point
 NR4A2,FOS 0 0
 X5,X17  0 0
@@ -1090,7 +1088,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
 Then it returns the content of that comparison file (shorted version):
 
 ````
-fgs_sim_data_20vars_100cases.csv_1466171729046.txt  fgs_data_small.txt_1467305104859.txt
+FGESc_sim_data_20vars_100cases.csv_1466171729046.txt  FGESc_data_small.txt_1467305104859.txt
 Edges In All  Same End Point
 NR4A2,FOS 0 0
 X5,X17  0 0
@@ -1104,4 +1102,3 @@ SCRG1,hsa_miR_377 0 0
 CDH3,diag 0 0
 SERPINI2,FGG  0 0
 ````
-

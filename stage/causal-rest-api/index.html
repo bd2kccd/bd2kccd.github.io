@@ -73,7 +73,7 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#causal-rest-api-v1">Causal REST API V1</a></li>
+                <li class="toctree-l3"><a href="#causal-rest-api-v007">Causal REST API v0.0.7</a></li>
                 
                     <li><a class="toctree-l4" href="#installation">Installation</a></li>
                 
@@ -131,7 +131,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="causal-rest-api-v1">Causal REST API V1</h1>
+                <h1 id="causal-rest-api-v007">Causal REST API v0.0.7</h1>
 <p>This RESTful API is designed for causal web. And it implements the <a href="https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services">JAX-RS</a> specifications using Jersey.</p>
 <p><strong>Table of Contents</strong></p>
 <ul>
@@ -146,11 +146,11 @@
 <li><a href="#upload-small-data-file">Upload small data file</a></li>
 <li><a href="#resumable-data-file-upload">Resumable data file upload</a></li>
 <li><a href="#list-all-dataset-files-of-a-user">List all dataset files of a user</a></li>
-<li><a href="#get-the-deatil-information-of-a-dataset-file-based-on-id">Get the deatil information of a dataset file based on ID</a></li>
+<li><a href="#get-the-detail-information-of-a-dataset-file-based-on-id">Get the detail information of a dataset file based on ID</a></li>
 <li><a href="#delete-physical-dataset-file-and-all-records-from-database-for-a-given-file-id">Delete physical dataset file and all records from database for a given file ID</a></li>
 <li><a href="#summarize-dataset-file">Summarize dataset file</a></li>
 <li><a href="#list-all-prior-knowledge-files-of-a-given-user">List all prior knowledge files of a given user</a></li>
-<li><a href="#get-the-deatil-information-of-a-prior-knowledge-file-based-on-id">Get detailed information of a prior knowledge file based on ID</a></li>
+<li><a href="#get-the-detail-information-of-a-prior-knowledge-file-based-on-id">Get the detail information of a prior knowledge file based on ID</a></li>
 <li><a href="#delete-physical-prior-knowledge-file-and-all-records-from-database-for-a-given-file-id">Delete physical prior knowledge file and all records from database for a given file ID</a></li>
 </ul>
 </li>
@@ -189,14 +189,13 @@ git checkout tags/v0.3.1
 mvn clean install
 </code></pre>
 
-<p>You'll also need to download <a href="https://github.com/bd2kccd/ccd-db">ccd-db-0.6.2</a> branch:</p>
+<p>You'll also need to download released <a href="https://github.com/bd2kccd/ccd-db/releases/tag/v0.6.2">ccd-db-0.6.2</a>:</p>
 <pre><code>git clone https://github.com/bd2kccd/ccd-db.git
 cd ccd-db
-git checkout v0.6.2
+git checkout tags/v0.6.2
 mvn clean install
 </code></pre>
 
-<p><strong>Note: we'll use the the 0.6.2 tagged release once it's released, only use the branch for now.</strong></p>
 <p>Then you can go get and install <code>causal-rest-api</code>:</p>
 <pre><code>git clone https://github.com/bd2kccd/causal-rest-api.git
 cd causal-rest-api
@@ -204,13 +203,12 @@ mvn clean package
 </code></pre>
 
 <h3 id="configuration">Configuration</h3>
-<p>There are 4 configuration files to configure located at <code>causal-rest-api/src/main/resources</code>:</p>
-<ul>
-<li><strong>application-hsqldb.properties</strong>: HSQLDB database configurations (for testing only).</li>
-<li><strong>application-mysql.properties</strong>: MySQL database configurations</li>
-<li><strong>application.properties</strong>: Spring Boot application settings</li>
-<li><strong>causal.properties</strong>: Data file directory path and folder settings</li>
-</ul>
+<p>There are 4 configuration files to configure located at <code>causal-rest-api/src/main/resources</code>:
+- <strong>application-hsqldb.properties</strong>: HSQLDB database configurations (for testing only).
+- <strong>application-mysql.properties</strong>: MySQL database configurations
+- <strong>application-slurm.properties</strong>: Slurm setting for HPC
+- <strong>application.properties</strong>: Spring Boot application settings
+- <strong>causal.properties</strong>: Data file directory path and folder settings</p>
 <p>Befor editing the <code>causal.properties</code> file, you need to create a workspace for the application to work in. Create a directory called workspace, for an example <code>/home/zhy19/ccd/workspace</code>. Inside the workspace directory, create another folder called <code>lib</code>. Then build the jar file of Tetred using the <a href="https://github.com/cmu-phil/tetrad">latest development branch</a>. After that, copy the jar file to the <code>lib</code> folder created earlier.</p>
 <h3 id="start-the-api-server">Start the API Server</h3>
 <p>Once you have all the settings configured, go to <code>causal-rest-api/target</code> and you will find the jar file named <code>causal-rest-api.jar</code>. Then simply run </p>
@@ -305,7 +303,7 @@ Content-Type:
 <pre><code>POST https://cloud.ccd.pitt.edu/ccd-api/{userId}/priorknowledge/upload
 </code></pre>
 
-<p>Since there's no need to summarize a prior knowledge file, the response of a successful prior knowledge file upload will look like:</p>
+<p>Due to there's no need to summarize a prior knowledge file, the response of a successful prior knowledge file upload will look like:</p>
 <pre><code class="javascript">{
     &quot;id&quot;: 6,
     &quot;name&quot;: &quot;Lung-tetrad_hv.txt&quot;,
@@ -317,7 +315,7 @@ Content-Type:
 </code></pre>
 
 <h4 id="resumable-data-file-upload">Resumable data file upload</h4>
-<p>In addition to the regular file upload described in Example 6, we also provide the option of stable and resumable large file upload. It requires the client side to have a resumable upload implementation. We currently support client integrated with <a href="http://resumablejs.com/">Resumable.js</a>, which provides multiple simultaneous, stable 
+<p>In addition to the regular file upload described in Example 6, we also provide the option of stable and resumable large file upload. It requires the client side to have a resumable upload implementation. We currently support client integrated with <a href="http://resumablejs.com/">Resumable.js</a>, whihc provides multiple simultaneous, stable 
 and resumable uploads via the HTML5 File API. You can also create your own client as long as al the following parameters are set correctly.</p>
 <p>API Endpoint URI pattern:</p>
 <pre><code>GET https://cloud.ccd.pitt.edu/ccd-api/{userId}/chunkupload
@@ -515,7 +513,7 @@ Accept: application/xml
 </code></pre>
 
 <p>Form the above output, we can also tell that data file with ID 10 doesn't have all the <code>fileSummary</code> field values set, we'll cover this in the dataset summarization section.</p>
-<h4 id="get-the-deatil-information-of-a-dataset-file-based-on-id">Get the deatil information of a dataset file based on ID</h4>
+<h4 id="get-the-detail-information-of-a-dataset-file-based-on-id">Get the detail information of a dataset file based on ID</h4>
 <p>API Endpoint URI pattern:</p>
 <pre><code>GET https://cloud.ccd.pitt.edu/ccd-api/{userId}/dataset/{id}
 </code></pre>
@@ -647,7 +645,7 @@ Accept: application/json
 ]
 </code></pre>
 
-<h4 id="get-the-deatil-information-of-a-prior-knowledge-file-based-on-id">Get the deatil information of a prior knowledge file based on ID</h4>
+<h4 id="get-the-detail-information-of-a-prior-knowledge-file-based-on-id">Get the detail information of a prior knowledge file based on ID</h4>
 <p>API Endpoint URI pattern:</p>
 <pre><code>GET https://cloud.ccd.pitt.edu/ccd-api/{userId}/priorknowledge/{id}
 </code></pre>
@@ -694,21 +692,21 @@ Host: cloud.ccd.pitt.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 </code></pre>
 
-<p>Algorithms we support example:</p>
+<p>Currently we support "FGES continuous" and "FGES discrete".</p>
 <pre><code class="javascript">[
   {
     &quot;id&quot;: 1,
-    &quot;name&quot;: &quot;fgsc&quot;,
+    &quot;name&quot;: &quot;FGESc&quot;,
     &quot;description&quot;: &quot;FGES continuous&quot;
   },
   {
     &quot;id&quot;: 2,
-    &quot;name&quot;: &quot;fgsd&quot;,
+    &quot;name&quot;: &quot;FGESd&quot;,
     &quot;description&quot;: &quot;FGES discrete&quot;
   },
   {
     &quot;id&quot;: 3,
-    &quot;name&quot;: &quot;gfcic&quot;,
+    &quot;name&quot;: &quot;GFCIc&quot;,
     &quot;description&quot;: &quot;GFCI continuous&quot;
   }
 ]
@@ -924,11 +922,11 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
 <h4 id="add-a-new-job-to-run-the-desired-algorithm-on-a-given-data-file">Add a new job to run the desired algorithm on a given data file</h4>
 <p>This is a POST request and the algorithm details and data file id will need to be specified in the POST body as a JSON when you make the request.</p>
 <p>API Endpoint URI pattern:</p>
-<pre><code>POST https://cloud.ccd.pitt.edu/ccd-api/{userId}/jobs/fgsc
+<pre><code>POST https://cloud.ccd.pitt.edu/ccd-api/{userId}/jobs/FGESc
 </code></pre>
 
 <p>Generated HTTP request code example:</p>
-<pre><code>POST /ccd-api/22/jobs/fgsc HTTP/1.1
+<pre><code>POST /ccd-api/22/jobs/FGESc HTTP/1.1
 Host: cloud.ccd.pitt.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 Content-Type: application/json
@@ -953,21 +951,22 @@ Content-Type: application/json
 <p>In this example, we are running the "FGES continuous" algorithm on the file with ID 8. And this call will return the job info with a 201 Created response status code.</p>
 <pre><code>{
   &quot;id&quot;: 5,
-  &quot;algorithmName&quot;: &quot;fgsc&quot;,
+  &quot;algorithmName&quot;: &quot;FGESc&quot;,
+  &quot;status&quot;: 0,
   &quot;addedTime&quot;: 1472742564355,
-  &quot;resultFileName&quot;: &quot;fgs_data_small.txt_1472742564353.txt&quot;,
-  &quot;errorResultFileName&quot;: &quot;error_fgs_data_small.txt_1472742564353.txt&quot;
+  &quot;resultFileName&quot;: &quot;FGESc_data_small.txt_1472742564353.txt&quot;,
+  &quot;errorResultFileName&quot;: &quot;error_FGESc_data_small.txt_1472742564353.txt&quot;
 }
 </code></pre>
 
-<p>From this response we can tell that the job ID is 5, and the result file name will be <code>fgs_data_small.txt_1472742564353.txt</code> if everything goes well. If something is wrong an error result file with name <code>error_fgs_data_small.txt_1472742564353.txt</code> will be created.</p>
+<p>From this response we can tell that the job ID is 5, and the result file name will be <code>FGESc_data_small.txt_1472742564353.txt</code> if everything goes well. If something is wrong an error result file with name <code>error_FGEsc_data_small.txt_1472742564353.txt</code> will be created.</p>
 <p>When you need to run "FGES discrete", just send the request to a different endpont URI:</p>
 <p>API Endpoint URI pattern:</p>
-<pre><code>POST https://cloud.ccd.pitt.edu/ccd-api/{userId}/jobs/fgsd
+<pre><code>POST https://cloud.ccd.pitt.edu/ccd-api/{userId}/jobs/FGESd
 </code></pre>
 
 <p>Generated HTTP request code example:</p>
-<pre><code>POST /ccd-api/22/jobs/fgsd HTTP/1.1
+<pre><code>POST /ccd-api/22/jobs/FGESd HTTP/1.1
 Host: cloud.ccd.pitt.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 Content-Type: application/json
@@ -1007,12 +1006,12 @@ Content-Type: application/json
 <pre><code class="javascript">[
   {
     &quot;id&quot;: 32,
-    &quot;algorithmName&quot;: &quot;fgsc&quot;,
+    &quot;algorithmName&quot;: &quot;FGESc&quot;,
     &quot;addedTime&quot;: 1468436085000
   },
   {
     &quot;id&quot;: 33,
-    &quot;algorithmName&quot;: &quot;fgsd&quot;,
+    &quot;algorithmName&quot;: &quot;FGESd&quot;,
     &quot;addedTime&quot;: 1468436087000
   }
 ]
@@ -1059,13 +1058,13 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
 <p>The response to this request will look like this:</p>
 <pre><code class="javascript">[
   {
-    &quot;name&quot;: &quot;fgs_sim_data_20vars_100cases.csv_1466171729046.txt&quot;,
+    &quot;name&quot;: &quot;FGESc_sim_data_20vars_100cases.csv_1466171729046.txt&quot;,
     &quot;creationTime&quot;: 1466171732000,
     &quot;lastModifiedTime&quot;: 1466171732000,
     &quot;fileSize&quot;: 1660
   },
   {
-    &quot;name&quot;: &quot;fgs_data_small.txt_1466172140585.txt&quot;,
+    &quot;name&quot;: &quot;FGESc_data_small.txt_1466172140585.txt&quot;,
     &quot;creationTime&quot;: 1466172145000,
     &quot;lastModifiedTime&quot;: 1466172145000,
     &quot;fileSize&quot;: 39559
@@ -1079,7 +1078,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
 </code></pre>
 
 <p>Generated HTTP request code example:</p>
-<pre><code>GET /ccd-api/22/results/fgs_data_small.txt_1466172140585.txt HTTP/1.1
+<pre><code>GET /ccd-api/22/results/FGESc_data_small.txt_1466172140585.txt HTTP/1.1
 Host: cloud.ccd.pitt.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 </code></pre>
@@ -1091,7 +1090,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
   &quot;status&quot;: 404,
   &quot;error&quot;: &quot;Not Found&quot;,
   &quot;message&quot;: &quot;Resource not found.&quot;,
-  &quot;path&quot;: &quot;/22/results/fgs_data_small.txt_146172140585.txt&quot;
+  &quot;path&quot;: &quot;/22/results/FGESc_data_small.txt_146172140585.txt&quot;
 }
 </code></pre>
 
@@ -1109,14 +1108,14 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
 
 {
   &quot;resultFiles&quot;: [
-    &quot;gs_sim_data_20vars_100cases.csv_1466171729046.txt&quot;,
-    &quot;fgs_data_small.txt_1467305104859.txt&quot;
+    &quot;FGESc_sim_data_20vars_100cases.csv_1466171729046.txt&quot;,
+    &quot;FGESc_data_small.txt_1467305104859.txt&quot;
   ]
 }
 </code></pre>
 
 <p>When you specify multiple file names, use the <code>!!</code> as a delimiter. This request will generate a result comparison file with the following content (shortened version):</p>
-<pre><code>fgs_sim_data_20vars_100cases.csv_1466171729046.txt  fgs_data_small.txt_1467305104859.txt
+<pre><code>FGESc_sim_data_20vars_100cases.csv_1466171729046.txt  FGESc_data_small.txt_1467305104859.txt
 Edges In All  Same End Point
 NR4A2,FOS 0 0
 X5,X17  0 0
@@ -1179,7 +1178,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
 </code></pre>
 
 <p>Then it returns the content of that comparison file (shorted version):</p>
-<pre><code>fgs_sim_data_20vars_100cases.csv_1466171729046.txt  fgs_data_small.txt_1467305104859.txt
+<pre><code>FGESc_sim_data_20vars_100cases.csv_1466171729046.txt  FGESc_data_small.txt_1467305104859.txt
 Edges In All  Same End Point
 NR4A2,FOS 0 0
 X5,X17  0 0
