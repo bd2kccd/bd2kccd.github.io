@@ -94,7 +94,7 @@ you can click on the Browse button and choose the prior knowledge file(s) you wo
 ## Executing an Analysis on Your Dataset
 
 Click on the Causal Discovery menu on the navigation bar on the left side. The sub menu will slowly appear. 
-Click on the desired algorithms. As of November 2016, **FGES** *(Continuous)*, **FGES Discrete**, and **GFCI** *(Continuous)* are the only supported algorithms.
+Click on the desired algorithms. As of November 2016, **FGES** *(Continuous)*, **FGES Discrete**, and **GFCI** *(Continuous)* are the only supported algorithms.  Note that in previous versions of our software FGES was known as 
 
 ![Causal Discovery Algorithms Menu Page](img/causal-web-causal-discovery-menu.png)
 

@@ -6,9 +6,9 @@ Causal-cmd is a Java application that provides a command-line interface (CLI) an
 
 - FGESc (Fast Greedy Search) for continuous data - is an optimization of the Greedy Equivalence Search algorithm	(GES,	Meek	1995;	Chickering	2003). The optimizations are described in Scaling up Greedy Causal Search for Continuous Variables
 - FGESd (Fast Greedy Search) for discrete data
-- GFCIc (Greedy Fast Causal Inferece) for continuous data
+- GFCIc (Greedy Fast Causal Inference) for continuous data
 
-Note that in previous versions released by the Center FGES was called FGS.
+Note that in previous versions released by the Center, FGES was called FGS.
 
 Causal discovery algorithms are a class of search algorithms that explore a space of graphical causal models, i.e., graphical models where directed edges imply causation, for a model (or models) that are a good fit for a dataset. We suggest that newcomers to the field review Causation, Prediction and Search by Spirtes, Glymour and Scheines for a primer on the subject.
 
