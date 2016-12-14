@@ -41,21 +41,31 @@ All the source markdown files are stored in the `/docs_src` folder. Just follow 
 
 You'll also need to edit settings in the `mkdocs.yml` file to configure site pages and navigation.
 
-## 6. Building/Generating the Static Site
+## 6. Building/Generating the Static Site for Staging
 
 ````
-mkdocs build --clean
+./build_stage.sh
 ````
 
-This command will build and generate the static content site and store all the static files at `/docs` folder. 
+This command will build and generate the static content site and store all the static files at `/stage` folder. 
 
 ## 7. Reviewing Changes Locally
 
-Before pushing all changes back to Github repo, you'll need to review your local changes in the development server.
+Before pushing all changes back to Github repo and then sending a pull request, you'll need to review your local changes in the development server.
 
 ## 8. Sending a Pull Request for Changes Review
 
-Once everything looks good in your local development server, push them to Github and then send a new pull request based on the master so your cahnges will be reviewed before merging into the master branch. And once it's merged successfully, you'll be able to see the updated Github Pages site at https://bd2kccd.github.io.
+Once everything looks good in your local development server, push them to Github and then send a new pull request based on the master so your cahnges will be reviewed before merging into the master branch. And once it's merged successfully, you'll be able to see the updated Github Pages site at https://bd2kccd.github.io/stage
+
+#9. Pushing to Production Site
+
+The owner of this repo will build the production site based on the review results by using 
+
+````
+./build_production.sh
+````
+
+This generaes all the static content into the `docs` folder. And once it's pushed back to Github, the production site can be accessed at https://bd2kccd.github.io/docs
 
 ## Notes
 
