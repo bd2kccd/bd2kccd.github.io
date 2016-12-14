@@ -57,7 +57,7 @@ Before pushing all changes back to Github repo and then sending a pull request, 
 
 Once everything looks good in your local development server, push them to Github and then send a new pull request based on the master so your cahnges will be reviewed before merging into the master branch. And once it's merged successfully, you'll be able to see the updated Github Pages site at https://bd2kccd.github.io/stage
 
-#9. Pushing to Production Site
+##9. Pushing to Production Site
 
 The owner of this repo will build the production site based on the review results by using 
 
