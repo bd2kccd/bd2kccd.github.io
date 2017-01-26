@@ -106,7 +106,7 @@ public class FgsApiExample {
         DataReader dataReader = new TabularContinuousDataReader(dataFile, delimiter);
         DataSet dataSet = dataReader.readInData();
 
-        // set parameters for FGES
+        // set parameters for FGESc
         Parameters parameters = new Parameters();
         parameters.set("penaltyDiscount", 0.4);
         parameters.set("maxDegree", -1);
