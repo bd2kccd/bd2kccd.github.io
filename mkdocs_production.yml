@@ -11,4 +11,4 @@ pages:
     - Py-causal: py-causal.md
     - R-causal: r-causal.md
 theme: readthedocs
-google_analytics: ['UA-xxxxxxxx-x', 'bd2kccd.github.io']
+google_analytics: ['UA-60897872-2', 'bd2kccd.github.io']

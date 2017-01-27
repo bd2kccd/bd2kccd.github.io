@@ -1,7 +1,7 @@
 site_name: CCD Docs
 site_description: Documentation of CCD tools and software
 docs_dir: docs_src
-site_dir: stage
+site_dir: docs
 site_url: https://bd2kccd.github.io/docs
 pages:
     - Welcome to CCD Docs: index.md
@@ -11,4 +11,4 @@ pages:
     - Py-causal: py-causal.md
     - R-causal: r-causal.md
 theme: readthedocs
-google_analytics: ['UA-xxxxxxxx-x', 'bd2kccd.github.io']
+google_analytics: ['UA-60897872-2', 'bd2kccd.github.io']
