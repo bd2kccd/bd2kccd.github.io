@@ -83,7 +83,7 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#causal-rest-api-v007">Causal REST API v0.0.7</a></li>
+                <li class="toctree-l3"><a href="#causal-rest-api-v008">Causal REST API v0.0.8</a></li>
                 
                     <li><a class="toctree-l4" href="#installation">Installation</a></li>
                 
@@ -141,7 +141,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="causal-rest-api-v007">Causal REST API v0.0.7</h1>
+                <h1 id="causal-rest-api-v008">Causal REST API v0.0.8</h1>
 <p>This RESTful API is designed for causal web. And it implements the <a href="https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services">JAX-RS</a> specifications using Jersey.</p>
 <p><strong>Table of Contents</strong></p>
 <ul>
@@ -199,7 +199,7 @@ git checkout tags/v0.3.1
 mvn clean install
 </code></pre>
 
-<p>You'll also need to download released <a href="https://github.com/bd2kccd/ccd-db/releases/tag/v0.6.3">ccd-db-0.6.3</a>:</p>
+<p>You'll also need to download released <a href="https://github.com/bd2kccd/ccd-db/releases/tag/v0.6.4">ccd-db-0.6.4</a>:</p>
 <pre><code>git clone https://github.com/bd2kccd/ccd-db.git
 cd ccd-db
 git checkout tags/v0.6.3
@@ -702,7 +702,6 @@ Host: ccd2.vm.bridges.psc.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 </code></pre>
 
-<p>Currently we support "FGES continuous" and "FGES discrete".</p>
 <pre><code class="javascript">[
   {
     &quot;id&quot;: 1,
@@ -718,11 +717,16 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
     &quot;id&quot;: 3,
     &quot;name&quot;: &quot;GFCIc&quot;,
     &quot;description&quot;: &quot;GFCI continuous&quot;
+  },
+  {
+    &quot;id&quot;: 4,
+    &quot;name&quot;: &quot;GFCId&quot;,
+    &quot;description&quot;: &quot;GFCI discrete&quot;
   }
 ]
 </code></pre>
 
-<p>Currently we support "FGES continuous", "FGES discrete" and "GFCI continuous". They also share a common JSON structure as of their input, for example:</p>
+<p>Currently we support "FGES continuous", "FGES discrete", "GFCI continuous", and "GFCI discrete". They also share a common JSON structure as of their input, for example:</p>
 <table>
 <thead>
 <tr>
@@ -794,8 +798,8 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
 </tr>
 <tr>
 <td><code>maxDegree</code></td>
-<td>The maximum degree of the output graph, at least -1</td>
-<td>-1</td>
+<td>The maximum degree of the output graph</td>
+<td>100</td>
 </tr>
 <tr>
 <td><code>penaltyDiscount</code></td>
@@ -844,7 +848,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
 <tbody>
 <tr>
 <td><code>structurePrior</code></td>
-<td>Structure prior</td>
+<td>Structure prior coefficient</td>
 <td>1.0</td>
 </tr>
 <tr>
@@ -853,14 +857,14 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
 <td>1.0</td>
 </tr>
 <tr>
+<td><code>maxDegree</code></td>
+<td>The maximum degree of the output graph</td>
+<td>100</td>
+</tr>
+<tr>
 <td><code>faithfulnessAssumed</code></td>
 <td>Yes if (one edge) faithfulness should be assumed</td>
 <td>true</td>
-</tr>
-<tr>
-<td><code>maxDegree</code></td>
-<td>The maximum degree of the output graph, at least -1</td>
-<td>-1</td>
 </tr>
 <tr>
 <td><code>verbose</code></td>
@@ -904,8 +908,8 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
 <tbody>
 <tr>
 <td><code>alpha</code></td>
-<td>Search depth. Integer value</td>
-<td>1.0</td>
+<td>Cutoff for p values (alpha)</td>
+<td>0.01</td>
 </tr>
 <tr>
 <td><code>penaltyDiscount</code></td>
@@ -914,13 +918,78 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
 </tr>
 <tr>
 <td><code>maxDegree</code></td>
-<td>The maximum degree of the output graph, at least -1</td>
-<td>-1</td>
+<td>The maximum degree of the output graph</td>
+<td>100</td>
 </tr>
 <tr>
 <td><code>faithfulnessAssumed</code></td>
 <td>Yes if (one edge) faithfulness should be assumed</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>verbose</code></td>
+<td>Print additional information</td>
 <td>true</td>
+</tr>
+</tbody>
+</table>
+<p><strong>GFCI discrete</strong> </p>
+<p>Data validation:</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>skipUniqueVarName</code></td>
+<td>Skip check for unique variable names</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>skipCategoryLimit</code></td>
+<td>Skip 'limit number of categories' check</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<p>Algorithm parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>alpha</code></td>
+<td>Cutoff for p values (alpha)</td>
+<td>0.01</td>
+</tr>
+<tr>
+<td><code>structurePrior</code></td>
+<td>Structure prior coefficient</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td><code>samplePrior</code></td>
+<td>Sample prior</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td><code>maxDegree</code></td>
+<td>The maximum degree of the output graph</td>
+<td>100</td>
+</tr>
+<tr>
+<td><code>faithfulnessAssumed</code></td>
+<td>Yes if (one edge) faithfulness should be assumed</td>
+<td>false</td>
 </tr>
 <tr>
 <td><code>verbose</code></td>
@@ -1125,20 +1194,20 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
 </code></pre>
 
 <p>When you specify multiple file names, use the <code>!!</code> as a delimiter. This request will generate a result comparison file with the following content (shortened version):</p>
-<pre><code>FGESc_sim_data_20vars_100cases.csv_1466171729046.txt  FGESc_data_small.txt_1467305104859.txt
-Edges In All  Same End Point
-NR4A2,FOS 0 0
-X5,X17  0 0
-MMP11,ASB5  0 0
-X12,X8  0 0
-hsa_miR_654_3p,hsa_miR_337_3p 0 0
-RND1,FGA  0 0
-HHLA2,UBXN10  0 0
-HS6ST2,RND1 0 0
-SCRG1,hsa_miR_377 0 0
-CDH3,diag 0 0
-SERPINI2,FGG  0 0
-hsa_miR_451,hsa_miR_136_  0 0
+<pre><code>FGESc_sim_data_20vars_100cases.csv_1466171729046.txt    FGESc_data_small.txt_1467305104859.txt
+Edges   In All  Same End Point
+NR4A2,FOS   0   0
+X5,X17  0   0
+MMP11,ASB5  0   0
+X12,X8  0   0
+hsa_miR_654_3p,hsa_miR_337_3p   0   0
+RND1,FGA    0   0
+HHLA2,UBXN10    0   0
+HS6ST2,RND1 0   0
+SCRG1,hsa_miR_377   0   0
+CDH3,diag   0   0
+SERPINI2,FGG    0   0
+hsa_miR_451,hsa_miR_136_    0   0
 </code></pre>
 
 <p>From this comparison, you can see if the two algorithm graphs have common edges and endpoints.</p>
@@ -1188,19 +1257,19 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
 </code></pre>
 
 <p>Then it returns the content of that comparison file (shorted version):</p>
-<pre><code>FGESc_sim_data_20vars_100cases.csv_1466171729046.txt  FGESc_data_small.txt_1467305104859.txt
-Edges In All  Same End Point
-NR4A2,FOS 0 0
-X5,X17  0 0
-MMP11,ASB5  0 0
-X12,X8  0 0
-hsa_miR_654_3p,hsa_miR_337_3p 0 0
-RND1,FGA  0 0
-HHLA2,UBXN10  0 0
-HS6ST2,RND1 0 0
-SCRG1,hsa_miR_377 0 0
-CDH3,diag 0 0
-SERPINI2,FGG  0 0
+<pre><code>FGESc_sim_data_20vars_100cases.csv_1466171729046.txt    FGESc_data_small.txt_1467305104859.txt
+Edges   In All  Same End Point
+NR4A2,FOS   0   0
+X5,X17  0   0
+MMP11,ASB5  0   0
+X12,X8  0   0
+hsa_miR_654_3p,hsa_miR_337_3p   0   0
+RND1,FGA    0   0
+HHLA2,UBXN10    0   0
+HS6ST2,RND1 0   0
+SCRG1,hsa_miR_377   0   0
+CDH3,diag   0   0
+SERPINI2,FGG    0   0
 </code></pre>
               
             </div>
