@@ -3,7 +3,7 @@
 
 ## Creating Your Account
 
-We are currently hosting an the Causal Web Application at the Pittsburgh Supercomputing Center. The url for the site is [here](https://ccd1.vm.bridges.psc.edu/ccd/). On the button of the login page, there is a signup link. Click it!
+We are currently hosting an the Causal Web Application at the Pittsburgh Supercomputing Center. The url for the site is [https://ccd4.vm.bridges.psc.edu/ccd/](https://ccd4.vm.bridges.psc.edu/ccd/). And you can create new accoutn by clikcing "Create an account" on the login page.
 
 ![Causal Web User Login Page](img/causal-web-login.png)
 
