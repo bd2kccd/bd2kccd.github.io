@@ -4,27 +4,24 @@ This site hosts documentation for the [Center for Causal Discovery](http://www.c
 
 ## Tools and Software
 
-**causal-cmd** - a Java API and command line implementation of algorithms for performing causal discovery on Big Data. Use this software if you are interested incorporating analysis via a shell script or in a Java-based program. The software currently includes Fast Greedy Search (**FGES**) for continuous or discrete variables – an optimized version of Greedy Equivalence Search (**GES**) tested with datasets that contain as many as 1 million continuous variables, and Greedy Fast Causal Inference (**GFCI**) for continuous variables.
+**causal-cmd** - a Java API and command line implementation of algorithms for performing causal discovery on Big Data. Use this software if you are interested incorporating analysis via a shell script or in a Java-based program. The software currently includes Fast Greedy Search (**FGES**) for continuous or discrete variables – an optimized version of Greedy Equivalence Search (**GES**) tested with datasets that contain as many as 1 million continuous variables, and Greedy Fast Causal Inference (**GFCI**) for continuous or discrete variables.
 
 - [Download the latest release i.e., causal-cmd-X.X.X-jar-with-dependencies.jar](https://ccd3.vm.bridges.psc.edu/nexus/content/repositories/releases/edu/cmu/causal-cmd/)
 - [Documentation for the big data enabled causal discovery algorithms](http://www.ccd.pitt.edu/wiki/index.php?title=Algorithm_Documentation)
 - [Report bugs or issues with the software](https://tracker.dbmi.pitt.edu/projects/ccd/issues/new)
-- [Causal-cmd Github project](https://github.com/cmu-phil/tetrad)
+- [Github project](https://github.com/bd2kccd/causal-cmd)
 
 **Tetrad** - a Java API, and desktop environment for learning, performing analyses and experimenting with causal discovery algorithms.
 
 - [Tetrad Project Website](http://www.phil.cmu.edu/tetrad/)
-- [Download latest release of tetrad i.e., tetrad-gui-X.X.X-launch.jar](https://ccd3.vm.bridges.psc.edu/nexus/content/repositories/releases/edu/cmu/tetrad-gui/)
-- [Download command line version i.e., tetrad-lib-X.X.X-tetradcmd.jar](https://ccd3.vm.bridges.psc.edu/nexus/content/repositories/releases/edu/cmu/tetrad-lib/)
 - [Documentation for the big data enabled causal discovery algorithms](http://www.ccd.pitt.edu/wiki/index.php?title=Algorithm_Documentation)
-- [Causal-cmd Github project](https://github.com/cmu-phil/tetrad)
+- [Github project](https://github.com/cmu-phil/tetrad)
 
 **Causal Web App** – our user-friendly web-based graphical interface for performing causal discovery analysis on big data using large memory servers at the Pittsburgh Supercomputing Center. Use this software if you want to quickly try out a causal discovery algorithm or if you have big data which cannot be analyzed on your local hardware.
 
-- [CCD Web Application](https://ccd2.vm.bridges.psc.edu/ccd/login)
-- [Report bugs or issues with the software](https://tracker.dbmi.pitt.edu/projects/ccd/issues/new)
+- [CCD Web Application](https://ccd4.vm.bridges.psc.edu/ccd/login)
 - [Documentation for the big data enabled causal discovery algorithms](http://www.ccd.pitt.edu/wiki/index.php?title=Algorithm_Documentation)
--[Github project](https://github.com/bd2kccd/ccd-web)
+- [Github project](https://github.com/bd2kccd/ccd-web)
 
 **Causal REST API** – our RESTful API for Causal Web App. Once you create a new user account via Causal Web App, you can use this REST API to upload data files and run Causal Discovery Algorithms.
 
