@@ -1,30 +1,28 @@
 # Causal Web Application Quick Start and User Guide
 
+Causal web is a Java web-based application that allows users to run causal modeling algorithms on their dataset.  The Center for Causal Discovery is hosting this application at the Pittsburgh Supercomputing Center(PSC) and you can access it via this URL: [https://ccd4.vm.bridges.psc.edu/ccd/](https://ccd4.vm.bridges.psc.edu/ccd/).
 
 ## Creating Your Account
 
-We are currently hosting an the Causal Web Application at the Pittsburgh Supercomputing Center. The url for the site is [https://ccd4.vm.bridges.psc.edu/ccd/](https://ccd4.vm.bridges.psc.edu/ccd/). And you can create new accoutn by clikcing "Create an account" on the login page.
+You can create a new accoutn by clikcing "Create an account" link on the login page.
 
 ![Causal Web User Login Page](img/causal-web-login.png)
 
-Fill your information in the signup page. 
-Make sure to read the **Terms & Conditions** agreement and check the agree box before clicking the green signup button.
+Fill your information in the signup page. Make sure to read the **Terms & Conditions** agreement and check the agree box before clicking the signup button.
 
 ![Causal Web User Registration Page](img/causal-web-registration.png)
 
-The system will send an email with an activation link. After clicking on the link, the Causal Web system shows a confirmation message.
+Upon finishing registration, the system will send out an email with an activation link. Go to your email accont and click on that link, then the Causal Web shows a confirmation message.
 
 ![Causal Web User Activation Page](img/causal-web-user-activation.png)
 
-Click on the link in the email. Alternatively, click on the **"University"** button to login to the Causal Web via your Pitt/Harvard account.
+Alternatively, click on the **"University"** button to login to the Causal Web via your Pitt/Harvard account. This allows all users from the two Universities to authenticate against their University system without registring new account.
 
 ![Causal Web User Login with Pitt/Harvard Account Page](img/auth0-login.png)
 
-
 ## Login to Causal Web Application
 
-Input your email address and password that you want to use to register with the Causal Web system. 
-Check the Remember Me checkbox if you would like the browser automatically log you in next time you visit.
+Input your email address and password that you want to use to register with the Causal Web system. Check the "Remember Me" checkbox if you would like the browser automatically log you in next time you visit.
 
 ![Causal Web User Login Page](img/causal-web-login.png)
 
@@ -79,6 +77,24 @@ Click on the dataset's name's link to see the additional information.
 
 ![Causal Web Dataset Summarization Page](img/causal-web-dataset-after-summarization-review.png)
 
+## Annotating Your Dataset
+
+On the Datasets main page, the blue icon is for annotation.
+
+![Causal Web Dataset Summarization Page](img/causal-web-dataset-annotation.png)
+
+Click the annotation icon, and you can add new annotation, just click the "New annotation" button.
+
+![Causal Web Dataset Summarization Page](img/causal-web-dataset-annotation-new.png)
+
+The it pops up the annotation form.
+
+![Causal Web Dataset Summarization Page](img/causal-web-dataset-annotation-form.png)
+
+You can also add another annotation on top of the exisiting annotation.
+
+![Causal Web Dataset Summarization Page](img/causal-web-dataset-annotation-nested.png)
+
 ## Uploading the Prior Knowledge
 
 Click on the **Data Management** menu on the navigation bar on the left side. There is a sub menu that will appear. 
@@ -106,7 +122,7 @@ Before clicking the **Next** button, the data validation parameters need to be i
 
 Here, the **FGES** algorithm page allows user to modify its parameters. 
 
-- The first one is Penalty Discount and its default value is 4. 
+- The first one is Penalty Discount and its default value is 2. 
 - The second one is Search Maximum Degree and its default value is 100. 
 - The third one is Faithfulness Assumed and its default value is checked.
 - The fifth one is Verbose output and its default value is checked.
@@ -130,8 +146,6 @@ The application will redirect the **Job Queue** page. The analysis job is added 
 ![Job Queue Page](img/job-queue.png)
 
 Once the job slot is available, the queued job is then executed and its status changes to **Running**.
-
-![Running Job in Job Queue Page](img/job-queue-running.png)
 
 When the job is finished, it is automatically removed from the **Job Queue** page. The result of the analysis is added to the Results page.
 
@@ -173,10 +187,6 @@ The results page details the graph, the original dataset, and its parameters.
 Click on the **View Full Screen** button to see the causal graph in more detail.
 
 ![Algorithm Result in Detail Page](img/fgs-result-detail.png)
-
-The figure shows the causal graph in the full-screen mode.
-
-![Algorithm Result in Full Screen Mode Page](img/fgs-result-full-screen.png)
 
 ## <a name="comparing_result"></a>Comparing Your Result
 
