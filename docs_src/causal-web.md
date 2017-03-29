@@ -188,7 +188,16 @@ Click on the **View Full Screen** button to see the causal graph in more detail.
 
 ![Algorithm Result in Detail Page](img/fgs-result-detail.png)
 
-## <a name="comparing_result"></a>Comparing Your Result
+Based on the nature of your data, sometimes you may see the generated graph (PAG) containing dashed links in addition to solid links. For example:
+
+![PAG Example](img/causal-web-pag-example.png)
+
+- If an edge is dashed that means there is no latent confounder.  Otherwise, there is possibly latent confounder.
+
+- If an edge is green that means it is definitely direct.  Otherwise, it is possibly direct.
+
+
+## <a name="comparing_result"></a>Comparing Your Results
 
 Click on the **Results** menu on the navigation bar on the left side. To compare two results click on the Algorithm Results item on the left. Select at least two results (place a checkmark next to the results) and click on Compare. Now click on the **Result Comparisions** item on the left.
 

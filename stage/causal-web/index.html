@@ -260,7 +260,17 @@ Click on the result's name's link to see a causal graph of the result.</p>
 <p>The results page details the graph, the original dataset, and its parameters. 
 Click on the <strong>View Full Screen</strong> button to see the causal graph in more detail.</p>
 <p><img alt="Algorithm Result in Detail Page" src="../img/fgs-result-detail.png" /></p>
-<h2 id="comparing-your-result"><a name="comparing_result"></a>Comparing Your Result</h2>
+<p>Based on the nature of your data, sometimes you may see the generated graph (PAG) containing dashed links in addition to solid links. For example:</p>
+<p><img alt="PAG Example" src="../img/causal-web-pag-example.png" /></p>
+<ul>
+<li>
+<p>If an edge is dashed that means there is no latent confounder.  Otherwise, there is possibly latent confounder.</p>
+</li>
+<li>
+<p>If an edge is green that means it is definitely direct.  Otherwise, it is possibly direct.</p>
+</li>
+</ul>
+<h2 id="comparing-your-results"><a name="comparing_result"></a>Comparing Your Results</h2>
 <p>Click on the <strong>Results</strong> menu on the navigation bar on the left side. To compare two results click on the Algorithm Results item on the left. Select at least two results (place a checkmark next to the results) and click on Compare. Now click on the <strong>Result Comparisions</strong> item on the left.</p>
 <p><img alt="Result Comparisons Menu Page" src="../img/causal-web-algorithm-results-menu.png" /></p>
 <p>The Result Comparisons page shows a list of results, their creation time and their size. On the first column from the right, the green Save buttons provide the ability for users to download results to their local computers. Click on the result's name's the link to see the detail of the result comparisons.</p>
