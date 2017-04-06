@@ -8,7 +8,7 @@ This site hosts documentation for the [Center for Causal Discovery](http://www.c
 
 - [Download the latest release i.e., causal-cmd-X.X.X-jar-with-dependencies.jar](https://ccd3.vm.bridges.psc.edu/nexus/content/repositories/releases/edu/cmu/causal-cmd/)
 - [Documentation for the big data enabled causal discovery algorithms](http://www.ccd.pitt.edu/wiki/index.php?title=Algorithm_Documentation)
-- [Report bugs or issues with the software](https://tracker.dbmi.pitt.edu/projects/ccd/issues/new)
+- [Report bugs or issues with the software](ccd.user.helpdesk@gmail.com)
 - [Github project](https://github.com/bd2kccd/causal-cmd)
 
 **Tetrad** - a Java API, and desktop environment for learning, performing analyses and experimenting with causal discovery algorithms.
@@ -19,7 +19,7 @@ This site hosts documentation for the [Center for Causal Discovery](http://www.c
 
 **Causal Web App** – our user-friendly web-based graphical interface for performing causal discovery analysis on big data using large memory servers at the Pittsburgh Supercomputing Center. Use this software if you want to quickly try out a causal discovery algorithm or if you have big data which cannot be analyzed on your local hardware.
 
-- [CCD Web Application](https://ccd4.vm.bridges.psc.edu/ccd/login)
+- [CCD Web Application](https://ccd2.vm.bridges.psc.edu/ccd/login)
 - [Documentation for the big data enabled causal discovery algorithms](http://www.ccd.pitt.edu/wiki/index.php?title=Algorithm_Documentation)
 - [Github project](https://github.com/bd2kccd/ccd-web)
 
@@ -27,7 +27,7 @@ This site hosts documentation for the [Center for Causal Discovery](http://www.c
 
 - [Github project](https://github.com/bd2kccd/causal-rest-api)
 
-**Py-causal** - a python module that wraps algorithms for performing causal discovery on big data. The software currently includes Fast Greedy Search (**FGES**) for both continuous and discrete variables, and Greedy Fast Causal Inference (**GFCI**) for continuous variables.
+**Py-causal** - a python module that wraps algorithms for performing causal discovery on big data. The software currently includes Fast Greedy Search (**FGES**) for both continuous and discrete variables, and Greedy Fast Causal Inference (**GFCI**) for continuous and discretevariables.
 
 - [Github project](https://github.com/bd2kccd/py-causal)
 - [Docker container of Jupyter Notebook with Py-causal configured](https://hub.docker.com/r/chirayukong/py-causal-notebook/)
@@ -40,6 +40,9 @@ This site hosts documentation for the [Center for Causal Discovery](http://www.c
 - [Documentation for the big data enabled causal discovery algorithms](http://www.ccd.pitt.edu/wiki/index.php?title=Algorithm_Documentation)
 
 **cytoscape-tetrad** - a native cytoscape plugin that imports tetrad txt output files that contain the structure of a causal graph. It handles causal graphs and partial ancestral graphs.
+- [Plugin](https://ccd3.vm.bridges.psc.edu/nexus/content/repositories/releases/edu/pitt/dbmi/ccd/cytoscape/tetrad/cytoscape-tetrad-app)
+- [Github project](https://github.com/bd2kccd/cytoscape-tetrad)
+
 
 *If you use our software in your research, please acknowledge the Center for Causal Discovery, supported by **grant U54HG008540**, in any papers, presentations, or other dissemination of your work.*
 

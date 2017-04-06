@@ -1,10 +1,10 @@
 # Causal Web Application Quick Start and User Guide
 
-Causal web is a Java web-based application that allows users to run causal modeling algorithms on their dataset.  The Center for Causal Discovery is hosting this application at the Pittsburgh Supercomputing Center(PSC) and you can access it via this URL: [https://ccd4.vm.bridges.psc.edu/ccd/](https://ccd4.vm.bridges.psc.edu/ccd/).
+Causal web is a Java web-based application that allows users to run causal modeling algorithms on their dataset.  The Center for Causal Discovery is hosting this application at the Pittsburgh Supercomputing Center(PSC) and you can access it via this URL: [https://ccd4.vm.bridges.psc.edu/ccd/](https://ccd2.vm.bridges.psc.edu/ccd/).
 
 ## Creating Your Account
 
-You can create a new accoutn by clikcing "Create an account" link on the login page.
+You can create a new account by clicking "Create an account" link on the login page.
 
 ![Causal Web User Login Page](img/causal-web-login.png)
 
@@ -16,7 +16,7 @@ Upon finishing registration, the system will send out an email with an activatio
 
 ![Causal Web User Activation Page](img/causal-web-user-activation.png)
 
-Alternatively, click on the **"University"** button to login to the Causal Web via your Pitt/Harvard account. This allows all users from the two Universities to authenticate against their University system without registring new account.
+On certain deployments you can click on the **"University"** button to login to the Causal Web via your Pitt/Harvard account. This allows all users from the two Universities to authenticate against their University system without registering a new account.
 
 ![Causal Web User Login with Pitt/Harvard Account Page](img/auth0-login.png)
 
@@ -110,7 +110,7 @@ you can click on the Browse button and choose the prior knowledge file(s) you wo
 ## Executing an Analysis on Your Dataset
 
 Click on the Causal Discovery menu on the navigation bar on the left side. The sub menu will slowly appear. 
-Click on the desired algorithms. As of November 2016, **FGES** *(Continuous)*, **FGES Discrete**, and **GFCI** *(Continuous)* are the only supported algorithms.  Note that in previous versions of our software FGES was known as 
+Click on the desired algorithms. **FGESc** *(Continuous)*, **FGESd** *(Discrete)*, **GFCIc** *(Continuous)* and **GFCId** *(Discrete)* are the only supported algorithms.  Note that in previous versions of our software FGES was known as 
 
 ![Causal Discovery Algorithms Menu Page](img/causal-web-causal-discovery-menu.png)
 

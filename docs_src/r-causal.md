@@ -9,6 +9,9 @@ R >= 3.2.0,
 [RBGL](http://bioconductor.org/packages/release/bioc/html/RBGL.html), 
 [Rgraphviz](http://bioconductor.org/packages/release/bioc/html/Rgraphviz.html)
 
+## Docker
+As an alternative to installing the library and getting rJava working with your installation (i.e., does not work well on mac) we have a [Docker image](https://hub.docker.com/r/chirayukong/r-causal-rstudio/)
+
 ## Installation
 
 - Install the R library requirements:

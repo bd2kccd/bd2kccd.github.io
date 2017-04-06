@@ -121,6 +121,9 @@ The GFCI algorithm has additional edge types:
 - A o-> B - Either A is a cause of B or there is an unmeasured confounder of A and B or both
 - A o-o B - Either (1) A is a cause of B or B is a cause of A, or (2) there is an unmeasured confounder of A and B, or both 1 and 2 hold.
 
+- A --> B dd nl - Definitely direct causal relationship and no latent confounder
+- A --> B pd nl - Possibly direct and no latent confounder
+- A --> B pd pl - Possibly direct and possibly latent confounder
 
 ## Complete Usage Guide
 

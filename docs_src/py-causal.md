@@ -17,9 +17,16 @@ Python 2.7 (does not work with Python 3)
 * GraphViz
 * JDK 1.7+
 
+
+Docker Image
+============
+
+A pre-installed py-causal Docker image is available at [Docker Hub](https://hub.docker.com/r/chirayukong/py-causal-notebook/)
+
+
 Installation overview:
 ======================
-We have found two approaches to be useful:
+To install on existing Python installation, we have found two approaches to be useful:
 * Direct python installation with pip, possibly including use of [Jupyter](http://jupyter.org/). This approach is likely best for users who have Python installed and are familiar with installing Python modules.
 * Installation via [Anaconda](https://www.continuum.io/downloads), which  installs Python and related utilities.
 
@@ -101,9 +108,4 @@ Then run the following to configure anacoda
     jupyter notebook
 
 and then load one of the Jupyter notebooks.
-
-Docker Image
-============
-
-The pre-installed py-causal Docker image is also available at [Docker Hub](https://hub.docker.com/r/chirayukong/py-causal-notebook/)
 
