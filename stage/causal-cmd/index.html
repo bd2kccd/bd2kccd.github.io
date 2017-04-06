@@ -247,7 +247,14 @@ Graph Edges:
 <ul>
 <li>A &lt;-&gt; B - There is an unmeasured confounder of A and B</li>
 <li>A o-&gt; B - Either A is a cause of B or there is an unmeasured confounder of A and B or both</li>
-<li>A o-o B - Either (1) A is a cause of B or B is a cause of A, or (2) there is an unmeasured confounder of A and B, or both 1 and 2 hold.</li>
+<li>
+<p>A o-o B - Either (1) A is a cause of B or B is a cause of A, or (2) there is an unmeasured confounder of A and B, or both 1 and 2 hold.</p>
+</li>
+<li>
+<p>A --&gt; B dd nl - Definitely direct causal relationship and no latent confounder</p>
+</li>
+<li>A --&gt; B pd nl - Possibly direct and no latent confounder</li>
+<li>A --&gt; B pd pl - Possibly direct and possibly latent confounder</li>
 </ul>
 <h2 id="complete-usage-guide">Complete Usage Guide</h2>
 <pre><code>usage: java -jar causal-cmd-0.1.0.jar --algorithm &lt;arg&gt; | --simulate-data &lt;arg&gt;  [--version]
