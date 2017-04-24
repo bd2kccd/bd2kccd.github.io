@@ -114,8 +114,9 @@ Click on the desired algorithms. **FGESc** *(Continuous)*, **FGESd** *(Discrete)
 
 ![Causal Discovery Algorithms Menu Page](img/causal-web-causal-discovery-menu.png)
 
-The **Dataset** drop-down box contains a list of datasets that the system recognize. If those datasets are already uploaded and they are not displayed in the dataset drop-down box, it means that the [Data Summarization](#summarization) process to be reviewed in the first place prior to execute a causal **FGES** *(Continuous)* analysis. 
-If a prior knowledge file needs to be computed, Prior Knowledge File drop-down box contains a list of knowledge files. 
+The **Dataset** drop-down box contains a list of datasets that you have uploaded. If those datasets are already uploaded and they are not displayed in the dataset drop-down box, it means that the [Data Summarization](#summarization) process to be reviewed in the first place prior to execute a causal **FGES** *(Continuous)* analysis. 
+
+If a prior knowledge file needs to be included in the analysis, Prior Knowledge File drop-down box contains a list of knowledge files. 
 Before clicking the **Next** button, the data validation parameters need to be input.
 
 ![FGES Algorithm Step One Menu Page](img/fgs-step-1.png)
