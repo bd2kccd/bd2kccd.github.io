@@ -200,8 +200,7 @@ Wed, March 22, 2017 10:43:45 AM: Start running algorithm FGES (Fast Greedy Equiv
 Wed, March 22, 2017 10:43:45 AM: End running algorithm FGES (Fast Greedy Equivalence Search) using Sem BIC Score.
 </code></pre>
 
-<p>Note that the filename <code>causal-cmd-x.x.x-jar-with-dependencies.jar</code> should match the version you have downloaded. </p>
-<p>At the same time, this program will also write the results of the FGES search procedure into a text file named like "FGESc_Retention.txt_1490193823839.txt". Below is the content of this result file:</p>
+<p>At the same time, this program will also write the results of the FGESc search procedure into a text file named like "FGESc_Retention.txt_1490193823839.txt". Below is the content of this result file:</p>
 <pre><code>================================================================================
 FGES Continuous (Wed, March 22, 2017 10:43:43 AM)
 ================================================================================
@@ -256,6 +255,7 @@ Graph Edges:
 <li>A --&gt; B pd nl - Possibly direct and no latent confounder</li>
 <li>A --&gt; B pd pl - Possibly direct and possibly latent confounder</li>
 </ul>
+<p>Note: the generated result file name is based on the system clock.</p>
 <h2 id="complete-usage-guide">Complete Usage Guide</h2>
 <pre><code>usage: java -jar &lt;causal-cmd-jarfile&gt; --algorithm &lt;arg&gt; | --simulate-data &lt;arg&gt;  [--version]
     --algorithm &lt;arg&gt;       FGESc, FGESd, GFCIc, GFCId
