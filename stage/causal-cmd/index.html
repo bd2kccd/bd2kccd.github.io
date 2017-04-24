@@ -69,7 +69,7 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#causal-cmd-v010">causal-cmd v0.1.0</a></li>
+                <li class="toctree-l3"><a href="#causal-cmd-v012">causal-cmd v0.1.2</a></li>
                 
                     <li><a class="toctree-l4" href="#introduction">Introduction</a></li>
                 
@@ -145,7 +145,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="causal-cmd-v010">causal-cmd v0.1.0</h1>
+                <h1 id="causal-cmd-v012">causal-cmd v0.1.2</h1>
 <h2 id="introduction">Introduction</h2>
 <p>Causal-cmd is a Java application that provides a Command-Line Interface (CLI) tool for causal discovery algorithms produced by the <a href="http://www.ccd.pitt.edu/">Center for Causal Discovery</a>.  The application currently includes the following algorithms:</p>
 <ul>
@@ -160,7 +160,7 @@
 <p>Java 8 or higher is the only prerequisite to run the software. Note that by default Java will allocate the smaller of 1/4 system memory or 1GB to the Java virtual machine (JVM). If you run out of memory (heap memory space) running your analyses you should increase the memory allocated to the JVM with the following switch '-XmxXXG' where XX is the number of gigabytes of ram you allow the JVM to utilize. For example to allocate 8 gigabytes of ram you would add -Xmx8G immediately after the java command.</p>
 <p>In this example, we'll use download the <a href="http://www.ccd.pitt.edu/wp-content/uploads/files/Retention.txt">Retention.txt</a> file, which is a dataset containing information on college graduation and used in the publication of "What Do College Ranking Data Tell Us About Student Retention?" by Drudzel and Glymour, 1994.</p>
 <p>Keep in mind that causal-cmd has different switches for different algorithms. To start, type the following command in your terminal:</p>
-<pre><code>java -jar causal-cmd-0.1.0-jar-with-dependencies.jar
+<pre><code>java -jar causal-cmd-0.1.2-jar-with-dependencies.jar
 </code></pre>
 
 <p>And you'll see the following instructions:</p>
@@ -172,7 +172,7 @@
 </code></pre>
 
 <p>In this example, we'll be running FGESc on this <code>Retention.txt</code>.</p>
-<pre><code>java -jar causal-cmd-0.1.0-jar-with-dependencies.jar --algorithm FGESc --data Retention.txt
+<pre><code>java -jar causal-cmd-0.1.2-jar-with-dependencies.jar --algorithm FGESc --data Retention.txt
 </code></pre>
 
 <p>This command will output the following messages in your terminal:</p>
