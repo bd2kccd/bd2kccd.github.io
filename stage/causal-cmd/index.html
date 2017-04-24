@@ -160,11 +160,11 @@
 <p>Java 8 or higher is the only prerequisite to run the software. Note that by default Java will allocate the smaller of 1/4 system memory or 1GB to the Java virtual machine (JVM). If you run out of memory (heap memory space) running your analyses you should increase the memory allocated to the JVM with the following switch '-XmxXXG' where XX is the number of gigabytes of ram you allow the JVM to utilize. For example to allocate 8 gigabytes of ram you would add -Xmx8G immediately after the java command.</p>
 <p>In this example, we'll use download the <a href="http://www.ccd.pitt.edu/wp-content/uploads/files/Retention.txt">Retention.txt</a> file, which is a dataset containing information on college graduation and used in the publication of "What Do College Ranking Data Tell Us About Student Retention?" by Drudzel and Glymour, 1994.</p>
 <p>Keep in mind that causal-cmd has different switches for different algorithms. To start, type the following command in your terminal:</p>
-<pre><code>java -jar causal-cmd-0.1.2-jar-with-dependencies.jar
+<pre><code>java -jar &lt;causal-cmd-jarfile&gt;
 </code></pre>
 
 <p>And you'll see the following instructions:</p>
-<pre><code>usage: --algorithm &lt;arg&gt; | --simulate-data &lt;arg&gt;  [--version]
+<pre><code>usage: java -jar &lt;causal-cmd-jarfile&gt; --algorithm &lt;arg&gt; | --simulate-data &lt;arg&gt;  [--version]
     --algorithm &lt;arg&gt;       FGESc, FGESd, GFCIc, GFCId
     --simulate-data &lt;arg&gt;   sem-rand-fwd, bayes-net-rand-fwd
     --version               Show software version.
@@ -172,10 +172,10 @@
 </code></pre>
 
 <p>In this example, we'll be running FGESc on this <code>Retention.txt</code>.</p>
-<pre><code>java -jar causal-cmd-0.1.2-jar-with-dependencies.jar --algorithm FGESc --data Retention.txt
+<pre><code>java -jar &lt;causal-cmd-jarfile&gt; --algorithm FGESc --data Retention.txt
 </code></pre>
 
-<p>This command will output the following messages in your terminal:</p>
+<p>This command will output the  following messages in your terminal:</p>
 <pre><code>================================================================================
 FGES Continuous (Wed, March 22, 2017 10:43:43 AM)
 ================================================================================
@@ -257,7 +257,7 @@ Graph Edges:
 <li>A --&gt; B pd pl - Possibly direct and possibly latent confounder</li>
 </ul>
 <h2 id="complete-usage-guide">Complete Usage Guide</h2>
-<pre><code>usage: --algorithm &lt;arg&gt; | --simulate-data &lt;arg&gt;  [--version]
+<pre><code>usage: java -jar &lt;causal-cmd-jarfile&gt; --algorithm &lt;arg&gt; | --simulate-data &lt;arg&gt;  [--version]
     --algorithm &lt;arg&gt;       FGESc, FGESd, GFCIc, GFCId
     --simulate-data &lt;arg&gt;   sem-rand-fwd, bayes-net-rand-fwd
     --version               Show software version.
@@ -265,7 +265,7 @@ Graph Edges:
 
 <p>You can use the <code>--algorithm &lt;arg&gt;</code> parameter to see specific algorithm usage information, which we'll also list below.</p>
 <h3 id="fgesc">FGESc</h3>
-<pre><code>usage: --algorithm FGESc [-d &lt;arg&gt;] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--faithfulness-assumed] [--help] [--json] [--knowledge &lt;arg&gt;] [--max-degree &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--penalty-discount &lt;arg&gt;] [--skip-latest] [--skip-nonzero-variance] [--skip-unique-var-name] [--tetrad-graph-json] [--thread &lt;arg&gt;] [--verbose]
+<pre><code>usage: java -jar &lt;causal-cmd-jarfile&gt; --algorithm FGESc [-d &lt;arg&gt;] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--faithfulness-assumed] [--help] [--json] [--knowledge &lt;arg&gt;] [--max-degree &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--penalty-discount &lt;arg&gt;] [--skip-latest] [--skip-nonzero-variance] [--skip-unique-var-name] [--tetrad-graph-json] [--thread &lt;arg&gt;] [--verbose]
  -d,--delimiter &lt;arg&gt;           Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
     --exclude-variables &lt;arg&gt;   A file containing variables to exclude.
  -f,--data &lt;arg&gt;                Data file.
@@ -287,7 +287,7 @@ Graph Edges:
 </code></pre>
 
 <h3 id="fgesd">FGESd</h3>
-<pre><code>usage: --algorithm FGESd [-d &lt;arg&gt;] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--faithfulness-assumed] [--help] [--json] [--knowledge &lt;arg&gt;] [--max-degree &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--sample-prior &lt;arg&gt;] [--skip-category-limit] [--skip-latest] [--skip-unique-var-name] [--structure-prior &lt;arg&gt;] [--tetrad-graph-json] [--thread &lt;arg&gt;] [--verbose]
+<pre><code>usage: java -jar &lt;causal-cmd-jarfile&gt; --algorithm FGESd [-d &lt;arg&gt;] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--faithfulness-assumed] [--help] [--json] [--knowledge &lt;arg&gt;] [--max-degree &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--sample-prior &lt;arg&gt;] [--skip-category-limit] [--skip-latest] [--skip-unique-var-name] [--structure-prior &lt;arg&gt;] [--tetrad-graph-json] [--thread &lt;arg&gt;] [--verbose]
  -d,--delimiter &lt;arg&gt;           Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
     --exclude-variables &lt;arg&gt;   A file containing variables to exclude.
  -f,--data &lt;arg&gt;                Data file.
@@ -310,7 +310,7 @@ Graph Edges:
 </code></pre>
 
 <h3 id="gfcic">GFCIc</h3>
-<pre><code>usage: --algorithm GFCIc [--alpha &lt;arg&gt;] [-d &lt;arg&gt;] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--faithfulness-assumed] [--help] [--json] [--knowledge &lt;arg&gt;] [--max-degree &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--penalty-discount &lt;arg&gt;] [--skip-latest] [--skip-nonzero-variance] [--skip-unique-var-name] [--tetrad-graph-json] [--thread &lt;arg&gt;] [--verbose]
+<pre><code>usage: java -jar &lt;causal-cmd-jarfile&gt; --algorithm GFCIc [--alpha &lt;arg&gt;] [-d &lt;arg&gt;] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--faithfulness-assumed] [--help] [--json] [--knowledge &lt;arg&gt;] [--max-degree &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--penalty-discount &lt;arg&gt;] [--skip-latest] [--skip-nonzero-variance] [--skip-unique-var-name] [--tetrad-graph-json] [--thread &lt;arg&gt;] [--verbose]
     --alpha &lt;arg&gt;               Cutoff for p values (alpha). Default is 0.01.
  -d,--delimiter &lt;arg&gt;           Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
     --exclude-variables &lt;arg&gt;   A file containing variables to exclude.
@@ -333,7 +333,7 @@ Graph Edges:
 </code></pre>
 
 <h3 id="gfcid">GFCId</h3>
-<pre><code>usage: --algorithm GFCId [--alpha &lt;arg&gt;] [-d &lt;arg&gt;] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--faithfulness-assumed] [--help] [--json] [--knowledge &lt;arg&gt;] [--max-degree &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--sample-prior &lt;arg&gt;] [--skip-category-limit] [--skip-latest] [--skip-unique-var-name] [--structure-prior &lt;arg&gt;] [--tetrad-graph-json] [--thread &lt;arg&gt;] [--verbose]
+<pre><code>usage: java -jar &lt;causal-cmd-jarfile&gt; --algorithm GFCId [--alpha &lt;arg&gt;] [-d &lt;arg&gt;] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--faithfulness-assumed] [--help] [--json] [--knowledge &lt;arg&gt;] [--max-degree &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--sample-prior &lt;arg&gt;] [--skip-category-limit] [--skip-latest] [--skip-unique-var-name] [--structure-prior &lt;arg&gt;] [--tetrad-graph-json] [--thread &lt;arg&gt;] [--verbose]
     --alpha &lt;arg&gt;               Cutoff for p values (alpha). Default is 0.01.
  -d,--delimiter &lt;arg&gt;           Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
     --exclude-variables &lt;arg&gt;   A file containing variables to exclude.
