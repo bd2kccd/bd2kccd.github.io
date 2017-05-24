@@ -69,13 +69,15 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#documentation-on-using-the-causal-cmd-software">Documentation on using the causal-cmd software</a></li>
+                <li class="toctree-l3"><a href="#causal-cmd">causal-cmd</a></li>
                 
-                    <li><a class="toctree-l4" href="#what-is-causal-cmd">What is causal-cmd</a></li>
+                    <li><a class="toctree-l4" href="#introduction">Introduction</a></li>
                 
-                    <li><a class="toctree-l4" href="#how-can-i-use-it">How can I use it?</a></li>
+                    <li><a class="toctree-l4" href="#command-line-usage">Command Line Usage</a></li>
                 
-                    <li><a class="toctree-l4" href="#command-line-interface-usage">Command line interface usage</a></li>
+                    <li><a class="toctree-l4" href="#complete-usage-guide">Complete Usage Guide</a></li>
+                
+                    <li><a class="toctree-l4" href="#api-usage">API Usage</a></li>
                 
             
             </ul>
@@ -143,40 +145,100 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="documentation-on-using-the-causal-cmd-software">Documentation on using the causal-cmd software</h1>
-<h2 id="what-is-causal-cmd">What is causal-cmd</h2>
-<p>Causal-cmd is a Java application that provides a command-line interface (CLI) and application programming interface (API) for causal discovery algorithms produced by the Center for Causal Discovery.  The application currently includes the algorithm(s):</p>
+                <h1 id="causal-cmd">causal-cmd</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Causal-cmd is a Java application that provides a Command-Line Interface (CLI) tool for causal discovery algorithms produced by the <a href="http://www.ccd.pitt.edu/">Center for Causal Discovery</a>.  The application currently includes the following algorithms:</p>
 <ul>
-<li>FGESc (Fast Greedy Search) for continuous data - is an optimization of the Greedy Equivalence Search algorithm    (GES,   Meek    1995;   Chickering  2003). The optimizations are described in Scaling up Greedy Causal Search for Continuous Variables</li>
-<li>FGESd (Fast Greedy Search) for discrete data</li>
-<li>GFCIc (Greedy Fast Causal Inference) for continuous data</li>
+<li>FGESc - a version of FGES (Fast Greedy Search is an optimization and parallelized version of the Greedy Equivalence Search algorithm (GES)) that works with continuous variables</li>
+<li>FGESd - a version of FGES that works with discrete variables</li>
+<li>GFCIc - a version of GFCI (Greedy Fast Causal Inference) that works with continuous variables</li>
+<li>GFCId - a version of FGES that works with discrete variables</li>
 </ul>
-<p>Note that in previous versions released by the Center, FGES was called FGS.</p>
 <p>Causal discovery algorithms are a class of search algorithms that explore a space of graphical causal models, i.e., graphical models where directed edges imply causation, for a model (or models) that are a good fit for a dataset. We suggest that newcomers to the field review Causation, Prediction and Search by Spirtes, Glymour and Scheines for a primer on the subject.</p>
 <p>Causal discovery algorithms allow a user to uncover the causal relationships between variables in a dataset. These discovered causal relationships may be used further--understanding the underlying the processes of a system (e.g., the metabolic pathways of an organism), hypothesis generation (e.g., variables that best explain an outcome), guide experimentation (e.g., what gene knockout experiments should be performed) or prediction (e.g. parameterization of the causal graph using data and then using it as a classifier).</p>
-<h2 id="how-can-i-use-it">How can I use it?</h2>
-<p>Java 7 or higher is the only prerequisite to run the software. Note that by default Java will allocate the smaller of 1/4 system memory or 1GB to the Java virtual machine (JVM). If you run out of memory (heap memory space) running your analyses you should increase the memory allocated to the JVM with the following switch '-XmxXXG' where XX is the number of gigabytes of ram you allow the JVM to utilize. For example to allocate 8 gigabytes of ram you would add -Xmx8G immediately after the java command.</p>
-<h3 id="run-an-example-output-using-known-data-via-command-line">Run an example output using known data via command line</h3>
-<p>Download the this file, <a href="http://www.ccd.pitt.edu/wp-content/uploads/files/Retention.txt">Retention.txt</a>, which is a dataset containing information on college graduation and used in the publication "What Do College Ranking Data Tell Us About Student Retention?" by Drudzel and Glymour, 1994.</p>
-<pre><code>java -jar causal-cmd-6.0.1-jar-with-dependencies.jar --algorithm FGESc --data Retention.txt
+<h2 id="command-line-usage">Command Line Usage</h2>
+<p>Java 8 or higher is the only prerequisite to run the software. Note that by default Java will allocate the smaller of 1/4 system memory or 1GB to the Java virtual machine (JVM). If you run out of memory (heap memory space) running your analyses you should increase the memory allocated to the JVM with the following switch '-XmxXXG' where XX is the number of gigabytes of ram you allow the JVM to utilize. For example to allocate 8 gigabytes of ram you would add -Xmx8G immediately after the java command.</p>
+<p>In this example, we'll use download the <a href="http://www.ccd.pitt.edu/wp-content/uploads/files/Retention.txt">Retention.txt</a> file, which is a dataset containing information on college graduation and used in the publication of "What Do College Ranking Data Tell Us About Student Retention?" by Drudzel and Glymour, 1994.</p>
+<p>Keep in mind that causal-cmd has different switches for different algorithms. To start, type the following command in your terminal:</p>
+<pre><code>java -jar causal-cmd-x.x.x.jar
 </code></pre>
 
-<p>Note that the filename causal-cmd-x.x.x-jar-with-dependencies.jar should match the version you have downloaded. The program will output the results of the FGES search procedure as a text file (in this example to output). The beginning of the file contains the algorithm parameters used in the search.</p>
-<p>Inspect the output which should show a graph with the following edges.</p>
-<pre><code>Graph Edges:
-1. fac_salary --- spending_per_stdt
-2. spending_per_stdt --&gt; rjct_rate
-3. spending_per_stdt --- stdt_tchr_ratio
-4. stdt_accept_rate --- fac_salary
-5. stdt_clss_stndng --&gt; rjct_rate
-6. tst_scores --- fac_salary
-7. tst_scores --- grad_rate
-8. tst_scores --- spending_per_stdt
-9. tst_scores --- stdt_clss_stndng
+<p><strong> Note: we are using <code>causal-cmd-x.x.x.jar</code> to indicate the actual executable jar of specific version number that is being used. </strong></p>
+<p>And you'll see the following instructions:</p>
+<pre><code>usage: java -jar causal-cmd-x.x.x.jar --algorithm &lt;arg&gt; | --simulate-data &lt;arg&gt;  [--version]
+    --algorithm &lt;arg&gt;       FGESc, FGESd, GFCIc, GFCId
+    --simulate-data &lt;arg&gt;   sem-rand-fwd, bayes-net-rand-fwd
+    --version               Show software version.
+
 </code></pre>
 
-<p>In FGES, "Elapsed getEffectEdges = XXms" refers to the amount of time it took to evaluate all pairs of variables for correlation. The file then details each step taken in the greedy search procedure i.e., insertion or deletion of edges based on a scoring function (i.e., BIC score difference for each chosen search operation).</p>
-<p>The end of the file contains the causal graph from the search procedure. Here is a key to the edge types:</p>
+<p>In this example, we'll be running FGESc on this <code>Retention.txt</code>.</p>
+<pre><code>java -jar causal-cmd-x.x.x.jar --algorithm FGESc --data Retention.txt
+</code></pre>
+
+<p>This command will output the  following messages in your terminal:</p>
+<pre><code>================================================================================
+FGES Continuous (Wed, March 22, 2017 10:43:43 AM)
+================================================================================
+data = Retention.txt
+delimiter = tab
+verbose = false
+thread = 2
+penalty discount = 4.000000
+max degree = 100
+faithfulness assumed = false
+ensure variable names are unique = true
+ensure variables have non-zero variance = true
+out = .
+output-prefix = FGESc_Retention.txt_1490193823839
+no-validation-output = false
+
+Running version 0.1.0 but unable to contact latest version server.  To disable checking use the skip-latest option.
+There are 170 cases and 8 variables.
+Wed, March 22, 2017 10:43:45 AM: Start reading in data file.
+Wed, March 22, 2017 10:43:45 AM: End reading in data file.
+Wed, March 22, 2017 10:43:45 AM: Start running algorithm FGES (Fast Greedy Equivalence Search) using Sem BIC Score.
+Wed, March 22, 2017 10:43:45 AM: End running algorithm FGES (Fast Greedy Equivalence Search) using Sem BIC Score.
+</code></pre>
+
+<p>At the same time, this program will also write the results of the FGESc search procedure into a text file named like "FGESc_Retention.txt_1490193823839.txt". Below is the content of this result file:</p>
+<pre><code>================================================================================
+FGES Continuous (Wed, March 22, 2017 10:43:43 AM)
+================================================================================
+
+Runtime Parameters:
+verbose = false
+number of threads = 2
+
+Dataset:
+file = Retention.txt
+delimiter = tab
+cases read in = 170
+variables read in = 8
+
+Algorithm Parameters:
+penalty discount = 4.000000
+max degree = 100
+faithfulness assumed = false
+
+Data Validations:
+ensure variable names are unique = true
+ensure variables have non-zero variance = true
+
+
+Graph Nodes:
+spending_per_stdt,grad_rate,stdt_clss_stndng,rjct_rate,tst_scores,stdt_accept_rate,stdt_tchr_ratio,fac_salary
+
+Graph Edges:
+1. grad_rate --- tst_scores
+2. spending_per_stdt --- stdt_tchr_ratio
+3. stdt_clss_stndng --- rjct_rate
+4. tst_scores --- fac_salary
+5. tst_scores --- spending_per_stdt
+6. tst_scores --- stdt_clss_stndng
+</code></pre>
+
+<p>The end of the file contains the causal graph edgesfrom the search procedure. Here is a key to the edge types:</p>
 <ul>
 <li>A --- B - There is causal relationship between variable A and B but we cannot determine the direction of the relationship</li>
 <li>A --&gt; B - There is a causal relationship from variable A to B</li>
@@ -185,84 +247,26 @@
 <ul>
 <li>A &lt;-&gt; B - There is an unmeasured confounder of A and B</li>
 <li>A o-&gt; B - Either A is a cause of B or there is an unmeasured confounder of A and B or both</li>
-<li>A o-o B - Either (1) A is a cause of B or B is a cause of A, or (2) there is an unmeasured confounder of A and B, or both 1 and 2 hold.</li>
+<li>
+<p>A o-o B - Either (1) A is a cause of B or B is a cause of A, or (2) there is an unmeasured confounder of A and B, or both 1 and 2 hold.</p>
+</li>
+<li>
+<p>A --&gt; B dd nl - Definitely direct causal relationship and no latent confounder</p>
+</li>
+<li>A --&gt; B pd nl - Possibly direct and no latent confounder</li>
+<li>A --&gt; B pd pl - Possibly direct and possibly latent confounder</li>
 </ul>
-<h3 id="use-as-an-api">Use as an API</h3>
-<p>Here is an example of using the Tetrad library which is included in causal-cmd as an API. Javadocs for the API are <a href="http://cmu-phil.github.io/tetrad/tetrad-lib-apidocs/">here</a>.</p>
-<pre><code>import edu.cmu.tetrad.algcomparison.algorithm.Algorithm;
-import edu.cmu.tetrad.algcomparison.algorithm.oracle.pattern.Fges;
-import edu.cmu.tetrad.algcomparison.score.SemBicScore;
-import edu.cmu.tetrad.cli.validation.DataValidation;
-import edu.cmu.tetrad.cli.validation.TabularContinuousData;
-import edu.cmu.tetrad.data.DataSet;
-import edu.cmu.tetrad.graph.Graph;
-import edu.cmu.tetrad.io.DataReader;
-import edu.cmu.tetrad.io.TabularContinuousDataReader;
-import edu.cmu.tetrad.util.Parameters;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-/**
- *
- * Nov 29, 2016 4:42:42 PM
- *
- * @author Kevin V. Bui
- */
-public class FgsApiExample {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) throws Exception {
-        // set path to Retention data
-        Path dataFile = Paths.get(&quot;test&quot;, &quot;data&quot;, &quot;Retention.txt&quot;);
-
-        char delimiter = '\t';
-
-        // perform data validation
-        // note: assuming data has unique variable names and does not contain zero covariance pairs
-        DataValidation dataValidation = new TabularContinuousData(dataFile, delimiter);
-        if (!dataValidation.validate(System.err, true)) {
-            System.exit(-128);
-        }
-
-        // create FGES algorithm that uses BIC score
-        Algorithm fges = new Fges(new SemBicScore());
-
-        // read in dataset
-        DataReader dataReader = new TabularContinuousDataReader(dataFile, delimiter);
-        DataSet dataSet = dataReader.readInData();
-
-        // set parameters for FGESc
-        Parameters parameters = new Parameters();
-        parameters.set(&quot;penaltyDiscount&quot;, 0.4);
-        parameters.set(&quot;maxDegree&quot;, -1);
-        parameters.set(&quot;faithfulnessAssumed&quot;, true);
-        parameters.set(&quot;verbose&quot;, true);
-        parameters.set(&quot;printStream&quot;, System.out);
-
-        // run FGES search with given dataset and parameters
-        Graph graph = fges.search(dataSet, parameters);
-        System.out.println();
-        System.out.println(graph.toString().trim());
-        System.out.flush();
-    }
-
-}
-</code></pre>
-
-<h2 id="command-line-interface-usage">Command line interface usage</h2>
-<p>Tetrad-cli has different switches for different algorithms. </p>
-<pre><code>usage: java -jar causal-cmd-6.0.1-SNAPSHOT.jar --algorithm &lt;arg&gt; |
-       --simulate-data &lt;arg&gt;  [--version]
-    --algorithm &lt;arg&gt;       FGESc, FGESd, GFCIc
+<p>Note: the generated result file name is based on the system clock.</p>
+<h2 id="complete-usage-guide">Complete Usage Guide</h2>
+<pre><code>usage: java -jar causal-cmd-x.x.x.jar --algorithm &lt;arg&gt; | --simulate-data &lt;arg&gt;  [--version]
+    --algorithm &lt;arg&gt;       FGESc, FGESd, GFCIc, GFCId
     --simulate-data &lt;arg&gt;   sem-rand-fwd, bayes-net-rand-fwd
-    --version               Version.
+    --version               Show software version.
 </code></pre>
 
-<p>Use the <code>--algorithm &lt;arg&gt;</code> parameter to see specific algorithm usage information.</p>
-<h3 id="causal-cmd-usage-for-fges-for-continuous-data">causal-cmd usage for FGES for continuous data</h3>
-<pre><code>usage: java -jar causal-cmd-6.0.1-jar-with-dependencies.jar --algorithm FGESc [-d &lt;arg&gt;] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--faithfulness-assumed] [--help] [--json] [--knowledge &lt;arg&gt;] [--max-degree &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--penalty-discount &lt;arg&gt;] [--skip-latest] [--skip-nonzero-variance] [--skip-unique-var-name] [--tetrad-graph-json] [--thread &lt;arg&gt;] [--verbose]
+<p>You can use the <code>--algorithm &lt;arg&gt;</code> parameter to see specific algorithm usage information, which we'll also list below.</p>
+<h3 id="fgesc">FGESc</h3>
+<pre><code>usage: java -jar causal-cmd-x.x.x.jar --algorithm FGESc [-d &lt;arg&gt;] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--faithfulness-assumed] [--help] [--json] [--knowledge &lt;arg&gt;] [--max-degree &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--penalty-discount &lt;arg&gt;] [--skip-latest] [--skip-nonzero-variance] [--skip-unique-var-name] [--tetrad-graph-json] [--thread &lt;arg&gt;] [--verbose]
  -d,--delimiter &lt;arg&gt;           Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
     --exclude-variables &lt;arg&gt;   A file containing variables to exclude.
  -f,--data &lt;arg&gt;                Data file.
@@ -270,7 +274,7 @@ public class FgsApiExample {
     --help                      Show help.
     --json                      Create JSON output.
     --knowledge &lt;arg&gt;           A file containing prior knowledge.
-    --max-degree &lt;arg&gt;          The maximum degree of the output graph. Use -1 for unbounded.. Default is -1.
+    --max-degree &lt;arg&gt;          The maximum degree of the graph.. Default is 100.
     --no-validation-output      No validation output files created.
  -o,--out &lt;arg&gt;                 Output directory.
     --output-prefix &lt;arg&gt;       Prefix name for output files.
@@ -283,8 +287,8 @@ public class FgsApiExample {
     --verbose                   Print additional information.
 </code></pre>
 
-<h3 id="causal-cmd-usage-for-fges-for-discrete-data">causal-cmd usage for FGES for discrete data</h3>
-<pre><code>usage: java -jar causal-cmd-6.0.1-jar-with-dependencies.jar --algorithm FGESd [-d &lt;arg&gt;] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--faithfulness-assumed] [--help] [--json] [--knowledge &lt;arg&gt;] [--max-degree &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--sample-prior &lt;arg&gt;] [--skip-category-limit] [--skip-latest] [--skip-unique-var-name] [--structure-prior &lt;arg&gt;] [--tetrad-graph-json] [--thread &lt;arg&gt;] [--verbose]
+<h3 id="fgesd">FGESd</h3>
+<pre><code>usage: java -jar causal-cmd-x.x.x.jar --algorithm FGESd [-d &lt;arg&gt;] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--faithfulness-assumed] [--help] [--json] [--knowledge &lt;arg&gt;] [--max-degree &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--sample-prior &lt;arg&gt;] [--skip-category-limit] [--skip-latest] [--skip-unique-var-name] [--structure-prior &lt;arg&gt;] [--tetrad-graph-json] [--thread &lt;arg&gt;] [--verbose]
  -d,--delimiter &lt;arg&gt;           Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
     --exclude-variables &lt;arg&gt;   A file containing variables to exclude.
  -f,--data &lt;arg&gt;                Data file.
@@ -292,7 +296,7 @@ public class FgsApiExample {
     --help                      Show help.
     --json                      Create JSON output.
     --knowledge &lt;arg&gt;           A file containing prior knowledge.
-    --max-degree &lt;arg&gt;          The maximum degree of the output graph. Use -1 for unbounded.. Default is -1.
+    --max-degree &lt;arg&gt;          The maximum degree of the graph.. Default is 100.
     --no-validation-output      No validation output files created.
  -o,--out &lt;arg&gt;                 Output directory.
     --output-prefix &lt;arg&gt;       Prefix name for output files.
@@ -306,8 +310,8 @@ public class FgsApiExample {
     --verbose                   Print additional information.
 </code></pre>
 
-<h3 id="causal-cmd-usage-for-gfci-for-continuous-data">causal-cmd usage for GFCI for continuous data</h3>
-<pre><code>usage: java -jar causal-cmd-6.0.1-jar-with-dependencies.jar --algorithm GFCIc [--alpha &lt;arg&gt;] [-d &lt;arg&gt;] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--faithfulness-assumed] [--help] [--json] [--knowledge &lt;arg&gt;] [--max-degree &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--penalty-discount &lt;arg&gt;] [--skip-latest] [--skip-nonzero-variance] [--skip-unique-var-name] [--tetrad-graph-json] [--thread &lt;arg&gt;] [--verbose]
+<h3 id="gfcic">GFCIc</h3>
+<pre><code>usage: java -jar causal-cmd-x.x.x.jar --algorithm GFCIc [--alpha &lt;arg&gt;] [-d &lt;arg&gt;] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--faithfulness-assumed] [--help] [--json] [--knowledge &lt;arg&gt;] [--max-degree &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--penalty-discount &lt;arg&gt;] [--skip-latest] [--skip-nonzero-variance] [--skip-unique-var-name] [--tetrad-graph-json] [--thread &lt;arg&gt;] [--verbose]
     --alpha &lt;arg&gt;               Cutoff for p values (alpha). Default is 0.01.
  -d,--delimiter &lt;arg&gt;           Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
     --exclude-variables &lt;arg&gt;   A file containing variables to exclude.
@@ -316,7 +320,7 @@ public class FgsApiExample {
     --help                      Show help.
     --json                      Create JSON output.
     --knowledge &lt;arg&gt;           A file containing prior knowledge.
-    --max-degree &lt;arg&gt;          The maximum degree of the output graph. Use -1 for unbounded.. Default is -1.
+    --max-degree &lt;arg&gt;          The maximum degree of the graph.. Default is 100.
     --no-validation-output      No validation output files created.
  -o,--out &lt;arg&gt;                 Output directory.
     --output-prefix &lt;arg&gt;       Prefix name for output files.
@@ -329,8 +333,34 @@ public class FgsApiExample {
     --verbose                   Print additional information.
 </code></pre>
 
-<h3 id="prior-knowledge-file-example">Prior knowledge file example</h3>
+<h3 id="gfcid">GFCId</h3>
+<pre><code>usage: java -jar causal-cmd-x.x.x.jar --algorithm GFCId [--alpha &lt;arg&gt;] [-d &lt;arg&gt;] [--exclude-variables &lt;arg&gt;] -f &lt;arg&gt; [--faithfulness-assumed] [--help] [--json] [--knowledge &lt;arg&gt;] [--max-degree &lt;arg&gt;] [--no-validation-output] [-o &lt;arg&gt;] [--output-prefix &lt;arg&gt;] [--sample-prior &lt;arg&gt;] [--skip-category-limit] [--skip-latest] [--skip-unique-var-name] [--structure-prior &lt;arg&gt;] [--tetrad-graph-json] [--thread &lt;arg&gt;] [--verbose]
+    --alpha &lt;arg&gt;               Cutoff for p values (alpha). Default is 0.01.
+ -d,--delimiter &lt;arg&gt;           Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
+    --exclude-variables &lt;arg&gt;   A file containing variables to exclude.
+ -f,--data &lt;arg&gt;                Data file.
+    --faithfulness-assumed      Yes if (one edge) faithfulness should be assumed. Default is false.
+    --help                      Show help.
+    --json                      Create JSON output.
+    --knowledge &lt;arg&gt;           A file containing prior knowledge.
+    --max-degree &lt;arg&gt;          The maximum degree of the graph.. Default is 100.
+    --no-validation-output      No validation output files created.
+ -o,--out &lt;arg&gt;                 Output directory.
+    --output-prefix &lt;arg&gt;       Prefix name for output files.
+    --sample-prior &lt;arg&gt;        Sample prior. Default is 1.0.
+    --skip-category-limit       Skip 'limit number of categories' check.
+    --skip-latest               Skip checking for latest software version
+    --skip-unique-var-name      Skip check for unique variable names.
+    --structure-prior &lt;arg&gt;     Structure prior coefficient. Default is 1.0.
+    --tetrad-graph-json         Create Tetrad Graph JSON output.
+    --thread &lt;arg&gt;              Number of threads.
+    --verbose                   Print additional information.
+</code></pre>
+
+<h3 id="sample-prior-knowledge-file">Sample Prior Knowledge File</h3>
+<p>From the above useage guide, we see the option of <code>--knowledge &lt;arg&gt;</code>, with which we can specify the prior knowledge file. Below is the content of a sample prior knowledge file:</p>
 <pre><code>/knowledge
+
 addtemporal
 1 spending_per_stdt fac_salary stdt_tchr_ratio 
 2 rjct_rate stdt_accept_rate 
@@ -344,12 +374,80 @@ requiredirect
 x1 x2
 </code></pre>
 
-<p>The first line must say /knowledge The three sections of knowledge are</p>
+<p>The first line of the prior knowledge file must say <code>/knowledge</code>. And a prior knowledge file consists of three sections:</p>
 <ul>
+<li>addtemporal - tiers of variables where the first tier preceeds the last. Adding a asterisk next to the tier id prohibits edges between tier variables</li>
 <li>forbiddirect - forbidden edges indicated by a list of pairs of variables</li>
 <li>requireddirect - required edges indicated by a list of pairs of variables</li>
-<li>addtemporal - tiers of variables where the first tier preceeds the last. Adding a asterisk next to the tier id prohibits edges between tier variables.</li>
 </ul>
+<h2 id="api-usage">API Usage</h2>
+<p>In addition to using causal-cmd directly in the command line interface, you can also use the Tetred library that is includedin in causal-cmd as an <a href="http://cmu-phil.github.io/tetrad/tetrad-lib-apidocs/">Java API</a>. Here we provide an example of how to run <code>FGESc</code> algorithm using this API.</p>
+<pre><code class="java">public class FGEScApiExample {
+
+    /**
+    * @param args the command line arguments
+    */
+    public static void main(String[] args) throws Exception {
+        // Set the data file and its properites
+        Path dataFile = Paths.get(&quot;test&quot;, &quot;data&quot;, &quot;cmu&quot;, &quot;Retention.txt&quot;);
+        Delimiter delimiter = Delimiter.TAB;
+        char quoteCharacter = '&quot;';
+        String missingValueMarker = &quot;*&quot;;
+        String commentMarker = &quot;//&quot;;
+
+        // Data file validation: ensure the data file is valid format
+        // This is optional if you don't need to validate the data file
+        TabularDataValidation dataFileValidation = new ContinuousTabularDataFileValidation(dataFile.toFile(), delimiter);
+        dataFileValidation.setQuoteCharacter(quoteCharacter);
+        dataFileValidation.setMissingValueMarker(missingValueMarker);
+        dataFileValidation.setCommentMarker(commentMarker);
+        dataFileValidation.validate();
+
+        // Ensure there is no error
+        int errorCount = 0;
+        List&lt;ValidationResult&gt; fileValidResults = dataFileValidation.getValidationResults();
+        for (ValidationResult validation : fileValidResults) {
+            if (validation.getCode() == ValidationCode.ERROR) {
+                errorCount++;
+            }
+        }
+
+        // Read in data
+        // This is the actual data loading/reading section
+        TabularDataReader reader = new ContinuousTabularDataFileReader(dataFile.toFile(), delimiter);
+        reader.setQuoteCharacter(quoteCharacter);
+        reader.setMissingValueMarker(missingValueMarker);
+        reader.setCommentMarker(commentMarker);
+        Dataset dataset = reader.readInData();
+
+        // Convert to Tetrad data model
+        DataModel dataModel = TetradDataUtils.toDataModel(dataset);
+
+        // Data validation: ensure the data read in is valid
+        TetradDataValidation dataValidation = new UniqueVariableValidation((DataSet) dataModel);
+        boolean isValidData = dataValidation.validate(System.err, true);
+
+        // Set algorithm parameters
+        Parameters parameters = new Parameters();
+        parameters.set(ParamAttrs.PENALTY_DISCOUNT, 2.0);
+        parameters.set(ParamAttrs.MAX_DEGREE, -1);
+        parameters.set(ParamAttrs.FAITHFULNESS_ASSUMED, false);
+        parameters.set(ParamAttrs.VERBOSE, false);
+
+        // Specify which algorithm to use
+        Fges fges = new Fges(new SemBicScore());
+
+        // Run the algorithm on this data with specified parameters
+        // and return the Graph object
+        Graph graph = fges.search(dataModel, parameters);
+
+        System.out.println();
+        System.out.println(graph.toString().trim());
+        System.out.flush();
+    }
+
+}
+</code></pre>
               
             </div>
           </div>
