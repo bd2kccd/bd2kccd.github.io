@@ -13,6 +13,7 @@ This site hosts documentation for the [Center for Causal Discovery](http://www.c
 
 **Tetrad** - a Java API, and desktop environment for learning, performing analyses and experimenting with causal discovery algorithms.
 
+- [Download the latest Tetrad GUI Application i.e., tetrad-gui-x.x.x-launch.jar](https://cloud.ccd.pitt.edu/nexus/content/repositories/releases/edu/cmu/tetrad-gui/)
 - [Tetrad Project Website](http://www.phil.cmu.edu/tetrad/)
 - [Documentation for the big data enabled causal discovery algorithms](http://www.ccd.pitt.edu/wiki/index.php?title=Algorithm_Documentation)
 - [Github project](https://github.com/cmu-phil/tetrad)
