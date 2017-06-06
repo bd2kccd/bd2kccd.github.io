@@ -96,6 +96,9 @@
                 <li class="toctree-l3"><a href="#requirements">Requirements:</a></li>
                 
             
+                <li class="toctree-l3"><a href="#docker-image">Docker Image</a></li>
+                
+            
                 <li class="toctree-l3"><a href="#installation-overview">Installation overview:</a></li>
                 
             
@@ -107,9 +110,6 @@
                 <li class="toctree-l3"><a href="#anacondajupyter">Anaconda/Jupyter</a></li>
                 
             
-                <li class="toctree-l3"><a href="#docker-image">Docker Image</a></li>
-                
-            
             </ul>
         
     </li>
@@ -118,6 +118,13 @@
             <li>
     <li class="toctree-l1 ">
         <a class="" href="../r-causal/">R-causal</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../cytoscape-tetrad/">Cytoscape Tetrad Plugin</a>
         
     </li>
 <li>
@@ -167,8 +174,10 @@
 <li>GraphViz</li>
 <li>JDK 1.7+</li>
 </ul>
+<h1 id="docker-image">Docker Image</h1>
+<p>A pre-installed py-causal Docker image is available at <a href="https://hub.docker.com/r/chirayukong/py-causal-notebook/">Docker Hub</a></p>
 <h1 id="installation-overview">Installation overview:</h1>
-<p>We have found two approaches to be useful:
+<p>To install on existing Python installation, we have found two approaches to be useful:
 <em> Direct python installation with pip, possibly including use of <a href="http://jupyter.org/">Jupyter</a>. This approach is likely best for users who have Python installed and are familiar with installing Python modules.
 </em> Installation via <a href="https://www.continuum.io/downloads">Anaconda</a>, which  installs Python and related utilities.</p>
 <p>Directions for both approaches are given below...</p>
@@ -225,8 +234,6 @@ conda install -c https://conda.anaconda.org/chirayu pycausal
 jupyter notebook
 </code></pre>
 <p>and then load one of the Jupyter notebooks.</p>
-<h1 id="docker-image">Docker Image</h1>
-<p>The pre-installed py-causal Docker image is also available at <a href="https://hub.docker.com/r/chirayukong/py-causal-notebook/">Docker Hub</a></p>
               
             </div>
           </div>

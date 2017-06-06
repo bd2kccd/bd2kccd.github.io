@@ -84,6 +84,8 @@
                 
                     <li><a class="toctree-l4" href="#uploading-your-dataset">Uploading Your Dataset</a></li>
                 
+                    <li><a class="toctree-l4" href="#annotating-your-dataset">Annotating Your Dataset</a></li>
+                
                     <li><a class="toctree-l4" href="#uploading-the-prior-knowledge">Uploading the Prior Knowledge</a></li>
                 
                     <li><a class="toctree-l4" href="#executing-an-analysis-on-your-dataset">Executing an Analysis on Your Dataset</a></li>
@@ -121,6 +123,13 @@
     </li>
 <li>
           
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../cytoscape-tetrad/">Cytoscape Tetrad Plugin</a>
+        
+    </li>
+<li>
+          
         </ul>
       </div>
       &nbsp;
@@ -154,19 +163,18 @@
             <div class="section">
               
                 <h1 id="causal-web-application-quick-start-and-user-guide">Causal Web Application Quick Start and User Guide</h1>
+<p>Causal web is a Java web-based application that allows users to run causal modeling algorithms on their dataset.  The Center for Causal Discovery is hosting this application at the Pittsburgh Supercomputing Center(PSC) and you can access it via this URL: <a href="https://ccd2.vm.bridges.psc.edu/ccd/">https://ccd4.vm.bridges.psc.edu/ccd/</a>.</p>
 <h2 id="creating-your-account">Creating Your Account</h2>
-<p>We are currently hosting an the Causal Web Application at the Pittsburgh Supercomputing Center. The url for the site is <a href="https://ccd1.vm.bridges.psc.edu/ccd/">here</a>. On the button of the login page, there is a signup link. Click it!</p>
+<p>You can create a new account by clicking "Create an account" link on the login page.</p>
 <p><img alt="Causal Web User Login Page" src="../img/causal-web-login.png" /></p>
-<p>Fill your information in the signup page. 
-Make sure to read the <strong>Terms &amp; Conditions</strong> agreement and check the agree box before clicking the green signup button.</p>
+<p>Fill your information in the signup page. Make sure to read the <strong>Terms &amp; Conditions</strong> agreement and check the agree box before clicking the signup button.</p>
 <p><img alt="Causal Web User Registration Page" src="../img/causal-web-registration.png" /></p>
-<p>The system will send an email with an activation link. After clicking on the link, the Causal Web system shows a confirmation message.</p>
+<p>Upon finishing registration, the system will send out an email with an activation link. Go to your email account and click on that link, then the Causal Web shows a confirmation message.</p>
 <p><img alt="Causal Web User Activation Page" src="../img/causal-web-user-activation.png" /></p>
-<p>Click on the link in the email. Alternatively, click on the <strong>"University"</strong> button to login to the Causal Web via your Pitt/Harvard account.</p>
+<p>Users from University of Pittsburgh or Harvard can click on the <strong>"University"</strong> button to login to the Causal Web via your Pitt/Harvard account. This allows all users from the two Universities to authenticate against their University system without registering a new account.</p>
 <p><img alt="Causal Web User Login with Pitt/Harvard Account Page" src="../img/auth0-login.png" /></p>
 <h2 id="login-to-causal-web-application">Login to Causal Web Application</h2>
-<p>Input your email address and password that you want to use to register with the Causal Web system. 
-Check the Remember Me checkbox if you would like the browser automatically log you in next time you visit.</p>
+<p>Input your email address and password that you want to use to register with the Causal Web system. Check the "Remember Me" checkbox if you would like the browser automatically log you in next time you visit.</p>
 <p><img alt="Causal Web User Login Page" src="../img/causal-web-login.png" /></p>
 <p>Here we go! You are now in the Causal Web application.</p>
 <p><img alt="Causal Web User Login Page" src="../img/causal-web-welcome.png" /></p>
@@ -194,6 +202,15 @@ you can click on the <strong>Browse</strong> button and choose the dataset file(
 <p><img alt="Causal Web Dataset Summarization Page" src="../img/causal-web-dataset-summarization-finished.png" /></p>
 <p>Click on the dataset's name's link to see the additional information.</p>
 <p><img alt="Causal Web Dataset Summarization Page" src="../img/causal-web-dataset-after-summarization-review.png" /></p>
+<h2 id="annotating-your-dataset">Annotating Your Dataset</h2>
+<p>On the Datasets main page, the blue icon is for viewing and entering annotations.</p>
+<p><img alt="Causal Web Dataset Summarization Page" src="../img/causal-web-dataset-annotation.png" /></p>
+<p>Click the annotation icon, and you can add new annotation, just click the "New annotation" button.</p>
+<p><img alt="Causal Web Dataset Summarization Page" src="../img/causal-web-dataset-annotation-new.png" /></p>
+<p>The application will pop up the annotation form.</p>
+<p><img alt="Causal Web Dataset Summarization Page" src="../img/causal-web-dataset-annotation-form.png" /></p>
+<p>You can also add another annotation on top of the exisiting annotation.</p>
+<p><img alt="Causal Web Dataset Summarization Page" src="../img/causal-web-dataset-annotation-nested.png" /></p>
 <h2 id="uploading-the-prior-knowledge">Uploading the Prior Knowledge</h2>
 <p>Click on the <strong>Data Management</strong> menu on the navigation bar on the left side. There is a sub menu that will appear. 
 Click on the <strong>Import Data</strong> menu.</p>
@@ -203,7 +220,7 @@ you can click on the Browse button and choose the prior knowledge file(s) you wo
 <p><img alt="Causal Web Upload Data Page" src="../img/causal-web-upload-data.png" /></p>
 <h2 id="executing-an-analysis-on-your-dataset">Executing an Analysis on Your Dataset</h2>
 <p>Click on the Causal Discovery menu on the navigation bar on the left side. The sub menu will slowly appear. 
-Click on the desired algorithms. As of November 2016, <strong>FGES</strong> <em>(Continuous)</em>, <strong>FGES Discrete</strong>, and <strong>GFCI</strong> <em>(Continuous)</em> are the only supported algorithms.  Note that in previous versions of our software FGES was known as </p>
+Click on the desired algorithms. <strong>FGESc</strong> <em>(Continuous)</em>, <strong>FGESd</strong> <em>(Discrete)</em>, <strong>GFCIc</strong> <em>(Continuous)</em> and <strong>GFCId</strong> <em>(Discrete)</em> are the only supported algorithms.  Note that in previous versions of our software FGES was known as </p>
 <p><img alt="Causal Discovery Algorithms Menu Page" src="../img/causal-web-causal-discovery-menu.png" /></p>
 <p>The <strong>Dataset</strong> drop-down box contains a list of datasets that the system recognize. If those datasets are already uploaded and they are not displayed in the dataset drop-down box, it means that the <a href="#summarization">Data Summarization</a> process to be reviewed in the first place prior to execute a causal <strong>FGES</strong> <em>(Continuous)</em> analysis. 
 If a prior knowledge file needs to be computed, Prior Knowledge File drop-down box contains a list of knowledge files. 
@@ -211,7 +228,7 @@ Before clicking the <strong>Next</strong> button, the data validation parameters
 <p><img alt="FGES Algorithm Step One Menu Page" src="../img/fgs-step-1.png" /></p>
 <p>Here, the <strong>FGES</strong> algorithm page allows user to modify its parameters. </p>
 <ul>
-<li>The first one is Penalty Discount and its default value is 4. </li>
+<li>The first one is Penalty Discount and its default value is 2. </li>
 <li>The second one is Search Maximum Degree and its default value is 100. </li>
 <li>The third one is Faithfulness Assumed and its default value is checked.</li>
 <li>The fifth one is Verbose output and its default value is checked.</li>
@@ -227,7 +244,6 @@ Once, everything is set. Click the <strong>Run Algorithm!</strong> button.</p>
 <p>The application will redirect the <strong>Job Queue</strong> page. The analysis job is added to the queue. The <strong>Queued</strong> status means that it waits for the scheduler to run it once the executing slot is available. However, the <strong>Job Queue</strong> page does not currently automatically update the jobs' status (at least in this development stage). Refresh the <strong>Job Queue</strong> page from time to time to see the latest jobs' status.</p>
 <p><img alt="Job Queue Page" src="../img/job-queue.png" /></p>
 <p>Once the job slot is available, the queued job is then executed and its status changes to <strong>Running</strong>.</p>
-<p><img alt="Running Job in Job Queue Page" src="../img/job-queue-running.png" /></p>
 <p>When the job is finished, it is automatically removed from the <strong>Job Queue</strong> page. The result of the analysis is added to the Results page.</p>
 <p><img alt="Remove Job from Job Queue Page" src="../img/job-queue-finished.png" /></p>
 <p>In case the <strong>queued</strong> or <strong>running</strong> job needs to be killed or removed, click the <strong>Remove</strong> button on the first column on the <strong>Job Queue</strong> page from the right. 
@@ -251,9 +267,17 @@ Click on the result's name's link to see a causal graph of the result.</p>
 <p>The results page details the graph, the original dataset, and its parameters. 
 Click on the <strong>View Full Screen</strong> button to see the causal graph in more detail.</p>
 <p><img alt="Algorithm Result in Detail Page" src="../img/fgs-result-detail.png" /></p>
-<p>The figure shows the causal graph in the full-screen mode.</p>
-<p><img alt="Algorithm Result in Full Screen Mode Page" src="../img/fgs-result-full-screen.png" /></p>
-<h2 id="comparing-your-result"><a name="comparing_result"></a>Comparing Your Result</h2>
+<p>Based on the nature of your data, sometimes you may see the generated graph (PAG) containing dashed links in addition to solid links. For example:</p>
+<p><img alt="PAG Example" src="../img/causal-web-pag-example.png" /></p>
+<ul>
+<li>
+<p>If an edge is dashed that means there is no latent confounder.  Otherwise, there is possibly latent confounder.</p>
+</li>
+<li>
+<p>If an edge is green that means it is definitely direct.  Otherwise, it is possibly direct.</p>
+</li>
+</ul>
+<h2 id="comparing-your-results"><a name="comparing_result"></a>Comparing Your Results</h2>
 <p>Click on the <strong>Results</strong> menu on the navigation bar on the left side. To compare two results click on the Algorithm Results item on the left. Select at least two results (place a checkmark next to the results) and click on Compare. Now click on the <strong>Result Comparisions</strong> item on the left.</p>
 <p><img alt="Result Comparisons Menu Page" src="../img/causal-web-algorithm-results-menu.png" /></p>
 <p>The Result Comparisons page shows a list of results, their creation time and their size. On the first column from the right, the green Save buttons provide the ability for users to download results to their local computers. Click on the result's name's the link to see the detail of the result comparisons.</p>

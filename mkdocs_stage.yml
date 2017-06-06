@@ -10,5 +10,6 @@ pages:
     - Causal REST API: causal-rest-api.md
     - Py-causal: py-causal.md
     - R-causal: r-causal.md
+    - Cytoscape Tetrad Plugin: cytoscape-tetrad.md
 theme: readthedocs
 google_analytics: ['UA-60897872-2', 'bd2kccd.github.io']
