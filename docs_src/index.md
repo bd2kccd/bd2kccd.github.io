@@ -13,6 +13,7 @@ This site hosts documentation for the [Center for Causal Discovery](http://www.c
 
 **Tetrad** - a Java API, and desktop environment for learning, performing analyses and experimenting with causal discovery algorithms.
 
+- [Download the latest Tetrad GUI Application i.e., tetrad-gui-x.x.x-launch.jar](https://cloud.ccd.pitt.edu/nexus/content/repositories/releases/edu/cmu/tetrad-gui/)
 - [Tetrad Project Website](http://www.phil.cmu.edu/tetrad/)
 - [Documentation for the big data enabled causal discovery algorithms](http://www.ccd.pitt.edu/wiki/index.php?title=Algorithm_Documentation)
 - [Github project](https://github.com/cmu-phil/tetrad)
@@ -39,8 +40,7 @@ This site hosts documentation for the [Center for Causal Discovery](http://www.c
 - [Docker container of Jupyter Notebook with R-causal configured](https://hub.docker.com/r/chirayukong/r-causal-rstudio/)
 - [Documentation for the big data enabled causal discovery algorithms](http://www.ccd.pitt.edu/wiki/index.php?title=Algorithm_Documentation)
 
-**cytoscape-tetrad** - a native cytoscape plugin that imports tetrad txt output files that contain the structure of a causal graph. It handles causal graphs and partial ancestral graphs.  To install the plugin start the Cytoscape application and click on apps->install from file and select the jar file.
-
+**cytoscape-tetrad** - a native cytoscape plugin that imports tetrad txt output files that contain the structure of a causal graph. It handles causal graphs and partial ancestral graphs.
 - [Plugin](https://cloud.ccd.pitt.edu/nexus/content/repositories/releases/edu/pitt/dbmi/ccd/cytoscape/tetrad/cytoscape-tetrad-app)
 - [Github project](https://github.com/bd2kccd/cytoscape-tetrad)
 

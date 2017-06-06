@@ -12,11 +12,11 @@ Fill your information in the signup page. Make sure to read the **Terms & Condit
 
 ![Causal Web User Registration Page](img/causal-web-registration.png)
 
-Upon finishing registration, the system will send out an email with an activation link. Go to your email account and click on that link, then the Causal Web shows a confirmation message.
+Upon finishing registration, the system will send out an email with an activation link. Go to your email accont and click on that link, then the Causal Web shows a confirmation message.
 
 ![Causal Web User Activation Page](img/causal-web-user-activation.png)
 
-Users from University of Pittsburgh or Harvard can click on the **"University"** button to login to the Causal Web via your Pitt/Harvard account. This allows all users from the two Universities to authenticate against their University system without registering a new account.
+Users from Pitt and Harvard can click on the **"University"** button to login to the Causal Web via your Pitt/Harvard account. This allows all users from the two Universities to authenticate against their University system without registering a new account.
 
 ![Causal Web User Login with Pitt/Harvard Account Page](img/auth0-login.png)
 
@@ -114,8 +114,9 @@ Click on the desired algorithms. **FGESc** *(Continuous)*, **FGESd** *(Discrete)
 
 ![Causal Discovery Algorithms Menu Page](img/causal-web-causal-discovery-menu.png)
 
-The **Dataset** drop-down box contains a list of datasets that the system recognize. If those datasets are already uploaded and they are not displayed in the dataset drop-down box, it means that the [Data Summarization](#summarization) process to be reviewed in the first place prior to execute a causal **FGES** *(Continuous)* analysis. 
-If a prior knowledge file needs to be computed, Prior Knowledge File drop-down box contains a list of knowledge files. 
+The **Dataset** drop-down box contains a list of datasets that you have uploaded. If those datasets are already uploaded and they are not displayed in the dataset drop-down box, it means that the [Data Summarization](#summarization) process to be reviewed in the first place prior to execute a causal **FGES** *(Continuous)* analysis. 
+
+If a prior knowledge file needs to be included in the analysis, Prior Knowledge File drop-down box contains a list of knowledge files. 
 Before clicking the **Next** button, the data validation parameters need to be input.
 
 ![FGES Algorithm Step One Menu Page](img/fgs-step-1.png)
@@ -141,7 +142,7 @@ Once, everything is set. Click the **Run Algorithm!** button.
 
 ![FGES Algorithm Step Three Menu Page](img/fgs-step-3.png)
 
-The application will redirect the **Job Queue** page. The analysis job is added to the queue. The **Queued** status means that it waits for the scheduler to run it once the executing slot is available. However, the **Job Queue** page does not currently automatically update the jobs' status (at least in this development stage). Refresh the **Job Queue** page from time to time to see the latest jobs' status.
+The application will redirect to the **Job Queue** page. The analysis job is added to the queue. The **Queued** status means that it waits for the scheduler to run it once the executing slot is available. However, the **Job Queue** page does not currently automatically update the jobs' status (at least in this development stage). Refresh the **Job Queue** page from time to time to see the latest jobs' status.
 
 ![Job Queue Page](img/job-queue.png)
 
@@ -168,14 +169,14 @@ If there is an error, you will see the details of the error by clicking on error
 
 ![Killed Job in Algorithm Results Page](img/killed-job-error-detail.png)
 
-## Reviewing Your Result
+## Reviewing Your Results
 
 Click on the **Results** menu on the navigation bar on the left side. 
 Click on the **Algorithm Results** menu.
 
 ![Algorithm Results Page](img/causal-web-algorithm-results-menu.png)
 
-The **Algorithm Results** page shows a list of results, their creation time and their size. On the first column from the right, the green **Save** buttons provide the ability for users to download results to their local computers. 
+The **Algorithm Results** page shows a list of results, their creation time and their size. In the first column from the right, the green **Save** buttons provide the ability for users to download results to their local computers. 
 Click on the result's name's link to see a causal graph of the result.
 
 Check the result files on their checkboxes to [compare the results](#comparing_result). 
@@ -192,7 +193,7 @@ Based on the nature of your data, sometimes you may see the generated graph (PAG
 
 ![PAG Example](img/causal-web-pag-example.png)
 
-- If an edge is dashed that means there is no latent confounder.  Otherwise, there is possibly latent confounder.
+- If an edge is dashed that means there is no latent confounder.  Otherwise, there is possibly a latent confounder.
 
 - If an edge is green that means it is definitely direct.  Otherwise, it is possibly direct.
 
