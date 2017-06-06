@@ -40,7 +40,7 @@ This site hosts documentation for the [Center for Causal Discovery](http://www.c
 - [Documentation for the big data enabled causal discovery algorithms](http://www.ccd.pitt.edu/wiki/index.php?title=Algorithm_Documentation)
 
 **cytoscape-tetrad** - a native cytoscape plugin that imports tetrad txt output files that contain the structure of a causal graph. It handles causal graphs and partial ancestral graphs.
-- [Plugin](https://ccd3.vm.bridges.psc.edu/nexus/content/repositories/releases/edu/pitt/dbmi/ccd/cytoscape/tetrad/cytoscape-tetrad-app)
+- [Plugin](https://cloud.ccd.pitt.edu/nexus/content/repositories/releases/edu/pitt/dbmi/ccd/cytoscape/tetrad/cytoscape-tetrad-app)
 - [Github project](https://github.com/bd2kccd/cytoscape-tetrad)
 
 
