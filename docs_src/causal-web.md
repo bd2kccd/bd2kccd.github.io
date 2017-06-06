@@ -12,11 +12,11 @@ Fill your information in the signup page. Make sure to read the **Terms & Condit
 
 ![Causal Web User Registration Page](img/causal-web-registration.png)
 
-Upon finishing registration, the system will send out an email with an activation link. Go to your email accont and click on that link, then the Causal Web shows a confirmation message.
+Upon finishing registration, the system will send out an email with an activation link. Go to your email account and click on that link, then the Causal Web shows a confirmation message.
 
 ![Causal Web User Activation Page](img/causal-web-user-activation.png)
 
-On certain deployments you can click on the **"University"** button to login to the Causal Web via your Pitt/Harvard account. This allows all users from the two Universities to authenticate against their University system without registering a new account.
+Users from University of Pittsburgh or Harvard can click on the **"University"** button to login to the Causal Web via your Pitt/Harvard account. This allows all users from the two Universities to authenticate against their University system without registering a new account.
 
 ![Causal Web User Login with Pitt/Harvard Account Page](img/auth0-login.png)
 
@@ -79,7 +79,7 @@ Click on the dataset's name's link to see the additional information.
 
 ## Annotating Your Dataset
 
-On the Datasets main page, the blue icon is for annotation.
+On the Datasets main page, the blue icon is for viewing and entering annotations.
 
 ![Causal Web Dataset Summarization Page](img/causal-web-dataset-annotation.png)
 
@@ -87,7 +87,7 @@ Click the annotation icon, and you can add new annotation, just click the "New a
 
 ![Causal Web Dataset Summarization Page](img/causal-web-dataset-annotation-new.png)
 
-The it pops up the annotation form.
+The application will pop up the annotation form.
 
 ![Causal Web Dataset Summarization Page](img/causal-web-dataset-annotation-form.png)
 
