@@ -6,7 +6,7 @@ This site hosts documentation for the [Center for Causal Discovery](http://www.c
 
 **causal-cmd** - a Java API and command line implementation of algorithms for performing causal discovery on Big Data. Use this software if you are interested incorporating analysis via a shell script or in a Java-based program. The software currently includes Fast Greedy Search (**FGES**) for continuous or discrete variables – an optimized version of Greedy Equivalence Search (**GES**) tested with datasets that contain as many as 1 million continuous variables, and Greedy Fast Causal Inference (**GFCI**) for continuous or discrete variables.
 
-- [Download the latest release i.e., causal-cmd-X.X.X-jar-with-dependencies.jar](https://ccd3.vm.bridges.psc.edu/nexus/content/repositories/releases/edu/cmu/causal-cmd/)
+- [Download the latest release i.e., causal-cmd-X.X.X-jar-with-dependencies.jar](https://cloud.ccd.pitt.edu/nexus/content/repositories/releases/edu/cmu/causal-cmd/)
 - [Documentation for the big data enabled causal discovery algorithms](http://www.ccd.pitt.edu/wiki/index.php?title=Algorithm_Documentation)
 - [Report bugs or issues with the software](ccd.user.helpdesk@gmail.com)
 - [Github project](https://github.com/bd2kccd/causal-cmd)
