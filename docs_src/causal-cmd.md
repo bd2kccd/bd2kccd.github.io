@@ -6,8 +6,10 @@ Causal-cmd is a Java application that provides a Command-Line Interface (CLI) to
 
 - FGESc - a version of FGES (Fast Greedy Search is an optimization and parallelized version of the Greedy Equivalence Search algorithm (GES)) that works with continuous variables
 - FGESd - a version of FGES that works with discrete variables
+- FGESm - a version of FGES that works with discrete and mixed variables
 - GFCIc - a version of GFCI (Greedy Fast Causal Inference) that works with continuous variables
-- GFCId - a version of FGES that works with discrete variables
+- GFCId - a version of GFCI that works with discrete variables
+- GFCIm - a version of GFCI that works with mixed and discrete variables
 
 Causal discovery algorithms are a class of search algorithms that explore a space of graphical causal models, i.e., graphical models where directed edges imply causation, for a model (or models) that are a good fit for a dataset. We suggest that newcomers to the field review Causation, Prediction and Search by Spirtes, Glymour and Scheines for a primer on the subject.
 
@@ -129,9 +131,9 @@ Note: the generated result file name is based on the system clock.
 ## Complete Usage Guide
 
 ````
-usage: java -jar causal-cmd-x.x.x.jar --algorithm <arg> | --simulate-data <arg>  [--version]
-    --algorithm <arg>       FGESc, FGESd, GFCIc, GFCId
-    --simulate-data <arg>   sem-rand-fwd, bayes-net-rand-fwd
+usage: java -jar causal-cmd-x.x.x-SNAPSHOT.jar --algorithm <arg> | --simulate-data <arg>  [--version]
+    --algorithm <arg>       FGESc, FGESd, FGESm-cg, GFCIc, GFCId, GFCIm-cg
+    --simulate-data <arg>   sem-rand-fwd, bayes-net-rand-fwd, lee-hastie
     --version               Show software version.
 ````
 
@@ -140,7 +142,7 @@ You can use the `--algorithm <arg>` parameter to see specific algorithm usage in
 ### FGESc
 
 ````
-usage: java -jar causal-cmd-x.x.x.jar --algorithm FGESc [-d <arg>] [--exclude-variables <arg>] -f <arg> [--faithfulness-assumed] [--help] [--json] [--knowledge <arg>] [--max-degree <arg>] [--no-validation-output] [-o <arg>] [--output-prefix <arg>] [--penalty-discount <arg>] [--skip-latest] [--skip-nonzero-variance] [--skip-unique-var-name] [--tetrad-graph-json] [--thread <arg>] [--verbose]
+usage: java -jar causal-cmd-x.x.x-SNAPSHOT.jar --algorithm FGESc [-d <arg>] [--exclude-variables <arg>] -f <arg> [--faithfulness-assumed] [--help] [--json] [--knowledge <arg>] [--max-degree <arg>] [--no-validation-output] [-o <arg>] [--output-prefix <arg>] [--penalty-discount <arg>] [--skip-latest] [--skip-nonzero-variance] [--skip-unique-var-name] [--structure-prior <arg>] [--symmetric-first-step] [--tetrad-graph-json] [--thread <arg>] [--verbose]
  -d,--delimiter <arg>           Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
     --exclude-variables <arg>   A file containing variables to exclude.
  -f,--data <arg>                Data file.
@@ -152,10 +154,12 @@ usage: java -jar causal-cmd-x.x.x.jar --algorithm FGESc [-d <arg>] [--exclude-va
     --no-validation-output      No validation output files created.
  -o,--out <arg>                 Output directory.
     --output-prefix <arg>       Prefix name for output files.
-    --penalty-discount <arg>    Penalty discount. Default is 4.0.
+    --penalty-discount <arg>    Penalty discount. Default is 2.0.
     --skip-latest               Skip checking for latest software version
     --skip-nonzero-variance     Skip check for zero variance variables.
     --skip-unique-var-name      Skip check for unique variable names.
+    --structure-prior <arg>     Structure prior coefficient. Default is 1.0.
+    --symmetric-first-step      Yes if the first step step for FGES should do scoring for both X->Y and Y->X. Default is false.
     --tetrad-graph-json         Create Tetrad Graph JSON output.
     --thread <arg>              Number of threads.
     --verbose                   Print additional information.
@@ -164,7 +168,7 @@ usage: java -jar causal-cmd-x.x.x.jar --algorithm FGESc [-d <arg>] [--exclude-va
 ### FGESd
 
 ````
-usage: java -jar causal-cmd-x.x.x.jar --algorithm FGESd [-d <arg>] [--exclude-variables <arg>] -f <arg> [--faithfulness-assumed] [--help] [--json] [--knowledge <arg>] [--max-degree <arg>] [--no-validation-output] [-o <arg>] [--output-prefix <arg>] [--sample-prior <arg>] [--skip-category-limit] [--skip-latest] [--skip-unique-var-name] [--structure-prior <arg>] [--tetrad-graph-json] [--thread <arg>] [--verbose]
+usage: java -jar causal-cmd-x.x.x-SNAPSHOT.jar --algorithm FGESd [-d <arg>] [--exclude-variables <arg>] -f <arg> [--faithfulness-assumed] [--help] [--json] [--knowledge <arg>] [--max-degree <arg>] [--no-validation-output] [-o <arg>] [--output-prefix <arg>] [--sample-prior <arg>] [--skip-category-limit] [--skip-latest] [--skip-unique-var-name] [--structure-prior <arg>] [--symmetric-first-step] [--tetrad-graph-json] [--thread <arg>] [--verbose]
  -d,--delimiter <arg>           Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
     --exclude-variables <arg>   A file containing variables to exclude.
  -f,--data <arg>                Data file.
@@ -181,15 +185,43 @@ usage: java -jar causal-cmd-x.x.x.jar --algorithm FGESd [-d <arg>] [--exclude-va
     --skip-latest               Skip checking for latest software version
     --skip-unique-var-name      Skip check for unique variable names.
     --structure-prior <arg>     Structure prior coefficient. Default is 1.0.
+    --symmetric-first-step      Yes if the first step step for FGES should do scoring for both X->Y and Y->X. Default is false.
     --tetrad-graph-json         Create Tetrad Graph JSON output.
     --thread <arg>              Number of threads.
     --verbose                   Print additional information.
 ````
 
+
+### FGESm-cg
+````
+usage: java -jar causal-cmd-x.x.x-SNAPSHOT.jar --algorithm FGESm-cg [-d <arg>] [--discretize] [--exclude-variables <arg>] -f <arg> [--faithfulness-assumed] [--help] [--json] [--knowledge <arg>] [--max-degree <arg>] [--no-validation-output] [--num-categories-to-discretize <arg>] [--num-discrete-categories <arg>] [-o <arg>] [--output-prefix <arg>] [--penalty-discount <arg>] [--skip-latest] [--structure-prior <arg>] [--symmetric-first-step] [--tetrad-graph-json] [--thread <arg>] [--verbose]
+ -d,--delimiter <arg>                      Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
+    --discretize                           Yes if continuous variables should be discretized when child is discrete. Default is true.
+    --exclude-variables <arg>              A file containing variables to exclude.
+ -f,--data <arg>                           Data file.
+    --faithfulness-assumed                 Yes if (one edge) faithfulness should be assumed. Default is false.
+    --help                                 Show help.
+    --json                                 Create JSON output.
+    --knowledge <arg>                      A file containing prior knowledge.
+    --max-degree <arg>                     The maximum degree of the graph.. Default is 100.
+    --no-validation-output                 No validation output files created.
+    --num-categories-to-discretize <arg>   The number of categories used to discretize continuous variables, if necessary. Default is 3.
+    --num-discrete-categories <arg>        Number of category considered discrete variable.
+ -o,--out <arg>                            Output directory.
+    --output-prefix <arg>                  Prefix name for output files.
+    --penalty-discount <arg>               Penalty discount. Default is 2.0.
+    --skip-latest                          Skip checking for latest software version
+    --structure-prior <arg>                Structure prior coefficient. Default is 1.0.
+    --symmetric-first-step                 Yes if the first step step for FGES should do scoring for both X->Y and Y->X. Default is false.
+    --tetrad-graph-json                    Create Tetrad Graph JSON output.
+    --thread <arg>                         Number of threads.
+    --verbose                              Print additional information.
+````
+
 ### GFCIc
 
 ````
-usage: java -jar causal-cmd-x.x.x.jar --algorithm GFCIc [--alpha <arg>] [-d <arg>] [--exclude-variables <arg>] -f <arg> [--faithfulness-assumed] [--help] [--json] [--knowledge <arg>] [--max-degree <arg>] [--no-validation-output] [-o <arg>] [--output-prefix <arg>] [--penalty-discount <arg>] [--skip-latest] [--skip-nonzero-variance] [--skip-unique-var-name] [--tetrad-graph-json] [--thread <arg>] [--verbose]
+usage: java -jar causal-cmd-x.x.x-SNAPSHOT.jar --algorithm GFCIc [--alpha <arg>] [-d <arg>] [--exclude-variables <arg>] -f <arg> [--faithfulness-assumed] [--help] [--json] [--knowledge <arg>] [--max-degree <arg>] [--max-path-length <arg>] [--no-validation-output] [-o <arg>] [--output-prefix <arg>] [--penalty-discount <arg>] [--skip-latest] [--skip-nonzero-variance] [--skip-unique-var-name] [--tetrad-graph-json] [--thread <arg>] [--use-complete-rule-set] [--verbose]
     --alpha <arg>               Cutoff for p values (alpha). Default is 0.01.
  -d,--delimiter <arg>           Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
     --exclude-variables <arg>   A file containing variables to exclude.
@@ -199,22 +231,24 @@ usage: java -jar causal-cmd-x.x.x.jar --algorithm GFCIc [--alpha <arg>] [-d <arg
     --json                      Create JSON output.
     --knowledge <arg>           A file containing prior knowledge.
     --max-degree <arg>          The maximum degree of the graph.. Default is 100.
+    --max-path-length <arg>     The maximum length for any discriminating path. -1 if unlimited. Default is -1.
     --no-validation-output      No validation output files created.
  -o,--out <arg>                 Output directory.
     --output-prefix <arg>       Prefix name for output files.
-    --penalty-discount <arg>    Penalty discount. Default is 4.0.
+    --penalty-discount <arg>    Penalty discount. Default is 2.0.
     --skip-latest               Skip checking for latest software version
     --skip-nonzero-variance     Skip check for zero variance variables.
     --skip-unique-var-name      Skip check for unique variable names.
     --tetrad-graph-json         Create Tetrad Graph JSON output.
     --thread <arg>              Number of threads.
+    --use-complete-rule-set
     --verbose                   Print additional information.
 ````
 
 ### GFCId
 
 ````
-usage: java -jar causal-cmd-x.x.x.jar --algorithm GFCId [--alpha <arg>] [-d <arg>] [--exclude-variables <arg>] -f <arg> [--faithfulness-assumed] [--help] [--json] [--knowledge <arg>] [--max-degree <arg>] [--no-validation-output] [-o <arg>] [--output-prefix <arg>] [--sample-prior <arg>] [--skip-category-limit] [--skip-latest] [--skip-unique-var-name] [--structure-prior <arg>] [--tetrad-graph-json] [--thread <arg>] [--verbose]
+usage: java -jar causal-cmd-x.x.x-SNAPSHOT.jar --algorithm GFCId [--alpha <arg>] [-d <arg>] [--exclude-variables <arg>] -f <arg> [--faithfulness-assumed] [--help] [--json] [--knowledge <arg>] [--max-degree <arg>] [--max-path-length <arg>] [--no-validation-output] [-o <arg>] [--output-prefix <arg>] [--sample-prior <arg>] [--skip-category-limit] [--skip-latest] [--skip-unique-var-name] [--structure-prior <arg>] [--tetrad-graph-json] [--thread <arg>] [--use-complete-rule-set] [--verbose]
     --alpha <arg>               Cutoff for p values (alpha). Default is 0.01.
  -d,--delimiter <arg>           Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
     --exclude-variables <arg>   A file containing variables to exclude.
@@ -224,6 +258,7 @@ usage: java -jar causal-cmd-x.x.x.jar --algorithm GFCId [--alpha <arg>] [-d <arg
     --json                      Create JSON output.
     --knowledge <arg>           A file containing prior knowledge.
     --max-degree <arg>          The maximum degree of the graph.. Default is 100.
+    --max-path-length <arg>     The maximum length for any discriminating path. -1 if unlimited. Default is -1.
     --no-validation-output      No validation output files created.
  -o,--out <arg>                 Output directory.
     --output-prefix <arg>       Prefix name for output files.
@@ -234,9 +269,37 @@ usage: java -jar causal-cmd-x.x.x.jar --algorithm GFCId [--alpha <arg>] [-d <arg
     --structure-prior <arg>     Structure prior coefficient. Default is 1.0.
     --tetrad-graph-json         Create Tetrad Graph JSON output.
     --thread <arg>              Number of threads.
+    --use-complete-rule-set
     --verbose                   Print additional information.
 ````
 
+### GFCIm-cg
+````
+usage: java -jar causal-cmd-x.x.x-SNAPSHOT.jar --algorithm GFCIm-cg [--alpha <arg>] [-d <arg>] [--discretize] [--exclude-variables <arg>] -f <arg> [--faithfulness-assumed] [--help] [--json] [--knowledge <arg>] [--max-degree <arg>] [--max-path-length <arg>] [--no-validation-output] [--num-categories-to-discretize <arg>] [--num-discrete-categories <arg>] [-o <arg>] [--output-prefix <arg>] [--penalty-discount <arg>] [--skip-latest] [--structure-prior <arg>] [--tetrad-graph-json] [--thread <arg>] [--use-complete-rule-set] [--verbose]
+    --alpha <arg>                          Cutoff for p values (alpha). Default is 0.01.
+ -d,--delimiter <arg>                      Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
+    --discretize                           Yes if continuous variables should be discretized when child is discrete. Default is true.
+    --exclude-variables <arg>              A file containing variables to exclude.
+ -f,--data <arg>                           Data file.
+    --faithfulness-assumed                 Yes if (one edge) faithfulness should be assumed. Default is false.
+    --help                                 Show help.
+    --json                                 Create JSON output.
+    --knowledge <arg>                      A file containing prior knowledge.
+    --max-degree <arg>                     The maximum degree of the graph.. Default is 100.
+    --max-path-length <arg>                The maximum length for any discriminating path. -1 if unlimited. Default is -1.
+    --no-validation-output                 No validation output files created.
+    --num-categories-to-discretize <arg>   The number of categories used to discretize continuous variables, if necessary. Default is 3.
+    --num-discrete-categories <arg>        Number of category considered discrete variable.
+ -o,--out <arg>                            Output directory.
+    --output-prefix <arg>                  Prefix name for output files.
+    --penalty-discount <arg>               Penalty discount. Default is 2.0.
+    --skip-latest                          Skip checking for latest software version
+    --structure-prior <arg>                Structure prior coefficient. Default is 1.0.
+    --tetrad-graph-json                    Create Tetrad Graph JSON output.
+    --thread <arg>                         Number of threads.
+    --use-complete-rule-set
+    --verbose                              Print additional information.
+````
 
 ### Sample Prior Knowledge File
 
