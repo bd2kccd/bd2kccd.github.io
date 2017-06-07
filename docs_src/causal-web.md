@@ -16,10 +16,6 @@ Upon finishing registration, the system will send out an email with an activatio
 
 ![Causal Web User Activation Page](img/causal-web-user-activation.png)
 
-Users from Pitt and Harvard can click on the **"University"** button to login to the Causal Web via your Pitt/Harvard account. This allows all users from the two Universities to authenticate against their University system without registering a new account.
-
-![Causal Web User Login with Pitt/Harvard Account Page](img/auth0-login.png)
-
 ## Login to Causal Web Application
 
 Input your email address and password that you want to use to register with the Causal Web system. Check the "Remember Me" checkbox if you would like the browser automatically log you in next time you visit.
@@ -65,7 +61,7 @@ Click on the dataset's name's link to see the dataset information. From this sta
 
 ![Causal Web Dataset Review Page](img/causal-web-dataset-not-summarized.png)
 
-From the dataset page, click on the yellow warning button to summarize a dataset. The data summarization page shows information of the dataset, its basic information, and additional information that will be determined after summarization (a number of rows and columns). The bottom panel has two radio boxes for you to choose variable type (continuous or discrete), and delimiter (tab or comma). The Retention.txt dataset described above is tab-delimited and contains continous variables.
+From the dataset page, click on the yellow warning button to summarize a dataset. The data summarization page shows information of the dataset, its basic information, and additional information that will be determined after summarization (a number of rows and columns). The bottom panel has two radio boxes for you to choose variable type (continuous, discrete, or mixed), and delimiter (tab or comma). The Retention.txt dataset described above is tab-delimited and contains continous variables.
 
 ![Causal Web Dataset Summarization review Page](img/causal-web-dataset-summarization-page.png)
 
@@ -81,19 +77,19 @@ Click on the dataset's name's link to see the additional information.
 
 On the Datasets main page, the blue icon is for viewing and entering annotations.
 
-![Causal Web Dataset Summarization Page](img/causal-web-dataset-annotation.png)
+![Causal Web Dataset Annotation Page](img/causal-web-dataset-annotation.png)
 
 Click the annotation icon, and you can add new annotation, just click the "New annotation" button.
 
-![Causal Web Dataset Summarization Page](img/causal-web-dataset-annotation-new.png)
+![Causal Web Dataset Annotation Page](img/causal-web-dataset-annotation-new.png)
 
 The application will pop up the annotation form.
 
-![Causal Web Dataset Summarization Page](img/causal-web-dataset-annotation-form.png)
+![Causal Web Dataset Annotation Page](img/causal-web-dataset-annotation-form.png)
 
 You can also add another annotation on top of the exisiting annotation.
 
-![Causal Web Dataset Summarization Page](img/causal-web-dataset-annotation-nested.png)
+![Causal Web Dataset Annotation Page](img/causal-web-dataset-annotation-nested.png)
 
 ## Uploading the Prior Knowledge
 
@@ -109,10 +105,15 @@ you can click on the Browse button and choose the prior knowledge file(s) you wo
 
 ## Executing an Analysis on Your Dataset
 
-Click on the Causal Discovery menu on the navigation bar on the left side. The sub menu will slowly appear. 
-Click on the desired algorithms. **FGESc** *(Continuous)*, **FGESd** *(Discrete)*, **GFCIc** *(Continuous)* and **GFCId** *(Discrete)* are the only supported algorithms.  Note that in previous versions of our software FGES was known as 
+Click on the Causal Discovery menu on the navigation bar on the left side. The sub menu will slowly appear. **FGES** and **GFCI** are the currently supported algorithms.
 
-![Causal Discovery Algorithms Menu Page](img/causal-web-causal-discovery-menu.png)
+**FGES** algorithm can handle Continuous, Discrete, and Mixed data files.
+
+![Causal Discovery Algorithms Menu Page - FGES](img/causal-web-causal-discovery-menu-fges.png)
+
+**GFCI** algorithm can handle Continuous, Discrete, and Mixed data files as well.
+
+![Causal Discovery Algorithms Menu Page - GFCI](img/causal-web-causal-discovery-menu-gfci.png)
 
 The **Dataset** drop-down box contains a list of datasets that you have uploaded. If those datasets are already uploaded and they are not displayed in the dataset drop-down box, it means that the [Data Summarization](#summarization) process to be reviewed in the first place prior to execute a causal **FGES** *(Continuous)* analysis. 
 
@@ -121,7 +122,7 @@ Before clicking the **Next** button, the data validation parameters need to be i
 
 ![FGES Algorithm Step One Menu Page](img/fgs-step-1.png)
 
-Here, the **FGES** algorithm page allows user to modify its parameters. 
+Here, the **FGES Continuous** algorithm page allows user to modify its parameters. 
 
 - The first one is Penalty Discount and its default value is 2. 
 - The second one is Search Maximum Degree and its default value is 100. 
