@@ -32,11 +32,11 @@ java -jar causal-cmd-x.x.x.jar
 And you'll see the following instructions:
 
 ````
-usage: java -jar causal-cmd-x.x.x.jar --algorithm <arg> | --simulate-data <arg>  [--version]
-    --algorithm <arg>       FGESc, FGESd, GFCIc, GFCId
-    --simulate-data <arg>   sem-rand-fwd, bayes-net-rand-fwd
+usage: java -jar causal-cmd-0.2.0-SNAPSHOT.jar --algorithm <arg> | --simulate-data <arg>  [--version]
+    --algorithm <arg>       FGESc, FGESd, FGESm-cg, GFCIc, GFCId, GFCIm-cg
+    --simulate-data <arg>   sem-rand-fwd, bayes-net-rand-fwd, lee-hastie
     --version               Show software version.
-
+Additional parameters are available when using --algorithm <arg> or --simulate-data <arg>.
 ````
 
 In this example, we'll be running FGESc on this `Retention.txt`.
