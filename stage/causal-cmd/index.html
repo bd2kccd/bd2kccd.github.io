@@ -450,7 +450,30 @@ x1 x2
 </ul>
 <h2 id="api-usage">API Usage</h2>
 <p>In addition to using causal-cmd directly in the command line interface, you can also use the Tetred library that is includedin in causal-cmd as an <a href="http://cmu-phil.github.io/tetrad/tetrad-lib-apidocs/">Java API</a>. Here we provide an example of how to run <code>FGESc</code> algorithm using this API.</p>
-<pre><code class="java">public class FGEScApiExample {
+<pre><code class="java">import edu.cmu.tetrad.data.DataModel;
+import edu.cmu.tetrad.data.DataSet;
+import edu.cmu.tetrad.graph.Graph;
+import edu.cmu.tetrad.algcomparison.score.SemBicScore;
+import edu.cmu.tetrad.algcomparison.algorithm.oracle.pattern.Fges;
+import edu.cmu.tetrad.util.Parameters;
+import edu.pitt.dbmi.causal.cmd.ParamAttrs;
+import edu.pitt.dbmi.causal.cmd.util.TetradDataUtils;
+import edu.pitt.dbmi.causal.cmd.validation.TetradDataValidation;
+import edu.pitt.dbmi.causal.cmd.validation.UniqueVariableValidation;
+import edu.pitt.dbmi.data.Dataset;
+import edu.pitt.dbmi.data.Delimiter;
+import edu.pitt.dbmi.data.reader.tabular.ContinuousTabularDataFileReader;
+import edu.pitt.dbmi.data.reader.tabular.TabularDataReader;
+import edu.pitt.dbmi.data.validation.ValidationCode;
+import edu.pitt.dbmi.data.validation.ValidationResult;
+import edu.pitt.dbmi.data.validation.tabular.ContinuousTabularDataFileValidation;
+import edu.pitt.dbmi.data.validation.tabular.TabularDataValidation;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
+public class FGEScApiExample {
 
     /**
     * @param args the command line arguments
