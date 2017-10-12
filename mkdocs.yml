@@ -5,6 +5,7 @@ site_dir: docs
 site_url: https://bd2kccd.github.io/docs
 pages:
     - Welcome to CCD Docs: index.md
+    - Tetrad: tetrad.md
     - Causal CMD: causal-cmd.md
     - Causal Web: causal-web.md
     - Causal REST API: causal-rest-api.md
