@@ -1,15 +1,9 @@
-# causal-cmd
+# causal-cmd v0.3.x
 
 ## Introduction
 
 Causal-cmd is a Java application that provides a Command-Line Interface (CLI) tool for causal discovery algorithms produced by the [Center for Causal Discovery](http://www.ccd.pitt.edu/).  The application currently includes the following algorithms:
-
-- FGESc - a version of FGES (Fast Greedy Search is an optimization and parallelized version of the Greedy Equivalence Search algorithm (GES)) that works with continuous variables
-- FGESd - a version of FGES that works with discrete variables
-- FGESm - a version of FGES that works with discrete and mixed variables
-- GFCIc - a version of GFCI (Greedy Fast Causal Inference) that works with continuous variables
-- GFCId - a version of GFCI that works with discrete variables
-- GFCIm - a version of GFCI that works with mixed and discrete variables
+bpc, eb, fang-concatenated, fas, fask-concatenated, fci, fges, fges-mb, fofc, ftfc, gfci, glasso, imgs_cont, imgs_disc, mbfs, mgm, pc-all, pc-stable-max, r-skew, r-skew-e, r1, r2, r3, r4, rfci, skew, skew-e, ts-fci, ts-gfci, ts-imgs
 
 Causal discovery algorithms are a class of search algorithms that explore a space of graphical causal models, i.e., graphical models where directed edges imply causation, for a model (or models) that are a good fit for a dataset. We suggest that newcomers to the field review Causation, Prediction and Search by Spirtes, Glymour and Scheines for a primer on the subject.
 
@@ -24,93 +18,139 @@ In this example, we'll use download the [Retention.txt](http://www.ccd.pitt.edu/
 Keep in mind that causal-cmd has different switches for different algorithms. To start, type the following command in your terminal:
 
 ````
-java -jar causal-cmd-x.x.x.jar
+java -jar causal-cmd-<version number>-jar-with-dependencies.jar
 ````
 
-** Note: we are using `causal-cmd-x.x.x.jar` to indicate the actual executable jar of specific version number that is being used. **
+** Note: we are using `causal-cmd-<version number>-jar-with-dependencies.jar` to indicate the actual executable jar of specific version number that is being used. **
 
 And you'll see the following instructions:
 
 ````
-usage: java -jar causal-cmd-0.2.0-SNAPSHOT.jar --algorithm <arg> | --simulate-data <arg>  [--version]
-    --algorithm <arg>       FGESc, FGESd, FGESm-cg, GFCIc, GFCId, GFCIm-cg
-    --simulate-data <arg>   sem-rand-fwd, bayes-net-rand-fwd, lee-hastie
-    --version               Show software version.
-Additional parameters are available when using --algorithm <arg> or --simulate-data <arg>.
+Missing required options: algorithm, data-type, dataset, delimiter
+usage: java -jar causal-cmd-0.3.0-SNAPSHOT.jar  --algorithm <string> [--comment-marker <string>] --data-type <string> --dataset <files> --delimiter <string> [--help] [--help-all] [--json] [--out <directory>] [--prefix <string>] [--quote-char <character>] [--skip-latest] [--skip-validation] [--version]
+    --algorithm <string>        Algorithm: bpc, eb, fang-concatenated, fas, fask-concatenated, fci, fges, fges-mb, fofc, ftfc, gfci, glasso, imgs_cont, imgs_disc, mbfs, mgm, pc-all, pc-stable-max, r-skew, r-skew-e, r1, r2, r3, r4, rfci, skew, skew-e, ts-fci, ts-gfci, ts-imgs
+    --comment-marker <string>   Comment marker.
+    --data-type <string>        Data type: continuous, covariance, discrete, mixed
+    --dataset <files>           Dataset. Multiple files are seperated by commas.
+    --delimiter <string>        Delimiter: colon, comma, pipe, semicolon, space, tab, whitespace
+    --help                      Show help.
+    --help-all                  Show all options and descriptions.
+    --json                      Write out graph as json.
+    --out <directory>           Output directory
+    --prefix <string>           Output file name prefix.
+    --quote-char <character>    Single character denotes quote.
+    --skip-latest               Skip checking for latest software version.
+    --skip-validation           Skip validation.
+    --version                   Show version.
+Use --help for guidance list of options.  Use --help-all to show all options.
+
 ````
 
-In this example, we'll be running FGESc on this `Retention.txt`.
+
+By specifying an algorithm using the --algorithm switch the program will indicate the additional required switches.  The program reminds the user of required switches to run.  In general most algorithms also require  data-type, dataset, delimiter and score. The switch --help-all displays and extended list of switches for the algorithm.
+
+Example of listing all available options for an algorithm:
+````
+$ java -jar causal-cmd-0.3.0-SNAPSHOT-jar-with-dependencies.jar --algorithm fges --data-type continuous --dataset ./dist/Retention.txt --delimiter tab --score sem-bic --help
+
+  usage: java -jar causal-cmd-0.3.0-SNAPSHOT.jar --algorithm fges --data-type continuous --dataset ./dist/Retention.txt --delimiter tab --score sem-bic [--bootstrapEnsemble <integer>] [--bootstrapping] [--bootstrapSampleSize <integer>] [--comment-marker <string>] [--exclude-var <file>] [--faithfulnessAssumed] [--json] [--knowledge <file>] [--maxDegree <integer>] [--missing-marker <string>] [--no-header] [--out <directory>] [--penaltyDiscount <double>] [--prefix <string>] [--quote-char <character>] [--skip-latest] [--skip-validation] [--symmetricFirstStep] [--verbose]
+      --bootstrapEnsemble <integer>     Ensemble method: Preserved (0), Highest (1), Majority (2)
+      --bootstrapping                   Yes if sampling dataset with replacement (bootstrapping) should be used
+      --bootstrapSampleSize <integer>   The number of bootstraps (min = 1)
+      --comment-marker <string>         Comment marker.
+      --exclude-var <file>              Variables to be excluded from run.
+      --faithfulnessAssumed             Yes if (one edge) faithfulness should be assumed
+      --json                            Write out graph as json.
+      --knowledge <file>                Prior knowledge file.
+      --maxDegree <integer>             The maximum degree of the graph (min = -1)
+      --missing-marker <string>         Denotes missing value.
+      --no-header                       Indicates tabular dataset has no header.
+      --out <directory>                 Output directory
+      --penaltyDiscount <double>        Penalty discount (min = 0.0)
+      --prefix <string>                 Output file name prefix.
+      --quote-char <character>          Single character denotes quote.
+      --skip-latest                     Skip checking for latest software version.
+      --skip-validation                 Skip validation.
+      --symmetricFirstStep              Yes if the first step step for FGES should do scoring for both X->Y and Y->X
+      --verbose                         Yes if verbose output should be printed or logged
 
 ````
-java -jar causal-cmd-x.x.x.jar --algorithm FGESc --data Retention.txt
-````
 
-This command will output the  following messages in your terminal:
+In this example, we'll be running the FGES algorith on the dataset `Retention.txt`.
 
 ````
+ java -jar causal-cmd-0.3.0-SNAPSHOT-jar-with-dependencies.jar --algorithm fges --data-type continuous --dataset ./dist/Retention.txt --delimiter tab --score sem-bic
+````
+
+This command will output by default two files fges_<unix timestamp>.txt which is a log of the algorithm's activity and fges_<unix timmestamp>_graph.txt which is a textual description of the graph output from the algorithm.
+
+Example log output from causal-cmd:
+````
+Tetrad: FGES (Tue, April 03, 2018 11:10:01 AM)
 ================================================================================
-FGES Continuous (Wed, March 22, 2017 10:43:43 AM)
-================================================================================
-data = Retention.txt
-delimiter = tab
-verbose = false
-thread = 2
-penalty discount = 4.000000
-max degree = 100
-faithfulness assumed = false
-ensure variable names are unique = true
-ensure variables have non-zero variance = true
-out = .
-output-prefix = FGESc_Retention.txt_1490193823839
-no-validation-output = false
+Short blurb goes here
+--------------------------------------------------------------------------------
+Algorithm: FGES
+Score: Sem BIC Score
 
-Running version 0.1.0 but unable to contact latest version server.  To disable checking use the skip-latest option.
+Tetrad Parameters
+================================================================================
+bootstrapEnsemble: 1
+bootstrapping: false
+bootstrapSampleSize: 10
+faithfulnessAssumed: true
+maxDegree: 100
+penaltyDiscount: 2.0
+symmetricFirstStep: false
+verbose: false
+
+Dataset
+================================================================================
+File: /Users/jue/IdeaProjects/causal-cmd/target/./dist/Retention.txt
+Has Header: yes
+Delimiter: tab
+Data Type: continuous
+
+Miscellaneous
+================================================================================
+Skip Validation: no
+JSON Output: no
+Output Directory: .
+
+Start validating file Retention.txt.: Tue, April 03, 2018 11:10:02 AM
+Finish validating file Retention.txt.: Tue, April 03, 2018 11:10:02 AM
 There are 170 cases and 8 variables.
-Wed, March 22, 2017 10:43:45 AM: Start reading in data file.
-Wed, March 22, 2017 10:43:45 AM: End reading in data file.
-Wed, March 22, 2017 10:43:45 AM: Start running algorithm FGES (Fast Greedy Equivalence Search) using Sem BIC Score.
-Wed, March 22, 2017 10:43:45 AM: End running algorithm FGES (Fast Greedy Equivalence Search) using Sem BIC Score.
+Start reading file Retention.txt.: Tue, April 03, 2018 11:10:02 AM
+Finish reading file Retention.txt.: Tue, April 03, 2018 11:10:02 AM
+File Retention.txt: 170 case(s), 8 variable(s).
+
+Start search: Tue, April 03, 2018 11:10:02 AM
+End search: Tue, April 03, 2018 11:10:02 AM
 ````
 
-At the same time, this program will also write the results of the FGESc search procedure into a text file named like "FGESc_Retention.txt_1490193823839.txt". Below is the content of this result file:
 
+Example graph output from causal-cmd:
 ````
-================================================================================
-FGES Continuous (Wed, March 22, 2017 10:43:43 AM)
-================================================================================
-
-Runtime Parameters:
-verbose = false
-number of threads = 2
-
-Dataset:
-file = Retention.txt
-delimiter = tab
-cases read in = 170
-variables read in = 8
-
-Algorithm Parameters:
-penalty discount = 4.000000
-max degree = 100
-faithfulness assumed = false
-
-Data Validations:
-ensure variable names are unique = true
-ensure variables have non-zero variance = true
-
-
 Graph Nodes:
 spending_per_stdt,grad_rate,stdt_clss_stndng,rjct_rate,tst_scores,stdt_accept_rate,stdt_tchr_ratio,fac_salary
 
 Graph Edges:
-1. grad_rate --- tst_scores
-2. spending_per_stdt --- stdt_tchr_ratio
-3. stdt_clss_stndng --- rjct_rate
-4. tst_scores --- fac_salary
-5. tst_scores --- spending_per_stdt
-6. tst_scores --- stdt_clss_stndng
+1. fac_salary --- spending_per_stdt
+2. spending_per_stdt --> rjct_rate
+3. spending_per_stdt --> stdt_clss_stndng
+4. spending_per_stdt --- tst_scores
+5. stdt_accept_rate --- fac_salary
+6. stdt_accept_rate --> grad_rate
+7. stdt_clss_stndng --> rjct_rate
+8. stdt_tchr_ratio --- spending_per_stdt
+9. stdt_tchr_ratio --> stdt_clss_stndng
+10. tst_scores --- fac_salary
+11. tst_scores --> grad_rate
+12. tst_scores --> stdt_clss_stndng
 ````
 
+
+## Interpretation of graph output
 The end of the file contains the causal graph edgesfrom the search procedure. Here is a key to the edge types:
 
 - A --- B - There is causal relationship between variable A and B but we cannot determine the direction of the relationship
@@ -126,180 +166,9 @@ The GFCI algorithm has additional edge types:
 - A --> B pd nl - Possibly direct and no latent confounder
 - A --> B pd pl - Possibly direct and possibly latent confounder
 
-Note: the generated result file name is based on the system clock.
-
-## Complete Usage Guide
-
-````
-usage: java -jar causal-cmd-x.x.x-SNAPSHOT.jar --algorithm <arg> | --simulate-data <arg>  [--version]
-    --algorithm <arg>       FGESc, FGESd, FGESm-cg, GFCIc, GFCId, GFCIm-cg
-    --simulate-data <arg>   sem-rand-fwd, bayes-net-rand-fwd, lee-hastie
-    --version               Show software version.
-````
-
-You can use the `--algorithm <arg>` parameter to see specific algorithm usage information, which we'll also list below.
-
-### FGESc
-
-````
-usage: java -jar causal-cmd-x.x.x-SNAPSHOT.jar --algorithm FGESc [-d <arg>] [--exclude-variables <arg>] -f <arg> [--faithfulness-assumed] [--help] [--json] [--knowledge <arg>] [--max-degree <arg>] [--no-validation-output] [-o <arg>] [--output-prefix <arg>] [--penalty-discount <arg>] [--skip-latest] [--skip-nonzero-variance] [--skip-unique-var-name] [--structure-prior <arg>] [--symmetric-first-step] [--tetrad-graph-json] [--thread <arg>] [--verbose]
- -d,--delimiter <arg>           Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
-    --exclude-variables <arg>   A file containing variables to exclude.
- -f,--data <arg>                Data file.
-    --faithfulness-assumed      Yes if (one edge) faithfulness should be assumed. Default is false.
-    --help                      Show help.
-    --json                      Create JSON output.
-    --knowledge <arg>           A file containing prior knowledge.
-    --max-degree <arg>          The maximum degree of the graph.. Default is 100.
-    --no-validation-output      No validation output files created.
- -o,--out <arg>                 Output directory.
-    --output-prefix <arg>       Prefix name for output files.
-    --penalty-discount <arg>    Penalty discount. Default is 2.0.
-    --skip-latest               Skip checking for latest software version
-    --skip-nonzero-variance     Skip check for zero variance variables.
-    --skip-unique-var-name      Skip check for unique variable names.
-    --structure-prior <arg>     Structure prior coefficient. Default is 1.0.
-    --symmetric-first-step      Yes if the first step step for FGES should do scoring for both X->Y and Y->X. Default is false.
-    --tetrad-graph-json         Create Tetrad Graph JSON output.
-    --thread <arg>              Number of threads.
-    --verbose                   Print additional information.
-````
-
-### FGESd
-
-````
-usage: java -jar causal-cmd-x.x.x-SNAPSHOT.jar --algorithm FGESd [-d <arg>] [--exclude-variables <arg>] -f <arg> [--faithfulness-assumed] [--help] [--json] [--knowledge <arg>] [--max-degree <arg>] [--no-validation-output] [-o <arg>] [--output-prefix <arg>] [--sample-prior <arg>] [--skip-category-limit] [--skip-latest] [--skip-unique-var-name] [--structure-prior <arg>] [--symmetric-first-step] [--tetrad-graph-json] [--thread <arg>] [--verbose]
- -d,--delimiter <arg>           Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
-    --exclude-variables <arg>   A file containing variables to exclude.
- -f,--data <arg>                Data file.
-    --faithfulness-assumed      Yes if (one edge) faithfulness should be assumed. Default is false.
-    --help                      Show help.
-    --json                      Create JSON output.
-    --knowledge <arg>           A file containing prior knowledge.
-    --max-degree <arg>          The maximum degree of the graph.. Default is 100.
-    --no-validation-output      No validation output files created.
- -o,--out <arg>                 Output directory.
-    --output-prefix <arg>       Prefix name for output files.
-    --sample-prior <arg>        Sample prior. Default is 1.0.
-    --skip-category-limit       Skip 'limit number of categories' check.
-    --skip-latest               Skip checking for latest software version
-    --skip-unique-var-name      Skip check for unique variable names.
-    --structure-prior <arg>     Structure prior coefficient. Default is 1.0.
-    --symmetric-first-step      Yes if the first step step for FGES should do scoring for both X->Y and Y->X. Default is false.
-    --tetrad-graph-json         Create Tetrad Graph JSON output.
-    --thread <arg>              Number of threads.
-    --verbose                   Print additional information.
-````
+NNote: the generated result file name is based on the system clock.
 
 
-### FGESm-cg
-````
-usage: java -jar causal-cmd-x.x.x-SNAPSHOT.jar --algorithm FGESm-cg [-d <arg>] [--discretize] [--exclude-variables <arg>] -f <arg> [--faithfulness-assumed] [--help] [--json] [--knowledge <arg>] [--max-degree <arg>] [--no-validation-output] [--num-categories-to-discretize <arg>] [--num-discrete-categories <arg>] [-o <arg>] [--output-prefix <arg>] [--penalty-discount <arg>] [--skip-latest] [--structure-prior <arg>] [--symmetric-first-step] [--tetrad-graph-json] [--thread <arg>] [--verbose]
- -d,--delimiter <arg>                      Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
-    --discretize                           Yes if continuous variables should be discretized when child is discrete. Default is true.
-    --exclude-variables <arg>              A file containing variables to exclude.
- -f,--data <arg>                           Data file.
-    --faithfulness-assumed                 Yes if (one edge) faithfulness should be assumed. Default is false.
-    --help                                 Show help.
-    --json                                 Create JSON output.
-    --knowledge <arg>                      A file containing prior knowledge.
-    --max-degree <arg>                     The maximum degree of the graph.. Default is 100.
-    --no-validation-output                 No validation output files created.
-    --num-categories-to-discretize <arg>   The number of categories used to discretize continuous variables, if necessary. Default is 3.
-    --num-discrete-categories <arg>        Number of category considered discrete variable.
- -o,--out <arg>                            Output directory.
-    --output-prefix <arg>                  Prefix name for output files.
-    --penalty-discount <arg>               Penalty discount. Default is 2.0.
-    --skip-latest                          Skip checking for latest software version
-    --structure-prior <arg>                Structure prior coefficient. Default is 1.0.
-    --symmetric-first-step                 Yes if the first step step for FGES should do scoring for both X->Y and Y->X. Default is false.
-    --tetrad-graph-json                    Create Tetrad Graph JSON output.
-    --thread <arg>                         Number of threads.
-    --verbose                              Print additional information.
-````
-
-### GFCIc
-
-````
-usage: java -jar causal-cmd-x.x.x-SNAPSHOT.jar --algorithm GFCIc [--alpha <arg>] [-d <arg>] [--exclude-variables <arg>] -f <arg> [--faithfulness-assumed] [--help] [--json] [--knowledge <arg>] [--max-degree <arg>] [--max-path-length <arg>] [--no-validation-output] [-o <arg>] [--output-prefix <arg>] [--penalty-discount <arg>] [--skip-latest] [--skip-nonzero-variance] [--skip-unique-var-name] [--tetrad-graph-json] [--thread <arg>] [--use-complete-rule-set] [--verbose]
-    --alpha <arg>               Cutoff for p values (alpha). Default is 0.01.
- -d,--delimiter <arg>           Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
-    --exclude-variables <arg>   A file containing variables to exclude.
- -f,--data <arg>                Data file.
-    --faithfulness-assumed      Yes if (one edge) faithfulness should be assumed. Default is false.
-    --help                      Show help.
-    --json                      Create JSON output.
-    --knowledge <arg>           A file containing prior knowledge.
-    --max-degree <arg>          The maximum degree of the graph.. Default is 100.
-    --max-path-length <arg>     The maximum length for any discriminating path. -1 if unlimited. Default is -1.
-    --no-validation-output      No validation output files created.
- -o,--out <arg>                 Output directory.
-    --output-prefix <arg>       Prefix name for output files.
-    --penalty-discount <arg>    Penalty discount. Default is 2.0.
-    --skip-latest               Skip checking for latest software version
-    --skip-nonzero-variance     Skip check for zero variance variables.
-    --skip-unique-var-name      Skip check for unique variable names.
-    --tetrad-graph-json         Create Tetrad Graph JSON output.
-    --thread <arg>              Number of threads.
-    --use-complete-rule-set
-    --verbose                   Print additional information.
-````
-
-### GFCId
-
-````
-usage: java -jar causal-cmd-x.x.x-SNAPSHOT.jar --algorithm GFCId [--alpha <arg>] [-d <arg>] [--exclude-variables <arg>] -f <arg> [--faithfulness-assumed] [--help] [--json] [--knowledge <arg>] [--max-degree <arg>] [--max-path-length <arg>] [--no-validation-output] [-o <arg>] [--output-prefix <arg>] [--sample-prior <arg>] [--skip-category-limit] [--skip-latest] [--skip-unique-var-name] [--structure-prior <arg>] [--tetrad-graph-json] [--thread <arg>] [--use-complete-rule-set] [--verbose]
-    --alpha <arg>               Cutoff for p values (alpha). Default is 0.01.
- -d,--delimiter <arg>           Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
-    --exclude-variables <arg>   A file containing variables to exclude.
- -f,--data <arg>                Data file.
-    --faithfulness-assumed      Yes if (one edge) faithfulness should be assumed. Default is false.
-    --help                      Show help.
-    --json                      Create JSON output.
-    --knowledge <arg>           A file containing prior knowledge.
-    --max-degree <arg>          The maximum degree of the graph.. Default is 100.
-    --max-path-length <arg>     The maximum length for any discriminating path. -1 if unlimited. Default is -1.
-    --no-validation-output      No validation output files created.
- -o,--out <arg>                 Output directory.
-    --output-prefix <arg>       Prefix name for output files.
-    --sample-prior <arg>        Sample prior. Default is 1.0.
-    --skip-category-limit       Skip 'limit number of categories' check.
-    --skip-latest               Skip checking for latest software version
-    --skip-unique-var-name      Skip check for unique variable names.
-    --structure-prior <arg>     Structure prior coefficient. Default is 1.0.
-    --tetrad-graph-json         Create Tetrad Graph JSON output.
-    --thread <arg>              Number of threads.
-    --use-complete-rule-set
-    --verbose                   Print additional information.
-````
-
-### GFCIm-cg
-````
-usage: java -jar causal-cmd-x.x.x-SNAPSHOT.jar --algorithm GFCIm-cg [--alpha <arg>] [-d <arg>] [--discretize] [--exclude-variables <arg>] -f <arg> [--faithfulness-assumed] [--help] [--json] [--knowledge <arg>] [--max-degree <arg>] [--max-path-length <arg>] [--no-validation-output] [--num-categories-to-discretize <arg>] [--num-discrete-categories <arg>] [-o <arg>] [--output-prefix <arg>] [--penalty-discount <arg>] [--skip-latest] [--structure-prior <arg>] [--tetrad-graph-json] [--thread <arg>] [--use-complete-rule-set] [--verbose]
-    --alpha <arg>                          Cutoff for p values (alpha). Default is 0.01.
- -d,--delimiter <arg>                      Data delimiter either comma, semicolon, space, colon, or tab. Default: comma for *.csv, else tab.
-    --discretize                           Yes if continuous variables should be discretized when child is discrete. Default is true.
-    --exclude-variables <arg>              A file containing variables to exclude.
- -f,--data <arg>                           Data file.
-    --faithfulness-assumed                 Yes if (one edge) faithfulness should be assumed. Default is false.
-    --help                                 Show help.
-    --json                                 Create JSON output.
-    --knowledge <arg>                      A file containing prior knowledge.
-    --max-degree <arg>                     The maximum degree of the graph.. Default is 100.
-    --max-path-length <arg>                The maximum length for any discriminating path. -1 if unlimited. Default is -1.
-    --no-validation-output                 No validation output files created.
-    --num-categories-to-discretize <arg>   The number of categories used to discretize continuous variables, if necessary. Default is 3.
-    --num-discrete-categories <arg>        Number of category considered discrete variable.
- -o,--out <arg>                            Output directory.
-    --output-prefix <arg>                  Prefix name for output files.
-    --penalty-discount <arg>               Penalty discount. Default is 2.0.
-    --skip-latest                          Skip checking for latest software version
-    --structure-prior <arg>                Structure prior coefficient. Default is 1.0.
-    --tetrad-graph-json                    Create Tetrad Graph JSON output.
-    --thread <arg>                         Number of threads.
-    --use-complete-rule-set
-    --verbose                              Print additional information.
-````
 
 ### Sample Prior Knowledge File
 
@@ -326,99 +195,4 @@ The first line of the prior knowledge file must say `/knowledge`. And a prior kn
 - addtemporal - tiers of variables where the first tier preceeds the last. Adding a asterisk next to the tier id prohibits edges between tier variables
 - forbiddirect - forbidden edges indicated by a list of pairs of variables
 - requireddirect - required edges indicated by a list of pairs of variables
-
-## API Usage
-
-In addition to using causal-cmd directly in the command line interface, you can also use the Tetred library that is includedin in causal-cmd as an [Java API](http://cmu-phil.github.io/tetrad/tetrad-lib-apidocs/). Here we provide an example of how to run `FGESc` algorithm using this API.
-
-````java
-import edu.cmu.tetrad.data.DataModel;
-import edu.cmu.tetrad.data.DataSet;
-import edu.cmu.tetrad.graph.Graph;
-import edu.cmu.tetrad.algcomparison.score.SemBicScore;
-import edu.cmu.tetrad.algcomparison.algorithm.oracle.pattern.Fges;
-import edu.cmu.tetrad.util.Parameters;
-import edu.pitt.dbmi.causal.cmd.ParamAttrs;
-import edu.pitt.dbmi.causal.cmd.util.TetradDataUtils;
-import edu.pitt.dbmi.causal.cmd.validation.TetradDataValidation;
-import edu.pitt.dbmi.causal.cmd.validation.UniqueVariableValidation;
-import edu.pitt.dbmi.data.Dataset;
-import edu.pitt.dbmi.data.Delimiter;
-import edu.pitt.dbmi.data.reader.tabular.ContinuousTabularDataFileReader;
-import edu.pitt.dbmi.data.reader.tabular.TabularDataReader;
-import edu.pitt.dbmi.data.validation.ValidationCode;
-import edu.pitt.dbmi.data.validation.ValidationResult;
-import edu.pitt.dbmi.data.validation.tabular.ContinuousTabularDataFileValidation;
-import edu.pitt.dbmi.data.validation.tabular.TabularDataValidation;
-
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
-
-public class FGEScApiExample {
-
-    /**
-    * @param args the command line arguments
-    */
-    public static void main(String[] args) throws Exception {
-        // Set the data file and its properites
-        Path dataFile = Paths.get("test", "data", "cmu", "Retention.txt");
-        Delimiter delimiter = Delimiter.TAB;
-        char quoteCharacter = '"';
-        String missingValueMarker = "*";
-        String commentMarker = "//";
-
-        // Data file validation: ensure the data file is valid format
-        // This is optional if you don't need to validate the data file
-        TabularDataValidation dataFileValidation = new ContinuousTabularDataFileValidation(dataFile.toFile(), delimiter);
-        dataFileValidation.setQuoteCharacter(quoteCharacter);
-        dataFileValidation.setMissingValueMarker(missingValueMarker);
-        dataFileValidation.setCommentMarker(commentMarker);
-        dataFileValidation.validate();
-
-        // Ensure there is no error
-        int errorCount = 0;
-        List<ValidationResult> fileValidResults = dataFileValidation.getValidationResults();
-        for (ValidationResult validation : fileValidResults) {
-            if (validation.getCode() == ValidationCode.ERROR) {
-                errorCount++;
-            }
-        }
-
-        // Read in data
-        // This is the actual data loading/reading section
-        TabularDataReader reader = new ContinuousTabularDataFileReader(dataFile.toFile(), delimiter);
-        reader.setQuoteCharacter(quoteCharacter);
-        reader.setMissingValueMarker(missingValueMarker);
-        reader.setCommentMarker(commentMarker);
-        Dataset dataset = reader.readInData();
-
-        // Convert to Tetrad data model
-        DataModel dataModel = TetradDataUtils.toDataModel(dataset);
-
-        // Data validation: ensure the data read in is valid
-        TetradDataValidation dataValidation = new UniqueVariableValidation((DataSet) dataModel);
-        boolean isValidData = dataValidation.validate(System.err, true);
-
-        // Set algorithm parameters
-        Parameters parameters = new Parameters();
-        parameters.set(ParamAttrs.PENALTY_DISCOUNT, 2.0);
-        parameters.set(ParamAttrs.MAX_DEGREE, -1);
-        parameters.set(ParamAttrs.FAITHFULNESS_ASSUMED, false);
-        parameters.set(ParamAttrs.VERBOSE, false);
-
-        // Specify which algorithm to use
-        Fges fges = new Fges(new SemBicScore());
-
-        // Run the algorithm on this data with specified parameters
-        // and return the Graph object
-        Graph graph = fges.search(dataModel, parameters);
-
-        System.out.println();
-        System.out.println(graph.toString().trim());
-        System.out.flush();
-    }
-
-}
-````
 
