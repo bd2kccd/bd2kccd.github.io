@@ -44,6 +44,10 @@ This site hosts documentation for the [Center for Causal Discovery](http://www.c
 - [Plugin](https://cloud.ccd.pitt.edu/nexus/content/repositories/releases/edu/pitt/dbmi/ccd/cytoscape/tetrad/cytoscape-tetrad-app)
 - [Github project](https://github.com/bd2kccd/cytoscape-tetrad)
 
+**ccd-annotations-cytoscape** - a native cytoscape plugin that allows for annotating nodes and edges of any cytoscape graph. 
+- [Plugin](https://cloud.ccd.pitt.edu/nexus/content/repositories/releases/edu/pitt/cs/admt/cytoscape/annotations/ccd-annotations-cytoscape/)
+- [Github project](hhttps://github.com/bd2kccd/ccd-annotations-cytoscape)
+
 
 *If you use our software in your research, please acknowledge the Center for Causal Discovery, supported by **grant U54HG008540**, in any papers, presentations, or other dissemination of your work.*
 
