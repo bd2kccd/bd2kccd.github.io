@@ -404,6 +404,26 @@
             "location": "/cytoscape-tetrad/#using-the-plugin", 
             "text": "When viewing a graph in Tetrad save the graph as Text.  Causal Command and Causal Web will also output this text file by default.  In Cytoscape select the File- import- network- Tetrad option and select the file that you saved previously.    Apply a layout: By default Cytoscape doesn't apply a layout so the initial rendering will look like a single node.  Apply a layout by selecting Layout in the top menu and then choosing a layout to see your graph (e.g., Layouts- yFiles Layouts- Organic).", 
             "title": "Using the Plugin"
+        }, 
+        {
+            "location": "/ccd-annotations-cytoscape/", 
+            "text": "ccd-annotations-cytoscape\n\n\nInstallation\n\n\nDownload the latest version of the plugin from our software repository\n\n\nDownload the plugin\n\n\nTo install the plugin start the Cytoscape application and click on apps-\ninstall from file and select the jar file.\n\n\nUsing the Plugin\n\n\n\n\nCreate new annotations\n\n\nSearch for existing annotations\n\n\nSet auto label placement", 
+            "title": "CCD Annotations Cytoscape Plugin"
+        }, 
+        {
+            "location": "/ccd-annotations-cytoscape/#ccd-annotations-cytoscape", 
+            "text": "", 
+            "title": "ccd-annotations-cytoscape"
+        }, 
+        {
+            "location": "/ccd-annotations-cytoscape/#installation", 
+            "text": "Download the latest version of the plugin from our software repository  Download the plugin  To install the plugin start the Cytoscape application and click on apps- install from file and select the jar file.", 
+            "title": "Installation"
+        }, 
+        {
+            "location": "/ccd-annotations-cytoscape/#using-the-plugin", 
+            "text": "Create new annotations  Search for existing annotations  Set auto label placement", 
+            "title": "Using the Plugin"
         }
     ]
 }
