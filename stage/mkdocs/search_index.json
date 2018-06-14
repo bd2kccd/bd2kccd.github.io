@@ -387,22 +387,17 @@
         }, 
         {
             "location": "/cytoscape-tetrad/", 
-            "text": "cytoscape-tetrad\n\n\nInstallation\n\n\nDownload the latest version of the plugin from our software repository\n\n\nDownload the plugin\n\n\nTo install the plugin start the Cytoscape application and click on apps-\ninstall from file and select the jar file.\n\n\nUsing the Plugin\n\n\n\n\nWhen viewing a graph in Tetrad save the graph as Text.  Causal Command and Causal Web will also output this text file by default.\n\n\nIn Cytoscape select the File-\nimport-\nnetwork-\nTetrad option and select the file that you saved previously.  \n\n\nApply a layout: By default Cytoscape doesn't apply a layout so the initial rendering will look like a single node.  Apply a layout by selecting Layout in the top menu and then choosing a layout to see your graph (e.g., Layouts-\nyFiles Layouts-\nOrganic).", 
+            "text": "cytoscape-tetrad\n\n\nCytoscape can be obtained from http://www.cytoscape.org/ \n\n\nDownload the latest version of the plugin from our software repository\n\n\nDownload the plugin\n\n\nTo install the plugin start the Cytoscape application and click on apps-\napp manager-\ninstall from file and select the jar file.\n\n\nUsing the Plugin\n\n\n\n\nPut a graph box on the workspace and select graph type graph.  Click on File -\n Save -\n JSON.\n\n\nIn Cytoscape select the File-\nimport-\nnetwork-\nTetrad option and select the file that you saved previously.  \n\n\nApply a layout: By default Cytoscape doesn't apply a layout so the initial rendering will look like a single node.  Apply a layout by selecting Layout in the top menu and then choosing a layout to see your graph (e.g., Layouts-\nHierarchical).", 
             "title": "Cytoscape Tetrad Plugin"
         }, 
         {
             "location": "/cytoscape-tetrad/#cytoscape-tetrad", 
-            "text": "", 
+            "text": "Cytoscape can be obtained from http://www.cytoscape.org/   Download the latest version of the plugin from our software repository  Download the plugin  To install the plugin start the Cytoscape application and click on apps- app manager- install from file and select the jar file.", 
             "title": "cytoscape-tetrad"
         }, 
         {
-            "location": "/cytoscape-tetrad/#installation", 
-            "text": "Download the latest version of the plugin from our software repository  Download the plugin  To install the plugin start the Cytoscape application and click on apps- install from file and select the jar file.", 
-            "title": "Installation"
-        }, 
-        {
             "location": "/cytoscape-tetrad/#using-the-plugin", 
-            "text": "When viewing a graph in Tetrad save the graph as Text.  Causal Command and Causal Web will also output this text file by default.  In Cytoscape select the File- import- network- Tetrad option and select the file that you saved previously.    Apply a layout: By default Cytoscape doesn't apply a layout so the initial rendering will look like a single node.  Apply a layout by selecting Layout in the top menu and then choosing a layout to see your graph (e.g., Layouts- yFiles Layouts- Organic).", 
+            "text": "Put a graph box on the workspace and select graph type graph.  Click on File -  Save -  JSON.  In Cytoscape select the File- import- network- Tetrad option and select the file that you saved previously.    Apply a layout: By default Cytoscape doesn't apply a layout so the initial rendering will look like a single node.  Apply a layout by selecting Layout in the top menu and then choosing a layout to see your graph (e.g., Layouts- Hierarchical).", 
             "title": "Using the Plugin"
         }, 
         {
