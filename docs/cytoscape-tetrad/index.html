@@ -13,24 +13,25 @@
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="../css/highlight.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   
   <script>
     // Current page data
     var mkdocs_page_name = "Cytoscape Tetrad Plugin";
     var mkdocs_page_input_path = "cytoscape-tetrad.md";
-    var mkdocs_page_url = "/cytoscape-tetrad/";
+    var mkdocs_page_url = "/docs/cytoscape-tetrad/";
   </script>
   
-  <script src="../js/jquery-2.1.1.min.js"></script>
-  <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
   
   <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
       ga('create', 'UA-60897872-2', 'bd2kccd.github.io');
       ga('send', 'pageview');
@@ -48,85 +49,73 @@
         <a href=".." class="icon icon-home"> CCD Docs</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
 	<ul class="current">
+	  
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="..">Welcome to CCD Docs</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Welcome to CCD Docs</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../tetrad/">Tetrad</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../tetrad/">Tetrad</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../causal-cmd/">Causal CMD</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../causal-cmd/">Causal CMD</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../causal-web/">Causal Web</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../causal-web/">Causal Web</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../causal-rest-api/">Causal REST API</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../causal-rest-api/">Causal REST API</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../py-causal/">Py-causal</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../py-causal/">Py-causal</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../r-causal/">R-causal</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../r-causal/">R-causal</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Cytoscape Tetrad Plugin</a>
-        
-            <ul>
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Cytoscape Tetrad Plugin</a>
+    <ul class="subnav">
             
-                <li class="toctree-l3"><a href="#cytoscape-tetrad">cytoscape-tetrad</a></li>
-                
-                    <li><a class="toctree-l4" href="#using-the-plugin">Using the Plugin</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l2"><a href="#cytoscape-tetrad">cytoscape-tetrad</a></li>
+    
+        <ul>
         
-    </li>
-<li>
+            <li><a class="toctree-l3" href="#displaying-tetrad-networks-in-cytoscape">Displaying Tetrad Networks in Cytoscape</a></li>
+        
+            <li><a class="toctree-l3" href="#using-the-plugin">Using the Plugin</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../ccd-annotations-cytoscape/">CCD Annotations Cytoscape Plugin</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../ccd-annotations-cytoscape/">CCD Annotations Cytoscape Plugin</a>
+	    </li>
           
         </ul>
       </div>
@@ -161,16 +150,16 @@
             <div class="section">
               
                 <h1 id="cytoscape-tetrad">cytoscape-tetrad</h1>
-<p>Cytoscape can be obtained from http://www.cytoscape.org/ </p>
-<p>Download the latest version of the plugin from our software repository</p>
+<h2 id="displaying-tetrad-networks-in-cytoscape">Displaying Tetrad Networks in Cytoscape</h2>
+<p>The Cytoscape application has significant power and flexibility to display networks. This webpage describes how to load a plugin into Cytoscape that will allow you to import and display a Tetrad network (graph) that you have saved from Tetrad. </p>
+<p>Cytoscape can be download for free from http://www.cytoscape.org/ </p>
+<p>Download the latest version of the plugin from our software repository:</p>
 <p><a href="https://cloud.ccd.pitt.edu/nexus/content/repositories/releases/edu/pitt/dbmi/ccd/cytoscape/tetrad/cytoscape-tetrad-app">Download the plugin</a></p>
-<p>To install the plugin start the Cytoscape application and click on apps-&gt;app manager-&gt;install from file and select the jar file.</p>
+<p>To install the plugin start the Cytoscape application and click on Apps --&gt; App Manager --&gt; Install Apps from the Cytoscape menu. </p>
 <h2 id="using-the-plugin">Using the Plugin</h2>
-<ul>
-<li>Put a graph box on the workspace and select graph type graph.  Click on File -&gt; Save -&gt; JSON.</li>
-<li>In Cytoscape select the File-&gt;import-&gt;network-&gt;Tetrad option and select the file that you saved previously.  </li>
-<li>Apply a layout: By default Cytoscape doesn't apply a layout so the initial rendering will look like a single node.  Apply a layout by selecting Layout in the top menu and then choosing a layout to see your graph (e.g., Layouts-&gt;Hierarchical).</li>
-</ul>
+<p>Put a graph box on the Tetrad workspace and select the graph type “graph”. Double click on the graph box to display the graph in Tetrad. Within the graph display box, click on File --&gt; Save JSON. </p>
+<p>In Cytoscape, select the File --&gt; Import --&gt; Network --&gt; Tetrad option and select the file that you saved previously from Tetrad. </p>
+<p>Apply a layout in Cytoscape. By default Cytoscape doesn't apply a layout so the initial rendering will look like a single node. Apply a layout by selecting Layout in the top menu and then choosing a layout to see your graph (e.g., Layouts --&gt; Prefuse Force Directed Layout). </p>
               
             </div>
           </div>
@@ -195,12 +184,12 @@
 
   Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-	  
+      
         </div>
       </div>
 
     </section>
-    
+
   </div>
 
   <div class="rst-versions" role="note" style="cursor: pointer">
@@ -214,7 +203,9 @@
       
     </span>
 </div>
-    <script src="../js/theme.js"></script>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
 
 </body>
 </html>
