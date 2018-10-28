@@ -8,7 +8,7 @@ Cytoscape can be download for free from http://www.cytoscape.org/
 
 Download the latest version of the plugin from our software repository:
 
-[Download the plugin](https://cloud.ccd.pitt.edu/nexus/content/repositories/releases/edu/pitt/dbmi/ccd/cytoscape/tetrad/cytoscape-tetrad-app)
+[Download the plugin](https://cloud.ccd.pitt.edu/nexus/content/repositories/releases/edu/pitt/dbmi/ccd/cytoscape/tetrad/cytoscape-tetrad-app/1.3/cytoscape-tetrad-app-1.3.jar)
 
 To install the plugin start the Cytoscape application and click on Apps --> App Manager --> Install Apps from the Cytoscape menu. 
 
