@@ -1,7 +1,7 @@
 site_name: CCD Docs
 site_description: Documentation of CCD tools and software
 docs_dir: docs_src
-site_dir: docs
+site_dir: stage
 site_url: https://bd2kccd.github.io/docs
 pages:
     - Welcome to CCD Docs: index.md
