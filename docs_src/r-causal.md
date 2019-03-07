@@ -2,12 +2,9 @@
 [R Wrapper](https://github.com/bd2kccd/r-causal) for Tetrad Library
 
 ## R Library Requirement
-R >= 3.2.0, 
+R >= 3.3.0, 
 [stringr](https://cran.r-project.org/web/packages/stringr/),
 [rJava](https://cran.r-project.org/web/packages/rJava/index.html), 
-[graph](http://bioconductor.org/packages/release/bioc/html/graph.html), 
-[RBGL](http://bioconductor.org/packages/release/bioc/html/RBGL.html), 
-[Rgraphviz](http://bioconductor.org/packages/release/bioc/html/Rgraphviz.html)
 
 ## Docker
 As an alternative to installing the library and getting rJava working with your installation (i.e., does not work well on mac) we have a [Docker image](https://hub.docker.com/r/chirayukong/r-causal-rstudio/)
@@ -18,11 +15,6 @@ As an alternative to installing the library and getting rJava working with your 
 ```R
 install.packages("stringr")
 install.packages("rJava")
-## try http:// if https:// URLs are not supported
-source("https://bioconductor.org/biocLite.R") 
-biocLite("graph")
-biocLite("RBGL")
-biocLite("Rgraphviz") # For plotting graph
 ```
 - Install r-causal from github:
 
@@ -37,31 +29,27 @@ install_github("bd2kccd/r-causal")
 library(rcausal)
 data("charity")   #Load the charity dataset
 
+tetradrunner.getAlgorithmDescription(algoId = 'fges')
+tetradrunner.getAlgorithmParameters(algoId = 'fges',scoreId = 'fisher-z')
 #Compute FGES search
-fgs <- fgs(df = charity, penaltydiscount = 2, maxDegree = -1,  
-faithfulnessAssumed = TRUE, numOfThreads = 2, verbose = TRUE)    
+tetradrunner <- tetradrunner(algoId = 'fges',df = charity,scoreId = 'fisher-z',
+dataType = 'continuous',alpha=0.1,faithfulnessAssumed=TRUE,maxDegree=-1,verbose=TRUE)
 
-fgs$parameters #Show the FGES's parameters
-fgs$datasets #Show the dataset
-fgs$nodes #Show the result's nodes
-fgs$edges #Show the result's edges
-
-library(Rgraphviz)
-plot(fgs$graphNEL) #Plot the causal model
+tetradrunner$nodes #Show the result's nodes
+tetradrunner$edges #Show the result's edges
 ```
 ### Discrete Dataset
 ```R
 library(rcausal)
 data("audiology")    #Load the charity dataset
+
+tetradrunner.getAlgorithmParameters(algoId = 'fges',scoreId = 'bdeu')
 #Compute FGES search
-fgs.discrete <- fgs.discrete(df=audiology,structurePrior=1.0,samplePrior=1.0, 
-maxDegree = -1, faithfulnessAssumed = TRUE, numOfThreads = 2,verbose = TRUE)
-fgs.discrete$parameters #Show the FGES Discrete's parameters
-fgs.discrete$datasets #Show the dataset
-fgs.discrete$nodes #Show the result's nodes
-fgs.discrete$edges #Show the result's edges
-library(Rgraphviz)
-plot(fgs.discrete$graphNEL) #Plot the causal model
+tetradrunner <- tetradrunner(algoId = 'fges',df = audiology,scoreId = 'bdeu',dataType = 'discrete',
+alpha=0.1,faithfulnessAssumed=TRUE,maxDegree=-1,verbose=TRUE)
+
+tetradrunner$nodes #Show the result's nodes
+tetradrunner$edges #Show the result's edges
 ```
 
 ### Prior Knowledge
@@ -100,11 +88,11 @@ fgs.discrete <- fgs.discrete(df=audiology,structurePrior=1.0,samplePrior=1.0,
 depth = -1, heuristicSpeedup = TRUE, numOfThreads = 2,verbose = TRUE, priorKnowledge = prior)
 ```
 
-### Convert Rgraphviz to igraph one
+### Plot a DOT graph
 ```R
-library(igraph)
-igraph <- igraph.from.graphNEL(fgs.discrete$graphNEL)
-plot(igraph)
+library(DOT)
+graph_dot <- tetradrunner.tetradGraphToDot(tetradrunner$graph)
+dot(graph_dot)
 ```
 
 ## Useful `rJava` Trouble-shooting Installation in Mac OS X Links
