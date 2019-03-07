@@ -1,4 +1,4 @@
-# causal-cmd v0.3.x
+# causal-cmd v1.0.x
 
 ## Introduction
 
@@ -27,20 +27,23 @@ And you'll see the following instructions:
 
 ````
 Missing required options: algorithm, data-type, dataset, delimiter
-usage: java -jar causal-cmd-0.3.0-SNAPSHOT.jar  --algorithm <string> [--comment-marker <string>] --data-type <string> --dataset <files> --delimiter <string> [--help] [--help-all] [--json] [--out <directory>] [--prefix <string>] [--quote-char <character>] [--skip-latest] [--skip-validation] [--version]
-    --algorithm <string>        Algorithm: bpc, eb, fang-concatenated, fas, fask-concatenated, fci, fges, fges-mb, fofc, ftfc, gfci, glasso, imgs_cont, imgs_disc, mbfs, mgm, pc-all, pc-stable-max, r-skew, r-skew-e, r1, r2, r3, r4, rfci, skew, skew-e, ts-fci, ts-gfci, ts-imgs
+usage: java -jar causal-cmd-1.0.0.jar  --algorithm <string> [--comment-marker <string>] --data-type <string> --dataset <files> --delimiter <string> [--help] [--help-all] [--json-graph] [--metadata <file>] [--no-header] [--out <directory>] [--prefix <string>] [--quote-char <character>] [--skip-latest] [--skip-validation] [--thread <string>] [--version]
+    --algorithm <string>        Algorithm: bpc, eb, fas, fask, fask-concatenated, fci, fges, fges-mb, fofc, ftfc, gfci, glasso, imgs_cont, imgs_disc, lingam, mbfs, mgm, mimbuild, multi-fask, pc-all, r-skew, r-skew-e, r1, r2, r3, r4, rfci, rfci-bsc, skew, skew-e, ts-fci, ts-gfci, ts-imgs
     --comment-marker <string>   Comment marker.
     --data-type <string>        Data type: continuous, covariance, discrete, mixed
     --dataset <files>           Dataset. Multiple files are seperated by commas.
     --delimiter <string>        Delimiter: colon, comma, pipe, semicolon, space, tab, whitespace
     --help                      Show help.
     --help-all                  Show all options and descriptions.
-    --json                      Write out graph as json.
+    --json-graph                Write out graph as json.
+    --metadata <file>           Metadata file.  Cannot apply to dataset without header.
+    --no-header                 Indicates tabular dataset has no header.
     --out <directory>           Output directory
     --prefix <string>           Output file name prefix.
     --quote-char <character>    Single character denotes quote.
     --skip-latest               Skip checking for latest software version.
     --skip-validation           Skip validation.
+    --thread <string>           Number threads.
     --version                   Show version.
 Use --help for guidance list of options.  Use --help-all to show all options.
 
@@ -51,102 +54,133 @@ By specifying an algorithm using the --algorithm switch the program will indicat
 
 Example of listing all available options for an algorithm:
 ````
-$ java -jar causal-cmd-0.3.0-SNAPSHOT-jar-with-dependencies.jar --algorithm fges --data-type continuous --dataset ./dist/Retention.txt --delimiter tab --score sem-bic --help
+$ java -jar causal-cmd-1.0.0-jar-with-dependencies.jar --algorithm fges --data-type continuous --dataset Retention.txt --delimiter tab --score sem-bic --help
 
-  usage: java -jar causal-cmd-0.3.0-SNAPSHOT.jar --algorithm fges --data-type continuous --dataset ./dist/Retention.txt --delimiter tab --score sem-bic [--bootstrapEnsemble <integer>] [--bootstrapping] [--bootstrapSampleSize <integer>] [--comment-marker <string>] [--exclude-var <file>] [--faithfulnessAssumed] [--json] [--knowledge <file>] [--maxDegree <integer>] [--missing-marker <string>] [--no-header] [--out <directory>] [--penaltyDiscount <double>] [--prefix <string>] [--quote-char <character>] [--skip-latest] [--skip-validation] [--symmetricFirstStep] [--verbose]
-      --bootstrapEnsemble <integer>     Ensemble method: Preserved (0), Highest (1), Majority (2)
-      --bootstrapping                   Yes if sampling dataset with replacement (bootstrapping) should be used
-      --bootstrapSampleSize <integer>   The number of bootstraps (min = 1)
-      --comment-marker <string>         Comment marker.
-      --exclude-var <file>              Variables to be excluded from run.
-      --faithfulnessAssumed             Yes if (one edge) faithfulness should be assumed
-      --json                            Write out graph as json.
-      --knowledge <file>                Prior knowledge file.
-      --maxDegree <integer>             The maximum degree of the graph (min = -1)
-      --missing-marker <string>         Denotes missing value.
-      --no-header                       Indicates tabular dataset has no header.
-      --out <directory>                 Output directory
-      --penaltyDiscount <double>        Penalty discount (min = 0.0)
-      --prefix <string>                 Output file name prefix.
-      --quote-char <character>          Single character denotes quote.
-      --skip-latest                     Skip checking for latest software version.
-      --skip-validation                 Skip validation.
-      --symmetricFirstStep              Yes if the first step step for FGES should do scoring for both X->Y and Y->X
-      --verbose                         Yes if verbose output should be printed or logged
+  usage: java -jar causal-cmd-1.0.0.jar --algorithm fges --data-type continuous --dataset Retention.txt --delimiter tab --score sem-bic [--addOriginalDataset] [--choose-dag-in-pattern] [--choose-mag-in-pag] [--comment-marker <string>] [--exclude-var <file>] [--extract-struct-model] [--faithfulnessAssumed] [--generate-complete-graph] [--genereate-pag-from-dag] [--genereate-pag-from-tsdag] [--genereate-pattern-from-dag] [--json-graph] [--knowledge <file>] [--make-all-edges-undirected] [--make-bidirected-undirected] [--make-undirected-bidirected] [--maxDegree <integer>] [--metadata <file>] [--missing-marker <string>] [--no-header] [--numberResampling <integer>] [--out <directory>] [--penaltyDiscount <double>] [--percentResampleSize <integer>] [--prefix <string>] [--quote-char <character>] [--resamplingEnsemble <integer>] [--resamplingWithReplacement] [--skip-latest] [--skip-validation] [--symmetricFirstStep] [--thread <string>] [--verbose]
+    --addOriginalDataset              Yes, if adding an original dataset as another bootstrapping
+    --choose-dag-in-pattern           Choose DAG in Pattern graph.
+    --choose-mag-in-pag               Choose MAG in PAG.
+    --comment-marker <string>         Comment marker.
+    --exclude-var <file>              Variables to be excluded from run.
+    --extract-struct-model            Extract sturct model.
+    --faithfulnessAssumed             Yes if (one edge) faithfulness should be assumed
+    --generate-complete-graph         Generate complete graph.
+    --genereate-pag-from-dag          Generate PAG from DAG.
+    --genereate-pag-from-tsdag        Generate PAG from TsDAG.
+    --genereate-pattern-from-dag      Generate pattern graph from PAG.
+    --json-graph                      Write out graph as json.
+    --knowledge <file>                Prior knowledge file.
+    --make-all-edges-undirected       Make all edges undirected.
+    --make-bidirected-undirected      Make bidirected edges undirected.
+    --make-undirected-bidirected      Make undirected edges bidirected.
+    --maxDegree <integer>             The maximum degree of the graph (min = -1)
+    --metadata <file>                 Metadata file.  Cannot apply to dataset without header.
+    --missing-marker <string>         Denotes missing value.
+    --no-header                       Indicates tabular dataset has no header.
+    --numberResampling <integer>      The number of bootstraps/resampling iterations (min = 0)
+    --out <directory>                 Output directory
+    --penaltyDiscount <double>        Penalty discount (min = 0.0)
+    --percentResampleSize <integer>   The percentage of resample size (min = 0.1)
+    --prefix <string>                 Output file name prefix.
+    --quote-char <character>          Single character denotes quote.
+    --resamplingEnsemble <integer>    Ensemble method: Preserved (0), Highest (1), Majority (2)
+    --resamplingWithReplacement       Yes, if sampling with replacement (bootstrapping)
+    --skip-latest                     Skip checking for latest software version.
+    --skip-validation                 Skip validation.
+    --symmetricFirstStep              Yes if the first step step for FGES should do scoring for both X->Y and Y->X
+    --thread <string>                 Number threads.
+    --verbose                         Yes if verbose output should be printed or logged
 
 ````
 
 In this example, we'll be running the FGES algorith on the dataset `Retention.txt`.
 
 ````
- java -jar causal-cmd-0.3.0-SNAPSHOT-jar-with-dependencies.jar --algorithm fges --data-type continuous --dataset ./dist/Retention.txt --delimiter tab --score sem-bic
+ java -jar causal-cmd-1.0.0-jar-with-dependencies.jar --algorithm fges --data-type continuous --dataset Retention.txt --delimiter tab --score sem-bic
 ````
 
 This command will output by default two files fges_<unix timestamp>.txt which is a log of the algorithm's activity and fges_<unix timmestamp>_graph.txt which is a textual description of the graph output from the algorithm.
 
 Example log output from causal-cmd:
 ````
-Tetrad: FGES (Tue, April 03, 2018 11:10:01 AM)
 ================================================================================
-Short blurb goes here
---------------------------------------------------------------------------------
-Algorithm: FGES
-Score: Sem BIC Score
+FGES (Thu, March 07, 2019 01:35:52 PM)
+================================================================================
 
-Tetrad Parameters
-================================================================================
-bootstrapEnsemble: 1
-bootstrapping: false
-bootstrapSampleSize: 10
-faithfulnessAssumed: true
-maxDegree: 100
-penaltyDiscount: 2.0
-symmetricFirstStep: false
-verbose: false
+Runtime Parameters
+--------------------------------------------------------------------------------
+number of threads: 7
 
 Dataset
-================================================================================
-File: /Users/jue/IdeaProjects/causal-cmd/target/./dist/Retention.txt
-Has Header: yes
-Delimiter: tab
-Data Type: continuous
+--------------------------------------------------------------------------------
+file: Retention.txt
+header: yes
+delimiter: tab
+quote char: none
+missing marker: none
+comment marker: none
 
-Miscellaneous
-================================================================================
-Skip Validation: no
-JSON Output: no
-Output Directory: .
+Algorithm Run
+--------------------------------------------------------------------------------
+algorithm: FGES
+score: Sem BIC Score
 
-Start validating file Retention.txt.: Tue, April 03, 2018 11:10:02 AM
-Finish validating file Retention.txt.: Tue, April 03, 2018 11:10:02 AM
+Algorithm Parameters
+--------------------------------------------------------------------------------
+addOriginalDataset: no
+faithfulnessAssumed: no
+maxDegree: 4
+numberResampling: 0
+penaltyDiscount: 2.0
+percentResampleSize: 100
+resamplingEnsemble: 1
+resamplingWithReplacement: no
+symmetricFirstStep: no
+verbose: no
+
+
+Thu, March 07, 2019 01:35:52 PM: Start data validation on file Retention.txt.
+Thu, March 07, 2019 01:35:52 PM: End data validation on file Retention.txt.
 There are 170 cases and 8 variables.
-Start reading file Retention.txt.: Tue, April 03, 2018 11:10:02 AM
-Finish reading file Retention.txt.: Tue, April 03, 2018 11:10:02 AM
-File Retention.txt: 170 case(s), 8 variable(s).
 
-Start search: Tue, April 03, 2018 11:10:02 AM
-End search: Tue, April 03, 2018 11:10:02 AM
+Thu, March 07, 2019 01:35:52 PM: Start reading in file Retention.txt.
+Thu, March 07, 2019 01:35:52 PM: Finished reading in file Retention.txt.
+Thu, March 07, 2019 01:35:52 PM: File Retention.txt contains 170 cases, 8 variables.
+
+Start search: Thu, March 07, 2019 01:35:52 PM
+Model Score = -10405.015309407505
+stdt_accept_rate Score = -885.0945664409373
+rjct_rate Score = -975.5205793071359
+stdt_tchr_ratio Score = -482.16396573676974
+tst_scores Score = -670.6795165893456
+fac_salary Score = -3135.015062099098
+grad_rate Score = -994.4511569099334
+stdt_clss_stndng Score = -1082.2947239986954
+spending_per_stdt Score = -2938.5267971188982
+End search: Thu, March 07, 2019 01:35:52 PM
 ````
 
 
 Example graph output from causal-cmd:
 ````
 Graph Nodes:
-spending_per_stdt,grad_rate,stdt_clss_stndng,rjct_rate,tst_scores,stdt_accept_rate,stdt_tchr_ratio,fac_salary
+spending_per_stdt;grad_rate;stdt_clss_stndng;rjct_rate;tst_scores;stdt_accept_rate;stdt_tchr_ratio;fac_salary
 
 Graph Edges:
 1. fac_salary --- spending_per_stdt
-2. spending_per_stdt --> rjct_rate
-3. spending_per_stdt --> stdt_clss_stndng
-4. spending_per_stdt --- tst_scores
-5. stdt_accept_rate --- fac_salary
-6. stdt_accept_rate --> grad_rate
-7. stdt_clss_stndng --> rjct_rate
-8. stdt_tchr_ratio --- spending_per_stdt
-9. stdt_tchr_ratio --> stdt_clss_stndng
-10. tst_scores --- fac_salary
-11. tst_scores --> grad_rate
-12. tst_scores --> stdt_clss_stndng
+2. fac_salary --- stdt_accept_rate
+3. spending_per_stdt --- stdt_tchr_ratio
+4. stdt_clss_stndng --- rjct_rate
+5. tst_scores --- fac_salary
+6. tst_scores --- grad_rate
+7. tst_scores --- spending_per_stdt
+8. tst_scores --- stdt_clss_stndng
+
+Graph Attributes:
+BIC: -10405.015309
+
+Graph Node Attributes:
+BIC: [spending_per_stdt: -2938.526797;grad_rate: -994.451157;stdt_clss_stndng: -1082.294724;rjct_rate: -975.520579;tst_scores: -670.679517;stdt_accept_rate: -885.094566;stdt_tchr_ratio: -482.163966;fac_salary: -3135.015062]
 ````
 
 

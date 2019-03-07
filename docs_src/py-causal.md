@@ -8,14 +8,14 @@ This code is distributed under the LGPL 2.1 license.
 Requirements:
 ============
 
-Python 2.7 (does not work with Python 3)
+Python 2.7 and 3.6
 
 * javabridge>=1.0.11
 * pandas
-* numpy 
-* pydot
-* GraphViz
-* JDK 1.7+
+* numpy
+* JDK 1.8
+* pydot (Optional)
+* GraphViz (Optional)
 
 
 Docker Image
@@ -39,11 +39,11 @@ If you do not have pip installed already, try [these instructions](https://pip.p
 
 Once pip is installed, execute these commands
 
-    pip install numpy
-    pip install pandas
-    pip install javabridge
-    pip install pydot 
-    pip install GraphViz
+    pip install -U numpy
+    pip install -U pandas
+    pip install -U javabridge
+    pip install -U pydot 
+    pip install -U GraphViz
 
 Note: you also need to install the GraphViz engine by following [these instructions](http://www.graphviz.org/Download..php).
 
@@ -61,6 +61,9 @@ Then, from within the py-causal directory, run the following command:
 
     python setup.py install
     
+or use the pip command:
+
+    pip install git+git://github.com/bd2kccd/py-causal
 
 After running this command, enter a python shell and attempt the follwing import
     import pandas as pd
