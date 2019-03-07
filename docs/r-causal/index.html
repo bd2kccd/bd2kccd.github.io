@@ -13,24 +13,25 @@
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="../css/highlight.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   
   <script>
     // Current page data
     var mkdocs_page_name = "R-causal";
     var mkdocs_page_input_path = "r-causal.md";
-    var mkdocs_page_url = "/r-causal/";
+    var mkdocs_page_url = "/docs/r-causal/";
   </script>
   
-  <script src="../js/jquery-2.1.1.min.js"></script>
-  <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
   
   <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
       ga('create', 'UA-60897872-2', 'bd2kccd.github.io');
       ga('send', 'pageview');
@@ -48,93 +49,79 @@
         <a href=".." class="icon icon-home"> CCD Docs</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
 	<ul class="current">
+	  
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="..">Welcome to CCD Docs</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Welcome to CCD Docs</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../tetrad/">Tetrad</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../tetrad/">Tetrad</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../causal-cmd/">Causal CMD</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../causal-cmd/">Causal CMD</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../causal-web/">Causal Web</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../causal-web/">Causal Web</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../causal-rest-api/">Causal REST API</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../causal-rest-api/">Causal REST API</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../py-causal/">Py-causal</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../py-causal/">Py-causal</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">R-causal</a>
-        
-            <ul>
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">R-causal</a>
+    <ul class="subnav">
             
-                <li class="toctree-l3"><a href="#r-causal">r-causal</a></li>
-                
-                    <li><a class="toctree-l4" href="#r-library-requirement">R Library Requirement</a></li>
-                
-                    <li><a class="toctree-l4" href="#docker">Docker</a></li>
-                
-                    <li><a class="toctree-l4" href="#installation">Installation</a></li>
-                
-                    <li><a class="toctree-l4" href="#example">Example</a></li>
-                
-                    <li><a class="toctree-l4" href="#useful-rjava-trouble-shooting-installation-in-mac-os-x-links">Useful rJava Trouble-shooting Installation in Mac OS X Links</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l2"><a href="#r-causal">r-causal</a></li>
+    
+        <ul>
         
-    </li>
-<li>
+            <li><a class="toctree-l3" href="#r-library-requirement">R Library Requirement</a></li>
+        
+            <li><a class="toctree-l3" href="#docker">Docker</a></li>
+        
+            <li><a class="toctree-l3" href="#installation">Installation</a></li>
+        
+            <li><a class="toctree-l3" href="#example">Example</a></li>
+        
+            <li><a class="toctree-l3" href="#useful-rjava-trouble-shooting-installation-in-mac-os-x-links">Useful rJava Trouble-shooting Installation in Mac OS X Links</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../cytoscape-tetrad/">Cytoscape Tetrad Plugin</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../cytoscape-tetrad/">Cytoscape Tetrad Plugin</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../ccd-annotations-cytoscape/">CCD Annotations Cytoscape Plugin</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="../ccd-annotations-cytoscape/">CCD Annotations Cytoscape Plugin</a>
+	    </li>
           
         </ul>
       </div>
@@ -171,12 +158,9 @@
                 <h1 id="r-causal">r-causal</h1>
 <p><a href="https://github.com/bd2kccd/r-causal">R Wrapper</a> for Tetrad Library</p>
 <h2 id="r-library-requirement">R Library Requirement</h2>
-<p>R &gt;= 3.2.0, 
+<p>R &gt;= 3.3.0, 
 <a href="https://cran.r-project.org/web/packages/stringr/">stringr</a>,
-<a href="https://cran.r-project.org/web/packages/rJava/index.html">rJava</a>, 
-<a href="http://bioconductor.org/packages/release/bioc/html/graph.html">graph</a>, 
-<a href="http://bioconductor.org/packages/release/bioc/html/RBGL.html">RBGL</a>, 
-<a href="http://bioconductor.org/packages/release/bioc/html/Rgraphviz.html">Rgraphviz</a></p>
+<a href="https://cran.r-project.org/web/packages/rJava/index.html">rJava</a>, </p>
 <h2 id="docker">Docker</h2>
 <p>As an alternative to installing the library and getting rJava working with your installation (i.e., does not work well on mac) we have a <a href="https://hub.docker.com/r/chirayukong/r-causal-rstudio/">Docker image</a></p>
 <h2 id="installation">Installation</h2>
@@ -185,11 +169,6 @@
 </ul>
 <pre><code class="R">install.packages(&quot;stringr&quot;)
 install.packages(&quot;rJava&quot;)
-## try http:// if https:// URLs are not supported
-source(&quot;https://bioconductor.org/biocLite.R&quot;) 
-biocLite(&quot;graph&quot;)
-biocLite(&quot;RBGL&quot;)
-biocLite(&quot;Rgraphviz&quot;) # For plotting graph
 </code></pre>
 
 <ul>
@@ -204,31 +183,27 @@ install_github(&quot;bd2kccd/r-causal&quot;)
 <pre><code class="R">library(rcausal)
 data(&quot;charity&quot;)   #Load the charity dataset
 
+tetradrunner.getAlgorithmDescription(algoId = 'fges')
+tetradrunner.getAlgorithmParameters(algoId = 'fges',scoreId = 'fisher-z')
 #Compute FGES search
-fgs &lt;- fgs(df = charity, penaltydiscount = 2, maxDegree = -1,  
-faithfulnessAssumed = TRUE, numOfThreads = 2, verbose = TRUE)    
+tetradrunner &lt;- tetradrunner(algoId = 'fges',df = charity,scoreId = 'fisher-z',
+dataType = 'continuous',alpha=0.1,faithfulnessAssumed=TRUE,maxDegree=-1,verbose=TRUE)
 
-fgs$parameters #Show the FGES's parameters
-fgs$datasets #Show the dataset
-fgs$nodes #Show the result's nodes
-fgs$edges #Show the result's edges
-
-library(Rgraphviz)
-plot(fgs$graphNEL) #Plot the causal model
+tetradrunner$nodes #Show the result's nodes
+tetradrunner$edges #Show the result's edges
 </code></pre>
 
 <h3 id="discrete-dataset">Discrete Dataset</h3>
 <pre><code class="R">library(rcausal)
 data(&quot;audiology&quot;)    #Load the charity dataset
+
+tetradrunner.getAlgorithmParameters(algoId = 'fges',scoreId = 'bdeu')
 #Compute FGES search
-fgs.discrete &lt;- fgs.discrete(df=audiology,structurePrior=1.0,samplePrior=1.0, 
-maxDegree = -1, faithfulnessAssumed = TRUE, numOfThreads = 2,verbose = TRUE)
-fgs.discrete$parameters #Show the FGES Discrete's parameters
-fgs.discrete$datasets #Show the dataset
-fgs.discrete$nodes #Show the result's nodes
-fgs.discrete$edges #Show the result's edges
-library(Rgraphviz)
-plot(fgs.discrete$graphNEL) #Plot the causal model
+tetradrunner &lt;- tetradrunner(algoId = 'fges',df = audiology,scoreId = 'bdeu',dataType = 'discrete',
+alpha=0.1,faithfulnessAssumed=TRUE,maxDegree=-1,verbose=TRUE)
+
+tetradrunner$nodes #Show the result's nodes
+tetradrunner$edges #Show the result's edges
 </code></pre>
 
 <h3 id="prior-knowledge">Prior Knowledge</h3>
@@ -264,10 +239,10 @@ fgs.discrete &lt;- fgs.discrete(df=audiology,structurePrior=1.0,samplePrior=1.0,
 depth = -1, heuristicSpeedup = TRUE, numOfThreads = 2,verbose = TRUE, priorKnowledge = prior)
 </code></pre>
 
-<h3 id="convert-rgraphviz-to-igraph-one">Convert Rgraphviz to igraph one</h3>
-<pre><code class="R">library(igraph)
-igraph &lt;- igraph.from.graphNEL(fgs.discrete$graphNEL)
-plot(igraph)
+<h3 id="plot-a-dot-graph">Plot a DOT graph</h3>
+<pre><code class="R">library(DOT)
+graph_dot &lt;- tetradrunner.tetradGraphToDot(tetradrunner$graph)
+dot(graph_dot)
 </code></pre>
 
 <h2 id="useful-rjava-trouble-shooting-installation-in-mac-os-x-links">Useful <code>rJava</code> Trouble-shooting Installation in Mac OS X Links</h2>
@@ -299,12 +274,12 @@ plot(igraph)
 
   Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-	  
+      
         </div>
       </div>
 
     </section>
-    
+
   </div>
 
   <div class="rst-versions" role="note" style="cursor: pointer">
@@ -318,7 +293,9 @@ plot(igraph)
       
     </span>
 </div>
-    <script src="../js/theme.js"></script>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
 
 </body>
 </html>
