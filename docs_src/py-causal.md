@@ -70,7 +70,7 @@ After running this command, enter a python shell and attempt the follwing import
     import pydot
     from tetrad import search as s
 
-Finally, try to run the python [example](https://github.com/bd2kccd/py-causal/blob/master/py-causal-fgs-continuous-example.py)
+Finally, try to run the python [example](https://github.com/bd2kccd/py-causal/blob/master/py-causal-fges-continuous-example.py)
 
     python py-causal-fgs-continuous-example.py
 
