@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Tetrad - CCD Docs</title>
+  <title>Tetrad Express - CCD Docs</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Tetrad";
-    var mkdocs_page_input_path = "tetrad.md";
-    var mkdocs_page_url = "/docs/tetrad/";
+    var mkdocs_page_name = "Tetrad Express";
+    var mkdocs_page_input_path = "tetrad-express.md";
+    var mkdocs_page_url = "/docs/tetrad-express/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js" defer></script>
@@ -63,25 +63,9 @@
     <a class="" href="..">Welcome to CCD Docs</a>
 	    </li>
           
-            <li class="toctree-l1 current">
+            <li class="toctree-l1">
 		
-    <a class="current" href="./">Tetrad</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#tetrad">Tetrad</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l3" href="#introduction">Introduction</a></li>
-        
-            <li><a class="toctree-l3" href="#tetrad-user-manual">Tetrad User Manual</a></li>
-        
-            <li><a class="toctree-l3" href="#tetrad-tutorial">Tetrad Tutorial</a></li>
-        
-        </ul>
-    
-
-    </ul>
+    <a class="" href="../tetrad/">Tetrad</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -119,9 +103,25 @@
     <a class="" href="../ccd-annotations-cytoscape/">CCD Annotations Cytoscape Plugin</a>
 	    </li>
           
-            <li class="toctree-l1">
+            <li class="toctree-l1 current">
 		
-    <a class="" href="../tetrad-express/">Tetrad Express</a>
+    <a class="current" href="./">Tetrad Express</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#tetrad-express">Tetrad Express</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#description">Description</a></li>
+        
+            <li><a class="toctree-l3" href="#purpose">Purpose</a></li>
+        
+            <li><a class="toctree-l3" href="#workflow">Workflow</a></li>
+        
+        </ul>
+    
+
+    </ul>
 	    </li>
           
         </ul>
@@ -146,7 +146,7 @@
     
       
     
-    <li>Tetrad</li>
+    <li>Tetrad Express</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -156,13 +156,84 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="tetrad">Tetrad</h1>
-<h2 id="introduction">Introduction</h2>
-<p><a href="http://www.phil.cmu.edu/tetrad/index.html">Tetrad</a> is a program which creates, simulates data from, estimates, tests, predicts with, and searches for causal and statistical models. The aim of the program is to provide sophisticated methods in a friendly interface requiring very little statistical sophistication of the user and no programming knowledge. It is not intended to replace flexible statistical programming systems such as Matlab, Splus or R. Tetrad is freeware that performs many of the functions in commercial programs such as Netica, Hugin, LISREL, EQS and other programs, and many discovery functions these commercial programs do not perform.</p>
-<h2 id="tetrad-user-manual">Tetrad User Manual</h2>
-<p>The <a href="http://www.phil.cmu.edu/tetrad/revised%20Tetrad%20Manual-JUNE-2017.pdf">Tetrad User Manual</a> is a comprehensive guide to get you started and become profecient on using these tools for causal inference.</p>
-<h2 id="tetrad-tutorial">Tetrad Tutorial</h2>
-<p>The <a href="https://rawgit.com/cmu-phil/tetrad/development/tetrad-gui/src/main/resources/resources/javahelp/manual/tetrad_tutorial.html">Tetrad Tutorial</a> describes the things you can do with Tetrad with a lot of examples.</p>
+                <h1 id="tetrad-express">Tetrad Express</h1>
+<h2 id="description">Description</h2>
+<p>A Cytoscape application (plugin) for running a simple causal model search.</p>
+<h2 id="purpose">Purpose</h2>
+<p>Provide a basic user-friendly interface for running a simple search algorithm from Tetrad.</p>
+<h2 id="workflow">Workflow</h2>
+<p>Below are the workflows you can peform:</p>
+<h3 id="workflow-1-simple-search">Workflow 1: Simple Search</h3>
+<p>This is the simplest workflow to run a simple search.  Figure 1 shows the same workflow in Tetrad.</p>
+<ol>
+<li>Import data.</li>
+<li>Select algorithm.</li>
+<li>Set algorithm parameters.</li>
+<li>Run search.</li>
+<li>Display graph.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center"><img alt="Workflow 1" src="../img/tetrad_express_workflow1.png" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><em>Figure 1.</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="workflow-2-add-knowledge">Workflow 2: Add Knowledge</h3>
+<p>This workflow is to add additional knowledge to the dataset.  Figure 2 shows the same workflow in Tetrad.</p>
+<ol>
+<li>Import data.</li>
+<li>Select knowledge type.<ul>
+<li>Set knowledge.</li>
+</ul>
+</li>
+<li>Select algorithm.</li>
+<li>Set algorithm parameters.</li>
+<li>Run search.</li>
+<li>Display graph.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center"><img alt="Workflow 2" src="../img/tetrad_express_workflow2.png" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><em>Figure 2.</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="workflow-3-apply-data-transformation">Workflow 3: Apply Data Transformation</h3>
+<p>This workflow is to apply data transformation to the dataset.  Figure 3 shows the same workflow in Tetrad.</p>
+<ol>
+<li>Import data.</li>
+<li>Edit the data:<ul>
+<li>Select a data transformation.</li>
+</ul>
+</li>
+<li>Select algorithm.</li>
+<li>Set algorithm parameters.</li>
+<li>Run search.</li>
+<li>Display graph.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center"><img alt="Workflow 3" src="../img/tetrad_express_workflow3.png" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><em>Figure 3.</em></td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>
@@ -170,10 +241,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../causal-cmd/" class="btn btn-neutral float-right" title="Causal CMD">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-      
-        <a href=".." class="btn btn-neutral" title="Welcome to CCD Docs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ccd-annotations-cytoscape/" class="btn btn-neutral" title="CCD Annotations Cytoscape Plugin"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -199,10 +268,8 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../ccd-annotations-cytoscape/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
-      
-        <span style="margin-left: 15px"><a href="../causal-cmd/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
