@@ -1,7 +1,7 @@
 site_name: CCD Docs
 site_description: Documentation of CCD tools and software
 docs_dir: docs_src
-site_dir: docs
+site_dir: stage
 site_url: https://bd2kccd.github.io/docs
 pages:
     - Welcome to CCD Docs: index.md
@@ -13,5 +13,6 @@ pages:
     - R-causal: r-causal.md
     - Cytoscape Tetrad Plugin: cytoscape-tetrad.md
     - CCD Annotations Cytoscape Plugin: ccd-annotations-cytoscape.md
+    - Tetrad Express: tetrad-express.md
 theme: readthedocs
 google_analytics: ['UA-60897872-2', 'bd2kccd.github.io']

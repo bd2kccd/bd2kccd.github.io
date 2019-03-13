@@ -13,5 +13,6 @@ pages:
     - R-causal: r-causal.md
     - Cytoscape Tetrad Plugin: cytoscape-tetrad.md
     - CCD Annotations Cytoscape Plugin: ccd-annotations-cytoscape.md
+    - Tetrad Express: tetrad-express.md
 theme: readthedocs
 google_analytics: ['UA-60897872-2', 'bd2kccd.github.io']
