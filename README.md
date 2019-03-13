@@ -4,9 +4,9 @@ This is the project documentation repo of CCD software and tools. It uses [MkDoc
 
 Below are the steps to contrubite to the CCD docs:
 
-## 1. Installing MkDocs v0.16.0
+## 1. Installing MkDocs v1.0.4
 
-We suggest all contributors to [install MkDocs using pip](http://www.mkdocs.org/#installing-pip) and verify that the **version 0.16.0** is installed since this version has fixed many bugs.
+We suggest all contributors to [install MkDocs using pip](http://www.mkdocs.org/#installing-pip) and verify that the **version 1.0.4** is installed since this version has fixed many bugs.
 
 ## 2. Cloning the bd2kccd.github.io Repository
 
