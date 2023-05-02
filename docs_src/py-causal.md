@@ -1,7 +1,8 @@
 py-causal
 ========
-[Python APIs](https://github.com/bd2kccd/py-causal) for causal modeling algorithms developed by the University of Pittsburgh/Carnegie Mellon University [Center for Causal Discovery](http://www.ccd.pitt.edu). 
+[Python APIs](https://github.com/bd2kccd/py-causal) for causal modeling algorithms developed by the University of Pittsburgh/Carnegie Mellon University [Center for Causal Discovery](http://www.ccd.pitt.edu).
 
+Note: This project uses a very old version of Tetrad and a method of connecting Python to Java, Javabridge, that's proven sometimes buggy and hard to install on some platforms, and so we are no longer recommending it. Please consider using py-tetrad instead. Py-tetrad uses JPype to bridge Python and Java, which has already shown itself to be much easier to install and use cross-platform. Also, it allows one to use the most recent version of Tetrad, and it has been well-tested.
 
 This code is distributed under the LGPL 2.1 license.
 

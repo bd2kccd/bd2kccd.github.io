@@ -6,14 +6,16 @@ This site hosts documentation for the [Center for Causal Discovery](http://www.c
 
 **causal-cmd** - a Java API and command line implementation of algorithms for performing causal discovery on Big Data. Use this software if you are interested incorporating analysis via a shell script or in a Java-based program. The software currently includes Fast Greedy Search (**FGES**) for continuous or discrete variables – an optimized version of Greedy Equivalence Search (**GES**) tested with datasets that contain as many as 1 million continuous variables, and Greedy Fast Causal Inference (**GFCI**) for continuous or discrete variables.
 
-- [Download the latest release i.e., causal-cmd-X.X.X-jar-with-dependencies.jar](https://cloud.ccd.pitt.edu/nexus/content/repositories/releases/edu/pitt/dbmi/causal-cmd/)
+- [Download the latest release i.e., causal-cmd-X.X.X-jar-with-dependencies.jar](https://s01.oss.sonatype.org/content/repositories/releases/io/github/cmu-phil/causal-cmd/)
+- [Download previous releases i.e., before causal-cmd v1.3.0](https://cloud.ccd.pitt.edu/nexus/content/repositories/releases/edu/pitt/dbmi/causal-cmd/)
 - [Documentation for the big data enabled causal discovery algorithms](http://www.ccd.pitt.edu/wiki/index.php?title=Algorithm_Documentation)
 - [Report bugs or issues with the software](ccd.user.helpdesk@gmail.com)
 - [Github project](https://github.com/bd2kccd/causal-cmd)
 
 **Tetrad** - a Java API, and desktop environment for learning, performing analyses and experimenting with causal discovery algorithms.
 
-- [Download the latest Tetrad GUI Application i.e., tetrad-gui-x.x.x-launch.jar](https://cloud.ccd.pitt.edu/nexus/content/repositories/releases/edu/cmu/tetrad-gui/)
+- [Download the latest Tetrad GUI Application i.e., tetrad-gui-x.x.x-launch.jar](https://s01.oss.sonatype.org/content/repositories/releases/io/github/cmu-phil/tetrad-gui/)
+- [Download previous Tetrad GUI Application i.e., tetrad-gui v.6.9.0](https://cloud.ccd.pitt.edu/nexus/content/repositories/releases/edu/cmu/tetrad-gui/)
 - [Tetrad Project Website](http://www.phil.cmu.edu/tetrad/)
 - [Documentation for the big data enabled causal discovery algorithms](http://www.ccd.pitt.edu/wiki/index.php?title=Algorithm_Documentation)
 - [Github project](https://github.com/cmu-phil/tetrad)
@@ -28,7 +30,19 @@ This site hosts documentation for the [Center for Causal Discovery](http://www.c
 
 - [Github project](https://github.com/bd2kccd/causal-rest-api)
 
+**Cytoscape-tetrad** - a native cytoscape plugin that imports tetrad txt output files that contain the structure of a causal graph. It handles causal graphs and partial ancestral graphs.
+
+- [Plugin](https://cloud.ccd.pitt.edu/nexus/content/repositories/releases/edu/pitt/dbmi/ccd/cytoscape/tetrad/cytoscape-tetrad-app)
+- [Github project](https://github.com/bd2kccd/cytoscape-tetrad)
+
+**Ccd-annotations-cytoscape** - a native cytoscape plugin that allows for annotating nodes and edges of any cytoscape graph.
+
+- [Plugin](https://cloud.ccd.pitt.edu/nexus/content/repositories/releases/edu/pitt/cs/admt/cytoscape/annotations/ccd-annotations-cytoscape/)
+- [Github project](h<https://github.com/bd2kccd/ccd-annotations-cytoscape)>
+
 **Py-causal** - a python module that wraps algorithms for performing causal discovery on big data. The software currently includes Fast Greedy Search (**FGES**) for both continuous and discrete variables, and Greedy Fast Causal Inference (**GFCI**) for continuous and discretevariables.
+
+Note: This project uses a very old version of Tetrad and a method of connecting Python to Java, Javabridge, that's proven sometimes buggy and hard to install on some platforms, and so we are no longer recommending it. Please consider using py-tetrad instead. Py-tetrad uses JPype to bridge Python and Java, which has already shown itself to be much easier to install and use cross-platform. Also, it allows one to use the most recent version of Tetrad, and it has been well-tested.
 
 - [Github project](https://github.com/bd2kccd/py-causal)
 - [Docker container of Jupyter Notebook with Py-causal configured](https://hub.docker.com/r/chirayukong/py-causal-notebook/)
@@ -36,17 +50,11 @@ This site hosts documentation for the [Center for Causal Discovery](http://www.c
 
 **R-causal** - an R module that that wraps algorithms for performing causal discovery on big data. The software currently includes Fast Greedy Search (**FGES**) for both continuous and discrete variables, and Greedy Fast Causal Inference (**GFCI**) for continuous variables.
 
+Note 2023-03-06: This version of RCausal uses an older version of Tetrad from at least 5 years ago. However, we have updated our Python integration to a much better version--see <https://github.com/cmu-phil/py-tetrad>. Updating our R integration is one of the next projects we will take up.
+
 - [Github project](https://github.com/bd2kccd/r-causal)
 - [Docker container of Jupyter Notebook with R-causal configured](https://hub.docker.com/r/chirayukong/r-causal-rstudio/)
 - [Documentation for the big data enabled causal discovery algorithms](http://www.ccd.pitt.edu/wiki/index.php?title=Algorithm_Documentation)
-
-**cytoscape-tetrad** - a native cytoscape plugin that imports tetrad txt output files that contain the structure of a causal graph. It handles causal graphs and partial ancestral graphs.
-- [Plugin](https://cloud.ccd.pitt.edu/nexus/content/repositories/releases/edu/pitt/dbmi/ccd/cytoscape/tetrad/cytoscape-tetrad-app)
-- [Github project](https://github.com/bd2kccd/cytoscape-tetrad)
-
-**ccd-annotations-cytoscape** - a native cytoscape plugin that allows for annotating nodes and edges of any cytoscape graph. 
-- [Plugin](https://cloud.ccd.pitt.edu/nexus/content/repositories/releases/edu/pitt/cs/admt/cytoscape/annotations/ccd-annotations-cytoscape/)
-- [Github project](hhttps://github.com/bd2kccd/ccd-annotations-cytoscape)
 
 
 *If you use our software in your research, please acknowledge the Center for Causal Discovery, supported by **grant U54HG008540**, in any papers, presentations, or other dissemination of your work.*
