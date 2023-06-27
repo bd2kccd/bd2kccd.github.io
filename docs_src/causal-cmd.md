@@ -1,9 +1,9 @@
-# causal-cmd v1.8.x
+# causal-cmd v1.9.x
 
 ## Introduction
 
 Causal-cmd is a Java application that provides a Command-Line Interface (CLI) tool for causal discovery algorithms produced by the [Center for Causal Discovery](http://www.ccd.pitt.edu/).  The application currently includes the following algorithms:  
-bpc, ccd, cpc, cstar, fas, fask, fask-pw, fask-vote, fci, fcimax, fges, fges-mb, fofc, ftfc, gfci, grasp, grasp-fci, images, lingam, mgm, pag-sampling-rfci, pc, pc-max, pc-mb, r-skew, r3, rfci, skew, spfci, svar-fci, svar-gfci
+boss, bpc, ccd, cpc, cstar, fas, fask, fask-pw, fci, fcimax, fges, fges-mb, fofc, ftfc, gfci, grasp, grasp-fci, ica-ling-d, ica-lingam, images, mgm, pag-sampling-rfci, pc, pc-mb, pcmax, r-skew, r3, rfci, skew, spfci, svar-fci, svar-gfci
 
 Causal discovery algorithms are a class of search algorithms that explore a space of graphical causal models, i.e., graphical models where directed edges imply causation, for a model (or models) that are a good fit for a dataset. We suggest that newcomers to the field review Causation, Prediction and Search by Spirtes, Glymour and Scheines for a primer on the subject.
 
@@ -27,8 +27,8 @@ And you'll see the following instructions:
 
 ```` bash 
 Missing required options: algorithm, data-type, dataset, delimiter
-usage: java -jar Causal-cmd Project-1.8.0.jar  --algorithm <string> [--comment-marker <string>] --data-type <string> --dataset <files> [--default] --delimiter <string> [--experimental] [--help] [--help-algo-desc] [--help-all] [--help-score-desc] [--help-test-desc] [--json-graph] [--metadata <file>] [--no-header] [--out <directory>] [--prefix <string>] [--quote-char <character>] [--skip-validation] [--version]
-    --algorithm <string>        Algorithm: bpc, ccd, cpc, cstar, fas, fask, fask-pw, fask-vote, fci, fcimax, fges, fges-mb, fofc, ftfc, gfci, grasp, grasp-fci, images, lingam, mgm, pag-sampling-rfci, pc, pc-max, pc-mb, r-skew, r3, rfci, skew, spfci, svar-fci, svar-gfci
+usage: java -jar Causal-cmd Project-1.9.0.jar  --algorithm <string> [--comment-marker <string>] --data-type <string> --dataset <files> [--default] --delimiter <string> [--experimental] [--help] [--help-algo-desc] [--help-all] [--help-score-desc] [--help-test-desc] [--json-graph] [--metadata <file>] [--no-header] [--out <directory>] [--prefix <string>] [--quote-char <character>] [--skip-validation] [--version]
+    --algorithm <string>        Algorithm: boss, bpc, ccd, cpc, cstar, fas, fask, fask-pw, fci, fcimax, fges, fges-mb, fofc, ftfc, gfci, grasp, grasp-fci, ica-ling-d, ica-lingam, images, mgm, pag-sampling-rfci, pc, pc-mb, pcmax, r-skew, r3, rfci, skew, spfci, svar-fci, svar-gfci
     --comment-marker <string>   Comment marker.
     --data-type <string>        Data type: all, continuous, covariance, discrete, mixed
     --dataset <files>           Dataset. Multiple files are seperated by commas.
@@ -56,9 +56,9 @@ By specifying an algorithm using the --algorithm switch the program will indicat
 
 Example of listing all available options for an algorithm:
 ```` bash
-$ java -jar causal-cmd-1.8.0-jar-with-dependencies.jar --algorithm fges --data-type continuous --dataset Retention.txt --delimiter tab --score sem-bic-score --help
+$ java -jar causal-cmd-1.9.0-jar-with-dependencies.jar --algorithm fges --data-type continuous --dataset Retention.txt --delimiter tab --score sem-bic-score --help
 
-usage: java -jar Causal-cmd Project-1.8.0.jar --algorithm fges --data-type continuous --dataset Retention.txt --delimiter tab --score sem-bic-score [--addOriginalDataset] [--choose-dag-in-pattern] [--choose-mag-in-pag] [--comment-marker <string>] [--default] [--exclude-var <file>] [--experimental] [--external-graph <file>] [--extract-struct-model] [--faithfulnessAssumed] [--generate-complete-graph] [--genereate-pag-from-dag] [--genereate-pag-from-tsdag] [--genereate-pattern-from-dag] [--json-graph] [--knowledge <file>] [--make-all-edges-undirected] [--make-bidirected-undirected] [--make-undirected-bidirected] [--maxDegree <integer>] [--meekVerbose] [--metadata <file>] [--missing-marker <string>] [--no-header] [--numberResampling <integer>] [--out <directory>] [--parallelized] [--penaltyDiscount <double>] [--percentResampleSize <integer>] [--prefix <string>] [--quote-char <character>] [--resamplingEnsemble <integer>] [--resamplingWithReplacement] [--seed <long>] [--semBicRule <integer>] [--semBicStructurePrior <double>] [--skip-validation] [--symmetricFirstStep] [--timeLag <integer>] [--verbose]
+usage: java -jar Causal-cmd Project-1.9.0.jar --algorithm fges --data-type continuous --dataset Retention.txt --delimiter tab --score sem-bic-score [--addOriginalDataset] [--choose-dag-in-pattern] [--choose-mag-in-pag] [--comment-marker <string>] [--default] [--exclude-var <file>] [--experimental] [--external-graph <file>] [--extract-struct-model] [--faithfulnessAssumed] [--generate-complete-graph] [--genereate-pag-from-dag] [--genereate-pag-from-tsdag] [--genereate-pattern-from-dag] [--json-graph] [--knowledge <file>] [--make-all-edges-undirected] [--make-bidirected-undirected] [--make-undirected-bidirected] [--maxDegree <integer>] [--meekVerbose] [--metadata <file>] [--missing-marker <string>] [--no-header] [--numberResampling <integer>] [--out <directory>] [--parallelized] [--penaltyDiscount <double>] [--percentResampleSize <integer>] [--prefix <string>] [--quote-char <character>] [--resamplingEnsemble <integer>] [--resamplingWithReplacement] [--seed <long>] [--semBicRule <integer>] [--semBicStructurePrior <double>] [--skip-validation] [--symmetricFirstStep] [--timeLag <integer>] [--verbose]
     --addOriginalDataset              Yes, if adding the original dataset as another bootstrapping
     --choose-dag-in-pattern           Choose DAG in Pattern graph.
     --choose-mag-in-pag               Choose MAG in PAG.
@@ -105,15 +105,16 @@ usage: java -jar Causal-cmd Project-1.8.0.jar --algorithm fges --data-type conti
 In this example, we'll be running the FGES algorith on the dataset `Retention.txt`.
 
 ```` bash
-$ java -jar causal-cmd-1.8.0-jar-with-dependencies.jar --algorithm fges --data-type continuous --dataset Retention.txt --delimiter tab --score sem-bic-score
+$ java -jar causal-cmd-1.9.0-jar-with-dependencies.jar --algorithm fges --data-type continuous --dataset Retention.txt --delimiter tab --score sem-bic-score
 ````
 
-This command will output by default two files fges_<unix timestamp>.txt which is a log of the algorithm's activity and fges_<unix timmestamp>_graph.txt which is a textual description of the graph output from the algorithm.
+This command will output by default one file fges_<unix timestamp\>.txt which is a log and result of the algorithm's activity.  
+'--json-graph' option will enable output fges_<unix timestamp\>_graph.json which is a json graph from the algorithm, which is equivalent to the exported json file from tetrad-gui.
 
 Example log output from causal-cmd:
 ```` bash
 ================================================================================
-FGES (Tue, May 02, 2023 11:37:52 AM)
+FGES (Tue, June 27, 2023 08:42:30 AM)
 ================================================================================
 
 Runtime Parameters
@@ -154,21 +155,18 @@ timeLag: 0
 verbose: no
 
 
-Tue, May 02, 2023 11:37:52 AM: Start data validation on file Retention.txt.
-Tue, May 02, 2023 11:37:52 AM: End data validation on file Retention.txt.
+Tue, June 27, 2023 08:42:32 AM: Start data validation on file Retention.txt.
+Tue, June 27, 2023 08:42:32 AM: End data validation on file Retention.txt.
 There are 170 cases and 8 variables.
 
-Tue, May 02, 2023 11:37:52 AM: Start reading in file Retention.txt.
-Tue, May 02, 2023 11:37:52 AM: Finished reading in file Retention.txt.
-Tue, May 02, 2023 11:37:52 AM: File Retention.txt contains 170 cases, 8 variables.
+Tue, June 27, 2023 08:42:32 AM: Start reading in file Retention.txt.
+Tue, June 27, 2023 08:42:32 AM: Finished reading in file Retention.txt.
+Tue, June 27, 2023 08:42:32 AM: File Retention.txt contains 170 cases, 8 variables.
 
-Start search: Tue, May 02, 2023 11:37:52 AM
-End search: Tue, May 02, 2023 11:37:53 AM
-````
+Start search: Tue, June 27, 2023 08:42:32 AM
+End search: Tue, June 27, 2023 08:42:32 AM
 
-
-Example graph output from causal-cmd:
-```` bash
+================================================================================
 Graph Nodes:
 spending_per_stdt;grad_rate;stdt_clss_stndng;rjct_rate;tst_scores;stdt_accept_rate;stdt_tchr_ratio;fac_salary
 

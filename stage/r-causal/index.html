@@ -1,167 +1,147 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  
-  <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>R-causal - CCD Docs</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://bd2kccd.github.io/docs/r-causal/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>R-causal - CCD Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "R-causal";
+        var mkdocs_page_input_path = "r-causal.md";
+        var mkdocs_page_url = "/docs/r-causal/";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "R-causal";
-    var mkdocs_page_input_path = "r-causal.md";
-    var mkdocs_page_url = "/docs/r-causal/";
-  </script>
-  
-  <script src="../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
-  
-  <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-60897872-2', 'bd2kccd.github.io');
-      ga('send', 'pageview');
-  </script>
-  
+        ga('create', 'UA-60897872-2', 'bd2kccd.github.io');
+        ga('send', 'pageview');
+      </script>
+    
 </head>
 
 <body class="wy-body-for-nav" role="document">
 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> CCD Docs</a>
-        <div role="search">
+          <a href=".." class="icon icon-home"> CCD Docs
+        </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="..">Welcome to CCD Docs</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../tetrad/">Tetrad</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../causal-cmd/">Causal CMD</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../causal-web/">Causal Web</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../causal-rest-api/">Causal REST API</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../py-causal/">Py-causal</a>
-	    </li>
-          
-            <li class="toctree-l1 current">
-		
-    <a class="current" href="./">R-causal</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#r-causal">r-causal</a></li>
-    
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Welcome to CCD Docs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../tetrad/">Tetrad</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../causal-cmd/">Causal Cmd</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../causal-web/">Causal Web</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../causal-rest-api/">Causal REST API</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../py-causal/">Py-causal</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">R-causal</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#r-library-requirement">R Library Requirement</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#docker">Docker</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example">Example</a>
         <ul>
-        
-            <li><a class="toctree-l3" href="#r-library-requirement">R Library Requirement</a></li>
-        
-            <li><a class="toctree-l3" href="#docker">Docker</a></li>
-        
-            <li><a class="toctree-l3" href="#installation">Installation</a></li>
-        
-            <li><a class="toctree-l3" href="#example">Example</a></li>
-        
-            <li><a class="toctree-l3" href="#useful-rjava-trouble-shooting-installation-in-mac-os-x-links">Useful rJava Trouble-shooting Installation in Mac OS X Links</a></li>
-        
+    <li class="toctree-l3"><a class="reference internal" href="#continuous-dataset">Continuous Dataset</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#discrete-dataset">Discrete Dataset</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#prior-knowledge">Prior Knowledge</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#create-priorknowledge-object">Create PriorKnowledge Object</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#load-knowledge-file">Load Knowledge File</a>
+    </li>
         </ul>
-    
-
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#plot-a-dot-graph">Plot a DOT graph</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#useful-rjava-trouble-shooting-installation-in-mac-os-x-links">Useful rJava Trouble-shooting Installation in Mac OS X Links</a>
+    </li>
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../cytoscape-tetrad/">Cytoscape Tetrad Plugin</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../ccd-annotations-cytoscape/">CCD Annotations Cytoscape Plugin</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../tetrad-express/">Tetrad Express</a>
-	    </li>
-          
-        </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cytoscape-tetrad/">Cytoscape Tetrad Plugin</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ccd-annotations-cytoscape/">CCD Annotations Cytoscape Plugin</a>
+                </li>
+              </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">CCD Docs</a>
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">CCD Docs</a>
+        
       </nav>
-
-      
       <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="..">Docs</a> &raquo;</li>
-    
-      
-    
-    <li>R-causal</li>
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>R-causal</li>
     <li class="wy-breadcrumbs-aside">
-      
     </li>
   </ul>
   <hr/>
 </div>
-          <div role="main">
-            <div class="section">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
               
                 <h1 id="r-causal">r-causal</h1>
 <p><a href="https://github.com/bd2kccd/r-causal">R Wrapper</a> for Tetrad Library</p>
+<p>Note 2023-03-06: This version of RCausal uses an older version of Tetrad from at least 5 years ago. However, we have updated our Python integration to a much better version--see <a href="https://github.com/cmu-phil/py-tetrad">https://github.com/cmu-phil/py-tetrad</a>. Updating our R integration is one of the next projects we will take up.</p>
+<p>News 2023-04-05: We have put forward a proposal to replace the r-causal functionality using the py-tetrad functionality, here: <a href="https://github.com/cmu-phil/py-tetrad/tree/main/pytetrad/R">https://github.com/cmu-phil/py-tetrad/tree/main/pytetrad/R</a>. The installation procedure for this is still somewhat complicated, and we will try to simplify it. If you try it and and have difficulties, please let us know. Once you have it installed, it is very easy and intuitive to use.</p>
+<p>By the way, rcausal has not been maintained for some time now, as the tireless maintainer has since moved on to different work :-)... but going back through some of the issues posted for r-causal gives some hints as to additional functionality that pytetrad/R should have. We'll try to get caught up.</p>
 <h2 id="r-library-requirement">R Library Requirement</h2>
 <p>R &gt;= 3.3.0, 
 <a href="https://cran.r-project.org/web/packages/stringr/">stringr</a>,
@@ -172,20 +152,18 @@
 <ul>
 <li>Install the R library requirements:</li>
 </ul>
-<pre><code class="R">install.packages(&quot;stringr&quot;)
+<pre><code class="language-R">install.packages(&quot;stringr&quot;)
 install.packages(&quot;rJava&quot;)
 </code></pre>
-
 <ul>
 <li>Install r-causal from github:</li>
 </ul>
-<pre><code class="R">library(devtools)
+<pre><code class="language-R">library(devtools)
 install_github(&quot;bd2kccd/r-causal&quot;)
 </code></pre>
-
 <h2 id="example">Example</h2>
 <h3 id="continuous-dataset">Continuous Dataset</h3>
-<pre><code class="R">library(rcausal)
+<pre><code class="language-R">library(rcausal)
 data(&quot;charity&quot;)   #Load the charity dataset
 
 tetradrunner.getAlgorithmDescription(algoId = 'fges')
@@ -197,9 +175,8 @@ dataType = 'continuous',alpha=0.1,faithfulnessAssumed=TRUE,maxDegree=-1,verbose=
 tetradrunner$nodes #Show the result's nodes
 tetradrunner$edges #Show the result's edges
 </code></pre>
-
 <h3 id="discrete-dataset">Discrete Dataset</h3>
-<pre><code class="R">library(rcausal)
+<pre><code class="language-R">library(rcausal)
 data(&quot;audiology&quot;)    #Load the charity dataset
 
 tetradrunner.getAlgorithmParameters(algoId = 'fges',scoreId = 'bdeu')
@@ -210,10 +187,9 @@ alpha=0.1,faithfulnessAssumed=TRUE,maxDegree=-1,verbose=TRUE)
 tetradrunner$nodes #Show the result's nodes
 tetradrunner$edges #Show the result's edges
 </code></pre>
-
 <h3 id="prior-knowledge">Prior Knowledge</h3>
 <h4 id="create-priorknowledge-object">Create PriorKnowledge Object</h4>
-<pre><code class="R">forbid &lt;- list(c('TangibilityCondition','Impact')) # List of forbidden directed edges
+<pre><code class="language-R">forbid &lt;- list(c('TangibilityCondition','Impact')) # List of forbidden directed edges
 require &lt;- list(c('Sympathy','TangibilityCondition')) # List of required directed edges
 forbiddenWithin &lt;- c('TangibilityCondition','Imaginability')
 class(forbiddenWithin) &lt;- 'forbiddenWithin' # Make this tier forbidden within
@@ -222,9 +198,8 @@ prior &lt;- priorKnowledge(forbiddirect = forbid, requiredirect = require, addte
 fgs &lt;- fgs(df = charity, penaltydiscount = 2, depth = -1, ignoreLinearDependence = TRUE, 
 heuristicSpeedup = TRUE, numOfThreads = 2, verbose = TRUE, priorKnowledge = prior)
 </code></pre>
-
 <h4 id="load-knowledge-file">Load Knowledge File</h4>
-<pre><code class="R"># knowledge file: audiology.prior
+<pre><code class="language-R"># knowledge file: audiology.prior
 # /knowledge
 # forbiddirect
 # class tymp
@@ -243,13 +218,11 @@ prior &lt;- priorKnowledgeFromFile('audiology.prior')
 fgs.discrete &lt;- fgs.discrete(df=audiology,structurePrior=1.0,samplePrior=1.0, 
 depth = -1, heuristicSpeedup = TRUE, numOfThreads = 2,verbose = TRUE, priorKnowledge = prior)
 </code></pre>
-
 <h3 id="plot-a-dot-graph">Plot a DOT graph</h3>
-<pre><code class="R">library(DOT)
+<pre><code class="language-R">library(DOT)
 graph_dot &lt;- tetradrunner.tetradGraphToDot(tetradrunner$graph)
 dot(graph_dot)
 </code></pre>
-
 <h2 id="useful-rjava-trouble-shooting-installation-in-mac-os-x-links">Useful <code>rJava</code> Trouble-shooting Installation in Mac OS X Links</h2>
 <ol>
 <li><a href="http://stackoverflow.com/questions/26948777/how-can-i-make-rjava-use-the-newer-version-of-java-on-osx/32544358#32544358">http://stackoverflow.com/questions/26948777/how-can-i-make-rjava-use-the-newer-version-of-java-on-osx/32544358#32544358</a></li>
@@ -257,29 +230,21 @@ dot(graph_dot)
 </ol>
               
             </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../py-causal/" class="btn btn-neutral float-left" title="Py-causal"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../cytoscape-tetrad/" class="btn btn-neutral float-right" title="Cytoscape Tetrad Plugin">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../py-causal/" class="btn btn-neutral" title="Py-causal"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-    
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-      
+          
         </div>
       </div>
 
@@ -287,20 +252,26 @@ dot(graph_dot)
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-        <span><a href="../py-causal/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../cytoscape-tetrad/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../py-causal/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cytoscape-tetrad/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
     <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
     <script src="../js/theme.js" defer></script>
       <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>
