@@ -1,4 +1,4 @@
-# causal-cmd v1.9.x
+# causal-cmd v1.10.x
 
 ## Introduction
 
@@ -25,10 +25,10 @@ java -jar causal-cmd-<version number>-jar-with-dependencies.jar
 
 And you'll see the following instructions:
 
-```` bash 
+```bash
 Missing required options: algorithm, data-type, dataset, delimiter
-usage: java -jar Causal-cmd Project-1.9.0.jar  --algorithm <string> [--comment-marker <string>] --data-type <string> --dataset <files> [--default] --delimiter <string> [--experimental] [--help] [--help-algo-desc] [--help-all] [--help-score-desc] [--help-test-desc] [--json-graph] [--metadata <file>] [--no-header] [--out <directory>] [--prefix <string>] [--quote-char <character>] [--skip-validation] [--version]
-    --algorithm <string>        Algorithm: boss, bpc, ccd, cpc, cstar, fas, fask, fask-pw, fci, fcimax, fges, fges-mb, fofc, ftfc, gfci, grasp, grasp-fci, ica-ling-d, ica-lingam, images, mgm, pag-sampling-rfci, pc, pc-mb, pcmax, r-skew, r3, rfci, skew, spfci, svar-fci, svar-gfci
+usage: java -jar Causal-cmd Project-1.10.0.jar  --algorithm <string> [--comment-marker <string>] --data-type <string> --dataset <files> [--default] --delimiter <string> [--experimental] [--help] [--help-algo-desc] [--help-all] [--help-score-desc] [--help-test-desc] [--json-graph] [--metadata <file>] [--no-header] [--out <directory>] [--prefix <string>] [--quote-char <character>] [--skip-validation] [--version]
+    --algorithm <string>        Algorithm: boss, bpc, ccd, cpc, cstar, dagma, direct-lingam, fas, fask, fask-pw, fci, fci-iod, fci-max, fges, fges-mb, fofc, ftfc, gfci, grasp, grasp-fci, ica-ling-d, ica-lingam, images, mgm, pag-sampling-rfci, pc, pc-mb, r-boss, r-skew, r3, rfci, skew, spfci, svar-fci, svar-gfci
     --comment-marker <string>   Comment marker.
     --data-type <string>        Data type: all, continuous, covariance, discrete, mixed
     --dataset <files>           Dataset. Multiple files are seperated by commas.
@@ -49,16 +49,16 @@ usage: java -jar Causal-cmd Project-1.9.0.jar  --algorithm <string> [--comment-m
     --skip-validation           Skip validation.
     --version                   Show version.
 Use --help for guidance list of options.  Use --help-all to show all options.
-````
+```
 
 
 By specifying an algorithm using the --algorithm switch the program will indicate the additional required switches.  The program reminds the user of required switches to run.  In general most algorithms also require  data-type, dataset, delimiter and score. The switch --help-all displays and extended list of switches for the algorithm.
 
 Example of listing all available options for an algorithm:
-```` bash
+````bash
 $ java -jar causal-cmd-1.9.0-jar-with-dependencies.jar --algorithm fges --data-type continuous --dataset Retention.txt --delimiter tab --score sem-bic-score --help
 
-usage: java -jar Causal-cmd Project-1.9.0.jar --algorithm fges --data-type continuous --dataset Retention.txt --delimiter tab --score sem-bic-score [--addOriginalDataset] [--choose-dag-in-pattern] [--choose-mag-in-pag] [--comment-marker <string>] [--default] [--exclude-var <file>] [--experimental] [--external-graph <file>] [--extract-struct-model] [--faithfulnessAssumed] [--generate-complete-graph] [--genereate-pag-from-dag] [--genereate-pag-from-tsdag] [--genereate-pattern-from-dag] [--json-graph] [--knowledge <file>] [--make-all-edges-undirected] [--make-bidirected-undirected] [--make-undirected-bidirected] [--maxDegree <integer>] [--meekVerbose] [--metadata <file>] [--missing-marker <string>] [--no-header] [--numberResampling <integer>] [--out <directory>] [--parallelized] [--penaltyDiscount <double>] [--percentResampleSize <integer>] [--prefix <string>] [--quote-char <character>] [--resamplingEnsemble <integer>] [--resamplingWithReplacement] [--seed <long>] [--semBicRule <integer>] [--semBicStructurePrior <double>] [--skip-validation] [--symmetricFirstStep] [--timeLag <integer>] [--verbose]
+usage: java -jar Causal-cmd Project-1.10.0.jar --algorithm fges --data-type continuous --dataset Retention.txt --delimiter tab --score sem-bic-score [--addOriginalDataset] [--choose-dag-in-pattern] [--choose-mag-in-pag] [--comment-marker <string>] [--default] [--exclude-var <file>] [--experimental] [--external-graph <file>] [--extract-struct-model] [--faithfulnessAssumed] [--generate-complete-graph] [--genereate-pag-from-dag] [--genereate-pag-from-tsdag] [--genereate-pattern-from-dag] [--json-graph] [--knowledge <file>] [--make-all-edges-undirected] [--make-bidirected-undirected] [--make-undirected-bidirected] [--maxDegree <integer>] [--meekVerbose] [--metadata <file>] [--missing-marker <string>] [--no-header] [--numberResampling <integer>] [--out <directory>] [--parallelized] [--penaltyDiscount <double>] [--percentResampleSize <integer>] [--precomputeCovariances] [--prefix <string>] [--quote-char <character>] [--resamplingEnsemble <integer>] [--resamplingWithReplacement] [--saveBootstrapGraphs] [--seed <long>] [--semBicRule <integer>] [--semBicStructurePrior <double>] [--skip-validation] [--symmetricFirstStep] [--timeLag <integer>] [--verbose]
     --addOriginalDataset              Yes, if adding the original dataset as another bootstrapping
     --choose-dag-in-pattern           Choose DAG in Pattern graph.
     --choose-mag-in-pag               Choose MAG in PAG.
@@ -88,10 +88,12 @@ usage: java -jar Causal-cmd Project-1.9.0.jar --algorithm fges --data-type conti
     --parallelized                    Yes if the search should be parallelized
     --penaltyDiscount <double>        Penalty discount (min = 0.0)
     --percentResampleSize <integer>   The percentage of resample size (min = 10%)
+    --precomputeCovariances           True if covariance matrix should be precomputed for tubular continuous data
     --prefix <string>                 Replace the default output filename prefix in the format of <algorithm>_<numeric timestamp>.
     --quote-char <character>          Single character denotes quote.
     --resamplingEnsemble <integer>    Ensemble method: Preserved (1), Highest (2), Majority (3)
     --resamplingWithReplacement       Yes, if sampling with replacement (bootstrapping)
+    --saveBootstrapGraphs             Yes if individual bootstrapping graphs should be saved
     --seed <long>                     Seed for pseudorandom number generator (-1 = off)
     --semBicRule <integer>            Lambda: 1 = Chickering, 2 = Nandy
     --semBicStructurePrior <double>   Structure Prior for SEM BIC (default 0)
@@ -99,22 +101,21 @@ usage: java -jar Causal-cmd Project-1.9.0.jar --algorithm fges --data-type conti
     --symmetricFirstStep              Yes if the first step step for FGES should do scoring for both X->Y and Y->X
     --timeLag <integer>               A time lag for time series data, automatically applied (zero if none)
     --verbose                         Yes if verbose output should be printed or logged
-
 ````
 
 In this example, we'll be running the FGES algorith on the dataset `Retention.txt`.
 
-```` bash
-$ java -jar causal-cmd-1.9.0-jar-with-dependencies.jar --algorithm fges --data-type continuous --dataset Retention.txt --delimiter tab --score sem-bic-score
+````bash
+$ java -jar causal-cmd-1.10.0-jar-with-dependencies.jar --algorithm fges --data-type continuous --dataset Retention.txt --delimiter tab --score sem-bic-score
 ````
 
 This command will output by default one file fges_<unix timestamp\>.txt which is a log and result of the algorithm's activity.  
 '--json-graph' option will enable output fges_<unix timestamp\>_graph.json which is a json graph from the algorithm, which is equivalent to the exported json file from tetrad-gui.
 
 Example log output from causal-cmd:
-```` bash
+````bash
 ================================================================================
-FGES (Tue, June 27, 2023 08:42:30 AM)
+FGES (Wed, October 04, 2023 01:42:43 PM)
 ================================================================================
 
 Runtime Parameters
@@ -145,8 +146,10 @@ numberResampling: 0
 parallelized: no
 penaltyDiscount: 2.0
 percentResampleSize: 100
+precomputeCovariances: no
 resamplingEnsemble: 1
 resamplingWithReplacement: no
+saveBootstrapGraphs: no
 seed: -1
 semBicRule: 1
 semBicStructurePrior: 0.0
@@ -155,45 +158,45 @@ timeLag: 0
 verbose: no
 
 
-Tue, June 27, 2023 08:42:32 AM: Start data validation on file Retention.txt.
-Tue, June 27, 2023 08:42:32 AM: End data validation on file Retention.txt.
+Wed, October 04, 2023 01:42:45 PM: Start data validation on file Retention.txt.
+Wed, October 04, 2023 01:42:45 PM: End data validation on file Retention.txt.
 There are 170 cases and 8 variables.
 
-Tue, June 27, 2023 08:42:32 AM: Start reading in file Retention.txt.
-Tue, June 27, 2023 08:42:32 AM: Finished reading in file Retention.txt.
-Tue, June 27, 2023 08:42:32 AM: File Retention.txt contains 170 cases, 8 variables.
+Wed, October 04, 2023 01:42:45 PM: Start reading in file Retention.txt.
+Wed, October 04, 2023 01:42:45 PM: Finished reading in file Retention.txt.
+Wed, October 04, 2023 01:42:45 PM: File Retention.txt contains 170 cases, 8 variables.
 
-Start search: Tue, June 27, 2023 08:42:32 AM
-End search: Tue, June 27, 2023 08:42:32 AM
+Start search: Wed, October 04, 2023 01:42:45 PM
+End search: Wed, October 04, 2023 01:42:45 PM
 
 ================================================================================
 Graph Nodes:
 spending_per_stdt;grad_rate;stdt_clss_stndng;rjct_rate;tst_scores;stdt_accept_rate;stdt_tchr_ratio;fac_salary
 
 Graph Edges:
-1. grad_rate --- tst_scores
-2. spending_per_stdt --- fac_salary
-3. spending_per_stdt --- rjct_rate
-4. spending_per_stdt --- stdt_tchr_ratio
-5. stdt_accept_rate --- fac_salary
-6. stdt_clss_stndng --- rjct_rate
+1. spending_per_stdt --- fac_salary
+2. spending_per_stdt --- rjct_rate
+3. spending_per_stdt --- stdt_tchr_ratio
+4. stdt_accept_rate --- fac_salary
+5. stdt_clss_stndng --- rjct_rate
+6. stdt_clss_stndng --- tst_scores
 7. tst_scores --- fac_salary
-8. tst_scores --- rjct_rate
-9. tst_scores --- spending_per_stdt
-10. tst_scores --- stdt_clss_stndng
+8. tst_scores --- grad_rate
+9. tst_scores --- rjct_rate
+10. tst_scores --- spending_per_stdt
 
 Graph Attributes:
 Score: -5181.565079
 
 Graph Node Attributes:
-Score: [spending_per_stdt: -1408.438254190969;grad_rate: -492.08978001791644;stdt_clss_stndng: -451.79480827547656;rjct_rate: -439.80872293221756;tst_scores: -254.90753303170433;stdt_accept_rate: -429.64771587695884;stdt_tchr_ratio: -208.8527464123982;fac_salary: -1496.025518245214]
+Score: [spending_per_stdt: -1408.4382541909688;grad_rate: -416.7933531919986;stdt_clss_stndng: -451.79480827547627;rjct_rate: -439.8087229322177;tst_scores: -330.2039598576225;stdt_accept_rate: -429.64771587695884;stdt_tchr_ratio: -208.85274641239832;fac_salary: -1496.025518245214]
 ````
 
 
 ## Interpretation of graph output
 The end of the file contains the causal graph edgesfrom the search procedure. Here is a key to the edge types:
 
-- A --- B - There is causal relationship between variable A and B but we cannot determine the direction of the relationship
+- A --- B - There is causal relationship between variable A and B, but we cannot determine the direction of the relationship
 - A --> B - There is a causal relationship from variable A to B
 
 The GFCI algorithm has additional edge types:
@@ -234,4 +237,4 @@ The first line of the prior knowledge file must say `/knowledge`. And a prior kn
 
 - addtemporal - tiers of variables where the first tier preceeds the last. Adding a asterisk next to the tier id prohibits edges between tier variables
 - forbiddirect - forbidden directed edges indicated by a list of pairs of variables: from -> to direction
-- requireddirect - required directed indicated by a list of pairs of variables: from -> to direction
+- requireddirect - required directed edges indicated by a list of pairs of variables: from -> to direction
