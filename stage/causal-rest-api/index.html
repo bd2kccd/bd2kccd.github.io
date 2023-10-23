@@ -1,158 +1,182 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  
-  <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Causal REST API - CCD Docs</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://bd2kccd.github.io/docs/causal-rest-api/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Causal REST API - CCD Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Causal REST API";
+        var mkdocs_page_input_path = "causal-rest-api.md";
+        var mkdocs_page_url = "/docs/causal-rest-api/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Causal REST API";
-    var mkdocs_page_input_path = "causal-rest-api.md";
-    var mkdocs_page_url = "/docs/causal-rest-api/";
-  </script>
-  
-  <script src="../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
-  
-  <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-60897872-2', 'bd2kccd.github.io');
-      ga('send', 'pageview');
-  </script>
-  
+        ga('create', "UA-60897872-2", "bd2kccd.github.io");
+        ga('send', 'pageview');
+      </script>
+    
 </head>
 
 <body class="wy-body-for-nav" role="document">
 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> CCD Docs</a>
-        <div role="search">
+          <a href=".." class="icon icon-home"> CCD Docs
+        </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="..">Welcome to CCD Docs</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../tetrad/">Tetrad</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../causal-cmd/">Causal CMD</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../causal-web/">Causal Web</a>
-	    </li>
-          
-            <li class="toctree-l1 current">
-		
-    <a class="current" href="./">Causal REST API</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#causal-rest-api-v008">Causal REST API v0.0.8</a></li>
-    
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Welcome to CCD Docs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../tetrad/">Tetrad</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../causal-cmd/">Causal Cmd</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../causal-web/">Causal Web</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Causal REST API</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
         <ul>
-        
-            <li><a class="toctree-l3" href="#installation">Installation</a></li>
-        
-            <li><a class="toctree-l3" href="#api-usage-and-examples">API Usage and Examples</a></li>
-        
+    <li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dependencies">Dependencies</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#start-the-api-server">Start the API Server</a>
+    </li>
         </ul>
-    
-
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#api-usage-and-examples">API Usage and Examples</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#getting-json-web-tokenjwt">Getting JSON Web Token(JWT)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#1-data-management">1. Data Management</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#upload-small-data-file">Upload small data file</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#resumable-data-file-upload">Resumable data file upload</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#list-all-dataset-files-of-a-user">List all dataset files of a user</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#get-the-detail-information-of-a-dataset-file-based-on-id">Get the detail information of a dataset file based on ID</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#delete-physical-dataset-file-and-all-records-from-database-for-a-given-file-id">Delete physical dataset file and all records from database for a given file ID</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#summarize-dataset-file">Summarize dataset file</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#list-all-prior-knowledge-files-of-a-given-user">List all prior knowledge files of a given user</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#get-the-detail-information-of-a-prior-knowledge-file-based-on-id">Get the detail information of a prior knowledge file based on ID</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#delete-physical-prior-knowledge-file-and-all-records-from-database-for-a-given-file-id">Delete physical prior knowledge file and all records from database for a given file ID</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-causal-discovery">2. Causal Discovery</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#list-all-the-available-causal-discovery-algorithms">List all the available causal discovery algorithms</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#add-a-new-job-to-run-the-desired-algorithm-on-a-given-data-file">Add a new job to run the desired algorithm on a given data file</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#list-all-running-jobs">List all running jobs</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#check-the-job-status-for-a-given-job-id">Check the job status for a given job ID</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#cancel-a-running-job">Cancel a running job</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-result-management">3. Result Management</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#list-all-result-files-generated-by-the-algorithm">List all result files generated by the algorithm</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#download-a-specific-result-file-generated-by-the-algorithm-based-on-file-name">Download a specific result file generated by the algorithm based on file name</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#compare-algorithm-result-files">Compare algorithm result files</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#list-all-the-comparison-files">List all the comparison files</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#download-a-specific-comparison-file-based-on-file-name">Download a specific comparison file based on file name</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../py-causal/">Py-causal</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../r-causal/">R-causal</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../cytoscape-tetrad/">Cytoscape Tetrad Plugin</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../ccd-annotations-cytoscape/">CCD Annotations Cytoscape Plugin</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../tetrad-express/">Tetrad Express</a>
-	    </li>
-          
-        </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../py-causal/">Py-causal</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../r-causal/">R-causal</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cytoscape-tetrad/">Cytoscape Tetrad Plugin</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ccd-annotations-cytoscape/">CCD Annotations Cytoscape Plugin</a>
+                </li>
+              </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">CCD Docs</a>
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">CCD Docs</a>
+        
       </nav>
-
-      
       <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="..">Docs</a> &raquo;</li>
-    
-      
-    
-    <li>Causal REST API</li>
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Causal REST API</li>
     <li class="wy-breadcrumbs-aside">
-      
     </li>
   </ul>
   <hr/>
 </div>
-          <div role="main">
-            <div class="section">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
               
                 <h1 id="causal-rest-api-v008">Causal REST API v0.0.8</h1>
 <p>This RESTful API is designed for causal web. And it implements the <a href="https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services">JAX-RS</a> specifications using Jersey.</p>
@@ -211,20 +235,17 @@ cd ccd-commons
 git checkout tags/v0.3.1
 mvn clean install
 </code></pre>
-
 <p>You'll also need to download released <a href="https://github.com/bd2kccd/ccd-db/releases/tag/v0.6.3">ccd-db-0.6.3</a>:</p>
 <pre><code>git clone https://github.com/bd2kccd/ccd-db.git
 cd ccd-db
 git checkout tags/v0.6.3
 mvn clean install
 </code></pre>
-
 <p>Then you can go get and install <code>causal-rest-api</code>:</p>
 <pre><code>git clone https://github.com/bd2kccd/causal-rest-api.git
 cd causal-rest-api
 mvn clean package
 </code></pre>
-
 <h3 id="configuration">Configuration</h3>
 <p>There are 4 configuration files to configure located at <code>causal-rest-api/src/main/resources</code>:
 - <strong>application-hsqldb.properties</strong>: HSQLDB database configurations (for testing only).
@@ -235,9 +256,8 @@ mvn clean package
 <p>Befor editing the <code>causal.properties</code> file, you need to create a workspace for the application to work in. Create a directory called workspace, for an example <code>/home/zhy19/ccd/workspace</code>. Inside the workspace directory, create another folder called <code>lib</code>. Then build the jar file of Tetred using the <a href="https://github.com/cmu-phil/tetrad">latest development branch</a>. After that, copy the jar file to the <code>lib</code> folder created earlier.</p>
 <h3 id="start-the-api-server">Start the API Server</h3>
 <p>Once you have all the settings configured, go to <code>causal-rest-api/target</code> and you will find the jar file named <code>causal-rest-api.jar</code>. Then simply run </p>
-<pre><code class="bash">java -jar causal-rest-api.jar
+<pre><code class="language-bash">java -jar causal-rest-api.jar
 </code></pre>
-
 <h2 id="api-usage-and-examples">API Usage and Examples</h2>
 <p>In the following sections, we'll demonstrate the API usage with examples using the API server that is running on Pittsburgh Super Computing. The API base URI is https://ccd4.vm.bridges.psc.edu/ccd-api.</p>
 <p>This API requires user to be authenticated. Before using this API, the user will need to go to <a href="https://ccd4.vm.bridges.psc.edu/ccd/">Causal-Web App</a> and create an account. </p>
@@ -246,13 +266,11 @@ mvn clean package
 <p>API Endpoint URI pattern:</p>
 <pre><code>GET https://ccd4.vm.bridges.psc.edu/ccd-api/jwt
 </code></pre>
-
 <p>In basic auth, the user provides the username and password, which the HTTP client concatenates (username + ":" + password), and base64 encodes it. This encoded string is then sent using a <code>Authorization</code> header with the "Basic" schema. For instance user email <code>demo@pitt.edu</code> whose password is <code>123</code>.</p>
 <pre><code>POST /ccd-api/jwt HTTP/1.1
 Host: ccd4.vm.bridges.psc.edu
 Authorization: Basic ZGVtb0BwaXR0LmVkdToxMjM=
 </code></pre>
-
 <p>Once the request is processed successfully, the user ID together with a JWT will be returned in the response for further API queries.</p>
 <pre><code>{
   &quot;userId&quot;: 22,
@@ -267,7 +285,6 @@ Authorization: Basic ZGVtb0BwaXR0LmVkdToxMjM=
   ]
 }
 </code></pre>
-
 <p>We'll need to use this <code>userId</code> in the URI path of all subsequent requests. And this <code>jwt</code> expires in 3600 seconds(1 hour), so the API consumer will need to request for another JWT otherwise the API query to other API endpoints will be denied. And this JWT will need to be sent via the HTTP <code>Authorization</code> header as well, but using the <code>Bearer</code> schema.</p>
 <p>The <code>wallTime</code> field is designed for users who want to specify the the maximum CPU time when Slurm handles the jobs on PSC. Normally, a job is expected to finish before the specified maximum walltime.  After the walltime reaches the maximum, the job terminates regardless whether the job processes are still running or not. In this example, you can pick 1 hour, 3 or 6 hours as the wallTime.</p>
 <p>Note: querying the JWT endpoint again before the current JWT expires will generate a new JWT, which makes the old JWT expired automatically. And this newly generated JWT will be valid in another hour unless there's another new JWT being queried.</p>
@@ -285,7 +302,6 @@ Authorization: Basic ZGVtb0BwaXR0LmVkdToxMjM=
 <p>API Endpoint URI pattern:</p>
 <pre><code>POST https://ccd4.vm.bridges.psc.edu/ccd-api/{userId}/dataset/upload
 </code></pre>
-
 <p>This is a multipart file upload via an HTML form, and the client is required to use <code>name="file"</code> to name their file upload field in their form.</p>
 <p>Generated HTTP request code example:</p>
 <pre><code>POST /ccd-api/22/dataset/upload HTTP/1.1
@@ -300,9 +316,8 @@ Content-Type:
 
 ----WebKitFormBoundary7MA4YWxkTrZu0gW
 </code></pre>
-
 <p>If the Authorization header is not provided, the response will look like this:</p>
-<pre><code class="javascript">{
+<pre><code class="language-javascript">{
   &quot;timestamp&quot;: 1465414501443,
   &quot;status&quot;: 401,
   &quot;error&quot;: &quot;Unauthorized&quot;,
@@ -310,9 +325,8 @@ Content-Type:
   &quot;path&quot;: &quot;/22/dataset/upload&quot;
 }
 </code></pre>
-
 <p>This POST request will upload the dataset file to the target server location and add corresponding records into database. And the response will contain the following pieces:</p>
-<pre><code class="javascript">{
+<pre><code class="language-javascript">{
     &quot;id&quot;: 6,
     &quot;name&quot;: &quot;Lung-tetrad_hv.txt&quot;,
     &quot;creationTime&quot;: 1466622267000,
@@ -327,13 +341,11 @@ Content-Type:
     }
   }
 </code></pre>
-
 <p>The prior knowledge file upload uses a similar API endpoint:</p>
 <pre><code>POST https://ccd4.vm.bridges.psc.edu/ccd-api/{userId}/priorknowledge/upload
 </code></pre>
-
 <p>Due to there's no need to summarize a prior knowledge file, the response of a successful prior knowledge file upload will look like:</p>
-<pre><code class="javascript">{
+<pre><code class="language-javascript">{
     &quot;id&quot;: 6,
     &quot;name&quot;: &quot;Lung-tetrad_hv.txt&quot;,
     &quot;creationTime&quot;: 1466622267000,
@@ -342,7 +354,6 @@ Content-Type:
     &quot;md5checkSum&quot;: &quot;ugdb7511rt293d29ke3055d9a7b46c9k&quot;
   }
 </code></pre>
-
 <h4 id="resumable-data-file-upload">Resumable data file upload</h4>
 <p>In addition to the regular file upload described in Example 6, we also provide the option of stable and resumable large file upload. It requires the client side to have a resumable upload implementation. We currently support client integrated with <a href="http://resumablejs.com/">Resumable.js</a>, whihc provides multiple simultaneous, stable 
 and resumable uploads via the HTML5 File API. You can also create your own client as long as al the following parameters are set correctly.</p>
@@ -351,7 +362,6 @@ and resumable uploads via the HTML5 File API. You can also create your own clien
 
 POST https://ccd4.vm.bridges.psc.edu/ccd-api/{userId}/chunkupload
 </code></pre>
-
 <p>In this example, the data file is splited into 3 chunks. The upload of each chunk consists of a GET request and a POST request. To handle the state of upload chunks, a number of extra parameters are sent along with all requests:</p>
 <ul>
 <li><code>resumableChunkNumber</code>: The index of the chunk in the current upload. First chunk is <code>1</code> (no base-0 counting here).</li>
@@ -369,7 +379,6 @@ POST https://ccd4.vm.bridges.psc.edu/ccd-api/{userId}/chunkupload
 Host: ccd4.vm.bridges.psc.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 </code></pre>
-
 <p>This GET request checks if the data chunk is already on the server side. If the target file chunk is not found on the server, the client will issue a POST request to upload the actual data.</p>
 <p>Generated HTTP request code example:</p>
 <pre><code>POST /ccd-api/22/chunkupload HTTP/1.1
@@ -420,26 +429,22 @@ Content-Type: application/octet-stream
 
 ------WebKitFormBoundaryMFjgApg56XGyeTnZ--
 </code></pre>
-
 <p>Each chunk upload POST will get a 200 status code from response if everything works fine.</p>
 <p>And finally the md5checkSum string of the reassemabled file will be returned once the whole file has been uploaded successfully. In this example, the POST request that uploads the third chunk will response this:</p>
 <pre><code>b1db7511ee293d297e3055d9a7b46c5e
 </code></pre>
-
 <h4 id="list-all-dataset-files-of-a-user">List all dataset files of a user</h4>
 <p>API Endpoint URI pattern:</p>
 <pre><code>GET https://ccd4.vm.bridges.psc.edu/ccd-api/{userId}/dataset
 </code></pre>
-
 <p>Generated HTTP request code example:</p>
 <pre><code>GET /ccd-api/22/dataset HTTP/1.1
 Host: ccd4.vm.bridges.psc.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 Accept: application/json
 </code></pre>
-
 <p>A <code>JSON</code> formatted list of all the input dataset files that are associated with user <code>22</code> will be returned.</p>
-<pre><code class="javascript">[
+<pre><code class="language-javascript">[
   {
     &quot;id&quot;: 8,
     &quot;name&quot;: &quot;data_small.txt&quot;,
@@ -484,7 +489,6 @@ Accept: application/json
   }
 ]
 </code></pre>
-
 <p>You can also specify the response format as XML in your request</p>
 <p>Generated HTTP request code example:</p>
 <pre><code>GET /ccd-api/22/dataset HTTP/1.1
@@ -492,9 +496,8 @@ Host: ccd4.vm.bridges.psc.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 Accept: application/xml
 </code></pre>
-
 <p>And the response will look like this:</p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
 &lt;datasetFileDTOes&gt;
     &lt;datasetFile&gt;
         &lt;id&gt;8&lt;/id&gt;
@@ -540,21 +543,18 @@ Accept: application/xml
     &lt;/datasetFile&gt;
 &lt;/datasetFileDTOes&gt;
 </code></pre>
-
 <p>Form the above output, we can also tell that data file with ID 10 doesn't have all the <code>fileSummary</code> field values set, we'll cover this in the dataset summarization section.</p>
 <h4 id="get-the-detail-information-of-a-dataset-file-based-on-id">Get the detail information of a dataset file based on ID</h4>
 <p>API Endpoint URI pattern:</p>
 <pre><code>GET https://ccd4.vm.bridges.psc.edu/ccd-api/{userId}/dataset/{id}
 </code></pre>
-
 <p>Generated HTTP request code example:</p>
 <pre><code>GET /ccd-api/22/dataset/8 HTTP/1.1
 Host: ccd4.vm.bridges.psc.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 </code></pre>
-
 <p>And the resulting response looks like this:</p>
-<pre><code class="javascript">{
+<pre><code class="language-javascript">{
   &quot;id&quot;: 8,
   &quot;name&quot;: &quot;data_small.txt&quot;,
   &quot;creationTime&quot;: 1467132449000,
@@ -569,18 +569,15 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
   }
 }
 </code></pre>
-
 <h4 id="delete-physical-dataset-file-and-all-records-from-database-for-a-given-file-id">Delete physical dataset file and all records from database for a given file ID</h4>
 <p>API Endpoint URI pattern:</p>
 <pre><code>DELETE https://ccd4.vm.bridges.psc.edu/ccd-api/{userId}/dataset/{id}
 </code></pre>
-
 <p>Generated HTTP request code example:</p>
 <pre><code>DELETE /ccd-api/22/dataset/8 HTTP/1.1
 Host: ccd4.vm.bridges.psc.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 </code></pre>
-
 <p>And this will result a HTTP 204 No Content status in response on success, which means the server successfully processed the deletion request but there's no content to response.</p>
 <h4 id="summarize-dataset-file">Summarize dataset file</h4>
 <p>So from the first example we can tell that file with ID 10 doesn't have <code>variableType</code>, <code>fileDelimiter</code>, <code>numOfRows</code>, and <code>numOfColumns</code> specified under <code>fileSummary</code>. Among these attributes, variableType<code>and</code>fileDelimiter` are the ones that users will need to provide during this summarization process.</p>
@@ -610,7 +607,6 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
 <p>API Endpoint URI pattern:</p>
 <pre><code>POST https://ccd4.vm.bridges.psc.edu/ccd-api/{userId}/dataset/summarize
 </code></pre>
-
 <p>Generated HTTP request code example:</p>
 <pre><code>POST /ccd-api/22/dataset/summarize HTTP/1.1
 Host: ccd4.vm.bridges.psc.edu
@@ -623,9 +619,8 @@ Content-Type: application/json
     &quot;fileDelimiter&quot;: &quot;comma&quot;
 }
 </code></pre>
-
 <p>This POST request will summarize the dataset file and generate a response (JSON or XML) like below:</p>
-<pre><code class="javascript">{
+<pre><code class="language-javascript">{
   &quot;id&quot;: 10,
   &quot;name&quot;: &quot;large-data.txt&quot;,
   &quot;creationTime&quot;: 1467134048000,
@@ -640,21 +635,18 @@ Content-Type: application/json
   }
 }
 </code></pre>
-
 <h4 id="list-all-prior-knowledge-files-of-a-given-user">List all prior knowledge files of a given user</h4>
 <p>API Endpoint URI pattern:</p>
 <pre><code>GET https://ccd4.vm.bridges.psc.edu/ccd-api/{userId}/priorknowledge
 </code></pre>
-
 <p>Generated HTTP request code example:</p>
 <pre><code>GET /ccd-api/22/priorknowledge HTTP/1.1
 Host: ccd4.vm.bridges.psc.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 Accept: application/json
 </code></pre>
-
 <p>A <code>JSON</code> formatted list of all the input dataset files that are associated with user <code>22</code> will be returned.</p>
-<pre><code class="javascript">[
+<pre><code class="language-javascript">[
   {
     &quot;id&quot;: 9,
     &quot;name&quot;: &quot;data_small.prior&quot;,
@@ -673,20 +665,17 @@ Accept: application/json
   }
 ]
 </code></pre>
-
 <h4 id="get-the-detail-information-of-a-prior-knowledge-file-based-on-id">Get the detail information of a prior knowledge file based on ID</h4>
 <p>API Endpoint URI pattern:</p>
 <pre><code>GET https://ccd4.vm.bridges.psc.edu/ccd-api/{userId}/priorknowledge/{id}
 </code></pre>
-
 <p>Generated HTTP request code example:</p>
 <pre><code>GET /ccd-api/22/priorknowledge/9 HTTP/1.1
 Host: ccd4.vm.bridges.psc.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 </code></pre>
-
 <p>And the resulting response looks like this:</p>
-<pre><code class="javascript">{
+<pre><code class="language-javascript">{
   &quot;id&quot;: 9,
   &quot;name&quot;: &quot;data_small.prior&quot;,
   &quot;creationTime&quot;: 1467132449000,
@@ -695,18 +684,15 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
   &quot;md5checkSum&quot;: &quot;ed5f27a2cf94fe3735a5d9ed9191c382&quot;
 }
 </code></pre>
-
 <h4 id="delete-physical-prior-knowledge-file-and-all-records-from-database-for-a-given-file-id">Delete physical prior knowledge file and all records from database for a given file ID</h4>
 <p>API Endpoint URI pattern:</p>
 <pre><code>DELETE https://ccd4.vm.bridges.psc.edu/ccd-api/{userId}/priorknowledge/{id}
 </code></pre>
-
 <p>Generated HTTP request code example:</p>
 <pre><code>DELETE /ccd-api/22/priorknowledge/9 HTTP/1.1
 Host: ccd4.vm.bridges.psc.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 </code></pre>
-
 <p>And this will result a HTTP 204 No Content status in response on success, which means the server successfully processed the deletion request but there's no content to response.</p>
 <h3 id="2-causal-discovery">2. Causal Discovery</h3>
 <p>Once the data file is uploaded and summaried, you can start running a Causal Discovery Algorithm on the uploaded data file.</p>
@@ -714,14 +700,12 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
 <p>API Endpoint URI pattern:</p>
 <pre><code>GET https://ccd4.vm.bridges.psc.edu/ccd-api/{userId}/algorithms
 </code></pre>
-
 <p>Generated HTTP request code example:</p>
 <pre><code>GET /ccd-api/22/algorithms HTTP/1.1
 Host: ccd4.vm.bridges.psc.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 </code></pre>
-
-<pre><code class="javascript">[
+<pre><code class="language-javascript">[
   {
     &quot;id&quot;: 1,
     &quot;name&quot;: &quot;FGESc&quot;,
@@ -744,7 +728,6 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
   }
 ]
 </code></pre>
-
 <p>Currently we support "FGES continuous", "FGES discrete", "GFCI continuous", and "GFCI discrete". They also share a common JSON structure as of their input, for example:</p>
 <table>
 <thead>
@@ -1026,7 +1009,6 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
 <p>API Endpoint URI pattern:</p>
 <pre><code>POST https://ccd4.vm.bridges.psc.edu/ccd-api/{userId}/jobs/FGESc
 </code></pre>
-
 <p>Generated HTTP request code example:</p>
 <pre><code>POST /ccd-api/22/jobs/FGESc HTTP/1.1
 Host: ccd4.vm.bridges.psc.edu
@@ -1055,7 +1037,6 @@ Content-Type: application/json
     ]
 }
 </code></pre>
-
 <p>In this example, we are running the "FGES continuous" algorithm on the file of ID 8. We also set the wallTime as 1 hour. And this call will return the job info with a 201 Created response status code.</p>
 <pre><code>{
   &quot;id&quot;: 5,
@@ -1066,13 +1047,11 @@ Content-Type: application/json
   &quot;errorResultFileName&quot;: &quot;error_FGESc_data_small.txt_1472742564353.txt&quot;
 }
 </code></pre>
-
 <p>From this response we can tell that the job ID is 5, and the result file name will be <code>FGESc_data_small.txt_1472742564353.txt</code> if everything goes well. If something is wrong an error result file with name <code>error_FGEsc_data_small.txt_1472742564353.txt</code> will be created.</p>
 <p>When you need to run "FGES discrete", just send the request to a different endpont URI:</p>
 <p>API Endpoint URI pattern:</p>
 <pre><code>POST https://ccd4.vm.bridges.psc.edu/ccd-api/{userId}/jobs/FGESd
 </code></pre>
-
 <p>Generated HTTP request code example:</p>
 <pre><code>POST /ccd-api/22/jobs/FGESd HTTP/1.1
 Host: ccd4.vm.bridges.psc.edu
@@ -1096,12 +1075,10 @@ Content-Type: application/json
     }
 }
 </code></pre>
-
 <h4 id="list-all-running-jobs">List all running jobs</h4>
 <p>API Endpoint URI pattern:</p>
 <pre><code>GET https://ccd4.vm.bridges.psc.edu/ccd-api/{userId}/jobs
 </code></pre>
-
 <p>Generated HTTP request code example:</p>
 <pre><code>GET /ccd-api/22/jobs/ HTTP/1.1
 Host: ccd4.vm.bridges.psc.edu
@@ -1109,9 +1086,8 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
 Content-Type: application/json
 
 </code></pre>
-
 <p>Then you'll see the information of all jobs that are currently running:</p>
-<pre><code class="javascript">[
+<pre><code class="language-javascript">[
   {
     &quot;id&quot;: 32,
     &quot;algorithmName&quot;: &quot;FGESc&quot;,
@@ -1124,47 +1100,40 @@ Content-Type: application/json
   }
 ]
 </code></pre>
-
 <h4 id="check-the-job-status-for-a-given-job-id">Check the job status for a given job ID</h4>
 <p>Once the new job is submitted, it takes time and resources to run the algorithm on the server. During the waiting, you can check the status of a given job ID:</p>
 <p>API Endpoint URI pattern:</p>
 <pre><code>GET https://ccd4.vm.bridges.psc.edu/ccd-api/{userId}/jobs/{id}
 </code></pre>
-
 <p>Generated HTTP request code example:</p>
 <pre><code>GET /ccd-api/22/jobs/32 HTTP/1.1
 Host: ccd4.vm.bridges.psc.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 </code></pre>
-
 <p>This will either return "Pending" or "Completed".</p>
 <h4 id="cancel-a-running-job">Cancel a running job</h4>
 <p>Sometimes you may want to cancel a submitted job.</p>
 <p>API Endpoint URI pattern:</p>
 <pre><code>DELETE https://ccd4.vm.bridges.psc.edu/ccd-api/{userId}/jobs/{id}
 </code></pre>
-
 <p>Generated HTTP request code example:</p>
 <pre><code>DELETE /ccd-api/22/jobs/8 HTTP/1.1
 Host: ccd4.vm.bridges.psc.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 </code></pre>
-
 <p>This call will response either "Job 8 has been canceled" or "Unable to cancel job 8". It's not guranteed that the system can always cencal a job successfully.</p>
 <h3 id="3-result-management">3. Result Management</h3>
 <h4 id="list-all-result-files-generated-by-the-algorithm">List all result files generated by the algorithm</h4>
 <p>API Endpoint URI pattern:</p>
 <pre><code>GET https://ccd4.vm.bridges.psc.edu/ccd-api/{userId}/results
 </code></pre>
-
 <p>Generated HTTP request code example:</p>
 <pre><code>GET /ccd-api/22/results HTTP/1.1
 Host: ccd4.vm.bridges.psc.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 </code></pre>
-
 <p>The response to this request will look like this:</p>
-<pre><code class="javascript">[
+<pre><code class="language-javascript">[
   {
     &quot;name&quot;: &quot;FGESc_sim_data_20vars_100cases.csv_1466171729046.txt&quot;,
     &quot;creationTime&quot;: 1466171732000,
@@ -1179,21 +1148,18 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
   }
 ]
 </code></pre>
-
 <h4 id="download-a-specific-result-file-generated-by-the-algorithm-based-on-file-name">Download a specific result file generated by the algorithm based on file name</h4>
 <p>API Endpoint URI pattern:</p>
 <pre><code>GET https://ccd4.vm.bridges.psc.edu/ccd-api/{userId}/results/{result_file_name}
 </code></pre>
-
 <p>Generated HTTP request code example:</p>
 <pre><code>GET /ccd-api/22/results/FGESc_data_small.txt_1466172140585.txt HTTP/1.1
 Host: ccd4.vm.bridges.psc.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 </code></pre>
-
 <p>On success, you will get the result file back as text file content. If there's a typo in file name of the that file doesn't exist, you'll get either a JSON or XML message based on the <code>accept</code> header in your request:</p>
 <p>The response to this request will look like this:</p>
-<pre><code class="javascript">{
+<pre><code class="language-javascript">{
   &quot;timestamp&quot;: 1467210996233,
   &quot;status&quot;: 404,
   &quot;error&quot;: &quot;Not Found&quot;,
@@ -1201,13 +1167,11 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
   &quot;path&quot;: &quot;/22/results/FGESc_data_small.txt_146172140585.txt&quot;
 }
 </code></pre>
-
 <h4 id="compare-algorithm-result-files">Compare algorithm result files</h4>
 <p>Since we can list all the algorithm result files, based on the results, we can also choose multiple files and run a comparison. </p>
 <p>API Endpoint URI pattern:</p>
 <pre><code>POST https://ccd4.vm.bridges.psc.edu/ccd-api/{userId}/results/compare
 </code></pre>
-
 <p>The request body is a JSON that contains an array of result files to be compared.</p>
 <p>Generated HTTP request code example:</p>
 <pre><code>POST /ccd-api/22/results/compare HTTP/1.1
@@ -1221,7 +1185,6 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
   ]
 }
 </code></pre>
-
 <p>When you specify multiple file names, use the <code>!!</code> as a delimiter. This request will generate a result comparison file with the following content (shortened version):</p>
 <pre><code>FGESc_sim_data_20vars_100cases.csv_1466171729046.txt  FGESc_data_small.txt_1467305104859.txt
 Edges In All  Same End Point
@@ -1238,21 +1201,18 @@ CDH3,diag 0 0
 SERPINI2,FGG  0 0
 hsa_miR_451,hsa_miR_136_  0 0
 </code></pre>
-
 <p>From this comparison, you can see if the two algorithm graphs have common edges and endpoints.</p>
 <h4 id="list-all-the-comparison-files">List all the comparison files</h4>
 <p>API Endpoint URI pattern:</p>
 <pre><code>GET https://ccd4.vm.bridges.psc.edu/ccd-api/{userId}/results/comparisons
 </code></pre>
-
 <p>Generated HTTP request code example:</p>
 <pre><code>GET /ccd-api/22/results/comparisons HTTP/1.1
 Host: ccd4.vm.bridges.psc.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 </code></pre>
-
 <p>The response will show a list of comparison files:</p>
-<pre><code class="javascript">[
+<pre><code class="language-javascript">[
   {
     &quot;name&quot;: &quot;result_comparison_1467385923407.txt&quot;,
     &quot;creationTime&quot;: 1467385923000,
@@ -1273,18 +1233,15 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL
   }
 ]
 </code></pre>
-
 <h4 id="download-a-specific-comparison-file-based-on-file-name">Download a specific comparison file based on file name</h4>
 <p>API Endpoint URI pattern:</p>
 <pre><code>GET https://ccd4.vm.bridges.psc.edu/ccd-api/{userId}/results/comparisons/{comparison_file_name}
 </code></pre>
-
 <p>Generated HTTP request code example:</p>
 <pre><code>GET /ccd-api/22/results/comparisons/result_comparison_1467388042261.txt HTTP/1.1
 Host: ccd4.vm.bridges.psc.edu
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2Nsb3VkLmNjZC5waXR0LmVkdS8iLCJuYW1lIjoiemh5MTkiLCJleHAiOjE0NzU4NTA2NzY4MDQsImlhdCI6MTQ3NTg0NzA3NjgwNH0.8azVEoNPfETczXb-vn7dfyDd98eRt7iiLBXehGpPGzY
 </code></pre>
-
 <p>Then it returns the content of that comparison file (shorted version):</p>
 <pre><code>FGESc_sim_data_20vars_100cases.csv_1466171729046.txt  FGESc_data_small.txt_1467305104859.txt
 Edges In All  Same End Point
@@ -1302,29 +1259,21 @@ SERPINI2,FGG  0 0
 </code></pre>
               
             </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../causal-web/" class="btn btn-neutral float-left" title="Causal Web"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../py-causal/" class="btn btn-neutral float-right" title="Py-causal">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../causal-web/" class="btn btn-neutral" title="Causal Web"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-    
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-      
+          
         </div>
       </div>
 
@@ -1332,20 +1281,27 @@ SERPINI2,FGG  0 0
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-        <span><a href="../causal-web/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../py-causal/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../causal-web/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../py-causal/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
-    <script>var base_url = '..';</script>
-    <script src="../js/theme.js" defer></script>
-      <script src="../search/main.js" defer></script>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
 
 </body>
 </html>

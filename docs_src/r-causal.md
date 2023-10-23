@@ -1,6 +1,12 @@
 # r-causal
 [R Wrapper](https://github.com/bd2kccd/r-causal) for Tetrad Library
 
+Note 2023-03-06: This version of RCausal uses an older version of Tetrad from at least 5 years ago. However, we have updated our Python integration to a much better version--see <https://github.com/cmu-phil/py-tetrad>. Updating our R integration is one of the next projects we will take up.
+
+News 2023-04-05: We have put forward a proposal to replace the r-causal functionality using the py-tetrad functionality, here: <https://github.com/cmu-phil/py-tetrad/tree/main/pytetrad/R>. The installation procedure for this is still somewhat complicated, and we will try to simplify it. If you try it and and have difficulties, please let us know. Once you have it installed, it is very easy and intuitive to use.
+
+By the way, rcausal has not been maintained for some time now, as the tireless maintainer has since moved on to different work :-)... but going back through some of the issues posted for r-causal gives some hints as to additional functionality that pytetrad/R should have. We'll try to get caught up.
+
 ## R Library Requirement
 R >= 3.3.0, 
 [stringr](https://cran.r-project.org/web/packages/stringr/),

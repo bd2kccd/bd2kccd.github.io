@@ -1,53 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-     <loc>https://bd2kccd.github.io/docs/</loc>
-     <lastmod>2019-03-13</lastmod>
-     <changefreq>daily</changefreq>
+         <loc>https://bd2kccd.github.io/docs/</loc>
+         <lastmod>2023-10-04</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://bd2kccd.github.io/docs/tetrad/</loc>
-     <lastmod>2019-03-13</lastmod>
-     <changefreq>daily</changefreq>
+         <loc>https://bd2kccd.github.io/docs/causal-cmd/</loc>
+         <lastmod>2023-10-04</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://bd2kccd.github.io/docs/causal-cmd/</loc>
-     <lastmod>2019-03-13</lastmod>
-     <changefreq>daily</changefreq>
+         <loc>https://bd2kccd.github.io/docs/causal-rest-api/</loc>
+         <lastmod>2023-10-04</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://bd2kccd.github.io/docs/causal-web/</loc>
-     <lastmod>2019-03-13</lastmod>
-     <changefreq>daily</changefreq>
+         <loc>https://bd2kccd.github.io/docs/causal-web/</loc>
+         <lastmod>2023-10-04</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://bd2kccd.github.io/docs/causal-rest-api/</loc>
-     <lastmod>2019-03-13</lastmod>
-     <changefreq>daily</changefreq>
+         <loc>https://bd2kccd.github.io/docs/ccd-annotations-cytoscape/</loc>
+         <lastmod>2023-10-04</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://bd2kccd.github.io/docs/py-causal/</loc>
-     <lastmod>2019-03-13</lastmod>
-     <changefreq>daily</changefreq>
+         <loc>https://bd2kccd.github.io/docs/cytoscape-tetrad/</loc>
+         <lastmod>2023-10-04</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://bd2kccd.github.io/docs/r-causal/</loc>
-     <lastmod>2019-03-13</lastmod>
-     <changefreq>daily</changefreq>
+         <loc>https://bd2kccd.github.io/docs/py-causal/</loc>
+         <lastmod>2023-10-04</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://bd2kccd.github.io/docs/cytoscape-tetrad/</loc>
-     <lastmod>2019-03-13</lastmod>
-     <changefreq>daily</changefreq>
+         <loc>https://bd2kccd.github.io/docs/r-causal/</loc>
+         <lastmod>2023-10-04</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://bd2kccd.github.io/docs/ccd-annotations-cytoscape/</loc>
-     <lastmod>2019-03-13</lastmod>
-     <changefreq>daily</changefreq>
+         <loc>https://bd2kccd.github.io/docs/tetrad-express/</loc>
+         <lastmod>2023-10-04</lastmod>
+         <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://bd2kccd.github.io/docs/tetrad-express/</loc>
-     <lastmod>2019-03-13</lastmod>
-     <changefreq>daily</changefreq>
+         <loc>https://bd2kccd.github.io/docs/tetrad/</loc>
+         <lastmod>2023-10-04</lastmod>
+         <changefreq>daily</changefreq>
     </url>
 </urlset>
