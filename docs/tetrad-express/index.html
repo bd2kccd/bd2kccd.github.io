@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://bd2kccd.github.io/docs/cytoscape-tetrad/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://bd2kccd.github.io/docs/tetrad-express/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Cytoscape Tetrad Plugin - CCD Docs</title>
+    <title>Tetrad Express - CCD Docs</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Cytoscape Tetrad Plugin";
-        var mkdocs_page_input_path = "cytoscape-tetrad.md";
-        var mkdocs_page_url = "/docs/cytoscape-tetrad/";
+        var mkdocs_page_name = "Tetrad Express";
+        var mkdocs_page_input_path = "tetrad-express.md";
+        var mkdocs_page_url = "/docs/tetrad-express/";
       </script>
     
     <!--[if lt IE 9]>
@@ -77,14 +77,8 @@
                 <li class="toctree-l1"><a class="reference internal" href="../r-causal/">R-causal</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">Cytoscape Tetrad Plugin</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#displaying-tetrad-networks-in-cytoscape">Displaying Tetrad Networks in Cytoscape</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#using-the-plugin">Using the Plugin</a>
-    </li>
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cytoscape-tetrad/">Cytoscape Tetrad Plugin</a>
                 </li>
               </ul>
               <ul>
@@ -105,7 +99,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Cytoscape Tetrad Plugin</li>
+      <li class="breadcrumb-item active">Tetrad Express</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -114,32 +108,87 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="cytoscape-tetrad">cytoscape-tetrad</h1>
-<h2 id="displaying-tetrad-networks-in-cytoscape">Displaying Tetrad Networks in Cytoscape</h2>
-<p>The Cytoscape application has significant power and flexibility to display networks. This webpage describes how to load a plugin into Cytoscape that will allow you to import and display a Tetrad network (graph) that you have saved from Tetrad. </p>
-<p>Cytoscape can be download for free from http://www.cytoscape.org/ </p>
-<p>Download the latest version of the plugin from our software repository:</p>
-<p><a href="https://cloud.ccd.pitt.edu/latest-cytoscape-tetrad-app.html">Download the plugin</a></p>
-<p>To install the plugin start the Cytoscape application and click on Apps --&gt; App Manager --&gt; Install Apps from the Cytoscape menu. </p>
-<h2 id="using-the-plugin">Using the Plugin</h2>
-<ul>
-<li>
-<p>Put a graph box on the Tetrad workspace and select the graph type “graph”. Double click on the graph box to display the graph in Tetrad. Within the graph display box, click on File --&gt; Save JSON. </p>
-</li>
-<li>
-<p>In Cytoscape, select the File --&gt; Import --&gt; Network --&gt; Tetrad option and select the file that you saved previously from Tetrad. </p>
-</li>
-<li>
-<p>Apply a layout in Cytoscape. By default Cytoscape doesn't apply a layout so the initial rendering will look like a single node. Apply a layout by selecting Layout in the top menu and then choosing a layout to see your graph (e.g., Layouts --&gt; Prefuse Force Directed Layout). </p>
-</li>
+                <h1 id="tetrad-express">Tetrad Express</h1>
+<h2 id="description">Description</h2>
+<p>A Cytoscape application (plugin) for running a simple causal model search.</p>
+<h2 id="purpose">Purpose</h2>
+<p>Provide a basic user-friendly interface for running a simple search algorithm from Tetrad.</p>
+<h2 id="workflow">Workflow</h2>
+<p>Below are the workflows you can peform:</p>
+<h3 id="workflow-1-simple-search">Workflow 1: Simple Search</h3>
+<p>This is the simplest workflow to run a simple search.  Figure 1 shows the same workflow in Tetrad.</p>
+<ol>
+<li>Import data.</li>
+<li>Select algorithm.</li>
+<li>Set algorithm parameters.</li>
+<li>Run search.</li>
+<li>Display graph.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><img alt="Workflow 1" src="../img/tetrad_express_workflow1.png" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><em>Figure 1.</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="workflow-2-add-knowledge">Workflow 2: Add Knowledge</h3>
+<p>This workflow is to add additional knowledge to the dataset.  Figure 2 shows the same workflow in Tetrad.</p>
+<ol>
+<li>Import data.</li>
+<li>Select knowledge type.<ul>
+<li>Set knowledge.</li>
 </ul>
+</li>
+<li>Select algorithm.</li>
+<li>Set algorithm parameters.</li>
+<li>Run search.</li>
+<li>Display graph.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><img alt="Workflow 2" src="../img/tetrad_express_workflow2.png" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><em>Figure 2.</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="workflow-3-apply-data-transformation">Workflow 3: Apply Data Transformation</h3>
+<p>This workflow is to apply data transformation to the dataset.  Figure 3 shows the same workflow in Tetrad.</p>
+<ol>
+<li>Import data.</li>
+<li>Edit the data:<ul>
+<li>Select a data transformation.</li>
+</ul>
+</li>
+<li>Select algorithm.</li>
+<li>Set algorithm parameters.</li>
+<li>Run search.</li>
+<li>Display graph.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><img alt="Workflow 3" src="../img/tetrad_express_workflow3.png" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><em>Figure 3.</em></td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../r-causal/" class="btn btn-neutral float-left" title="R-causal"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../ccd-annotations-cytoscape/" class="btn btn-neutral float-right" title="CCD Annotations Cytoscape Plugin">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -161,10 +210,6 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../r-causal/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../ccd-annotations-cytoscape/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
