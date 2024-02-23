@@ -13,8 +13,7 @@ Causal discovery algorithms allow a user to uncover the causal relationships bet
 
 Java 8 or higher is the only prerequisite to run the software. Note that by default Java will allocate the smaller of 1/4 system memory or 1GB to the Java virtual machine (JVM). If you run out of memory (heap memory space) running your analyses you should increase the memory allocated to the JVM with the following switch '-XmxXXG' where XX is the number of gigabytes of ram you allow the JVM to utilize. For example to allocate 8 gigabytes of ram you would add -Xmx8G immediately after the java command.
 
-In this example, we'll use download the [Retention.txt](http://www.ccd.pitt.edu/wp-content/uploads/files/Retention.txt) file, which is a dataset containing information on college graduation and used in the publication of "What Do College Ranking Data Tell Us About Student Retention?" by Drudzel and Glymour, 1994.
-
+In this example, we'll use download the [Retention.txt](https://raw.githubusercontent.com/bd2kccd/causal-cmd/development/dist/Retention.txt)
 Keep in mind that causal-cmd has different switches for different algorithms. To start, type the following command in your terminal:
 
 ````
@@ -103,7 +102,7 @@ usage: java -jar Causal-cmd Project-1.10.0.jar --algorithm fges --data-type cont
     --verbose                         Yes if verbose output should be printed or logged
 ````
 
-In this example, we'll be running the FGES algorith on the dataset `Retention.txt`.
+In this example, we'll be running the FGES algorithm on the dataset `Retention.txt`.
 
 ````bash
 $ java -jar causal-cmd-1.10.0-jar-with-dependencies.jar --algorithm fges --data-type continuous --dataset Retention.txt --delimiter tab --score sem-bic-score

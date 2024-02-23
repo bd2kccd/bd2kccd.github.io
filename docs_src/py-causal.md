@@ -95,7 +95,7 @@ Anaconda/Jupyter
 
 Installing Python with Anaconda and Jupyter may be easier for some users:
 
-* [Download and install Anaconda](https://www.continuum.io/downloads)
+* [Download and install Anaconda](https://www.anaconda.com/)
 * conda install python-javabridge
 
 For OS X, this default install does not seem to work well. try the following instead:

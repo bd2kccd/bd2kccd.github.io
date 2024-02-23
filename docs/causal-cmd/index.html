@@ -128,8 +128,8 @@ boss, bpc, ccd, cpc, cstar, fas, fask, fask-pw, fci, fcimax, fges, fges-mb, fofc
 <p>Causal discovery algorithms allow a user to uncover the causal relationships between variables in a dataset. These discovered causal relationships may be used further--understanding the underlying the processes of a system (e.g., the metabolic pathways of an organism), hypothesis generation (e.g., variables that best explain an outcome), guide experimentation (e.g., what gene knockout experiments should be performed) or prediction (e.g. parameterization of the causal graph using data and then using it as a classifier).</p>
 <h2 id="command-line-usage">Command Line Usage</h2>
 <p>Java 8 or higher is the only prerequisite to run the software. Note that by default Java will allocate the smaller of 1/4 system memory or 1GB to the Java virtual machine (JVM). If you run out of memory (heap memory space) running your analyses you should increase the memory allocated to the JVM with the following switch '-XmxXXG' where XX is the number of gigabytes of ram you allow the JVM to utilize. For example to allocate 8 gigabytes of ram you would add -Xmx8G immediately after the java command.</p>
-<p>In this example, we'll use download the <a href="http://www.ccd.pitt.edu/wp-content/uploads/files/Retention.txt">Retention.txt</a> file, which is a dataset containing information on college graduation and used in the publication of "What Do College Ranking Data Tell Us About Student Retention?" by Drudzel and Glymour, 1994.</p>
-<p>Keep in mind that causal-cmd has different switches for different algorithms. To start, type the following command in your terminal:</p>
+<p>In this example, we'll use download the <a href="https://raw.githubusercontent.com/bd2kccd/causal-cmd/development/dist/Retention.txt">Retention.txt</a>
+Keep in mind that causal-cmd has different switches for different algorithms. To start, type the following command in your terminal:</p>
 <pre><code>java -jar causal-cmd-&lt;version number&gt;-jar-with-dependencies.jar
 </code></pre>
 <p>** Note: we are using <code>causal-cmd-&lt;version number&gt;-jar-with-dependencies.jar</code> to indicate the actual executable jar of specific version number that is being used. **</p>
@@ -206,7 +206,7 @@ usage: java -jar Causal-cmd Project-1.10.0.jar --algorithm fges --data-type cont
     --timeLag &lt;integer&gt;               A time lag for time series data, automatically applied (zero if none)
     --verbose                         Yes if verbose output should be printed or logged
 </code></pre>
-<p>In this example, we'll be running the FGES algorith on the dataset <code>Retention.txt</code>.</p>
+<p>In this example, we'll be running the FGES algorithm on the dataset <code>Retention.txt</code>.</p>
 <pre><code class="language-bash">$ java -jar causal-cmd-1.10.0-jar-with-dependencies.jar --algorithm fges --data-type continuous --dataset Retention.txt --delimiter tab --score sem-bic-score
 </code></pre>
 <p>This command will output by default one file fges_&lt;unix timestamp&gt;.txt which is a log and result of the algorithm's activity.<br />
