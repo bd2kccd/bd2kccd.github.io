@@ -33,7 +33,7 @@ Click on the Data Management link on the navigation bar on the left side. There 
 ![Causal Web Upload Data Menu Page](img/causal-web-upload-data-menu.png)
 
 You can **EITHER** drag & drop dataset file(s) into the dash-surrounded canvas **OR** 
-you can click on the **Browse** button and choose the dataset file(s) you would like to upload to the Causal Web application. For testing purposes download this dataset: [Retention.txt](http://www.ccd.pitt.edu/wp-content/uploads/files/Retention.txt) and upload it.
+you can click on the **Browse** button and choose the dataset file(s) you would like to upload to the Causal Web application. For testing purposes download this dataset: [Retention.txt](https://raw.githubusercontent.com/bd2kccd/causal-cmd/development/dist/Retention.txt) and upload it.
 
 ![Causal Web Upload Data Page](img/causal-web-upload-data.png)
 
