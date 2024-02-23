@@ -6,8 +6,8 @@
 
 ## Tetrad User Manual
 
-The [Tetrad User Manual](http://cmu-phil.github.io/tetrad/manual/) is a comprehensive guide to get you started and become profecient on using these tools for causal inference.
+The [Tetrad User Manual](https://htmlpreview.github.io/?https:///github.com/cmu-phil/tetrad/blob/development/tetrad-lib/src/main/resources/docs/manual/index.html) is a comprehensive guide to get you started and become profecient on using these tools for causal inference.
 
 ## Tetrad Tutorial
 
-The [Tetrad Tutorial](https://rawgit.com/cmu-phil/tetrad/development/tetrad-gui/src/main/resources/resources/javahelp/manual/tetrad_tutorial.html) describes the things you can do with Tetrad with a lot of examples.
+The [Tetrad Tutorial](https://htmlpreview.github.io/?https://github.com/cmu-phil/tetrad/blob/development/tetrad-lib/src/main/resources/docs/javahelp/manual/tetrad_tutorial.html) describes the things you can do with Tetrad with a lot of examples.

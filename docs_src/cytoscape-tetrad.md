@@ -6,9 +6,7 @@ The Cytoscape application has significant power and flexibility to display netwo
 
 Cytoscape can be download for free from http://www.cytoscape.org/ 
 
-Download the latest version of the plugin from our software repository:
-
-[Download the plugin](https://cloud.ccd.pitt.edu/latest-cytoscape-tetrad-app.html)
+[Download the latest version of the plugin from github](https://github.com/bd2kccd/cytoscape-tetrad)
 
 To install the plugin start the Cytoscape application and click on Apps --> App Manager --> Install Apps from the Cytoscape menu. 
 

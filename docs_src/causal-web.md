@@ -1,6 +1,6 @@
 # Causal Web Application Quick Start and User Guide
 
-Causal web is a Java web-based application that allows users to run causal modeling algorithms on their dataset.  The Center for Causal Discovery is hosting this application at the Pittsburgh Supercomputing Center(PSC) and you can access it via this URL: [https://ccd4.vm.bridges.psc.edu/ccd/](https://ccd2.vm.bridges.psc.edu/ccd/).
+Causal web is a Java web-based application that allows users to run causal modeling algorithms on their dataset.  
 
 ## Creating Your Account
 

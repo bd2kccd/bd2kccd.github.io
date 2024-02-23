@@ -1,11 +1,10 @@
 # ccd-annotations-cytoscape
 
 ## Installation
-Download the latest version of the plugin from our software repository
+The source code for the plugin is available from the project site:
+(https://github.com/bd2kccd/ccd-annotations-cytoscape)
 
-[Download the plugin](https://cloud.ccd.pitt.edu/latest-ccd-annotations-cytoscape.html)
-
-To install the plugin start the Cytoscape application and click on apps->install from file and select the jar file.
+To install the plugin compile the source code or download a release then start the Cytoscape application and click on apps->install from file and select the jar file.
 
 ## Using the Plugin
 - Create new annotations

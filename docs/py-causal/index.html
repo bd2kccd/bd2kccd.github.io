@@ -1,169 +1,118 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  
-  <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Py-causal - CCD Docs</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://bd2kccd.github.io/docs/py-causal/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Py-causal - CCD Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Py-causal";
+        var mkdocs_page_input_path = "py-causal.md";
+        var mkdocs_page_url = "/docs/py-causal/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Py-causal";
-    var mkdocs_page_input_path = "py-causal.md";
-    var mkdocs_page_url = "/docs/py-causal/";
-  </script>
-  
-  <script src="../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
-  
-  <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-60897872-2', 'bd2kccd.github.io');
-      ga('send', 'pageview');
-  </script>
-  
+        ga('create', "UA-60897872-2", "bd2kccd.github.io");
+        ga('send', 'pageview');
+      </script>
+    
 </head>
 
 <body class="wy-body-for-nav" role="document">
 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> CCD Docs</a>
-        <div role="search">
+          <a href=".." class="icon icon-home"> CCD Docs
+        </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="..">Welcome to CCD Docs</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../tetrad/">Tetrad</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../causal-cmd/">Causal CMD</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../causal-web/">Causal Web</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../causal-rest-api/">Causal REST API</a>
-	    </li>
-          
-            <li class="toctree-l1 current">
-		
-    <a class="current" href="./">Py-causal</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#py-causal">py-causal</a></li>
-    
-
-    <li class="toctree-l2"><a href="#requirements">Requirements:</a></li>
-    
-
-    <li class="toctree-l2"><a href="#docker-image">Docker Image</a></li>
-    
-
-    <li class="toctree-l2"><a href="#installation-overview">Installation overview:</a></li>
-    
-
-    <li class="toctree-l2"><a href="#installation-with-pip">Installation with pip</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l3" href="#running-jupyteripython">Running Jupyter/IPython</a></li>
-        
-        </ul>
-    
-
-    <li class="toctree-l2"><a href="#anacondajupyter">Anaconda/Jupyter</a></li>
-    
-
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Welcome to CCD Docs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../tetrad/">Tetrad</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../causal-cmd/">Causal Cmd</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../causal-web/">Causal Web</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../causal-rest-api/">Causal REST API</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Py-causal</a>
+    <ul class="current">
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../r-causal/">R-causal</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../cytoscape-tetrad/">Cytoscape Tetrad Plugin</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../ccd-annotations-cytoscape/">CCD Annotations Cytoscape Plugin</a>
-	    </li>
-          
-        </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../r-causal/">R-causal</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cytoscape-tetrad/">Cytoscape Tetrad Plugin</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ccd-annotations-cytoscape/">CCD Annotations Cytoscape Plugin</a>
+                </li>
+              </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">CCD Docs</a>
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">CCD Docs</a>
+        
       </nav>
-
-      
       <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="..">Docs</a> &raquo;</li>
-    
-      
-    
-    <li>Py-causal</li>
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Py-causal</li>
     <li class="wy-breadcrumbs-aside">
-      
     </li>
   </ul>
   <hr/>
 </div>
-          <div role="main">
-            <div class="section">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
               
                 <h1 id="py-causal">py-causal</h1>
-<p><a href="https://github.com/bd2kccd/py-causal">Python APIs</a> for causal modeling algorithms developed by the University of Pittsburgh/Carnegie Mellon University <a href="http://www.ccd.pitt.edu">Center for Causal Discovery</a>. </p>
+<p><a href="https://github.com/bd2kccd/py-causal">Python APIs</a> for causal modeling algorithms developed by the University of Pittsburgh/Carnegie Mellon University <a href="http://www.ccd.pitt.edu">Center for Causal Discovery</a>.</p>
+<p>Note: This project uses a very old version of Tetrad and a method of connecting Python to Java, Javabridge, that's proven sometimes buggy and hard to install on some platforms, and so we are no longer recommending it. Please consider using py-tetrad instead. Py-tetrad uses JPype to bridge Python and Java, which has already shown itself to be much easier to install and use cross-platform. Also, it allows one to use the most recent version of Tetrad, and it has been well-tested.</p>
 <p>This code is distributed under the LGPL 2.1 license.</p>
 <h1 id="requirements">Requirements:</h1>
 <p>Python 2.7 and 3.6</p>
@@ -179,8 +128,8 @@
 <p>A pre-installed py-causal Docker image is available at <a href="https://hub.docker.com/r/chirayukong/py-causal-notebook/">Docker Hub</a></p>
 <h1 id="installation-overview">Installation overview:</h1>
 <p>To install on existing Python installation, we have found two approaches to be useful:
-<em> Direct python installation with pip, possibly including use of <a href="http://jupyter.org/">Jupyter</a>. This approach is likely best for users who have Python installed and are familiar with installing Python modules.
-</em> Installation via <a href="https://www.continuum.io/downloads">Anaconda</a>, which  installs Python and related utilities.</p>
+* Direct python installation with pip, possibly including use of <a href="http://jupyter.org/">Jupyter</a>. This approach is likely best for users who have Python installed and are familiar with installing Python modules.
+* Installation via Anaconda</p>
 <p>Directions for both approaches are given below...</p>
 <h1 id="installation-with-pip">Installation with pip</h1>
 <p>If you do not have pip installed already, try <a href="https://pip.pypa.io/en/stable/installing/">these instructions</a>.</p>
@@ -240,29 +189,21 @@ jupyter notebook
 <p>and then load one of the Jupyter notebooks.</p>
               
             </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../causal-rest-api/" class="btn btn-neutral float-left" title="Causal REST API"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../r-causal/" class="btn btn-neutral float-right" title="R-causal">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../causal-rest-api/" class="btn btn-neutral" title="Causal REST API"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-    
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-      
+          
         </div>
       </div>
 
@@ -270,20 +211,27 @@ jupyter notebook
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-        <span><a href="../causal-rest-api/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../r-causal/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../causal-rest-api/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../r-causal/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
-    <script>var base_url = '..';</script>
-    <script src="../js/theme.js" defer></script>
-      <script src="../search/main.js" defer></script>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
 
 </body>
 </html>
